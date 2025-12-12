@@ -1,0 +1,67 @@
+IF
+	GlobalGT("C0AuraBegin","GLOBAL",2)
+	Global("RandomWalk","LOCALS",0)
+THEN
+  RESPONSE #100
+	SetGlobal("RandomWalk","LOCALS",1)
+	ChangeAIScript("randwalk",GENERAL)
+END
+
+IF
+	Global("C0APicoTalk","LOCALS",0)
+	Global("RandomWalk","LOCALS",1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0APicoTalk","LOCALS",1)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+END
+	
+IF
+	GlobalLT("C0AuraBG2Quest3","GLOBAL",10)
+    CombatCounter(0)
+	RealGlobalTimerExpired("C0APicoTalkTimer","LOCALS")
+THEN
+  RESPONSE #10
+	DisplayStringHead("C0APico",~Where's that darned capacitor? I really need to clean up after myself...~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~Garl's gold, I'm hungry. Could really use a turnip.~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~You hungry, Koko?~)
+	Wait(1)
+	DisplayStringHead("C0AKoko",~*meow*~ [CAT01])
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~*sigh* Time to polish the telescope glass again...~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~Maybe miss Aura will let me use the alembic next time.~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~Need to make sure that cat doesn't scratch up miss Aura's paintings...~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~*whistles*~ [GNOMEM04])
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~One gram of glow powder and some quicksilver...~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	SetSequence(SEQ_DAMAGE)
+	DisplayStringHead("C0APico",~*achoo!*~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+  RESPONSE #10
+	DisplayStringHead("C0APico",~Ooh, is the turnip stew ready yet?~)
+	RealSetGlobalTimer("C0APicoTalkTimer","LOCALS",ONE_TURN)
+	Continue()
+END

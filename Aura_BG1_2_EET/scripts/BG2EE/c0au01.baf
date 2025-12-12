@@ -1,0 +1,340 @@
+IF
+	Global("Begin","MYAREA",0)
+THEN
+	RESPONSE #100
+	SetInterrupt(FALSE)
+	ActionOverride("C0Auin3",MakeGlobalOverride())
+	ActionOverride("C0AUIN3",SetGlobal("Standby","LOCALS",1))
+	ChangeEnemyAlly("C0auin3",NEUTRAL)
+	AmbientActivate("Portal1",FALSE)
+	AmbientActivate("Portal2",FALSE)
+	AmbientActivate("Portal3",FALSE)
+	AmbientActivate("Portal4",FALSE)
+	AmbientActivate("Portal5",FALSE)
+	SetGlobal("Begin","MYAREA",1)
+	SetGlobal("C0AutoCreated", "GLOBAL", 1)
+	SetInterrupt(TRUE)
+END
+
+IF
+    !TimeOfDay(MORNING)
+	!TimeOfDay(NIGHT)
+	IsActive("c0akoko2")
+THEN
+    RESPONSE #100
+	AmbientActivate("c0auzzz",FALSE)
+    Deactivate("c0akoko2")
+	SmallWait(5)
+	Activate("c0akoko")
+	Continue()
+END
+
+IF
+	!Global("C0AuraImportOniMask","GLOBAL",1)
+	!Global("C0AuraImportOniMask","GLOBAL",-1)
+THEN
+    RESPONSE #100
+	SetGlobal("C0AuraImportOniMask","GLOBAL",-1)
+	AmbientActivate("Mask1",FALSE)
+    Deactivate("Infopoint11")
+	Continue()
+END
+
+IF
+    !TimeOfDay(MORNING)
+	!TimeOfDay(NIGHT)
+	IsActive("c0akoko2")
+THEN
+    RESPONSE #100
+	AmbientActivate("c0auzzz",FALSE)
+    Deactivate("c0akoko2")
+	SmallWait(5)
+	Activate("c0akoko")
+	Continue()
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",1)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT05",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",2)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT06",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",3)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT07",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",4)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT08",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",5)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT09",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",6)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT10",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",7)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AUTT11",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("C0AuraCraftItem","C0AU01",8)
+  Global("C0AuraFinishedCrafting","GLOBAL",1)
+THEN RESPONSE #100
+  ActionOverride("CraftForge",DestroyAllEquipment())
+  GiveItemCreate("C0AJANXB",Player1,1,0,0)
+  ActionOverride("C0AURA",StartDialogueNoSet([PC]))
+END
+
+IF
+	Global("C0AuraBG2Quest2","GLOBAL",4)
+  InParty("C0Aura")
+  !Dead("C0Aura")
+  PartyHasItem("C0AMISC1")
+  PartyHasItem("C0AMISC2")
+  PartyHasItem("C0AMISC3")
+  PartyHasItem("C0AMISC4")
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraBG2Quest2","GLOBAL",5)
+		StartCutSceneMode()
+    ContainerEnable("Generator1",TRUE)
+    ContainerEnable("Generator2",TRUE)
+    ContainerEnable("Generator3",TRUE)
+    ContainerEnable("Generator4",TRUE)
+    ActionOverride("C0Aura",MoveToPoint([433.225])
+    ActionOverride("C0Aura",SmallWait(1))
+    ActionOverride("C0Aura",Face(E))
+    ActionOverride("C0Aura",Wait(1))
+    ActionOverride("C0Aura",MoveToPoint([505.303])
+    ActionOverride("C0Aura",SmallWait(1))
+    ActionOverride("C0Aura",Face(NE))
+    ActionOverride("C0Aura",Wait(1))
+    ActionOverride("C0Aura",MoveToPoint([587.290])
+    ActionOverride("C0Aura",SmallWait(1))
+    ActionOverride("C0Aura",Face(W))
+    ActionOverride("C0Aura",Wait(4))
+    ActionOverride("C0Aura",EndCutSceneMode())
+    ActionOverride("C0Aura",StartDialogNoSet(Player1))
+END
+
+IF 
+  Contains("C0AMISC1","Generator1")
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Generator1","C0AU01",1)
+    ActionOverride("Generator1",DestroyItem("C0AMISC1"))
+    MoveContainerContents("Generator1","Container008")
+    CreateVisualEffectObject("SPNWCHRM","Generator1")
+    ContainerEnable("Generator1",FALSE)
+END
+
+IF 
+  Contains("C0AMISC2","Generator2")
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Generator2","C0AU01",1)
+    ActionOverride("Generator2",DestroyItem("C0AMISC2"))
+    MoveContainerContents("Generator2","Container008")
+    CreateVisualEffectObject("SPNWCHRM","Generator2")
+    ContainerEnable("Generator2",FALSE)
+END
+
+IF 
+  Contains("C0AMISC3","Generator3")
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Generator3","C0AU01",1)
+    ActionOverride("Generator3",DestroyItem("C0AMISC3"))
+    MoveContainerContents("Generator3","Container008")
+    CreateVisualEffectObject("SPNWCHRM","Generator3")
+    ContainerEnable("Generator3",FALSE)
+END
+
+IF 
+  Contains("C0AMISC4","Generator4")
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Generator4","C0AU01",1)
+    ActionOverride("Generator4",DestroyItem("C0AMISC4"))
+    MoveContainerContents("Generator4","Container008")
+    CreateVisualEffectObject("SPNWCHRM","Generator4")
+    ContainerEnable("Generator4",FALSE)
+END
+
+IF
+  Global("C0AuraBG2Quest2","GLOBAL",6)
+  Global("C0AuraBG2Quest2Generator1","C0AU01",1)
+  Global("C0AuraBG2Quest2Generator2","C0AU01",1)
+  Global("C0AuraBG2Quest2Generator3","C0AU01",1)
+  Global("C0AuraBG2Quest2Generator4","C0AU01",1)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2","GLOBAL",7)
+    ActionOverride("C0Aura",StartDialogNoSet(Player1))
+END
+
+// Fire World
+
+IF
+  Contains("C0AUCRY1","Container007")
+  Global("C0AuraBG2Quest2Fire","C0AU01",0)
+  !Global("C0AuraBG2Quest2FireBattle","GLOBAL",10)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Fire","C0AU01",1)
+    CreateVisualEffect("SPPORTAL",[534.180])
+    TriggerActivation("Infopoint02",FALSE)
+    TriggerActivation("Portalentry",TRUE)
+    AmbientActivate("Portal1",TRUE)
+    SoundActivate("PortalL",TRUE)
+END
+
+IF
+  !Contains("C0AUCRY1","Container007")
+  Global("C0AuraBG2Quest2Fire","C0AU01",1)
+  !Global("C0AuraBG2Quest2FireBattle","GLOBAL",10)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Fire","C0AU01",0)
+    AmbientActivate("Portal1",FALSE)
+    TriggerActivation("Infopoint02",TRUE)
+    TriggerActivation("Portalentry",FALSE)
+    SoundActivate("PortalL",FALSE)
+END
+
+IF
+  Contains("C0AUCRY1","Container007")
+  Global("C0AuraBG2Quest2FireBattle","GLOBAL",10)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2FireBattle","GLOBAL",11)
+    CreateVisualEffect("C0ASPARK",[594.238])
+    CreateVisualEffect("SPDISPMA",[534.207])
+    ActionOverride("Container007",DestroyItem("C0AUCRY1"))
+    AmbientActivate("Portal1",FALSE)
+    TriggerActivation("Infopoint02",TRUE)
+    TriggerActivation("Portalentry",FALSE)
+    SoundActivate("PortalL",FALSE)
+END
+
+// Snow World
+
+IF
+  Contains("C0AUCRY2","Container007")
+  Global("C0AuraBG2Quest2Ice","C0AU01",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Ice","C0AU01",1)
+    CreateVisualEffect("SPPORTAL",[534.180])
+    TriggerActivation("Infopoint02",FALSE)
+    TriggerActivation("Portalentry",TRUE)
+    AmbientActivate("Portal2",TRUE)
+    SoundActivate("PortalL",TRUE)
+END
+
+IF
+  !Contains("C0AUCRY2","Container007")
+  Global("C0AuraBG2Quest2Ice","C0AU01",1)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2Ice","C0AU01",0)
+    AmbientActivate("Portal2",FALSE)
+    TriggerActivation("Infopoint02",TRUE)
+    TriggerActivation("Portalentry",FALSE)
+    SoundActivate("PortalL",FALSE)
+END
+
+IF
+  Contains("C0AUCRY2","Container007")
+  Global("C0AuraBG2Quest2IceEncounter","GLOBAL",7)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2IceEncounter","GLOBAL",8)
+    CreateVisualEffect("C0ASPARK",[594.238])
+    CreateVisualEffect("SPDISPMA",[534.207])
+    ActionOverride("Container007",DestroyItem("C0AUCRY2"))
+    AmbientActivate("Portal1",FALSE)
+    TriggerActivation("Infopoint02",TRUE)
+    TriggerActivation("Portalentry",FALSE)
+    SoundActivate("PortalL",FALSE)
+END
+
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",11)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",12)
+    CreateCreature("C0AJUNO",[387.314],NE)
+    CreateCreature("C0AGNO03",[604.310],E)
+    CreateCreature("C0AGNO04",[86.332],E)
+    ActionOverride("C0AJUNO",Dialog(Player1))
+	Continue()
+END
+
+IF
+  GlobalGT("C0AuraBG2Quest3","GLOBAL",14)
+  Global("C0AuraBG2Quest3Despawn","MYAREA",0)
+THEN
+    RESPONSE #100
+  SetGlobal("C0AuraBG2Quest3Despawn","MYAREA",1)
+    ActionOverride("C0AGNO03",DestroySelf())
+    ActionOverride("C0AGNO04",DestroySelf())
+    ActionOverride("C0AJUNO",DestroySelf())
+	Continue()
+END
+/*
+IF
+  Contains("C0AUCRY1","Container007")
+  Global("C0AuraBG2Quest2FireBattle","GLOBAL",10)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest2FireBattle","GLOBAL",11)
+    CreateVisualEffect("C0ASPARK",[594.238])
+    CreateVisualEffect("SPDISPMA",[534.207])
+    ActionOverride("Container007",DestroyItem("C0AUCRY1"))
+    AmbientActivate("Portal1",FALSE)
+    TriggerActivation("Infopoint02",TRUE)
+    TriggerActivation("Portalentry",FALSE)
+    SoundActivate("PortalL",FALSE)
+END
+*/

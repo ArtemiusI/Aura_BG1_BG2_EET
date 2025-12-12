@@ -1,0 +1,99 @@
+IF
+	PartyHasItem("misc5g")
+	Global("C0AuraElephantSkin","GLOBAL",2)
+THEN
+  RESPONSE #100
+    TakePartyItem("misc5g")
+	SetGlobal("C0AuraElephantSkin","GLOBAL",3)
+END
+
+IF
+	Global("C0AuraBG2Quest1AskTitan","GLOBAL",2)
+THEN
+  RESPONSE #100
+    AddJournalEntry(%Quest1_Entry_3%,QUEST)
+	SetGlobal("C0AuraBG2Quest1AskTitan","GLOBAL",3)
+END
+
+IF
+	PartyHasItem("c0atitn")
+	Global("C0AuraQuest1HasTitan","GLOBAL",0)
+THEN
+  RESPONSE #100
+    AddJournalEntry(%Quest1_Entry_4%,QUEST)
+	SetGlobal("C0AuraQuest1HasTitan","GLOBAL",1)
+END
+
+IF
+	Gender(Player1,FEMALE)
+	!Alignment(Player1,MASK_EVIL)
+	CheckStatGT(Player1,9,CHR)
+	CheckStatGT(Player1,11,INT)
+	Global("C0AuraMatch","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraMatch","GLOBAL",1)
+END
+
+IF
+	Global("C0AuraBG2Quest1","GLOBAL",49)
+	GlobalTimerExpired("C0AuraBG2BattleEncounter","GLOBAL")
+	InParty("C0Aura")
+	!Dead("C0Aura")
+	OR(10)
+	AreaCheck("C0AUR1")
+	AreaCheck("AR0020")
+	AreaCheck("AR0300")
+	AreaCheck("AR0400")
+	AreaCheck("AR0500")
+	AreaCheck("AR0500")
+	AreaCheck("AR0700")
+	AreaCheck("AR0800")
+	AreaCheck("AR0900")
+	AreaCheck("AR1000")
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBG2Quest1","GLOBAL",50)
+    ForceRandomEncounterEntry("C0AUF2","Entrance1")
+END
+
+IF
+	Global("C0AuraBG2Quest1","GLOBAL",51)
+	Dead("C0AEINT3")
+	Dead("C0AGOL01")
+	NumDeadGT("C0AEINT2",2)
+	NumDeadGT("C0AEINT1",3)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,~You feel the effects of anti-magic dissipating.~)
+		SetGlobal("C0AuraBG2Quest1","GLOBAL",52)
+		ActionOverride(Player1,ApplySpellRES("C0AQEF8",Myself))
+END
+
+IF
+	NumItemsPartyGT("C0AMISC7",4)
+THEN
+	RESPONSE #100
+		TakePartyItemNum("C0AMISC7",5)
+        GiveItemCreate("C0AMISC5",Player1,1,0,0)  // Rift Device
+END
+
+IF
+	Global("MurdersSolved","GLOBAL",1)
+	Global("C0AuraElephantSkin","GLOBAL",2)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AuraElephantSkin","GLOBAL",3)
+	EraseJournalEntry(@1)
+END
+
+IF
+	Global("C0AuraBG2Quest3","GLOBAL",8)
+	GlobalTimerExpired("C0AuraBG2QuestTime3Timer","GLOBAL")
+THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest3","GLOBAL",9)
+	CreateCreatureObjectOffset("c0apico",Player1,[100.100])
+	ActionOverride("c0apico",StartDialogNoSet(Player1)
+	Continue()
+END

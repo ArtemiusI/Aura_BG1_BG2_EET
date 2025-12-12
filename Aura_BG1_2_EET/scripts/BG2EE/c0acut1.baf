@@ -1,0 +1,11 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+	ActionOverride("c0apico",EscapeAreaObject("tran0403"))
+	ActionOverride("c0akoko",EscapeAreaObject("tran0403"))
+	Wait(4)
+	EndCutSceneMode()
+	ActionOverride("majan",StartDialogueNoSet(Player1))
+END

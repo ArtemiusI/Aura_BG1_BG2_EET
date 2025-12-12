@@ -1,0 +1,470 @@
+IF
+    CombatCounter(0)
+    Global("C0ShirayuriRetreat","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("C0ShirayuriRetreat","GLOBAL",0)
+        Activate("C0AYUKI")
+        ApplySpell("C0AYUKI",CLERIC_HEAL)
+        SetInterrupt(TRUE)
+        Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    !Global("C0ShirayuriRetreat","GLOBAL",1)
+    Global("C0AuraBG2Quest2IceEncounter","GLOBAL",4)
+    Global("Warning1","C0AURF",0)
+    Delay(1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("Warning1","C0AURF",1)
+        DisplayStringNoName("C0AICE01",~The bone-chilling wind of the Plane of Ice intensifies with the bheur's presence, lacerating your flesh like countless tiny blades.~)
+        Wait(1)
+        DisplayStringHead("C0AYUKI",~The orglashes... they empower this blizzard, and the freezing shroud that protects her. Do not attack the hag now! The orglashes must fall first!~)
+        SetInterrupt(TRUE)
+        Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    NumDeadGT("C0AUICE1",0)
+    Global("HagCloak","C0AURF",0)
+    Delay(1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("HagCloak","C0AURF",1)
+        ApplySpellRES("C0AUICE8","C0AICE01")
+        CreateVisualEffectObject("ICRMPARI","C0AICE01")
+        SetInterrupt(TRUE)
+        Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    NumDeadGT("C0AUICE1",1)
+    Global("HagCloak","C0AURF",1)
+    Delay(1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("HagCloak","C0AURF",2)
+        ApplySpellRES("C0AUICE7","C0AICE01")
+        CreateVisualEffectObject("ICRMPARI","C0AICE01")
+        SetInterrupt(TRUE)
+        Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    NumDeadGT("C0AUICE1",2)
+    Global("HagCloak","C0AURF",2)
+    Delay(1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("HagCloak","C0AURF",3)
+        ApplySpellRES("C0AUICE6","C0AICE01")
+        CreateVisualEffectObject("ICRMPARI","C0AICE01")
+        SetInterrupt(TRUE)
+        Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    NumDeadGT("C0AUICE1",3)
+    Global("HagCloak","C0AURF",3)
+    Delay(1)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("HagCloak","C0AURF",4)
+        ApplySpellRES("C0AUICE5","C0AICE01")
+        CreateVisualEffectObject("ICRMPARI","C0AICE01")
+        DisplayStringHead("C0AYUKI",~Now! She is vulnerable! Strike her now!~)
+        SetInterrupt(TRUE)
+        Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player1,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",0)
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player1)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player2,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",0)
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player2)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player3,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",0)
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player3)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player4,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",0)
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player4)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player5,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",0)
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player5)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player6,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",0)
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player6)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player1,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",1)
+    Delay(6)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player1)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player2,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",1)
+    Delay(6)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player2)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player3,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",1)
+    Delay(6)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player3)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player4,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",1)
+    Delay(6)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player4)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player5,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",1)
+    Delay(6)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player5)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player6,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",1)
+    Delay(6)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player6)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player1,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",2)
+    Delay(12)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player1)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player2,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",2)
+    Delay(12)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player2)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player3,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",2)
+    Delay(12)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player3)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player4,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",2)
+    Delay(12)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player4)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player5,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",2)
+    Delay(12)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player5)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player6,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",2)
+    Delay(12)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player6)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player1,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",3)
+    Delay(18)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player1)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player2,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",3)
+    Delay(18)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player2)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player3,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",3)
+    Delay(18)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player3)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player4,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",3)
+    Delay(18)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player4)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player5,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",3)
+    Delay(18)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player5)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player6,100,RESISTCOLD)
+    !NumDeadGT("C0AUICE1",3)
+    Delay(18)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player6)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player1,100,RESISTCOLD)
+    NumDeadGT("C0AUICE1",3)
+    Delay(24)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player1)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player2,100,RESISTCOLD)
+    NumDeadGT("C0AUICE1",3)
+    Delay(24)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player2)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player3,100,RESISTCOLD)
+    NumDeadGT("C0AUICE1",3)
+    Delay(24)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player3)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player4,100,RESISTCOLD)
+    NumDeadGT("C0AUICE1",3)
+    Delay(24)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player4)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player5,100,RESISTCOLD)
+    NumDeadGT("C0AUICE1",3)
+    Delay(24)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player5)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+IF
+    InMyArea("C0AICE01")
+    !Dead("C0AICE01")
+    CheckStatLT(Player6,100,RESISTCOLD)
+    NumDeadGT("C0AUICE1",3)
+    Delay(24)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AUICE9",Player6)
+    ApplySpellRES("C0AUICE0","C0AICE01")
+    Continue()
+END
+
+IF
+    Global("Stage2","C0AURF",1)
+    
+THEN
+    RESPONSE #100
+        SetGlobal("Stage2","C0AURF",2)
+        CreateCreatureEffect("C0AICE01","C0FREEZE",[322.468],SW)
+    END

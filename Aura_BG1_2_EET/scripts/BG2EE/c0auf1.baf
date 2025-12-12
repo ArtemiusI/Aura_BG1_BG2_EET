@@ -1,0 +1,22 @@
+
+IF
+  	!BeenInParty("C0Aura")
+  	GlobalLT("chapter","GLOBAL",%bg2_chapter_8%)
+  	!StateCheck("C0Aura",STATE_REALLY_DEAD)
+	Global("C0AuraBegin","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraBegin","GLOBAL",4)
+		StartCutSceneMode()
+		CutSceneId(Player1)
+		CreateCreature("C0Aura2",[461.430],SE)
+		ActionOverride("C0aura",MakeGlobalOverride())
+		FadeToColor([30.0],0)
+		Wait(1)
+		FadeFromColor([30.0],0)
+		MoveViewObject("c0aura",INSTANT)  // Aura
+		CreateCreature("cutspy",[500.500],S)  // No such index
+		Wait(4)
+		ActionOverride("C0aura",StartDialogNoSet(Player1))
+		Continue()
+END

@@ -1,0 +1,14 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        Face(E)
+        ActionOverride("C0AFRITZ",Face(E))
+        ActionOverride("C0AQINT2",DestroySelf())
+        ActionOverride("C0DEDAL",EscapeArea())
+        ActionOverride("C0AFRITZ",EscapeArea())
+        StartCutScene("CUT41D")
+END
+

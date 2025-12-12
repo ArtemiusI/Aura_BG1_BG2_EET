@@ -1,0 +1,79 @@
+
+IF
+  Global("Stage3","MYAREA",1)
+  HPPercentLT(Myself,50)
+  Global("Meteors","LOCALS",0)
+  !HPLT(Myself,2)
+THEN
+  RESPONSE #100
+    SetGlobal("Meteors","LOCALS",1)
+    DisplayStringHead(Myself,~BEHOLD MY POWER!~)
+    ReallyForceSpell(Myself,WIZARD_COMET)
+    ReallyForceSpell(Myself,WARRIOR_HARDINESS)
+    ReallyForceSpell(Myself,CLERIC_REGENERATE)
+    CreateCreature("C0AFIR11",[100.50],S)
+    CreateCreature("C0AFIR11",[300.50],S)
+    CreateCreature("C0AFIR11",[500.50],S)
+    CreateCreature("C0AFIR11",[700.50],S)
+    CreateCreature("C0AFIR11",[900.50],S)
+    CreateCreature("C0AFIR11",[1100.50],S)
+    CreateCreature("C0AFIR11",[1200.150],S)
+    CreateCreature("C0AFIR11",[1200.350],S)
+    CreateCreature("C0AFIR11",[1200.550],S)
+    CreateCreature("C0AFIR11",[1200.750],S)
+    CreateCreature("C0AFIR11",[1200.950],S)
+    CreateCreature("C0AFIR11",[1000.950],S)
+    CreateCreature("C0AFIR11",[900.950],S)
+    CreateCreature("C0AFIR11",[700.950],S)
+    CreateCreature("C0AFIR11",[500.950],S)
+    CreateCreature("C0AFIR11",[300.950],S)
+    CreateCreature("C0AFIR11",[100.950],S)
+    CreateCreature("C0AFIR11",[100.750],S)
+    CreateCreature("C0AFIR11",[100.550],S)
+    CreateCreature("C0AFIR11",[100.350],S)
+    CreateCreature("C0AFIR11",[100.150],S)
+    Continue()
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !StateCheck(Myself,STATE_INVISIBLE)
+    Global("Shield","LOCALS",0)
+THEN
+    RESPONSE #100
+        ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)  // SPWI418.SPL (Fireshield (Red))
+        SetGlobal("Shield","LOCALS",1)
+END
+
+IF
+    Global("Stage3","MYAREA",0)
+    See(NearestEnemyOf(Myself))
+    StateCheck(Myself,STATE_INVISIBLE)
+    RandomNum(6,1)
+    Delay(6)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+END
+
+IF
+    Global("Stage3","MYAREA",0)
+    See(NearestEnemyOf(Myself))
+    StateCheck(Myself,STATE_INVISIBLE)
+    RandomNum(6,2)
+    Delay(6)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_FLAME_ARROW)  // SPWI304.SPL (Fireball)
+END
+
+IF
+    Global("Stage3","MYAREA",0)
+    See(NearestEnemyOf(Myself))
+    StateCheck(Myself,STATE_INVISIBLE)
+    RandomNum(6,3)
+    Delay(6)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(NearestEnemyOf(Myself),CLERIC_FLAME_STRIKE)  // SPWI304.SPL (Fireball)
+END

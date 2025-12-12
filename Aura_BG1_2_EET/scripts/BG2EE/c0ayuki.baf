@@ -1,0 +1,37 @@
+IF
+InMyArea("C0AICE01")
+!Dead("C0AICE01")
+Allegiance(Myself,NEUTRAL)
+Global("C0ShirayuriRetreat","GLOBAL",0)
+THEN
+RESPONSE #100
+SetInterrupt(FALSE)
+ChangeEnemyAlly(Myself,CONTROLLED)
+Continue()
+END
+
+IF
+HPLT(Myself,2)
+Allegiance(Myself,CONTROLLED)
+Global("C0ShirayuriRetreat","GLOBAL",0)
+THEN
+RESPONSE #100
+SetInterrupt(FALSE)
+SetGlobal("C0ShirayuriRetreat","GLOBAL",1)
+StartDialogueNoSet(Player1)
+SetInterrupt(TRUE)
+Continue()
+END
+
+IF
+Allegiance(Myself,CONTROLLED)
+Global("C0AuraBG2Quest2IceEncounter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetInterrupt(FALSE)
+ChangeEnemyAlly(Myself,NEUTRAL)
+StartDialogueNoSet(Player1)
+SetInterrupt(TRUE)
+Continue()
+END
+

@@ -1,0 +1,9 @@
+IF
+  Global("C0AuraBG2Quest1","GLOBAL",51)
+  Global("Hostile","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Hostile","LOCALS",1)
+    DisplayStringHead(Myself,~"Omnes ad Interitus!"~)
+    Enemy()
+END

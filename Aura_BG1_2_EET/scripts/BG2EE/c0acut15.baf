@@ -1,0 +1,14 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(2)
+        ActionOverride("C0AREES",AttackOneRound("C0AASCL"))
+        Wait(1)
+        Kill("C0AASCL")
+        Wait(3)
+        ActionOverride("C0AREES",MoveToPoint([584.430]))
+		ActionOverride("C0AREES",StartDialogNoSet(Myself))
+END
+

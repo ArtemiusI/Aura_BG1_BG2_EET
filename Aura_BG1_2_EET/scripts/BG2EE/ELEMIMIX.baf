@@ -1,0 +1,12 @@
+// And this is the extra script for Gorion's Wraith:
+IF
+See([PC])
+OR(2)
+PartyHasItem("c0acirc2")
+PartyHasItem("c0aclck1")
+Global("C0AuraToBImixAngry","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("C0AuraToBImixAngry","GLOBAL",1)
+StartDialog("C0AUIMIX",[PC])
+END

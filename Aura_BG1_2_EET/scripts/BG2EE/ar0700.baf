@@ -1,0 +1,51 @@
+IF
+  InParty("C0Aura")
+  !Dead("C0Aura")
+  !TimeOfDay([NIGHT])
+  !TimeOfDay([DUSK])
+  Global("C0AuraBG2Quest1","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1","GLOBAL",3)
+	  CreateCreature("C0AREES1",[2148.1394],SE)
+	  CreateCreature("C0AKID1",[2099.1445],N)
+	  CreateCreature("C0AKID2",[2166.1442],NNW)
+	  CreateCreature("C0AKID3",[2236.1340],SW)
+	  CreateCreature("C0AKID4",[2242.1391],W)
+    Continue()
+END
+
+IF
+  InParty("C0Aura")
+  !Dead("C0Aura")
+  OR(2)
+  TimeOfDay([NIGHT])
+  TimeOfDay([DUSK])
+  Global("C0AuraBG2Quest1DisableNPCs","MYAREA",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1DisableNPCs","MYAREA",1)
+	  Deactivate("C0AREES")
+	  Deactivate("C0AKID1")
+	  Deactivate("C0AKID2")
+	  Deactivate("C0AKID3")
+	  Deactivate("C0AKID4")
+    Continue()
+END
+
+IF
+  InParty("C0Aura")
+  !Dead("C0Aura")
+  !TimeOfDay([NIGHT])
+  !TimeOfDay([DUSK])
+  Global("C0AuraBG2Quest1DisableNPCs","MYAREA",1)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1DisableNPCs","MYAREA",0)
+	  Activate("C0AREES")
+	  Activate("C0AKID1")
+	  Activate("C0AKID2")
+	  Activate("C0AKID3")
+	  Activate("C0AKID4")
+    Continue()
+END

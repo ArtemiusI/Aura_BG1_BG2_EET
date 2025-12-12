@@ -1,0 +1,761 @@
+LOAD_TRA ~%MOD_FOLDER%/tra/english/BG1/setup.tra~
+
+APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~
+  
+// BAELOTH BANTER
+
+ACTION_IF FILE_EXISTS_IN_GAME ~neera.dlg~ THEN BEGIN
+ PRINT ~BG:EE detected - Baeloth interdia.2da append - set Baeloth's banter file (BBAELOTH)~
+    APPEND ~interdia.2da~ ~BAELOTH BBAELOTH~
+    UNLESS ~BAELOTH~
+   ACTION_IF NOT (FILE_EXISTS_IN_GAME ~BBAELOTH.dlg~) THEN BEGIN
+   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BBAELOTHFix.d~
+  END
+END
+
+//AUDIO
+
+LAF HANDLE_AUDIO END
+
+// CREATURES
+
+// SINGLE-CLASS ARTIFICER
+ACTION_IF (auraclass = 1) THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/C0Aura.cre~ ~override/C0Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C0Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C0Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-eyed curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, after which a certain course of events led her to leave on a journey towards the Sword Coast.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+
+ACTION_IF GAME_INCLUDES ~sod~
+THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/SoD/c02aura.cre~ ~override~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C02Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C02Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, until a disastrous commission led to her disgrace and her subsequent leaving of Kozakura. Within the Sword Coast, she eventually crossed paths with her adversary and former friend, the disgraced samurai Tadahashi Saito, and ended his life with great regret.
+
+During her travels north, Aura was repeatedly forced to evade or defend herself against crusaders who would doubtlessly force her to use her great technological intellect to further their goals. Though adverse to the idea of violence, she has allied herself with the Flaming Fist both for her own protection and to fight as her own choice.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_COMMON4 ~Need a hand?~ [C0AU025]
+  SAY SELECT_COMMON5 ~Need a gadget?~ [C0AU026]
+  SAY SELECT_COMMON6 ~Anything you need!~ [C0AU027]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+END
+END
+
+// ILLUSIONIST / ARTIFICER
+ACTION_IF (auraclass = 2) THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/C0AuraMA.cre~ ~override/C0Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C0Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C0Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, after which a certain course of events led her to leave on a journey towards the Sword Coast.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+
+ACTION_IF GAME_INCLUDES ~sod~
+THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/SoD/c02AuraM.cre~ ~override/C02Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C02Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C02Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, until a disastrous commission led to her disgrace and her subsequent leaving of Kozakura. Within the Sword Coast, she eventually crossed paths with her adversary and former friend, the disgraced samurai Tadahashi Saito, and ended his life with great regret.
+
+During her travels north, Aura was repeatedly forced to evade or defend herself against crusaders who would doubtlessly force her to use her great technological intellect to further their goals. Though adverse to the idea of violence, she has allied herself with the Flaming Fist both for her own protection and to fight as her own choice.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_COMMON4 ~Need a hand?~ [C0AU025]
+  SAY SELECT_COMMON5 ~Need a gadget?~ [C0AU026]
+  SAY SELECT_COMMON6 ~Anything you need!~ [C0AU027]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+END
+
+COPY_EXISTING ~c0aule01.itm~ ~override~
+  LPF DELETE_EFFECT
+    INT_VAR
+	  match_opcode = 145
+  END
+  LPF ALTER_EFFECT
+    INT_VAR
+	  match_opcode = 0
+	  match_parameter2 = 16
+	  parameter1 = 8
+  END
+SAY NAME1 ~Cherry-tinted Leather Armor~
+SAY NAME2 ~Cherry-tinted Leather Armor~
+SAY DESC ~This basic armor is made of thick wax or water-hardened leather. It is sturdy protection, not supple like boots or a cloak. Soft garment leathers like that would offer no more protection than common clothing. Magical enchantments have improved the protective abilities of this particular suit.
+
+Aura's custom-made leather armor is dyed a bright pinkish red color that is, according to Aura, reminiscent of Kara-Turan cherry blossoms, designed to repel stains and unpleasant odors.
+
+STATISTICS:
+
+Equipped abilities:
+- Save vs. Breath Weapons: +3
+- Spellcasting is not disabled
+
+Armor Class: 8 (10 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+  
+COPY_EXISTING ~c0aule02.itm~ ~override~
+  LPF DELETE_EFFECT
+    INT_VAR
+	  match_opcode = 145
+  END
+  LPF ALTER_EFFECT
+    INT_VAR
+	  match_opcode = 0
+	  match_parameter2 = 16
+	  parameter1 = 6
+  END
+SAY NAME1 ~Cherry-tinted Leather Armor +2~
+SAY NAME2 ~Cherry-tinted Leather Armor +2~
+SAY DESC ~This basic armor is made of thick wax or water-hardened leather. It is sturdy protection, not supple like boots or a cloak. Soft garment leathers like that would offer no more protection than common clothing. Magical enchantments have improved the protective abilities of this particular suit.
+
+Aura's custom-made leather armor is dyed a bright pinkish red color that is, according to Aura, reminiscent of Kara-Turan cherry blossoms, designed to repel stains and unpleasant odors, as well as protect from the hazards of her experiments, such as extreme heat or cold, electrical shocks, and chemical burns.
+
+STATISTICS:
+
+Equipped abilities:
+– Save vs. Breath Weapons: +3
+– Elemental Resistance: +20%
+– Spellcasting is not disabled
+
+Armor Class: 6 (8 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+END
+
+// PRIESTESS / ARTIFICER
+ACTION_IF (auraclass = 3) THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/C0AuraPR.cre~ ~override/C0Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C0Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C0Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, after which a certain course of events led her to leave on a journey towards the Sword Coast.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+
+ACTION_IF GAME_INCLUDES ~sod~
+THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/SoD/c02AuraP.cre~ ~override/C02Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C02Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C02Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, until a disastrous commission led to her disgrace and her subsequent leaving of Kozakura. Within the Sword Coast, she eventually crossed paths with her adversary and former friend, the disgraced samurai Tadahashi Saito, and ended his life with great regret.
+
+During her travels north, Aura was repeatedly forced to evade or defend herself against crusaders who would doubtlessly force her to use her great technological intellect to further their goals. Though adverse to the idea of violence, she has allied herself with the Flaming Fist both for her own protection and to fight as her own choice.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_COMMON4 ~Need a hand?~ [C0AU025]
+  SAY SELECT_COMMON5 ~Need a gadget?~ [C0AU026]
+  SAY SELECT_COMMON6 ~Anything you need!~ [C0AU027]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+END
+END
+
+// SINGLE-CLASS ARTIFICER (EEex version)
+ACTION_IF (auraclass = 4) THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/C0AuraE.cre~ ~override/C0Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C0Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C0Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, after which a certain course of events led her to leave on a journey towards the Sword Coast.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+
+ACTION_IF GAME_INCLUDES ~sod~
+THEN BEGIN
+COPY ~%MOD_FOLDER%/creatures/SoD/c02AuraE.cre~ ~override/C02Aura.cre~
+  SAY NAME1 ~Aura~
+  SAY NAME2 ~Aura~
+  WRITE_ASCII 0x248 ~C02Aura~ #8  //override script
+  WRITE_ASCII 0x280 ~C0Aura~ #32  //DV
+  WRITE_ASCII 0x2cc ~C02Aura~ #8   //pre-joining dialogue file
+  WRITE_ASCII 0X34 ~C0AuraM~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0AuraL~ #8   //medium portrait
+  SAY BIO ~When asked about her past, AURA tells you a long and convoluted tale of her life from her childhood to her life spent in faraway Kozakura. Born from the prestigious Glimmershine family in the "enlightened" island nation of Lantan, known for their skills in invention and artifice. Aura's talent for artifice and creation at a young age coupled with a wide-idea curiosity of the world beyond her home led her to travel to distant lands looking to advance her knowledge of cultures and exchange knowledge to other, less advanced societies. 
+  
+While few Lantanese venture far from the western side of Faerun, Aura is unusually well travelled, having ventured to the most distant parts of and even beyond Faerun. Among such places, she claims to have taken a temporary residence in faraway Kozakura, a nation in the eastern land of Kara-Tur. Aura's talents in creation gave her a place among the locals of the village in which she made her new home for three years, until a disastrous commission led to her disgrace and her subsequent leaving of Kozakura. Within the Sword Coast, she eventually crossed paths with her adversary and former friend, the disgraced samurai Tadahashi Saito, and ended his life with great regret.
+
+During her travels north, Aura was repeatedly forced to evade or defend herself against crusaders who would doubtlessly force her to use her great technological intellect to further their goals. Though adverse to the idea of violence, she has allied herself with the Flaming Fist both for her own protection and to fight as her own choice.~
+  SAY MORALE ~Run away! Run away!~ [C0AU001]
+  SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
+  SAY UNHAPPY_ANNOYED ~That was just an honest mistake... right?~ [C0AU003]
+  SAY UNHAPPY_SERIOUS ~I can't believe anyone could be this terrible.~ [C0AU004]
+  SAY UNHAPPY_BREAKING_POINT ~That's... that's enough. I can't deal with this anymore. I'm leaving.~ [C0AU005]
+  SAY LEADER ~Umm... okay. I'll try my best!~ [C0AU006]
+  SAY TIRED ~Can we please take a break? I want tea and biscuits...~ [C0AU007]
+  SAY BORED ~Don't worry, I'll just work on my next invention while you do, uh, nothing I guess.~ [C0AU008]
+  SAY BATTLE_CRY1 ~I didn't want to have to fight!~ [C0AU009]
+  SAY BATTLE_CRY2 ~Ready, aim and fire!~ [C0AU010]
+  SAY BATTLE_CRY3 ~I never miss!~ [C0AU011]
+  SAY BATTLE_CRY4 ~You're not getting away from me!~ [C0AU012]
+  SAY BATTLE_CRY5 ~Okay, I got this!~ [C0AU013]
+  SAY DAMAGE ~Ow!~ [C0AU014]
+  SAY DYING ~Ah...~ [C0AU015]
+  SAY HURT ~It hurts so much...~ [C0AU016]
+  SAY AREA_FOREST ~Oh, I love the forest. It reminds me of home.~ [C0AU017]
+  SAY AREA_CITY ~These cities are so different from my homeland.~ [C0AU018]
+  SAY AREA_DUNGEON ~Careful, Muffy, there might be ghosts nearby.~ [C0AU019]
+  SAY AREA_DAY ~The sunlight's nice on my hair. See how it glitters?~ [C0AU020]
+  SAY AREA_NIGHT ~I'm not afraid of the dark. Really, I'm not!~ [C0AU021]
+  SAY SELECT_COMMON1 ~Yep?~ [C0AU022]
+  SAY SELECT_COMMON2 ~Mm-hmm?~ [C0AU023]
+  SAY SELECT_COMMON3 ~I'm listening.~ [C0AU024]
+  SAY SELECT_COMMON4 ~Need a hand?~ [C0AU025]
+  SAY SELECT_COMMON5 ~Need a gadget?~ [C0AU026]
+  SAY SELECT_COMMON6 ~Anything you need!~ [C0AU027]
+  SAY SELECT_ACTION1 ~Okay.~ [C0AU028]
+  SAY SELECT_ACTION2 ~Here I go.~ [C0AU029]
+  SAY SELECT_ACTION3 ~I'm the girl for the job.~ [C0AU030]
+  SAY CRITICAL_HIT ~Ha ha! Right on target!~ [C0AU036]
+  SAY CRITICAL_MISS ~Oops! I messed that one up.~ [C0AU037]
+  SAY TARGET_IMMUNE ~Ooh, interesting. It bounced right off.~ [C0AU038]
+  SAY INVENTORY_FULL ~Hey, I'm not big enough to carry all this.~ [C0AU039]
+  SAY SPELL_DISRUPTED ~Oh, nuts and bolts! I worked hard on that!~ [C0AU040]
+  SAY SET_A_TRAP ~That's how you use your gray matter.~ [C0AU041]
+  SAY HIDDEN_IN_SHADOWS ~I'll be as quiet as a mouse.~ [C0AU042]
+  SAY PICKED_POCKET ~Huh? What's this?~ [C0AU043]
+  WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+END
+
+COPY_EXISTING ~c0aule01.itm~ ~override~
+  LPF DELETE_EFFECT
+    INT_VAR
+	  match_opcode = 145
+  END
+  LPF ALTER_EFFECT
+    INT_VAR
+	  match_opcode = 0
+	  match_parameter2 = 16
+	  parameter1 = 8
+  END
+SAY NAME1 ~Cherry-tinted Leather Armor~
+SAY NAME2 ~Cherry-tinted Leather Armor~
+SAY DESC ~This basic armor is made of thick wax or water-hardened leather. It is sturdy protection, not supple like boots or a cloak. Soft garment leathers like that would offer no more protection than common clothing. Magical enchantments have improved the protective abilities of this particular suit.
+
+Aura's custom-made leather armor is dyed a bright pinkish red color that is, according to Aura, reminiscent of Kara-Turan cherry blossoms, designed to repel stains and unpleasant odors.
+
+STATISTICS:
+
+Equipped abilities:
+- Save vs. Breath Weapons: +3
+- Spellcasting is not disabled
+
+Armor Class: 8 (10 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+  
+COPY_EXISTING ~c0aule02.itm~ ~override~
+  LPF DELETE_EFFECT
+    INT_VAR
+	  match_opcode = 145
+  END
+  LPF ALTER_EFFECT
+    INT_VAR
+	  match_opcode = 0
+	  match_parameter2 = 16
+	  parameter1 = 6
+  END
+SAY NAME1 ~Cherry-tinted Leather Armor +2~
+SAY NAME2 ~Cherry-tinted Leather Armor +2~
+SAY DESC ~This basic armor is made of thick wax or water-hardened leather. It is sturdy protection, not supple like boots or a cloak. Soft garment leathers like that would offer no more protection than common clothing. Magical enchantments have improved the protective abilities of this particular suit.
+
+Aura's custom-made leather armor is dyed a bright pinkish red color that is, according to Aura, reminiscent of Kara-Turan cherry blossoms, designed to repel stains and unpleasant odors, as well as protect from the hazards of her experiments, such as extreme heat or cold, electrical shocks, and chemical burns.
+
+STATISTICS:
+
+Equipped abilities:
+– Save vs. Breath Weapons: +3
+– Elemental Resistance: +20%
+– Spellcasting is not disabled
+
+Armor Class: 6 (8 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+END
+
+// JOURNAL
+
+ADD_JOURNAL TITLE (%Aura's Tale%) @10001 @10002 @10003 @10004 @10005 @10006 @10007 @10008 @10009 USING ~%MOD_FOLDER%/tra/english/setup.tra~
+ADD_JOURNAL TITLE (%Amanokagami Reika%) @20001 @20002 USING ~%MOD_FOLDER%/tra/english/setup.tra~
+
+// DIALOGUE
+  
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BGEE/bc0aura.d~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BGEE/c0aura.d~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BGEE/c0auraj.d~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BGEE/c0aurap.d~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BGEE/c0saito.d~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BGEE/c0fubuki.d~
+
+
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/misc48_swap.d~
+ 
+
+// SCRIPTS
+
+  EXTEND_TOP ~%bg1_eet_symbol%0112.bcs~ ~%MOD_FOLDER%/scripts/BGEE/BG0112.baf~ EVAL
+  EXTEND_TOP ~%bg1_eet_symbol%0900.bcs~ ~%MOD_FOLDER%/scripts/BGEE/BG0900.baf~ EVAL
+  EXTEND_TOP ~%bg1_eet_symbol%3300.bcs~ ~%MOD_FOLDER%/scripts/BGEE/BG3300.baf~ EVAL
+  EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/scripts/BGEE/baldur.baf~ EVAL
+  
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0fubuki.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0aura.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0aurad.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0acuts0.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0acuts1.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0acuts2.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0acuts3.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0acuts4.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0aangry.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0aufade.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0ninja.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/BGEE/c0ninja3.baf~
+
+COPY_EXISTING ~c0aubear.spl~ ~override~
+SAY NAME1 ~I Hate Bears!~
+SAY NAME2 ~I Hate Bears!~
+
+// CREATURES
+  
+ACTION_IF GAME_IS ~EET~ BEGIN
+
+APPEND ~bgdialog.2da~
+~C0Aura        C0AuraP	C0AuraJ	C0AuraD~
+UNLESS ~C0Aura~
+
+APPEND ~bgbanter.2da~
+~C0Aura       BC0Aura~
+UNLESS ~C0Aura~
+
+END ELSE BEGIN
+
+APPEND ~pdialog.2da~
+~C0Aura        C0AuraP	C0AuraJ	C0AuraD~
+UNLESS ~C0Aura~
+
+APPEND ~interdia.2da~
+~C0Aura       BC0Aura~
+UNLESS ~C0Aura~
+
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~bdcaelar.cre~ THEN BEGIN
+  COPY ~%MOD_FOLDER%/scripts/BGEE/nonsod~ ~override~
+END
+
+COPY ~%MOD_FOLDER%/creatures/c0ninja.cre~ ~override~
+WRITE_ASCII 0x248 ~c0ninja~  #8  // override
+WRITE_ASCII 0x2cc ~c0ninja~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0ninja~ #32 // death variable
+SAY NAME1 ~Ninja~
+SAY NAME2 ~Ninja~
+
+COPY ~%MOD_FOLDER%/creatures/c0ninja2.cre~ ~override~
+WRITE_ASCII 0x248 ~c0ninja~  #8  // override
+WRITE_ASCII 0x2cc ~c0ninja~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0ninja2~ #32 // death variable
+SAY NAME1 ~Elite Ninja~
+SAY NAME2 ~Elite Ninja~
+
+COPY ~%MOD_FOLDER%/creatures/c0ninja3.cre~ ~override~
+WRITE_ASCII 0x248 ~c0ninja3~  #8  // override
+WRITE_ASCII 0x2cc ~c0ninja~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0ninja3~ #32 // death variable
+SAY NAME1 ~Rinkou~
+SAY NAME2 ~Rinkou~
+
+COPY ~%MOD_FOLDER%/creatures/c0ninja4.cre~ ~override~
+WRITE_ASCII 0x248 ~c0ninja~  #8  // override
+WRITE_ASCII 0x2cc ~c0ninja~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0ninja4~ #32 // death variable
+SAY NAME1 ~Mayoi~
+SAY NAME2 ~Mayoi~
+
+COPY ~%MOD_FOLDER%/creatures/c0ninja5.cre~ ~override~
+WRITE_ASCII 0x248 ~c0ninja~  #8  // override
+WRITE_ASCII 0x2cc ~c0ninja~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0ninja5~ #32 // death variable
+SAY NAME1 ~Kotaro~
+SAY NAME2 ~Kotaro~
+
+COPY ~%MOD_FOLDER%/creatures/c0saito.cre~ ~override~
+WRITE_ASCII 0x248 ~c0saito~  #8  // override
+WRITE_ASCII 0x2cc ~c0saito~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0saito~ #32 // death variable
+SAY NAME1 ~Tadahashi Saito~
+SAY NAME2 ~Tadahashi Saito~
+
+COPY ~%MOD_FOLDER%/creatures/c0fubuki.cre~ ~override~
+WRITE_ASCII 0x248 ~c0fubuki~  #8  // override
+WRITE_ASCII 0x2cc ~c0fubuki~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0fubuki~ #32 // death variable
+SAY NAME1 ~Fubuki~
+SAY NAME2 ~Fubuki~
+
+COPY ~%MOD_FOLDER%/creatures/c0aukagu.cre~ ~override~
+WRITE_ASCII 0x248 ~c0aukagu~  #8  // override
+WRITE_ASCII 0x2cc ~c0aukagu~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0aukagu~ #32 // death variable
+SAY NAME1 ~Kagutsuchi~
+SAY NAME2 ~Kagutsuchi~
+
+COPY ~%MOD_FOLDER%/creatures/c0auayak.cre~ ~override~
+WRITE_ASCII 0x248 ~c0auayak~  #8  // override
+WRITE_ASCII 0x2cc ~c0auayak~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0auayak~ #32 // death variable
+SAY NAME1 ~Ayakashi~
+SAY NAME2 ~Ayakashi~
+
+COPY ~%MOD_FOLDER%/creatures/c0aumizu.cre~ ~override~
+WRITE_ASCII 0x248 ~c0aumizu~  #8  // override
+WRITE_ASCII 0x2cc ~c0aumizu~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0aumizu~ #32 // death variable
+SAY NAME1 ~Mizuchi~
+SAY NAME2 ~Mizuchi~
+
+COPY ~%MOD_FOLDER%/creatures/c0aukuon.cre~ ~override~
+WRITE_ASCII 0x248 ~c0aukuon~  #8  // override
+WRITE_ASCII 0x2cc ~c0aukuon~  #8  // dialogue
+WRITE_ASCII 0x280 ~c0aukuon~ #32 // death variable
+SAY NAME1 ~Ku'on Myodo~
+SAY NAME2 ~Ku'on Myodo~
+
+// ITEMS
+
+COPY_EXISTING ~c0agem1.itm~ ~override~
+SAY NAME1 ~Ice Crystal~
+SAY NAME2 ~Ice Crystal~
+SAY DESC ~This crystal initially appears to be a normal shard of ice, though it does not melt even when held in hand. It seems to almost hum with latent magical energy.
+
+STATISTICS:
+
+Weight: 0~
+
+COPY_EXISTING ~scrl2j.itm~ ~override/c0ascrl1.itm~
+SAY NAME1 ~Strange Letter~
+SAY NAME2 ~Strange Letter~
+SAY UNIDENTIFIED_DESC ~This letter was left behind on the bodies of one of the elite ninja sent to capture Aura.
+
+"Our quarry has entered into our domain. Seek her out and kill all who try to stand in your way. Capture her alive if possible, but if she chooses to resist, do not hesitate to eliminate her. When the task is complete, raise the signal at the city's bridge during the midnight hour and await my arrival.
+
+Remember the oaths you have sworn and know that your success will free us from the curse of which we have been bound. Do not fail me."~
+
+COPY_EXISTING ~scrl2j.itm~ ~override/c0ascrl2.itm~
+SAY NAME1 ~Note~
+SAY NAME2 ~Note~
+SAY UNIDENTIFIED_DESC ~This hastily-scribbled note was left behind by Aura.
+
+"Thank you for everything we've done together, but I can't ask you to fight this battle for my sake. Hopefully I'll make it back, but if I don't... please don't miss me."~
+
+COPY_EXISTING ~misc1c.itm~ ~override/c0ascrl3.itm~
+SAY NAME1 ~Scroll~
+SAY NAME2 ~Fubuki's Records~
+SAY UNIDENTIFIED_DESC ~This heavy scroll's contents are written entirely in Kara-Turan. According to Aura, they contain several years' worth of Fubuki's gathered records and information on past events involving Tadahashi Saito's war against the holy temples of Kozakura.~
+
+COPY_EXISTING ~dezkie.cre~ ~override/dezkie.cre~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN
+		ADD_CRE_ITEM ~c0agem1~ #0 #0 #0 ~NONE~ ~inv~
+	END
+BUT_ONLY_IF_IT_CHANGES
+
+INCLUDE ~%MOD_FOLDER%/lib/crossmod_bg1.tpa~
+
+ACTION_IF GAME_INCLUDES ~sod~
+THEN BEGIN
+  PRINT ~Installing content for Siege of Dragonspear...~
+INCLUDE ~%MOD_FOLDER%/lib/aura_sod.tpa~
+END

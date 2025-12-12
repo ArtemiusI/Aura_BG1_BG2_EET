@@ -1,0 +1,9 @@
+IF
+    Global("C0AuraCromwellSwordUpgrade","ar0334",1)
+    Global("ForgeStuff","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("ForgeStuff","GLOBAL",0)
+        GiveItemCreate("C0AUSW04",Player1,1,0,0)
+        ActionOverride("wsmith01",StartDialogueNoSet([PC]))
+END

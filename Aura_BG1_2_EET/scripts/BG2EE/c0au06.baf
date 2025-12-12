@@ -1,0 +1,92 @@
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",29)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",30)
+    CreateCreature("C0DEDAL",[1193.533],SSW)
+    CreateCreature("C0ALUNA",[1162.567],NNE)
+	MoveGlobal("C0AU06","C0Aura",[1069.548])
+	ActionOverride("C0Aura",Face(NW))
+END
+
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",30)
+  OR(6)
+  NearLocation(Player1,980,754,10)
+  NearLocation(Player2,980,754,10)
+  NearLocation(Player3,980,754,10)
+  NearLocation(Player4,980,754,10)
+  NearLocation(Player5,980,754,10)
+  NearLocation(Player6,980,754,10)
+THEN
+  RESPONSE #100
+  SetGlobal("C0AuraBG2Quest3","GLOBAL",31)
+  ClearAllActions()
+  StartCutSceneMode()
+  Wait(1)
+  ActionOverride(Player1,MoveToPoint([1054.645]))
+  SmallWait(1)
+  MoveViewPoint([1146.641],BD_WALK)
+  ActionOverride(Player2,MoveToPoint([1021.646]))
+  SmallWait(1)
+  ActionOverride(Player3,MoveToPoint([1077.670]))
+  SmallWait(1)
+  ActionOverride(Player4,MoveToPoint([999.685]))
+  SmallWait(1)
+  ActionOverride(Player5,MoveToPoint([1056.698]))
+  SmallWait(1)
+  ActionOverride(Player6,MoveToPoint([993.732]))
+  Wait(2)
+  ActionOverride("C0Aura",Face(S))
+  ActionOverride("C0ALuna",Face(SW))
+  Wait(3)
+  ActionOverride("C0Aura",StartDialogNoSet(Player1))
+END
+
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",39)
+  Global("C0AuraBG2Quest3DedalusSpawn","MYAREA",0)
+THEN
+  RESPONSE #100
+  SetGlobal("C0AuraBG2Quest3DedalusSpawn","MYAREA",1)
+  ActionOverride("C0AJUNO",CreateCreatureObject("C0DEDAL",Myself,0,0,0))
+  SmallWait(1)
+  ActionOverride("C0DEDAL",Polymorph(SLEEPING_DWARF))
+END
+
+IF
+  InMyArea(Player1)
+  InMyArea("C0Aura")
+  InParty("C0Aura")
+  Global("C0AuraBG2Quest3PostTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+  SetGlobal("C0AuraBG2Quest3PostTalk","GLOBAL",2)
+  SetMusic(DAY,%C0AU03M%)
+  SetMusic(NIGHT,%C0AU03M%)
+  ActionOverride("Aura Golem 1",DestroySelf())
+  ActionOverride("Aura Golem 2",DestroySelf())
+  ActionOverride("Aura Golem 3",DestroySelf())
+  ActionOverride("Aura Golem 4",DestroySelf())
+  ActionOverride("Aura Golem 5",DestroySelf())
+  ActionOverride("Aura Golem 6",DestroySelf())
+  CreateCreature("C0DEDAL",[1122.449],NE)
+  SmallWait(1)
+  ClearAllActions()
+  StartCutSceneMode()
+  Wait(1)
+  FadeToColor([30.0],0)
+  Wait(2)
+  MoveViewPoint([1122.449],INSTANT)
+  ActionOverride(Player1,JumpToPoint([1193.490]))
+  ActionOverride(Player1,SmallWait(1))
+  ActionOverride(Player1,Face(NW))
+  ActionOverride("C0Aura",JumpToPoint([1145.521]))
+  ActionOverride("C0Aura",SmallWait(1))
+  ActionOverride("C0Aura",Face(NW))
+  SmallWait(5)
+  FadeFromColor([30.0],0)
+  Wait(3)
+  ActionOverride("C0DEDAL",StartDialogNoSet(Player1))
+END
+

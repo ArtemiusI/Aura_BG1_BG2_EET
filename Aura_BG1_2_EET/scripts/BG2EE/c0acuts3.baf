@@ -1,0 +1,20 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        ActionOverride("C0AQINT1",MoveToPoint([4186.2646]))
+        ActionOverride("C0AQINT3",MoveToPoint([4233.2695]))
+        SmallWait(1)
+        CreateCreature("OBSERVE",[4190.2707],S)
+        CreateCreature("C0AQINT4",[4110.2758],S)
+        CreateCreature("C0AQINT5",[4133.2770],S)
+        CreateCreature("C0AQINT6",[4172.2710],S)
+        CreateCreature("C0AQINT7",[4219.2730],S)
+        Wait(4)
+        MoveViewObject("C0DEDAL",STANDARD)
+        Wait(4)
+        ActionOverride("C0AQINT2",StartDialogNoSet(Myself))
+END
+

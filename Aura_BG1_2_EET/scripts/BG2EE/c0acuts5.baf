@@ -1,0 +1,15 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("C0DEDAL")
+        PlaySound("HVILLM07")
+        Wait(2)
+        Face(SW)
+        MoveViewObject("C0AQINT1",FAST)
+        Wait(2)
+        MoveViewObject("C0DEDAL",FAST)
+        Wait(2)
+        ActionOverride("C0DEDAL",StartDialogNoSet(Myself))
+END
+

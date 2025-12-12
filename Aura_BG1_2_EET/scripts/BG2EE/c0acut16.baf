@@ -1,0 +1,13 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        CreateCreature("C0AASCS",[32.640],NE)
+        SmallWait(1)
+        ActionOverride("C0AASCS",MoveToPoint([505.422]))
+		Wait(4)
+		ActionOverride("C0AREES",StartDialogNoSet("C0AASCS"))
+END
+

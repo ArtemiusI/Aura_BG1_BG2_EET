@@ -1,0 +1,23 @@
+IF
+	InParty("C0Aura")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	PartyHasItem("C0DGCOIN")
+	Global("C0AuraTOTDGCoin","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraTOTDGCoin","GLOBAL",1)
+	SetInterrupt(FALSE)
+	Wait(2)
+	TakePartyItem("C0DGCoin")
+	DestroyItem("C0DGCoin")
+	CreateVisualEffectObject("SPFLESHS","C0Aura")
+	DisplayString("C0Aura",~(The Gold Coin given to Aura by the little girl glows and vanishes.)~)
+	Wait(1)
+	PlaySound("EFF_P10")
+	ApplySpellRES("C0DGSPL1","C0Aura")
+	DisplayString("C0Aura",~(Aura has gained a permanent +1 bonus to Luck and Saving Throws.)~)
+	Wait(1)
+	ActionOverride("C0Aura",StartDialogNoSet(Player1))
+END

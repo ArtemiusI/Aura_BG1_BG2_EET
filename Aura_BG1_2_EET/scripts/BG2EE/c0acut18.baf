@@ -1,0 +1,24 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        PlaySound("C0ASFX1")
+        DisplayStringPointLog([440.445],~A series of sharp, demanding knocks on the door interrupt your conversation.~)
+        Wait(2)
+        PlaySound("C0ASFX1")
+        ActionOverride("C0AMAGN",Face(S))
+        Wait(1)
+        PlaySound("C0ASFX1")
+        DisplayStringHead("C0AMAGN",~I say! Who could be knocking on my door at this hour?~)
+        Wait(2)
+        PlaySound("C0ASFX2")
+        Wait(2)
+        DisplayStringHead("C0AMAGN",~I must go and have a look. Please excuse me a moment...~)
+        Wait(2)
+        ActionOverride("C0AMAGN",EscapeArea())
+        Wait(5)
+        EndCutSceneMode()
+END
+

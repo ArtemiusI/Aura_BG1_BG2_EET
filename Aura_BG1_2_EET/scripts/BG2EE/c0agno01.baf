@@ -1,0 +1,19 @@
+IF
+  See("C0ALUNA")
+  Global("Greeting","LOCALS",0)
+THEN
+  RESPONSE #10
+    SetGlobal("Greeting","LOCALS",1)
+    FaceObject("C0ALUNA")
+    DisplayStringHead(Myself,~Lady Seeker.~)
+  RESPONSE #10
+    SetGlobal("Greeting","LOCALS",1)
+    FaceObject("C0ALUNA")
+    DisplayStringHead(Myself,~Good <DAYNIGHTALL>, Lady Seeker.~)
+  RESPONSE #10
+    SetGlobal("Greeting","LOCALS",1)
+    FaceObject("C0ALUNA")
+    DisplayStringHead(Myself,~Gond's blessings be with you, milady.~)
+  RESPONSE #70
+    SetGlobal("Greeting","LOCALS",1)
+END

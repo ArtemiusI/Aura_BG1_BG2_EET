@@ -1,0 +1,19 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(2)
+        CreateVisualEffectObject("SPSPMAZE","C0AEX1")
+        Wait(2)
+        ActionOverride("C0AEX1",DestroySelf())
+        Wait(4)
+        CreateCreature("C0AREES2",[49.838],NE)
+        SmallWait(1)
+        ActionOverride("C0AREES",MoveToPoint([443.539]))
+		Wait(4)
+        ActionOverride("C0AASCL",FaceObject("C0AREES"))
+        Wait(3)
+		ActionOverride("C0AASCL",StartDialogNoSet("C0AREES"))
+END
+

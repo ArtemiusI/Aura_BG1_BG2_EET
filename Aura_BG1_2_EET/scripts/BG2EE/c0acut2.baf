@@ -1,0 +1,29 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(1)
+		ActionOverride("c0athf3",Face(S))
+		Wait(1)
+		ActionOverride("c0athf2",Face(S))
+		SmallWait(5)
+		ActionOverride("c0athf1",Face(S))
+		ActionOverride("c0athf4",Face(S))
+		Wait(1)
+		ActionOverride(Player2,MoveToPoint([350.621]))
+		SmallWait(5)
+		ActionOverride(Player3,MoveToPoint([480.660]))
+		SmallWait(5)
+		ActionOverride(Player4,MoveToPoint([402.661]))
+		SmallWait(5)
+		ActionOverride(Player5,MoveToPoint([446.690]))
+		SmallWait(5)
+		ActionOverride(Player6,MoveToPoint([445.739]))
+		SmallWait(5)
+		MoveToPoint([425.590])
+		FaceObject("c0athf2")  // Thug Leader
+		Wait(3)
+		ActionOverride("c0athf2",StartDialogNoSet(Player1))
+END
+

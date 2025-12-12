@@ -1,0 +1,13 @@
+/*
+
+LOAD_TRA ~%MOD_FOLDER%/tra/%LANGUAGE%/BG2/journal.tra~
+
+ADD_JOURNAL EXISTING TITLE (#74427) @1 USING ~%MOD_FOLDER%/tra/english/BG2/journal.tra~
+ADD_JOURNAL TITLE (~Planeswalker~) @2 USING ~%MOD_FOLDER%/tra/english/BG2/journal.tra~
+
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/journal.baf~
+COMPILE ~%MOD_FOLDER%/dialogue/BG2EE/journal.d~
+
+LOAD_TRA ~%MOD_FOLDER%/tra/%LANGUAGE%/BG2/setup.tra~
+
+*/

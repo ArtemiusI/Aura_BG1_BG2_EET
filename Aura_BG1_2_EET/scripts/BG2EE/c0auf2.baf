@@ -1,0 +1,59 @@
+IF
+	Global("C0AuraBG2Quest1","GLOBAL",50)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraBG2Quest1","GLOBAL",51)
+		StartCutSceneMode()
+		CutSceneId(Player1)
+		FadeFromColor([30.0],0)
+		MoveViewPoint([753.299],INSTANT)
+		ActionOverride(Player1,MoveToPoint([799.266]))
+		ActionOverride(Player2,MoveToPoint([813.204]))
+		ActionOverride(Player3,MoveToPoint([863.258]))
+		ActionOverride(Player4,MoveToPoint([854.179]))
+		ActionOverride(Player5,MoveToPoint([902.223]))
+		ActionOverride(Player6,MoveToPoint([920.158]))
+        CreateCreature("C0AGOL01",[329.652],S)  // Adamantite Automaton
+        CreateCreature("C0AEINT2",[644.259],E)  // Interitus Enforcer
+        CreateCreature("C0AEINT3",[603.345],NE)  // Interitus Elite
+        CreateCreature("C0AEINT2",[686.402],N)  // Interitus Enforcer
+        CreateCreature("C0AEINT2",[820.370],NW)  // Interitus Enforcer
+        CreateCreature("C0AEINT1",[431.405],E)  // Interitus Agent
+        CreateCreature("C0AEINT1",[434.445],NE)  // Interitus Agent
+        CreateCreature("C0AEINT1",[590.529],N)  // Interitus Agent
+        CreateCreature("C0AEINT1",[653.515],NW)  // Interitus Agent
+        Wait(3)
+        ActionOverride("C0AGOL01",MoveToPoint([534.443]))
+		ScreenShake([5.5],1)
+		SmallWait(10)
+		ScreenShake([5.5],1)
+		SmallWait(10)
+		ScreenShake([5.5],1)
+		SmallWait(10)
+		ScreenShake([5.5],1)
+        Wait(2)
+        ActionOverride("C0AGOL01",Face(NE))
+        Wait(4)
+		DisplayStringHead("C0AEINT3",~"Activate the Eye."~)
+		Wait(2)
+		ActionOverride("C0AGOL01",ForceSpellRES("C0AQEF7",Myself))
+		Wait(5)
+		DisplayStringHead(Player1,~You feel something oddly disconcerting as you realize that magic has suddenly ceased to function in the area.~)
+		Wait(2)
+		DisplayStringHead("C0AEINT3",~"Capture Aurelia Glimmershine alive if possible. Make certain to kill the godspawn <CHARNAME>. Other elements are inconsequential."~)
+		Wait(2)
+		DisplayStringHead("C0AEINT3",~"Omnes ad Interitus!"~)
+		Wait(2)
+		ActionOverride("C0AEINT3",Enemy())
+		EndCutSceneMode()
+END
+
+IF
+	Global("C0AuraBG2Quest1","GLOBAL",52)
+	InParty("C0Aura")
+	!Dead("C0Aura")
+THEN
+	RESPONSE #100
+	Wait(1)
+	ActionOverride("C0Aura",StartDialogNoSet(Player1))
+END

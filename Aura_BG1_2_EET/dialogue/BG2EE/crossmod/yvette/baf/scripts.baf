@@ -1,0 +1,13 @@
+IF
+	IsValidForPartyDialogue("YxYve")
+    Range("YxYve",15)
+    IsValidForPartyDialogue(Myself)
+    Range(Myself,15)
+    Global("C0AuraYxYvette","GLOBAL",1)
+	GlobalTimerExpired("C0AuraYxYvetteBow","GLOBAL")
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	Interact("YxYve")
+END

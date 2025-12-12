@@ -1,0 +1,18 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+	ActionOverride("C0ATHF1",MoveToPoint([545.443])
+	Wait(1)
+	ActionOverride("c0aura",FaceObject("c0athf1"))
+	ActionOverride("c0aura",ForceSpellPointRES("c0agren3",[598.460]))
+	ActionOverride("c0aura",SetSequence(SEQ_SHOOT))
+	SmallWait(5)
+	ActionOverride("C0ATHF1",SetSequence(SEQ_DAMAGE))
+	ActionOverride("C0ATHF2",SetSequence(SEQ_DAMAGE))
+	ActionOverride("C0ATHF3",SetSequence(SEQ_DAMAGE))
+	ActionOverride("C0ATHF4",SetSequence(SEQ_DAMAGE))
+	Wait(2)
+	ActionOverride("c0athf4",StartDialogueNoSet(Player1))
+END

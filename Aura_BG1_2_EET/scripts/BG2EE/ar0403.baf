@@ -1,0 +1,20 @@
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",10)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",11)
+    ActionOverride("C0AJUNO",DestroySelf())
+    ActionOverride("C0ALUNA",DestroySelf())
+    ActionOverride("C0DEDAL",DestroySelf())
+    ActionOverride("C0Aura",DestroySelf())
+	Continue()
+END
+
+IF
+	GlobalGT("C0AuraBegin","GLOBAL",9)
+	Global("C0AuraHomeActivate","AR0403",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraHomeActivate","AR0403",1)
+	TriggerActivation("C0AuraHome",TRUE)
+END

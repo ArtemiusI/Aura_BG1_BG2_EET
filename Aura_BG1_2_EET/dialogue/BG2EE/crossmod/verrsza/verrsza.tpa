@@ -1,0 +1,65 @@
+COPY ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/verrsza/bams~ ~override~
+COPY ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/verrsza/items~ ~override~
+COPY ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/verrsza/spells~ ~override~
+
+COMPILE ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/verrsza/dialogue/verr.d~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/verrsza/spells/c0abombz.PRO~
+
+COPY_EXISTING ~c0abracz.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Phalh~)
+	STR_VAR
+	  resource = l#2phal
+END
+SAY NAME1 ~Gauntlets~
+SAY NAME2 ~Gauntlets of Spellweaving~
+SAY DESC ~Gauntlets of Spellweaving
+The Gauntlets of Spellweaving, also christened "Phalh's Roaring Success" at the moment of its creation, is an impressive artifact for a first attempt by its creator. Tailored specifically to cater to Phalh's own talents, its magical enchantments make it a valuable asset for any dabbler of both martial and magical arts, though its magic only responds to that of its creator, whether intentionally or otherwise.
+
+STATISTICS:
+
+Equipped abilities:
+– Off-Hand THAC0: +4
+– Spellweaving: Every melee attack increases the wearer's Casting Speed by 1 for 6 seconds.
+
+Weight: 1~
+
+COPY_EXISTING ~c0aphalb.spl~ ~override~
+SAY NAME1 ~Create Charcoal Smoke Grenade~
+SAY UNIDENTIFIED_DESC ~With Aura's instruction, Phalh has learned how to create one Charcoal Smoke Grenade per day. The grenades are useful for 24 hours before losing their potency.~
+COPY_EXISTING ~c0abombz.spl~ ~override~
+  LPF ALTER_EFFECT
+	INT_VAR
+	  match_opcode = 139
+	  parameter1 = RESOLVE_STR_REF (~Blinded~)
+	END
+COPY_EXISTING ~c0abombz.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Phalh~)
+	STR_VAR
+	  resource = l#2phal
+END
+SAY NAME1 ~Firebomb~
+SAY NAME2 ~Charcoal Smoke Grenade~
+SAY DESC ~This seemingly innocuous metal object is in fact a cunning weapon created by Phalh. When the fuse is lit and the grenade thrown, the resulting explosion leaves a burning-hot cloud of black smoke that causes the throat to dry and the eyes to water, making it a deadly tool for incapacitation.
+
+STATISTICS:
+
+Special: When thrown, a cloud of burning smoke erupts in the targeted location, dealing 1d3 fire damage per round and blinding all targets and inflcting 75% spell failure. A Saving Throw vs. Breath Weapons at -2 may be made to avoid the effect. If the user enters the smoke, they gain the benefits of Improved Invisibility for 1 round instead. The effects persist for up to 3 rounds after leaving the cloud.
+Duration: 3 rounds
+
+Weight: 1~
+WRITE_SHORT 0x9C ~%c0abombz%~

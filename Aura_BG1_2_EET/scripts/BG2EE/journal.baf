@@ -1,0 +1,20 @@
+/*
+
+IF
+	Global("MerchantHide","GLOBAL",1)
+	Global("C0AuraElephantSkin","GLOBAL",2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraElephantSkin","GLOBAL",3)
+	AddJournalEntry(@1,QUEST)
+END
+
+IF
+	Global("C0AU01Portal","C0AU01",2)
+THEN
+    RESPONSE #100
+	SetGlobal("C0AU01Portal","C0AU01",3)
+	AddJournalEntry(@2,QUEST)
+END
+
+*/

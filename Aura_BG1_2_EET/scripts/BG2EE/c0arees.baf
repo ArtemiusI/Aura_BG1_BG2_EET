@@ -1,0 +1,10 @@
+IF
+	Global("C0AuraBG2Quest1","GLOBAL",6)
+	See(Player1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBG2Quest1","GLOBAL",7)
+	FaceObject(Player1)
+	Wait(1)
+	StartDialogNoSet(Player1)
+END

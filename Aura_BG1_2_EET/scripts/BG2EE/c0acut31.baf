@@ -1,0 +1,27 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        FadeToColor([30.0],0)
+        Wait(2)
+        LeaveAreaLUAPanic("C0AU05","",[891.623],NW)
+        LeaveAreaLUA("C0AU05","",[891.623],NW)
+        ActionOverride(Player2,LeaveAreaLUA("C0AU05","",[728.667],NE))
+        ActionOverride(Player3,LeaveAreaLUA("C0AU05","",[769.690],NE))
+        ActionOverride(Player4,LeaveAreaLUA("C0AU05","",[676.690],NE))
+        ActionOverride(Player5,LeaveAreaLUA("C0AU05","",[722.715],NE))
+        ActionOverride(Player6,LeaveAreaLUA("C0AU05","",[766.743],NE))
+        MultiPlayerSync()
+        MoveViewPoint([748.646],INSTANT)
+        MoveGlobal("C0AU05","C0AURA",[842.590])
+        SmallWait(1)
+        ActionOverride("C0AURA",Face(SE))
+        TriggerActivation("Exit1",FALSE)
+        Wait(1)
+        FadeFromColor([20.0],0)
+        Wait(2)
+        ActionOverride("C0AURA",StartDialogNoSet(Player1))
+END
+

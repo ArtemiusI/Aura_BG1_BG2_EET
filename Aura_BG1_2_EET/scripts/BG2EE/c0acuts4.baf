@@ -1,0 +1,23 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("C0DEDAL")
+        Wait(2)
+        Face(S)
+        Wait(1)
+        PlaySound("GAM_41A")
+        EquipMostDamagingMelee()
+        Wait(2)
+        FaceObject("C0AQINT2")
+        SwingOnce()
+        ApplyDamage("C0AQINT2",40,SLASHING)
+        DisplayStringHead("C0AQINT2",~*ghrk!*~)
+        SmallWait(1)
+        ActionOverride("C0AQINT2",SetSequence(SEQ_DIE))
+        Wait(2)
+        DisplayStringHead("C0AQINT2",~Why... y—you...~)
+        Wait(2)
+        ActionOverride("C0DEDAL",StartDialogNoSet(Myself))
+END
+

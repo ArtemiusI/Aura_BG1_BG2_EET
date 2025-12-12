@@ -1,0 +1,13 @@
+IF
+    AreaCheck("AR0401")
+    CombatCounter(0)
+	InParty("C0Aura")
+	!Dead("C0Aura")
+	InMyArea("C0Aura")
+	Global("C0AuraJanVegetables","GLOBAL",0)
+THEN
+    RESPONSE #100
+        Wait(1)
+		SetGlobal("C0AuraJanVegetables","GLOBAL",1)
+        Interact("C0Aura")
+END

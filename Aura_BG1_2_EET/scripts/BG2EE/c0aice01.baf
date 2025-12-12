@@ -1,0 +1,303 @@
+
+IF
+    Global("Stage2","C0AURF",5)
+    HPLT(Myself,2)
+THEN
+    RESPONSE #100
+        SetGlobal("Stage2","C0AURF",6)
+        SetGlobal("C0AuraBG2Quest2IceEncounter","GLOBAL",5)
+        CreateVisualEffectObject("C0FREEZE",Myself)
+        Polymorph(C0_SNOW_HAG)
+        AddExperienceParty(50000)
+        Kill(Myself)
+        Continue()
+    END
+    
+IF
+HPLT(Myself,2)
+Global("Stage2","C0AURF",0)
+THEN
+RESPONSE #100
+SetInterrupt(FALSE)
+SetGlobal("Stage2","C0AURF",1)
+DisplayStringHead(Myself,~HyahahahahaHAHAAAA!~)
+ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)
+ApplySpellRES("C0AUICEA",Player1)
+SmallWait(1)
+ApplySpellRES("C0AUICEB",Player1)
+DestroySelf()
+SetInterrupt(TRUE)
+Continue()
+END
+
+IF
+    Global("Stage2","C0AURF",2)
+THEN
+    RESPONSE #100
+        SetGlobal("Stage2","C0AURF",3)
+        CreateVisualEffectObject("C0FREEZE",Myself)
+        Polymorph(GOLEM_ICE)
+        ApplySpellRES("C0AUICED",Myself)
+        ReallyForceSpell(Myself,CLERIC_EARTHQUAKE)
+        Continue()
+    END
+
+IF
+    Global("Stage2","C0AURF",3)
+    Delay(12)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(Myself,CLERIC_EARTHQUAKE)
+        Continue()
+    END
+
+IF
+    Global("Stage2","C0AURF",3)
+    HPLT(Myself,2)
+THEN
+    RESPONSE #100
+        SetGlobal("Stage2","C0AURF",4)
+        CreateVisualEffectObject("C0FREEZE",Myself)
+        Polymorph(MIST_CREATURE)
+        ApplySpellRES("C0AUICEE",Myself)
+        ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)
+        Continue()
+    END
+    
+IF
+    Global("Stage2","C0AURF",4)
+    Delay(6)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)
+        Continue()
+    END
+
+IF
+    Global("Stage2","C0AURF",4)
+    HPLT(Myself,2)
+THEN
+    RESPONSE #100
+        SetGlobal("Stage2","C0AURF",5)
+        CreateVisualEffectObject("C0FREEZE",Myself)
+        Polymorph(DRAGON_WHITE)
+        ApplySpellRES("C0AUICEF",Myself)
+        Continue()
+    END
+    
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Stage2","C0AURF",5)
+    Global("RemoveMagic","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,DRAGON_STONE_SKIN)  // SPIN694.SPL (Stoneskin)
+        ForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+        SetGlobal("RemoveMagic","LOCALS",1)
+END
+
+IF
+    !Detect([PC])
+    Global("Stage2","C0AURF",5)
+    HPLT(Myself,50)
+    CombatCounter(0)
+THEN
+    RESPONSE #100
+        SetGlobal("RemoveMagic","LOCALS",0)
+        SetGlobal("WingBuffet","LOCALS",0)
+        SetGlobal("Haste","LOCALS",0)
+        SetGlobal("DRAGONFEAR","LOCALS",0)
+        ForceSpell(Myself,CLERIC_HEAL)  // SPPR607.SPL (Heal)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Stage2","C0AURF",5)
+    Global("DRAGONFEAR","LOCALS",0)
+THEN
+    RESPONSE #100
+        ReallyForceSpell(NearestEnemyOf(Myself),DRAGON_FEAR)  // SPIN895.SPL (Dragon Fear)
+        SetGlobal("DRAGONFEAR","LOCALS",1)
+        SetGlobalTimer("SILVERDRAGONBREATH","LOCALS",1)
+        SetGlobalTimer("SILVERDRAGONBREATH2","LOCALS",1)
+        ForceSpell(LastSeenBy(Myself),DRAGON_WING_BUFFET)  // SPIN695.SPL (Wing Buffet)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    OR(2)
+        GlobalTimerExpired("SILVERDRAGONBREATH2","LOCALS")
+        GlobalTimerExpired("SILVERDRAGONBREATH","LOCALS")
+    See(NearestEnemyOf(Myself))
+    Range(LastSeenBy(Myself),11)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),DRAGON_WING_BUFFET)  // SPIN695.SPL (Wing Buffet)
+    RESPONSE #60
+        Continue()
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    !Range(LastSeenBy(Myself),10)
+    GlobalTimerExpired("SILVERDRAGONBREATH2","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("WingBuffet","LOCALS",0)
+        ForceSpell(LastSeenBy(Myself),SILVER_DRAGON_BREATH_PARALIZATION)  // SPIN832.SPL (Silver Dragon Paralyzation)
+        ReallyForceSpellRES("spin832v",LastSeenBy(Myself))  // No such index
+        SetGlobalTimer("SILVERDRAGONBREATH2","LOCALS",THREE_ROUNDS)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(SixthNearestEnemyOf(Myself))
+    !Range(LastSeenBy(Myself),10)
+    GlobalTimerExpired("SILVERDRAGONBREATH","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("WingBuffet","LOCALS",0)
+        ForceSpell(LastSeenBy(Myself),SILVER_DRAGON_BREATH_COLD)  // SPIN833.SPL (Silver Dragon Cone of Cold)
+        ReallyForceSpellRES("spin833v",LastSeenBy(Myself))  // No such index
+        SetGlobalTimer("SILVERDRAGONBREATH","LOCALS",THREE_ROUNDS)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    !Range(LastSeenBy(Myself),10)
+    GlobalTimerExpired("SILVERDRAGONBREATH","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("WingBuffet","LOCALS",0)
+        ForceSpell(LastSeenBy(Myself),SILVER_DRAGON_BREATH_COLD)  // SPIN833.SPL (Silver Dragon Cone of Cold)
+        ReallyForceSpellRES("spin833v",LastSeenBy(Myself))  // No such index
+        SetGlobalTimer("SILVERDRAGONBREATH","LOCALS",THREE_ROUNDS)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    Global("WingBuffet","LOCALS",1)
+    See(NearestEnemyOf(Myself))
+    Range(LastSeenBy(Myself),11)
+THEN
+    RESPONSE #100
+        SetGlobal("WingBuffet","LOCALS",0)
+        SetGlobalTimer("SILVERDRAGONBREATH2","LOCALS",THREE_ROUNDS)
+        SetGlobalTimer("SILVERDRAGONBREATH","LOCALS",THREE_ROUNDS)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("SpellTurn","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,BEHOLDER_SPELL_TURNING)  // SPIN920.SPL (Minor Spell Turning)
+        SetGlobal("SpellTurn","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("DeathWard","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,CLERIC_DEATH_WARD)  // SPPR409.SPL (Death Ward)
+        SetGlobal("DeathWard","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("IceStorm","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,WIZARD_ICE_STORM)  // SPWI404.SPL (Ice Storm)
+        SetGlobal("IceStorm","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("StoneSkin","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,DRAGON_STONE_SKIN)  // SPIN694.SPL (Stoneskin)
+        SetGlobal("StoneSkin","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("Offense1","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),WIZARD_GREATER_MALISON)  // SPWI412.SPL (Greater Malison)
+        SetGlobal("Offense1","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("Haste","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,WIZARD_HASTE)  // SPWI305.SPL (Haste)
+        SetGlobal("Haste","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("Invisible","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,WIZARD_INVISIBILITY)  // SPWI206.SPL (Invisibility)
+        SetGlobal("Invisible","LOCALS",1)
+        RunAwayFrom(LastSeenBy(Myself),36)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+    Global("HoldPerson","LOCALS",0)
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+        SetGlobal("HoldPerson","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    Global("Silence","LOCALS",0)
+    OR(2)
+        See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+        See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+THEN
+    RESPONSE #100
+        ForceSpell(LastSeenBy(Myself),DRAGON_SILENCE)  // SPIN692.SPL (Silence, 15' Radius)
+        SetGlobal("Silence","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    HPLT(Myself,100)
+    GlobalLT("MediumWounds","LOCALS",3)
+THEN
+    RESPONSE #100
+        ForceSpell(Myself,CLERIC_CURE_MEDIUM_WOUNDS)  // SPPR315.SPL (Cure Medium Wounds)
+        IncrementGlobal("MediumWounds","LOCALS",1)
+END
+
+IF
+    Global("Stage2","C0AURF",5)
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipMostDamagingMelee()
+        AttackReevaluate(NearestEnemyOf(Myself),35)
+    RESPONSE #10
+        ForceSpell(LastSeenBy(Myself),WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Chromatic Orb)
+END

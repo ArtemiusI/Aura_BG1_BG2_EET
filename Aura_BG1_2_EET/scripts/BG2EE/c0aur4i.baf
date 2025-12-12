@@ -1,0 +1,6 @@
+IF
+	Clicked([0])
+THEN
+	RESPONSE #100
+	DisplayStringHead(Myself,~This massive glass container appears to be full of the a silver fluid. Horrifyingly, a malformed creature—possibly still living—is suspended within.~)
+END

@@ -1,0 +1,13 @@
+IF
+HPLT(Myself,2)
+Allegiance(Myself,[GOODCUTOFF])
+Global("C0KarihiRetreat","GLOBAL",0)
+THEN
+RESPONSE #100
+SetInterrupt(FALSE)
+SetGlobal("C0KarihiRetreat","GLOBAL",1)
+StartDialogueNoSet(Player1)
+SetInterrupt(TRUE)
+Continue()
+END
+

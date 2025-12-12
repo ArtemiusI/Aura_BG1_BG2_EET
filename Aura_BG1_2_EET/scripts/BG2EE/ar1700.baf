@@ -1,0 +1,31 @@
+IF
+    InMyArea(Player1)
+    Global("C0AuraBG2Quest3","GLOBAL",16)
+    Global("C0AuraBG2Quest3SpawnLuna","MYAREA",0)
+THEN
+    RESPONSE #100
+        SetGlobal("C0AuraBG2Quest3SpawnLuna","MYAREA",1)
+	CreateCreatureObjectOffset("c0aluna",Player1,[100.100])
+	ActionOverride("c0aluna",Dialogue(Player1))
+	Continue()
+END
+
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",17)
+  NearLocation("C0ALUNA",631,2383,25)
+  !See([ENEMY])
+  CombatCounter(0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",18)
+    ActionOverride("C0ALUNA",StartDialogNoSet(Player1))
+END
+
+IF
+  GlobalGT("C0AuraBG2Quest3","GLOBAL",17)
+  Global("C0AuraBG2Quest3MarkArea","MYAREA",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3MarkArea","MYAREA",1)
+    AddMapNote([614.2311],~Hidden Lantanese Workshop~)
+END

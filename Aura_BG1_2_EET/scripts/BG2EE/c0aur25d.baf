@@ -1,0 +1,39 @@
+// Wilson banter - at rest
+
+IF
+    InParty(Myself)
+    InParty("Wilson")
+    See("Wilson")
+    !StateCheck("Wilson",CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+	GlobalTimerExpired("C0AuraWilsonToBRestTalkTimer","GLOBAL")
+    Global("C0AuraWilsonToB1","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraWilsonToB1","GLOBAL",2)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+    Interact("WILSON")
+END
+
+// 
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    GlobalGT("chapter","global",9)
+    Global("C0AuraToBSwordTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+        SetGlobal("C0AuraToBSwordTalk","GLOBAL",1)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+    Interact(Player1)
+END

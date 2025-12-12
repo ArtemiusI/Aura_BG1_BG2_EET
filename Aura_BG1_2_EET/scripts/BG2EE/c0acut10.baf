@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("C0Aura")
+		CreateCreatureImpassable("C0AREES2",[116.114],S)
+		ActionOverride("C0AREES",ForceSpellRES("C0AQEF2","C0AQMON2"))
+		Wait(1)
+		DisplayStringHead(Myself,~A—waaahhh!~)
+		ActionOverride("C0AREES",DestroySelf())
+		Wait(4)
+		FaceObject(Player1)
+		Face(NW)
+		Wait(2)
+		StartDialogNoSet(Player1)
+END

@@ -1,0 +1,9 @@
+IF
+	Global("C0AuraImportItem2","GLOBAL",1)
+	InMyArea("UDTRAP03")
+	HasItem("sper03","UDTRAP03")
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraImportItem2","GLOBAL",2)
+		ActionOverride("UDTRAP03",TransformItem("sper03","c0auim02"))
+END

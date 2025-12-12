@@ -1,0 +1,33 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        CreateVisualEffect("ICFIRSDI",[852.401])
+        CreateCreature("C0AFIR05",[852.401],W)
+        CreateVisualEffect("ICFIRSDI",[882.301])
+        CreateCreature("C0AFIR06",[882.301],W)
+        CreateVisualEffect("ICFIRSDI",[894.491])
+        CreateCreature("C0AFIR07",[894.491],W)
+        Wait(2)
+        ActionOverride("C0AUKARI",MoveToPoint([681.501]))
+        ActionOverride(Player2,MoveToPoint([578.437]))
+        ActionOverride(Player3,MoveToPoint([594.474]))
+        ActionOverride(Player4,MoveToPoint([594.515]))
+        ActionOverride(Player5,MoveToPoint([553.555]))
+        ActionOverride(Player6,MoveToPoint([548.493]))
+        ActionOverride("C0Aura",MoveToPoint([510.458]))
+        MoveToPoint([663.448])
+        Wait(1)
+        Face(E)
+        ActionOverride("C0AUKARI",Face(E))
+        ActionOverride(Player2,Face(E))
+        ActionOverride(Player3,Face(E))
+        ActionOverride(Player4,Face(E))
+        ActionOverride(Player5,Face(E))
+        ActionOverride(Player6,Face(E))
+        Wait(4)
+        ActionOverride("C0AFIR05",StartDialogNoSet(Player1))
+END
+

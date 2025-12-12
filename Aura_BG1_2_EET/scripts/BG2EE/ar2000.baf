@@ -1,0 +1,25 @@
+// Tamia Encounter
+
+IF
+  InMyArea(Player1)
+  Dead("cefald01")
+  Global("geniesgone","GLOBAL",1)
+  Global("C0AuraTamiaEncounter","ar2000",0)
+  Global("loganjob2","GLOBAL",2)
+  AreaType(OUTDOOR)
+THEN
+RESPONSE #100
+ForceRandomEncounterEntry("C0AU02","En")
+SetGlobal("C0AuraTamiaEncounter","ar2000",1)
+END
+
+IF
+  GlobalGT("C0TamiaEncounter","GLOBAL",0)
+  Global("C0AuraTamiaEncounter","ar2000",1)
+THEN
+RESPONSE #100
+RemoveMapNote([3450.2791],~The Dao Djinni Tent~)
+SmallWait(1)
+AddMapNote([3450.2791],~Spindleweaver Traders Ltd.~)
+SetGlobal("C0AuraTamiaEncounter","ar2000",2)
+END

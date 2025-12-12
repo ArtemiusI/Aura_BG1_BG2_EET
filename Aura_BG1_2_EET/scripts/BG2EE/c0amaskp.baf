@@ -1,0 +1,23 @@
+IF
+	Clicked([0])
+	Range(LastTrigger,20)
+	Global("C0AU01Mask","C0AU01",0)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AU01Mask","C0AU01",1)
+	DisplayStringHead(Myself,~A familiar-looking Kozakuran oni mask rests on the wall next to the ink paintings.~)
+END
+
+IF
+	Clicked([0])
+	Range(LastTrigger,20)
+	Global("C0AU01Mask","C0AU01",1)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AU01Mask","C0AU01",2)
+	AmbientActivate("Mask1",FALSE)
+	Deactivate(Myself)
+	GiveItemCreate("C0AMASK1",LastTrigger,1,0,0)
+	ActionOverride(LastTrigger,SetItemFlags("C0AMASK1",IDENTIFIED,TRUE))
+	DisplayStringHead(Myself,~You take the mask from the wall and place it in your bag.~)
+END

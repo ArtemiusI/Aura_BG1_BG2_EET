@@ -1,0 +1,100 @@
+IF
+  !Allegiance(Myself,GOODBUTBLUE)
+  Global("C0AuraBG2Quest3","GLOBAL",39)
+THEN
+  RESPONSE #100
+  ChangeEnemyAlly(Myself,GOODBUTBLUE)
+END
+
+IF
+    AttackedBy([PC],DEFAULT)
+    !StateCheck(LastAttackerOf(Myself),STATE_CONFUSED)
+    !StateCheck(LastAttackerOf(Myself),STATE_BERSERK)
+    !StateCheck(LastAttackerOf(Myself),STATE_CHARMED)
+    !Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        Shout(151)
+        Enemy()
+END
+
+IF
+    Detect(Myself)
+    Global("bd_no_combat","locals",2)
+THEN
+    RESPONSE #100
+        NoAction()
+END
+
+IF
+    Global("bd_no_retreat","locals",0)
+    Global("bd_retreat","locals",1)
+    Global("bd_no_combat","locals",1)
+    Global("bd_combat","locals",0)
+THEN
+    RESPONSE #100
+        NoAction()
+END
+
+IF
+    !GlobalTimerNotExpired("bd_cast","locals")
+    OR(2)
+        DifficultyGT(EASIEST)
+        Allegiance(Myself,GOODCUTOFF)
+    HasItem("potn52",Myself)  // Potion of Extra Healing
+    HPPercentLT(Myself,75)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobalTimer("bd_cast","locals",ONE_ROUND)
+        UseItem("potn52",Myself)  // Potion of Extra Healing
+        SetInterrupt(TRUE)
+    RESPONSE #50
+        Continue()
+END
+
+IF
+    !GlobalTimerNotExpired("bd_cast","locals")
+    OR(2)
+        DifficultyGT(EASIEST)
+        Allegiance(Myself,GOODCUTOFF)
+    HasItem("potn08",Myself)  // Potion of Healing
+    HPPercentLT(Myself,80)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobalTimer("bd_cast","locals",ONE_ROUND)
+        UseItem("potn08",Myself)  // Potion of Healing
+        SetInterrupt(TRUE)
+    RESPONSE #50
+        Continue()
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Range(LastSeenBy(Myself),5)
+THEN
+    RESPONSE #100
+        EquipMostDamagingMelee()
+        AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipRanged()
+        AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+  Name("C0AGNO03",Myself)
+  AreaCheck("C0AU05")
+  See("C0Aura")
+  Global("C0AuraBG2Quest3","GLOBAL",45)
+  Global("C0AuraBG2Quest3SpawnGuards","C0AU05",1)
+THEN
+    RESPONSE #100
+        StartDialogNoSet(Player1)
+END
+

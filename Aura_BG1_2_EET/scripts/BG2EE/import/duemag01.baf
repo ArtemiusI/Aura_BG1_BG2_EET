@@ -1,0 +1,9 @@
+IF
+	Global("C0AuraImportItem6","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraImportItem6","GLOBAL",2)
+		CreateItem("c0auim06",0,0,0)
+		EquipItem("c0auim06")
+		Continue()
+END

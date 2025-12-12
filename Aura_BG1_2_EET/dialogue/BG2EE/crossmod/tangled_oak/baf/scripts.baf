@@ -1,0 +1,42 @@
+IF
+	AreaCheck("L#NI01")
+	InParty("C0Aura")
+	TriggerOverride("L#NISTA",NumTimesTalkedToGT(0))
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTangledOakTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+	Wait(2)
+	SetInterrupt(TRUE)
+	SetGlobal("C0AuraTangledOakTalk","GLOBAL",1)
+	StartDialogNoSet(Player1)
+END
+
+IF
+	AreaCheck("L#NI13")
+	See("L#NISCR")
+	InParty("C0Aura")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTangledOakIllusionCheck","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraTangledOakIllusionCheck","GLOBAL",1)
+	StartDialogNoSet(Player1)
+END
+
+IF
+	AreaCheck("L#NI13")
+	InParty("C0Aura")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTangledOakIllusionCheck","GLOBAL",2)
+THEN
+  RESPONSE #100
+	StartDialogNoSet(Player1)
+END

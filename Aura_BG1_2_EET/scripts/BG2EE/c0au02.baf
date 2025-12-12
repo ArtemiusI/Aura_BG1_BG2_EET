@@ -1,0 +1,43 @@
+IF
+	Global("Begin","MYAREA",0)
+THEN
+	RESPONSE #100
+	Explore()
+	DisplayStringNoName(Myself,~You have been waylaid by enemies and must defend yourself!~ [ERROR10])
+	ClearAllActions()
+	StartCutSceneMode()
+	CreateCreature("c0tamia",[332.610],NE)
+	CreateCreature("c0korsh",[510.552],E)
+	CreateCreature("troll01",[410.384],S)
+	CreateCreature("trolgi01",[608.406],S)
+	CreateCreature("troll01",[717.511],SW)
+	CreateCreature("trolsp01",[520.665],N)
+	CreateCreature("trolic01",[682.670],N)
+	FadeFromColor([20.0],0)
+	Wait(2)
+	SetGlobal("Begin","MYAREA",1)
+	ActionOverride("C0Tamia",StartDialogueNoSet([PC]))
+END
+
+IF
+	Global("Begin","MYAREA",1)
+	!Dead("C0Tamia")
+	CombatCounter(0)
+	!AreaCheckAllegiance(ENEMY)
+THEN
+	RESPONSE #100
+	SetGlobal("Begin","MYAREA",2)
+	ActionOverride("C0Tamia",StartDialogueNoSet([PC]))
+END
+
+IF
+	Global("Begin","MYAREA",1)
+	Dead("C0Tamia")
+	!Dead("C0Korsh")
+	CombatCounter(0)
+	!AreaCheckAllegiance(ENEMY)
+THEN
+	RESPONSE #100
+	SetGlobal("Begin","MYAREA",2)
+	ActionOverride("C0Korsh",StartDialogueNoSet([PC]))
+END

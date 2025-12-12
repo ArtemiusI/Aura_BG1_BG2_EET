@@ -1,0 +1,36 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(2)
+        PlaySound("C0ASFX4") // humming
+        MoveViewPoint([2706.3561],FAST)
+        Wait(4)
+        FadeToColor([30.0],0)
+        Wait(1)
+        ActionOverride("ppbodhi3",DestroySelf())
+        ActionOverride("ppsime",DestroySelf())
+        ActionOverride("ppsaem",DestroySelf())
+        ActionOverride("aran",DestroySelf())
+        Wait(1)
+        LeaveAreaLUAPanic("C0AUF3","",[0.0],S)
+        LeaveAreaLUA("C0AUF3","",[0.0],S)
+        ActionOverride(Player2,LeaveAreaLUA("C0AUF3","",[0.0],S))
+        ActionOverride(Player3,LeaveAreaLUA("C0AUF3","",[0.0],S))
+        ActionOverride(Player4,LeaveAreaLUA("C0AUF3","",[0.0],S))
+        ActionOverride(Player5,LeaveAreaLUA("C0AUF3","",[0.0],S))
+        ActionOverride(Player6,LeaveAreaLUA("C0AUF3","",[0.0],S))
+        MultiPlayerSync()
+        MoveViewPoint([4223.2431],INSTANT)
+        Explore()
+        CreateCreature("OBSERVE",[4223.2431],S)
+        CreateCreature("C0AQINT2",[4416.2304],S)
+        CreateCreature("C0AQINT1",[4511.2273],E)
+        CreateCreature("C0AQINT3",[4511.2338],E)
+        Wait(1)
+        FadeFromColor([30.0],0)
+        Wait(6)
+        ActionOverride("C0AQINT2",StartDialogNoSet(Myself))
+END
+

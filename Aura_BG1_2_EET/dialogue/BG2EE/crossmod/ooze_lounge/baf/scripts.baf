@@ -1,0 +1,29 @@
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraOLBasilisks","GLOBAL",0)
+	AreaCheck("L#NS03")
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraOLBasilisks","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraOLLightpiercer","GLOBAL",0)
+	PartyHasItem("L#NSARR")
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraOLLightpiercer","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END

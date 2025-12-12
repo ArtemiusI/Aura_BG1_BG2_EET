@@ -1,0 +1,23 @@
+// Tamia after Encounter
+
+IF
+  Global("C0TamiaSpawn","AR2014",0)
+  GlobalGT("C0TamiaEncounter","GLOBAL",0)
+  !Dead("C0Tamia")
+THEN
+RESPONSE #100
+  SetGlobal("C0TamiaSpawn","AR2014",1)
+  CreateCreature("C0Tamia",[488.279],SSW)
+  Continue()
+END
+
+IF
+  Global("C0KorshSpawn","AR2014",0)
+  GlobalGT("C0TamiaEncounter","GLOBAL",0)
+  !Dead("C0Korsh")
+THEN
+RESPONSE #100
+  SetGlobal("C0KorshSpawn","AR2014",1)
+  CreateCreature("C0Korsh",[356.270],SSE)
+  Continue()
+END

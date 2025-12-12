@@ -1,0 +1,30 @@
+// Tamia Encounter
+
+IF
+  InMyArea(Player1)
+  Global("C0KorshQuest","GLOBAL",4)
+THEN
+RESPONSE #100
+  SetGlobal("C0KorshQuest","GLOBAL",5)
+  ActionOverride("CELOGAN",JumpToPoint([275.608]))
+  ActionOverride("CELOGAN",SmallWait(1))
+  ActionOverride("CELOGAN",Face(SE))
+  CreateCreature("TRHMER01",[426.581],SW)
+  CreateCreature("C0KORSH",[395.685],NW)
+END
+
+IF
+  TriggerOverride("CELOGAN",See([PC]))
+  Global("C0KorshQuest","GLOBAL",5)
+THEN
+RESPONSE #100
+  ActionOverride("CELOGAN",StartDialogNoSet(Player1))
+END
+
+IF
+  !TriggerOverride("CELOGAN",InMyArea("C0KORSH"))
+  Global("C0KorshQuest","GLOBAL",6)
+THEN
+RESPONSE #100
+  ActionOverride("CELOGAN",StartDialogNoSet(Player1))
+END

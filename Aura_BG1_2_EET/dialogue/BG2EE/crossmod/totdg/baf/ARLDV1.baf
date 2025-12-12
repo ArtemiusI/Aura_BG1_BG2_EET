@@ -1,0 +1,25 @@
+IF
+	InParty("C0Aura")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTOTDGGirl","ARLDV1",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraTOTDGGirl","ARLDV1",1)
+	RealSetGlobalTimer("C0AuraTOTDGGirlTimer","ARLDV1",300)
+END
+
+IF
+	InParty("C0Aura")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTOTDGGirl","ARLDV1",1)
+	RealGlobalTimerExpired("C0AuraTOTDGGirlTimer","ARLDV1")
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraTOTDGGirl","ARLDV1",2)
+	CreateCreatureObjectOffset("C0DGGirl","C0Aura",[-1.-1])
+	ActionOverride("C0DGGirl",Dialogue("C0Aura")
+END

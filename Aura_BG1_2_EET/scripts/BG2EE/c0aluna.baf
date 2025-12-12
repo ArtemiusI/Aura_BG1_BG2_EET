@@ -1,0 +1,117 @@
+IF
+  !See("C0AGNO05")
+  Global("C0AuraBG2Quest3","GLOBAL",22)
+THEN
+  RESPONSE #100
+    StartDialogNoSet(Player1)
+END
+
+IF
+  Dead("Aura Golem 1")
+  Dead("Aura Golem 2")
+  Dead("Aura Golem 3")
+  Dead("Aura Golem 4")
+  Dead("Aura Golem 5")
+  Dead("Aura Golem 6")
+  Global("C0AuraBG2Quest3","GLOBAL",39)
+  CombatCounter(0)
+THEN
+  RESPONSE #100
+    AmbientActivate("Animation 1",FALSE)
+    TriggerActivation("Exit3",TRUE)
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",40)
+    ActionOverride("C0Aura",ApplySpellRES("c0aqef25",Myself))
+    StartDialogNoSet(Player1)
+END
+
+IF
+  Global("Allies","LOCALS",1)
+  ActionListEmpty()
+  HPPercentLT(Player1,40)
+THEN
+  RESPONSE #100
+    ForceSpell(Player1,CLERIC_CURE_CRITICAL_WOUNDS)
+END
+
+IF
+   See(Player1)
+    OR(2)
+    Global("C0AuraBG2Quest3","GLOBAL",39)
+    Global("Allies","LOCALS",1)
+    ActionListEmpty()
+    HPPercentLT(Player1,40)
+THEN
+    RESPONSE #100
+        ForceSpell(Player1,CLERIC_CURE_CRITICAL_WOUNDS)  // SPPR502.SPL (Cure Critical Wounds)
+END
+
+IF
+   See(Player2)
+    OR(2)
+    Global("C0AuraBG2Quest3","GLOBAL",39)
+    Global("Allies","LOCALS",1)
+    ActionListEmpty()
+    HPPercentLT(Player2,40)
+THEN
+    RESPONSE #100
+        ForceSpell(Player2,CLERIC_CURE_CRITICAL_WOUNDS)  // SPPR502.SPL (Cure Critical Wounds)
+END
+
+IF
+   See(Player3)
+    OR(2)
+    Global("C0AuraBG2Quest3","GLOBAL",39)
+    Global("Allies","LOCALS",1)
+    ActionListEmpty()
+    HPPercentLT(Player3,40)
+THEN
+    RESPONSE #100
+        ForceSpell(Player3,CLERIC_CURE_CRITICAL_WOUNDS)  // SPPR502.SPL (Cure Critical Wounds)
+END
+
+IF
+   See(Player4)
+    OR(2)
+    Global("C0AuraBG2Quest3","GLOBAL",39)
+    Global("Allies","LOCALS",1)
+    ActionListEmpty()
+    HPPercentLT(Player4,40)
+THEN
+    RESPONSE #100
+        ForceSpell(Player4,CLERIC_CURE_CRITICAL_WOUNDS)  // SPPR502.SPL (Cure Critical Wounds)
+END
+
+IF
+   See(Player5)
+    OR(2)
+    Global("C0AuraBG2Quest3","GLOBAL",39)
+    Global("Allies","LOCALS",1)
+    ActionListEmpty()
+    HPPercentLT(Player5,40)
+THEN
+    RESPONSE #100
+        ForceSpell(Player5,CLERIC_CURE_CRITICAL_WOUNDS)  // SPPR502.SPL (Cure Critical Wounds)
+END
+
+IF
+   See(Player6)
+    OR(2)
+    Global("C0AuraBG2Quest3","GLOBAL",39)
+    Global("Allies","LOCALS",1)
+    ActionListEmpty()
+    HPPercentLT(Player6,40)
+THEN
+    RESPONSE #100
+        ForceSpell(Player6,CLERIC_CURE_CRITICAL_WOUNDS)  // SPPR502.SPL (Cure Critical Wounds)
+END
+
+IF
+  Global("Allies","LOCALS",1)
+  ActionListEmpty()
+  !See([ENEMY])
+  !Range(Player1,5)
+  CombatCounter(0)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END

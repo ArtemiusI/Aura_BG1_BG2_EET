@@ -1,0 +1,149 @@
+// Berserking Sword
+
+IF
+	Global("C0AuraImportItem1","GLOBAL",0)
+	PartyHasItem("C0AUIM01")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem1","GLOBAL",1)
+		Continue()
+END
+
+// Backbiter
+
+IF
+	Global("C0AuraImportItem2","GLOBAL",0)
+	PartyHasItem("C0AUIM02")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem2","GLOBAL",1)
+		Continue()
+END
+
+// Bracers of Binding
+
+IF
+	Global("C0AuraImportItem3","GLOBAL",0)
+	PartyHasItem("C0AUIM03")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem3","GLOBAL",1)
+		Continue()
+END
+
+// Idol of Kozah
+
+IF
+	Global("C0AuraImportItem4","GLOBAL",0)
+	PartyHasItem("C0AUIM04")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem4","GLOBAL",1)
+		Continue()
+END
+
+// Gauntlets of Fumbling
+
+IF
+	Global("C0AuraImportItem5","GLOBAL",0)
+	PartyHasItem("C0AUIM05")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem5","GLOBAL",1)
+		Continue()
+END
+
+// Ring of Discipline
+
+IF
+	Global("C0AuraImportItem6","GLOBAL",0)
+	PartyHasItem("C0AUIM06")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem6","GLOBAL",1)
+		Continue()
+END
+
+// Ring of Agility
+
+IF
+	Global("C0AuraImportItem7","GLOBAL",0)
+	PartyHasItem("C0AUIM07")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem7","GLOBAL",1)
+		Continue()
+END
+
+// Girdle of Masculinity/Femininity
+
+IF
+	Global("C0AuraImportItem8","GLOBAL",0)
+	PartyHasItem("C0AUIM08")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem8","GLOBAL",1)
+		Continue()
+END
+
+// Kiel's Morningstar
+
+IF
+	Global("C0AuraImportItem9","GLOBAL",0)
+	PartyHasItem("C0AUIM09")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem9","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("C0AuraImportMagatama","GLOBAL",0)
+	PartyHasItem("C0AMAGA2")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportMagatama","GLOBAL",1)
+		Continue()
+END
+
+// Death's Razor
+
+IF
+	Global("C0AuraImportItem10","GLOBAL",0)
+	PartyHasItem("C0AUSW03")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportItem10","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("C0AuraImportNeeraHelm","GLOBAL",0)
+	PartyHasItem("C0AUTT03")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportNeeraHelm","GLOBAL",1)
+		Continue()
+END
+
+IF
+	Global("C0AuraImportOniMask","GLOBAL",0)
+	PartyHasItem("C0AMASK1")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C0AuraImportOniMask","GLOBAL",1)
+		Continue()
+END

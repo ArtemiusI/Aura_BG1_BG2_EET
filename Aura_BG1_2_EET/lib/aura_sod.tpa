@@ -1,0 +1,223 @@
+COPY ~%MOD_FOLDER%/items/SoD~ ~override~
+
+// SCRIPTS
+
+  EXTEND_TOP ~bd0063.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd0063.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd0066.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd0066.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd0103.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd0103.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd0104.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd0104.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd0120.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd0120.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd0130.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd0120.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd1000.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd1000.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd2000.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd2000.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd3000.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd3000.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd4100.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd4100.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd4300.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd4300.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd4400.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd4400.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd4400.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd4601.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd5300.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd5300.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd7000.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd7000.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd7100.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd7100.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bd7210.bcs~ ~%MOD_FOLDER%/scripts/SoD/bd7210.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bdcut58.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdcut58.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bdcut58.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdcut59b.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bdcut61.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdcut61.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bdparty.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdparty.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~BDINTRO.bcs~ ~%MOD_FOLDER%/scripts/SoD/BDINTRO.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~bddsc.bcs~ ~%MOD_FOLDER%/scripts/SoD/bddsc.baf~ EVALUATE_BUFFER
+  
+  EXTEND_BOTTOM ~bdvaultd.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdvaultd.baf~ EVALUATE_BUFFER
+
+LAF ALTER_SCRIPT_BLOCK
+      STR_VAR script=bdfoods
+              match=~"bdpotn01"~
+			  swap_out=~PartyHasItem("bdpotn01")~
+			  swap_in=~PartyHasItem("bdpotn01")!PartyHasItem("c02apotn")~
+END
+
+LAF ALTER_SCRIPT_BLOCK
+      STR_VAR script=bdwaters
+              match=~"bdpotn01"~
+			  swap_out=~PartyHasItem("bdpotn01")~
+			  swap_in=~PartyHasItem("bdpotn01")!PartyHasItem("c02apotn")~
+END
+
+  EXTEND_BOTTOM ~bdfoods.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdfoods.baf~
+  EXTEND_BOTTOM ~bdwaters.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdwaters.baf~
+  
+  COMPILE ~%MOD_FOLDER%/dialogue/SoD/c02aura.d~
+		  ~%MOD_FOLDER%/dialogue/SoD/c02auraj.d~
+  
+  COMPILE ~%MOD_FOLDER%/scripts/SoD/c02aura.baf~
+		  ~%MOD_FOLDER%/scripts/SoD/c02akoko.baf~
+		  ~%MOD_FOLDER%/scripts/SoD/c02acut1.baf~
+		  ~%MOD_FOLDER%/scripts/SoD/c02acut2.baf~
+		  ~%MOD_FOLDER%/scripts/SoD/c02abant.baf~
+		  ~%MOD_FOLDER%/scripts/SoD/c0cutgl1.baf~
+  
+APPEND ~bddialog.2da~
+~C0Aura        C02Aura	C02AuraJ	C02AuraD~
+UNLESS ~C0Aura~
+
+// CREATURES
+
+COPY ~%MOD_FOLDER%/creatures/SoD/c02akoko.cre~ ~override~
+  SAY NAME1 ~Koko~
+  SAY NAME2 ~Koko~
+  WRITE_ASCII 0x248 ~c02akoko~ #8  //override script
+  WRITE_ASCII 0x280 ~c02akoko~ #32  //DV
+  WRITE_ASCII 0x2cc ~c02akoko~ #8   //pre-joining dialogue file
+  
+COPY_EXISTING ~orc01.cre~ ~override/c02aorc1.cre~
+  WRITE_ASCII 0x280 ~c02aorc1~ #32  //DV
+  
+COPY_EXISTING ~orc01.cre~ ~override/c02aorc2.cre~
+  WRITE_ASCII 0x280 ~c02aorc2~ #32  //DV
+  
+COPY_EXISTING ~%MOD_FOLDER%/creatures/SoD/c02auto.cre~ ~override~
+  SAY NAME1 ~Bronze Automaton~
+  SAY NAME2 ~Bronze Automaton~
+  WRITE_ASCII 0x248 ~c02auto~ #8  //override script
+  WRITE_ASCII 0x2cc ~c02auto~  #8  // dialogue
+  WRITE_ASCII 0x280 ~c02auto~ #32  //DV
+  WRITE_ASCII 0X34 ~ABronzL~ #8   //small portrait
+  WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~C0_AURA_AUTOMATON~))
+
+COPY_EXISTING ~c0abomba.spl~ ~override~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%c0asvoid%~
+END
+COPY_EXISTING ~c0abomba.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+	  parameter2 = 9
+	  power = 1
+	  special = RESOLVE_STR_REF (~Artificer~)
+END
+SAY NAME1 ~Firebomb~
+SAY NAME2 ~Screaming Void~
+SAY DESC ~This malignant explosive was crafted using dust from the voidstone which caused a negative energy field within Bridgefort. As unsettling as the dark sludge-like substance appears, it can deal an indisputably massive amount of harm to any being unfortunate enough to be caught within its radius.
+
+STATISTICS
+
+When thrown, unleashes a burst of negative energy which deals Magic Damage and reduces all creatures' Strength. Has no effect against undead.
+  1st level: 6d6+4 Magic Damage (Save vs. Spells for half), -1 Strength (5 rounds)
+  10th level: 6d8+6 Magic Damage (Save vs. Spells at -1 for half), -2 Strength (7 rounds)
+  20th level: 6d10+8 Magic Damage (Save vs. Spells at -2 for half), -3 Strength (1 turn)
+  30th level: 8d10+10 Magic Damage (Save vs. Spells at -3 for half), -4 Strength (2 turns)
+  40th level: 10d10+12 Magic Damage (Save vs. Spells at -4 for half), -5 Strength (3 turns)
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0aproj0%~
+WRITE_LONG 0x34 4000
+
+COPY_EXISTING ~c02aucat.itm~ ~override~
+SAY NAME1 ~Cat~
+SAY NAME2 ~"Koko-chan"~
+SAY DESC ~This small, grey cat is quite cute, yet it looks at you warily while you are within eyeshot. At the moment, it is contentedly taking a nap inside of Aura's backpack.
+
+STATISTICS:
+
+Weight: 0~
+OUTER_SET strref = RESOLVE_STR_REF (~The cat growls and hisses menacingly when you attempt to move it from its resting place.~ [FAMCAT01])
+APPEND item_use.2da ~c02aucat Aura %strref% 3~
+
+COPY_EXISTING ~c0auaro4.itm~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+        check_globals     = 0
+        check_headers     = 1
+        match_opcode      = 142   // Display portrait icon
+        parameter2        = c0aicon3
+      END
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+ parameter1 = RESOLVE_STR_REF (~Burning~)
+END
+SAY NAME1 ~Trollbane Arrow~
+SAY NAME2 ~Trollbane Arrow~
+SAY DESC ~This unusual arrow, designed and crafted by Aura to fight trolls, is filled with a flammable concoction which alters a troll's physiology, preventing them from regenerating their wounds.
+
+STATISTICS:
+
+Combat abilities:
+- Targets struck by this arrow must make a save vs. death at -4 or suffer two points of fire damage per round for three rounds. If the target is a troll, it permanently loses its regenerative abilities.
+
+THAC0: +2
+Damage: 1d6+4 fire
+Damage type: piercing
+Launcher: Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro4%~
+
+COPY_EXISTING ~c02apotn.itm~ ~override~
+SAY NAME1 ~Potion~
+SAY NAME2 ~Sleeping Potion~
+SAY DESC ~This phial contains a milky-white liquid with strong sedative properties. Even the scent of it is enough to make you feel drowsy. A few drops would be capable of putting any living creature to sleep.
+
+STATISTICS:
+
+Weight: 0~
+
+COPY_EXISTING ~c02afish.itm~ ~override~
+SAY NAME1 ~Sardine~
+SAY NAME2 ~Sardine~
+SAY DESC ~Sardines, also known as pilchards, are small, oily fish that travel in large schools and feed on sea plankton. They are commonly consumed by both larger fish and mammals alike. Cats are known for being especially fond of sardines.
+
+STATISTICS:
+
+Weight: 0~
+
+COPY_EXISTING ~c02aring.spl~ ~override~
+COPY_EXISTING ~c02aring.itm~ ~override~
+SAY NAME1 ~Ring of Moon's Eye~
+SAY NAME2 ~Ring of Moon's Eye~
+SAY DESC ~This roughly crafted ring appears unremarkable at first glance aside from a small crescent-shaped carving on the inner side. When worn, the bearer's skin becomes faintly illuminated, as though bathed in moonlight.
+
+STATISTICS:
+
+Equipped abilities:
+- When struck in combat, the wearer has a 25% chance to cast Reflected Image on <PRO_HIMHER>self
+- Immunity to fear and holding effects
+
+Weight: 0~
+
+COPY_EXISTING ~c02asack.itm~ ~override~
+SAY NAME1 ~Bag~
+SAY NAME2 ~Bag of Seeds~
+SAY DESC ~This bag contains a small handful of fat, brown sunflower seeds.
+
+STATISTICS:
+
+Weight: 1~
+
+COPY_EXISTING ~c02asunf.itm~ ~override~
+SAY NAME1 ~Sunflowers~
+SAY NAME2 ~Sunflowers~
+SAY DESC ~These dried sunflowers are full of large seeds. They give off a pleasant aroma.
+
+STATISTICS:
+
+Weight: 1~
+
+COPY_EXISTING ~scrl2j.itm~ ~override/c02apoem.itm~
+SAY NAME1 ~Strange Poem~
+SAY NAME2 ~Strange Poem~
+SAY DESC ~The writing on this scrap of paper appears to be some kind of poem.
+
+"I follow in her steps
+She turns, a smile parts her lips
+Warm flush, cross'd my cheeks..."
+
+The handwriting is somewhat familiar.~

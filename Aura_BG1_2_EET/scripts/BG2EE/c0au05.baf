@@ -1,0 +1,54 @@
+IF
+	InMyArea(Player1)
+	Global("C0AuraBG2Quest3","GLOBAL",23)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest3","GLOBAL",24)
+	CreateCreatureObject("C0ALUNA",Player1,0,0,0)
+	StartCutSceneMode()
+	ActionOverride(Player1,MoveToPoint([743.626]))	
+	ActionOverride(Player1,FaceObject("C0AFRITZ"))	
+	ActionOverride("C0ALUNA",MoveToPoint([801.688]))	
+	ActionOverride("C0ALUNA",FaceObject("C0AFRITZ"))
+	Wait(4)
+	ActionOverride("C0AFRITZ",StartDialogNoSet(Player1))	
+END
+
+IF
+  HPPercentLT("C0AFRITZ",10)
+  Global("C0AuraBG2Quest3","GLOBAL",26)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",27)
+    ChangeEnemyAlly("C0AFRITZ",NEUTRAL)
+	ApplySpellRES("c0aqef22","C0AFRITZ")
+    ClearAllActions()
+    StartCutSceneMode()
+	Wait(2)
+	CreateCreature("C0DEDAL",[907.558],SW)
+	Activate("C0ALUNA")
+	Wait(2)
+	ActionOverride("C0DEDAL",StartDialogNoSet(Player1))
+END
+
+IF
+  InMyArea(Player1)
+  Global("C0AuraBG2Quest3","GLOBAL",43)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3","GLOBAL",44)
+    ClearAllActions()
+	StartCutSceneMode()
+	StartCutScene("c0acut27")
+END
+
+IF
+  Global("C0AuraBG2Quest3","GLOBAL",45)
+  Global("C0AuraBG2Quest3SpawnGuards","C0AU05",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest3SpawnGuards","C0AU05",1)
+	TriggerActivation("Exit1",FALSE)
+    CreateCreature("C0AGNO03",[835.548],SW)
+    CreateCreature("C0AGNO04",[949.607],SW)
+END

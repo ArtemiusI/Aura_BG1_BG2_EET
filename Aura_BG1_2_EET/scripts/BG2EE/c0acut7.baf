@@ -1,0 +1,22 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		FadeToColor([20.0],0)
+		Wait(1)
+		LeaveAreaLUAPanic("C0AU01","",[269.428],NE)  // Bodhi's Hunt Level 1
+		LeaveAreaLUA("C0AU01","",[269.428],NE)  // Bodhi's Hunt Level 1
+		ActionOverride(Player2,LeaveAreaLUA("C0AU01","",[306.446],NE))  // Bodhi's Hunt Level 1
+		ActionOverride(Player3,LeaveAreaLUA("C0AU01","",[239.465],NE))  // Bodhi's Hunt Level 1
+		ActionOverride(Player4,LeaveAreaLUA("C0AU01","",[283.484],NE))  // Bodhi's Hunt Level 1
+		ActionOverride(Player5,LeaveAreaLUA("C0AU01","",[202.488],NE))  // Bodhi's Hunt Level 1
+		ActionOverride(Player6,LeaveAreaLUA("C0AU01","",[236.513],NE))  // Bodhi's Hunt Level 1
+		ActionOverride("C0Aura",LeaveAreaLUA("C0AU01","",[345.360],SW))  // Bodhi's Hunt Level 1
+		MultiPlayerSync()
+		Wait(1)
+		FadeFromColor([20.0],0)
+		Wait(2)
+		EndCutSceneMode()
+		ActionOverride("C0AURA",StartDialogNoSet(Player1))
+END

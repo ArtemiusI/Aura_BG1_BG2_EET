@@ -1,0 +1,32 @@
+IF
+    !InParty("C0Aura")
+    Global("C0AuraAeriePowerofFriendship","LOCALS",0)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraAeriePowerofFriendship","LOCALS",1)
+    ApplySpellRES("C0AAERI3",Myself)
+    Continue()
+END
+
+IF
+    !HasItemEquiped("c0aaeri",Myself)
+    InParty("C0Aura")
+    Global("C0AuraAeriePowerofFriendship","LOCALS",1)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraAeriePowerofFriendship","LOCALS",0)
+    ApplySpellRES("C0AAERI4",Myself)
+    Continue()
+END
+
+IF
+    HasItemEquiped("c0aaeri",Myself)
+    InParty("C0Aura")
+    Global("C0AuraAeriePowerofFriendship","LOCALS",1)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraAeriePowerofFriendship","LOCALS",0)
+    ApplySpellRES("C0AAERI4",Myself)
+    XEquipItem("C0AAERI",Myself,SLOT_GAUNTLETS,EQUIP)
+    Continue()
+END

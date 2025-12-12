@@ -1,0 +1,17 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+	FadeToColor([30.0],0)
+	Wait(2)
+	ActionOverride("c0aura",JumpToPoint([689.317])
+	JumpToPoint([612.315])
+	SmallWait(5)
+	FaceObject("c0aura")
+	ActionOverride("c0aura",FaceObject(Player1))
+	Wait(2)
+	FadeFromColor([30.0],0)
+	Wait(4)
+	ActionOverride("c0aura",StartDialogueNoSet(Player1))
+END

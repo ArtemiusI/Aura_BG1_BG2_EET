@@ -1,0 +1,20 @@
+// Southern Edge - parasite
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	OR(4)
+	PartyHasItem("L#NDCAT")
+	PartyHasItem("L#NDGIR")
+	PartyHasItem("L#NDLIS")
+	PartyHasItem("L#NDPLA")
+	Global("C0AuraSEParasite","GLOBAL",0)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraSEParasite","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END

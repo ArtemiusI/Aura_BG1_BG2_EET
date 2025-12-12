@@ -1,0 +1,15 @@
+IF
+	AreaCheck("O#1515")
+    InParty("Imoen2")
+	See("Imoen2")
+	InParty("C0Aura")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+    Global("O#BrynnImoen","GLOBAL",5)
+	Global("C0AuraImoenCrossmodBrynnlaw","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraImoenCrossmodBrynnlaw","GLOBAL",1)
+	Interact("Imoen2")
+END

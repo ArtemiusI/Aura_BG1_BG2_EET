@@ -1,0 +1,33 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        FadeToColor([30.0],0)
+        Wait(2)
+        ActionOverride("C0AREES",DestroySelf())
+        ActionOverride("C0AASCS",DestroySelf())
+        ApplySpellRES("OHREPRTY",Player1)  // No such index
+        LeaveAreaLUAPanic("C0AUR2","",[346.347],NE)
+        LeaveAreaLUA("C0AUR2","",[346.347],NE)
+        ActionOverride(Player2,LeaveAreaLUA("C0AUR2","",[180.198],S))
+        ActionOverride(Player3,LeaveAreaLUA("C0AUR2","",[146.213],S))
+        ActionOverride(Player4,LeaveAreaLUA("C0AUR2","",[185.228],S))
+        ActionOverride(Player5,LeaveAreaLUA("C0AUR2","",[215.211],S))
+        ActionOverride(Player6,LeaveAreaLUA("C0AUR2","",[224.251],S))
+        SmallWait(1)
+        ActionOverride("C0Aura",LeaveAreaLUA("C0AUR2","",[373.367],NW))
+        SmallWait(1)
+        Face(NE)
+        ActionOverride("C0Aura",Face(NE))
+        ActionOverride("C0AMAGN",JumpToPoint([442.289]))
+        ActionOverride("C0AMAGN",Face(SW))
+        SmallWait(1)
+        SmallWait(5)
+        FadeFromColor([30.0],0)
+        Wait(8)
+        EndCutSceneMode()
+		ActionOverride("C0AMAGN",StartDialogNoSet(Player1))
+END
+

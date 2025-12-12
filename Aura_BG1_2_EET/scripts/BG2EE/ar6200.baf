@@ -1,0 +1,63 @@
+// romanced neither PC nor Imoen
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("C0Aura")
+!Global("C0AuraRomanceActive","GLOBAL",2)
+!Global("C0AuraImoenToBFlirt","GLOBAL",1)
+Global("C0AuraBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("C0AuraBio","GLOBAL",1)
+TextScreen("C0AuEp01")
+SmallWait(1)
+Continue()
+END
+
+// romanced Imoen
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("C0Aura")
+!Global("C0AuraRomanceActive","GLOBAL",2)
+Global("C0AuraImoenToBFlirt","GLOBAL",1)
+Global("C0AuraBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("C0AuraBio","GLOBAL",1)
+TextScreen("C0AuEp02")
+SmallWait(1)
+Continue()
+END
+
+// romanced PC, did not ascend
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("C0Aura")
+!Global("PlayerChoseEssence","GLOBAL",1)
+Global("C0AuraRomanceActive","GLOBAL",2)
+Global("C0AuraBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("C0AuraBio","GLOBAL",1)
+TextScreen("C0AuEp03")
+SmallWait(1)
+Continue()
+END
+
+// romanced PC, ascended
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("C0Aura")
+Global("PlayerChoseEssence","GLOBAL",1)
+Global("C0AuraRomanceActive","GLOBAL",2)
+Global("C0AuraBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("C0AuraBio","GLOBAL",1)
+TextScreen("C0AuEp04")
+SmallWait(1)
+Continue()
+END

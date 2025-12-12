@@ -1,0 +1,76 @@
+IF
+	PartyRested()
+	!Global("C0AlchemyRefreshStock","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+END
+
+IF
+	PartyRested()
+  !Dead("C0AUIN3")
+  InMyArea("C0AUIN3")
+THEN
+  RESPONSE #100
+	  ActionOverride("C0AUIN3",Rest())
+	  ActionOverride("C0AUIN3",CreateVisualEffectObject("sprotect",Myself))
+  	ActionOverride("C0AUIN3",SetGlobal("RepairCount","LOCALS",3))
+END
+
+IF
+	Global("C0AlchemyHalfPrice","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AlchemyHalfPrice","GLOBAL",2)
+	ChangeStoreMarkup("C0AUPOT1",50,0)
+	ChangeStoreMarkup("C0AUBOM1",50,0)
+	ChangeStoreMarkup("C0AUPOTH",50,0)
+END
+
+IF
+	Global("MurdersSolved","GLOBAL",1)
+  Global("C0AuraMurderQuestEntry","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraMurderQuestEntry","GLOBAL",1)
+	EraseJournalEntry(%Aura_Quest_Skinner_Entry%)
+END
+
+IF
+	Global("C0AlchemyHalfPrice","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AlchemyHalfPrice","GLOBAL",2)
+	ChangeStoreMarkup("C0AUPOT1",50,0)
+	ChangeStoreMarkup("C0AUBOM1",50,0)
+	ChangeStoreMarkup("C0AUPOTH",50,0)
+END
+
+IF
+  InParty("C0Aura")
+  !Dead("C0Aura")
+  Global("C0AutoCreated", "GLOBAL", 1)
+  !TriggerOverride("C0AUIN3",Global("Standby", "LOCALS", 1))
+  !Dead("C0AUIN3")
+  !InActiveArea("C0AUIN3")
+THEN
+  RESPONSE #100
+    MoveGlobalObject("C0AUIN3","C0Aura")
+	ActionOverride("C0AUIN3",JumpToObject(Myself))
+	ActionOverride("C0AUIN3",SetGlobal("FollowAura","LOCALS",1))
+END
+
+IF
+  Global("C0AuraBG2AutomatonControl","GLOBAL",1)
+  !InParty("C0Aura")
+  !Dead("C0Aura")
+  Global("C0AutoCreated", "GLOBAL", 1)
+  !TriggerOverride("C0AUIN3",Global("Standby", "LOCALS", 1))
+  !Dead("C0AUIN3")
+  !InActiveArea("C0AUIN3")
+THEN
+  RESPONSE #100
+    MoveGlobalObject("C0AUIN3",Player1)
+	ActionOverride("C0AUIN3",JumpToObject(Myself))
+	ActionOverride("C0AUIN3",SetGlobal("FollowAura","LOCALS",1))
+END

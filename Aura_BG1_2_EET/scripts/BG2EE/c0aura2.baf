@@ -1,0 +1,1856 @@
+IF
+	Global("C0AuraBG2Quest3","GLOBAL",2)
+THEN
+  RESPONSE #100
+	      SetGlobal("C0AuraBG2Quest3","GLOBAL",3)
+		ClearAllActions()
+		StartCutSceneMode()
+        CreateCreatureObjectOffScreen("C0CARNIF",Myself,0,0,0)
+		SmallWait(1)
+		ActionOverride("C0CARNIF",Dialogue(Player1))
+END
+
+IF
+	Global("C0AuraBG2Quest2IceEncounter","GLOBAL",6)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		Wait(2)
+		StartDialogNoSet(Player1)
+		SetInterrupt(TRUE)
+END
+// ENEMIES
+
+IF
+  InParty(Myself)
+  !Dead("FIRKRA02")
+  See("FIRKRA02")
+  Allegiance("FIRKRA02",ENEMY)
+  Global("C0AuraFoughtFirkraag","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraFoughtFirkraag","GLOBAL",1)
+END
+
+IF
+  InParty(Myself)
+  !Dead("HLKANG")
+  See("HLKANG")
+  Allegiance("HLKANG",ENEMY)
+  Global("C0AuraFoughtKangaxx","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraFoughtKangaxx","GLOBAL",1)
+END
+
+IF
+  InParty(Myself)
+  !Dead("DEMOGOR2")
+  See("DEMOGOR2")
+  Allegiance("DEMOGOR2",ENEMY)
+  Global("C0AuraFoughtDemogorgon","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraFoughtDemogorgon","GLOBAL",1)
+END
+
+IF
+  InParty(Myself)
+  !Dead("SHADRA01")
+  See("SHADRA01")
+  Allegiance("SHADRA01",ENEMY)
+  Global("C0AuraFoughtThax","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraFoughtThax","GLOBAL",1)
+END
+
+// RANDOM WALK
+
+IF
+  AreaCheck("C0AU01")
+  !InParty(Myself)
+  Global("KickedOut","LOCALS",1)
+THEN
+  RESPONSE #100
+    RandomWalk()
+END
+
+IF
+  OR(15)
+    Allegiance("majan",ENEMY)
+    Allegiance("gerhardt",ENEMY)
+    Allegiance("lissa",ENEMY)
+    Allegiance("jaella",ENEMY)
+    Allegiance("Kylie",ENEMY)
+    Allegiance("C0AJuno",ENEMY)
+    Allegiance("C0ALuna",ENEMY)
+    Allegiance("C0Dedal",ENEMY)
+    Dead("lissa")
+    Dead("jaella")
+    Dead("majan")
+    Dead("gerhardt")
+    Dead("tat")
+    Dead("tot")
+    Dead("Kylie")
+  InParty(Myself)
+  Global("C0AuraHostile","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraHostile","LOCALS",1)
+    DisplayStringHead(Myself,~What have you done...? WHAT HAVE YOU DONE?~)
+    LeaveParty()
+    Enemy()
+END
+
+IF
+  OR(12)
+    Allegiance("majan",ENEMY)
+    Allegiance("gerhardt",ENEMY)
+    Allegiance("lissa",ENEMY)
+    Allegiance("jaella",ENEMY)
+    Allegiance("Kylie",ENEMY)
+    Dead("lissa")
+    Dead("jaella")
+    Dead("majan")
+    Dead("gerhardt")
+    Dead("tat")
+    Dead("tot")
+    Dead("Kylie")
+	Allegiance(Myself,NEUTRAL)
+  Global("C0AuraHostile","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraHostile","LOCALS",1)
+    DisplayStringHead(Myself,~What have you done...? WHAT HAVE YOU DONE?~)
+    Enemy()
+END
+
+// EXPERIENCE
+
+IF
+  Allegiance(Myself,ENEMY)
+  !InParty(Myself)
+  Global("NPCFight","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("NPCFight","LOCALS",1)
+    ChangeAIScript("",DEFAULT)
+    ChangeAIScript("",GENERAL)
+    ChangeAIScript("c0aurax",SPECIFICS)
+    SetDialog("")
+    Continue()
+END
+
+IF
+  Allegiance(Myself,NEUTRAL)
+  AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+  RESPONSE #100
+    ChangeAIScript("c0aurax",SPECIFICS)
+    ChangeAIScript("",GENERAL)
+    ChangeAIScript("",DEFAULT)
+    Enemy()
+    Continue()
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+  !InParty(Myself)
+  Global("NPCFight","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("NPCFight","LOCALS",0)
+    ChangeAIScript("",GENERAL)
+    ChangeAIScript("",SPECIFICS)
+    Continue()
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  Class(Myself,MAGE_ALL)
+  XPGT(Player1,1249999)
+  XPLT(Myself,1250000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,1250000,SET)
+	AddSpecialAbility("spwi415")
+	AddSpecialAbility("spwi417")
+	AddSpecialAbility("spwi510")
+	AddSpecialAbility("spwi505")
+	AddSpecialAbility("spwi513")
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  !Class(Myself,MAGE_ALL)
+  XPGT(Player1,1249999)
+  XPLT(Myself,1250000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,1250000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  Class(Myself,MAGE_ALL)
+  XPGT(Player1,999999)
+  XPLT(Myself,1000000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,1000000,SET)
+	AddSpecialAbility("spwi415")
+	AddSpecialAbility("spwi417")
+	AddSpecialAbility("spwi510")
+	AddSpecialAbility("spwi505")
+	AddSpecialAbility("spwi513")
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  !Class(Myself,MAGE_ALL)
+  XPGT(Player1,999999)
+  XPLT(Myself,1000000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,1000000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  Class(Myself,MAGE_ALL)
+  XPGT(Player1,749999)
+  XPLT(Myself,750000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,750000,SET)
+	AddSpecialAbility("spwi415")
+	AddSpecialAbility("spwi417")
+	AddSpecialAbility("spwi510")
+	AddSpecialAbility("spwi505")
+	AddSpecialAbility("spwi513")
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  !Class(Myself,MAGE_ALL)
+  XPGT(Player1,749999)
+  XPLT(Myself,750000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,750000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  Class(Myself,MAGE_ALL)
+  XPGT(Player1,499999)
+  XPLT(Myself,500000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,500000,SET)
+	AddSpecialAbility("spwi415")
+	AddSpecialAbility("spwi417")
+	AddSpecialAbility("spwi510")
+	AddSpecialAbility("spwi505")
+	AddSpecialAbility("spwi513")
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  !Class(Myself,MAGE_ALL)
+  XPGT(Player1,499999)
+  XPLT(Myself,500000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,500000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,249999)
+  XPLT(Myself,250000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,250000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,124999)
+  XPLT(Myself,125000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,125000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPLT(Player1,89001)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,89000,SET)
+	SetGlobal("C0AlchemyRefreshStock","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+    InParty(Myself)
+	InParty("AERIE")
+	Global("C0AuraAerieFriendship","GLOBAL",0)
+	Global("C0AuraAerieFriendshipTimer","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraAerieFriendshipTimer","GLOBAL",3600)
+END
+
+IF
+    InParty(Myself)
+	InParty("AERIE")
+    CombatCounter(0)
+    !See([ENEMY])
+	OR(7)
+	Global("C0AuraAerieFriendship","GLOBAL",0)
+	Global("C0AuraAerieFriendship","GLOBAL",2)
+	Global("C0AuraAerieFriendship","GLOBAL",3)
+	Global("C0AuraAerieFriendship","GLOBAL",5)
+	Global("C0AuraAerieFriendship","GLOBAL",6)
+	Global("C0AuraAerieFriendship","GLOBAL",7)
+	Global("C0AuraAerieFriendship","GLOBAL",9)
+	RealGlobalTimerExpired("C0AuraAerieFriendshipTimer","GLOBAL")
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraAerieFriendshipTimer","GLOBAL",3600)
+	ActionOverride("Aerie",Interact("C0AURA"))
+END
+
+IF
+    InParty(Myself)
+	InParty("AERIE")
+    CombatCounter(0)
+    !See([ENEMY])
+	OR(3)
+	Global("C0AuraAerieFriendship","GLOBAL",1)
+	Global("C0AuraAerieFriendship","GLOBAL",4)
+	Global("C0AuraAerieFriendship","GLOBAL",10)
+	RealGlobalTimerExpired("C0AuraAerieFriendshipTimer","GLOBAL")
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraAerieFriendshipTimer","GLOBAL",3600)
+	Interact("Aerie")
+END
+
+// Friendship
+
+IF
+    InParty(Myself)
+	Global("C0AuraAutocannonStart","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraAutocannonStartRealTimer","GLOBAL",TWO_HOURS)
+    SetGlobalTimer("C0AuraAutocannonStartTimer","GLOBAL",FIVE_DAYS)
+    SetGlobal("C0AuraAutocannonStart","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+	Global("C0AuraKnowsBG1","GLOBAL",1)
+	Global("C0AuraBG2FriendshipImportTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+    SetGlobal("C0AuraBG2FriendshipImportTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+	OR(2)
+	!Global("C0AuraKnowsBG1","GLOBAL",1)
+	GlobalGT("C0AuraBG2FriendshipImportTalk","GLOBAL",2)
+	Global("C0AuraBG2FriendshipTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+    SetGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0AuraBG2FriendshipTalkTimer","GLOBAL")
+    GlobalTimerExpired("C0AuraBG2TalkTimer","GLOBAL")
+    CombatCounter(0)
+    !See([ENEMY])
+	!Global("C0AuraTalkStopped","GLOBAL",1)
+	GlobalLT("C0AuraInsulted","GLOBAL",2)
+    Switch("C0AuraBG2FriendshipImportTalk","GLOBAL")
+THEN
+  RESPONSE #1
+    IncrementGlobal("C0AuraBG2FriendshipImportTalk","GLOBAL",1)
+  RESPONSE #2
+	Interact(Player1)
+END
+
+IF
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0AuraBG2FriendshipTalkTimer","GLOBAL")
+    GlobalTimerExpired("C0AuraBG2TalkTimer","GLOBAL")
+    CombatCounter(0)
+    !See([ENEMY])
+	!Global("C0AuraTalkStopped","GLOBAL",1)
+	GlobalLT("C0AuraInsulted","GLOBAL",2)
+	HPPercentLT(Myself,76)
+    Switch("C0AuraBG2FriendshipImportTalk","GLOBAL")
+THEN
+  RESPONSE #3
+    IncrementGlobal("C0AuraBG2FriendshipImportTalk","GLOBAL",1)
+  RESPONSE #4
+	Interact(Player1)
+END
+
+IF
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0AuraBG2FriendshipTalkTimer","GLOBAL")
+    GlobalTimerExpired("C0AuraBG2TalkTimer","GLOBAL")
+	!Global("C0AuraRomanceActive","GLOBAL",1)
+	!Global("C0AuraRomanceActive","GLOBAL",2)
+    CombatCounter(0)
+    !See([ENEMY])
+	!Global("C0AuraTalkStopped","GLOBAL",1)
+	GlobalLT("C0AuraInsulted","GLOBAL",2)
+    Switch("C0AuraBG2FriendshipTalk","GLOBAL")
+THEN
+  RESPONSE #1
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #2
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #3
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #4
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #5
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #6
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #7
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #8
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #9
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #10
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #11
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #12
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #13
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #14
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #15
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #16
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #17
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #18
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+  RESPONSE #19
+    IncrementGlobal("C0AuraBG2FriendshipTalk","GLOBAL",1)
+  RESPONSE #20
+    RealSetGlobalTimer("C0AuraBG2FriendshipTalkTimer","GLOBAL",3600)
+    SetGlobalTimer("C0AuraBG2TalkTimer","GLOBAL",ONE_DAY)
+	Interact(Player1)
+END
+
+
+// Romance
+
+IF
+    InParty(Myself)
+	OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	GlobalGT("OHD_sexreactions","GLOBAL",0)
+	Global("C0AuraKillRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillRomance","GLOBAL",1)
+        SetGlobal("C0AuraRomanceActive","GLOBAL",3)
+		DisplayStringHead(Myself,~Aura looks pained and seems about to speak, but turns away in clear disappointment.~)
+END
+
+IF
+    !InParty(Myself)
+	OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	GlobalGT("OHD_sexreactions","GLOBAL",0)
+	Global("C0AuraKillRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillRomance","GLOBAL",1)
+        SetGlobal("C0AuraRomanceActive","GLOBAL",3)
+END
+
+IF
+	OR(8)
+	Global("AerieRomanceActive","GLOBAL",2)
+	Global("AnomenRomanceActive","GLOBAL",2)
+	Global("JaheiraRomanceActive","GLOBAL",2)
+	Global("ViconiaRomanceActive","GLOBAL",2)
+	Global("RasaadRomanceActive","GLOBAL",2)
+	Global("DornRomanceActive","GLOBAL",2)
+	Global("NeeraRomanceActive","GLOBAL",2)
+	Global("HexxatRomanceActive","GLOBAL",2)
+	OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillRomance","GLOBAL",1)
+        SetGlobal("C0AuraRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("AerieRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillAerieRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillAerieRomance","GLOBAL",1)
+		SetGlobal("AerieRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("JaheiraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillJaheiraRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillJaheiraRomance","GLOBAL",1)
+		SetGlobal("JaheiraRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("ViconiaRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillViconiaRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillViconiaRomance","GLOBAL",1)
+		SetGlobal("ViconiaRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("AnomenRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillAnomenRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillAnomenRomance","GLOBAL",1)
+		SetGlobal("AnomenRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("RasaadRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillRasaadRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillRasaadRomance","GLOBAL",1)
+		SetGlobal("RasaadRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("DornRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillDornRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillDornRomance","GLOBAL",1)
+		SetGlobal("DornRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("HexxatRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillHexxatRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillHexxatRomance","GLOBAL",1)
+		SetGlobal("HexxatRomanceActive","GLOBAL",3)
+END
+
+IF
+	Global("NeeraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraKillNeeraRomance","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraKillNeeraRomance","GLOBAL",1)
+		SetGlobal("NeeraRomanceActive","GLOBAL",3)
+END
+
+IF
+    InParty(Myself)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+    Global("C0AuraBG2RomanceTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+        SetGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+END
+
+IF
+	Happiness(Myself,-299)
+	OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraRomanceActive","GLOBAL",3)
+END
+
+IF
+    InParty(Myself)
+    RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+    PartyRested()
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+    See(Player1)
+    !AreaType(DUNGEON)
+    CombatCounter(0)
+        Global("C0AuraBG2RomanceTalk","GLOBAL",1)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",FIVE_ROUNDS)
+END
+
+IF
+    InParty(Myself)
+    RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	OR(10)
+	AreaCheck("C0AUR1")
+	AreaCheck("AR0020")
+	AreaCheck("AR0300")
+	AreaCheck("AR0400")
+	AreaCheck("AR0500")
+	AreaCheck("AR0500")
+	AreaCheck("AR0700")
+	AreaCheck("AR0800")
+	AreaCheck("AR0900")
+	AreaCheck("AR1000")
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+        Global("C0AuraBG2RomanceTalk","GLOBAL",1)
+THEN
+    RESPONSE #100
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+END
+
+IF
+    InParty(Myself)
+    RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+        Global("C0AuraBG2RomanceTalk","GLOBAL",2)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+    !Global("YoshimoRomanceActive","GLOBAL",1)
+    !Global("YoshimoRomanceActive","GLOBAL",2)
+	OR(2)
+	!InParty("YOSHIMO")
+	GlobalLT("C0AuraRomanceYRGlob","GLOBAL",1)
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+    !AreaType(DUNGEON)
+    !AreaCheck("AR1300")
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+	Switch("C0AuraBG2RomanceTalk","GLOBAL")
+THEN
+    RESPONSE #3
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		CreateCreatureObject("C0MUFFY2",Player1,0,0,0)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #4
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #5
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #6
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #7
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #8
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #9
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #13
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #15
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #16
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #17
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #18
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #19
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #20
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #21
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #22
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #24
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #25
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #26
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #27
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #28
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #29
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #30
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+    RESPONSE #31
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #32
+        IncrementGlobal("C0AuraBG2RomanceTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+	GlobalGT("C0AuraRomanceYRGlob","GLOBAL",0)
+	InParty("YOSHIMO")
+	GlobalGT("YoshimoRomanceTalk","GLOBAL",25)
+	OR(2)
+     Global("YoshimoRomanceActive","GLOBAL",1)
+     Global("YoshimoRomanceActive","GLOBAL",2)
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+    !AreaType(DUNGEON)
+    !AreaCheck("AR1300")
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+	Switch("C0AuraBG2YRRomanceTalk","GLOBAL")
+THEN
+    RESPONSE #0
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+    RESPONSE #1
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #2
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+    RESPONSE #3
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact("YOSHIMO")
+    RESPONSE #4
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+    RESPONSE #5
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        ActionOverride("YOSHIMO",StartDialogNoSet(Player1))
+    RESPONSE #6
+        IncrementGlobal("C0AuraBG2YRRomanceTalk","GLOBAL",1)
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+END
+
+IF
+    InParty(Myself)
+    RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+	GlobalGT("C0AuraRomanceYRGlob","GLOBAL",0)
+	GlobalGT("YoshimoUnderCutScene","GLOBAL",0)
+	OR(2)
+     Global("YoshimoRomanceActive","GLOBAL",1)
+     Global("YoshimoRomanceActive","GLOBAL",2)
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+    See(Player1)
+    !See([ENEMY])
+    CombatCounter(0)
+	Switch("C0AuraBG2YRRomancePostTalk","GLOBAL")
+THEN
+    RESPONSE #0
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+    RESPONSE #1
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #2
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+    RESPONSE #3
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #4
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+    RESPONSE #5
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #6
+        RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+        IncrementGlobal("C0AuraBG2YRRomancePostTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+	GlobalGT("C0AuraRomanceYRGlob","GLOBAL",0)
+	PartyHasItem("YRxAMU")
+	PartyHasItem("YRxLET")
+	OR(2)
+     Global("YoshimoRomanceActive","GLOBAL",1)
+     Global("YoshimoRomanceActive","GLOBAL",2)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+    See(Player1)
+    !See([ENEMY])
+    CombatCounter(0)
+	Switch("C0AuraBG2YRRomancePostTalkAmulet","GLOBAL")
+THEN
+    RESPONSE #0
+        IncrementGlobal("C0AuraBG2YRRomancePostTalkAmulet","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        Interact(Player1)
+    RESPONSE #1
+        IncrementGlobal("C0AuraBG2YRRomancePostTalkAmulet","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+	GlobalGT("C0AuraRomanceYRGlob","GLOBAL",0)
+	Dead("YRXYUN")
+	AreaCheck("AR2900")
+	OR(2)
+     Global("YoshimoRomanceActive","GLOBAL",1)
+     Global("YoshimoRomanceActive","GLOBAL",2)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+    See(Player1)
+    !See([ENEMY])
+    CombatCounter(0)
+	Switch("C0AuraBG2YRRomancePostTalkHell","GLOBAL")
+THEN
+    RESPONSE #0
+        IncrementGlobal("C0AuraBG2YRRomancePostTalkHell","GLOBAL",1)
+        Interact(Player1)
+    RESPONSE #1
+        IncrementGlobal("C0AuraBG2YRRomancePostTalkHell","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	GlobalGT("GivePowerSlayer","GLOBAL",0)
+	GlobalGT("Chapter","GLOBAL",%bg2_chapter_3%)
+	GlobalLT("Chapter","GLOBAL",%bg2_chapter_6%)
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+	Global("C0AuraBG2RomanceSlayerTalk","GLOBAL",0)
+THEN
+	RESPONSE #100
+        IncrementGlobal("C0AuraBG2RomanceSlayerTalk","GLOBAL",1)
+		PlaySong(%C0AUROM%)
+        StartDialogNoSet(Player1)
+END
+	
+IF
+    InParty(Myself)
+	Global("C0AuraBG2FriendshipLetter","GLOBAL",0)
+	!Global("C0AuraRomanceActive","GLOBAL",1)
+	!Global("C0AuraRomanceActive","GLOBAL",2)
+        GlobalGT("C0AuraBG2FriendshipTalk","GLOBAL",10)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("C0AuraBG2FriendshipLetterTimer","GLOBAL",THREE_DAYS)
+		SetGlobal("C0AuraBG2FriendshipLetter","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+	Global("C0AuraBG2FriendshipLetter","GLOBAL",0)
+    OR(2)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+        GlobalGT("C0AuraBG2RomanceTalk","GLOBAL",20)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("C0AuraBG2FriendshipLetterTimer","GLOBAL",THREE_DAYS)
+		SetGlobal("C0AuraBG2FriendshipLetter","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    GlobalTimerExpired("C0AuraBG2FriendshipLetterTimer","GLOBAL")
+	Global("C0AuraBG2FriendshipLetter","GLOBAL",1)
+	OR(9)
+	AreaCheck("AR0020")
+	AreaCheck("AR0300")
+	AreaCheck("AR0400")
+	AreaCheck("AR0500")
+	AreaCheck("AR0500")
+	AreaCheck("AR0700")
+	AreaCheck("AR0800")
+	AreaCheck("AR0900")
+	AreaCheck("AR1000")
+    !AreaType(DUNGEON)
+    !AreaCheck("AR1300")
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+THEN
+    RESPONSE #100
+		SetInterrupt(FALSE)
+		ClearAllActions()
+		StartCutSceneMode()
+        IncrementGlobal("C0AuraBG2FriendshipLetter","GLOBAL",1)
+		CreateCreatureObjectDoor("C0AUSPE1","C0AURA",0,0,0)
+		Wait(4)
+		SetInterrupt(TRUE)
+		ActionOverride("C0AUSPE1",StartDialogNoSet(Player1))
+END
+
+IF
+    InParty(Myself)
+	Global("C0AuraBG2FriendshipLetter","GLOBAL",3)
+THEN
+    RESPONSE #100
+		SetInterrupt(FALSE)
+		ClearAllActions()
+		StartCutSceneMode()
+		Wait(4)
+		SetInterrupt(TRUE)
+		StartDialogNoSet(Player1)
+END
+// I HATE BEARS
+	
+IF
+	InParty(Myself)
+	!Range("wilson",10)
+	Range([0.0.BEAR],10)
+THEN
+RESPONSE #100
+	Wait(1)
+	ReallyForceSpellRES("c0aubear",Myself)
+	Continue()
+END
+
+IF
+	CombatCounter(0)
+	ActionListEmpty()
+	InParty(Myself)
+	Range("wilson",5)
+THEN
+RESPONSE #100
+	RunAwayFrom("wilson",15)
+END
+
+// AUTOMATON - HELP
+
+IF
+	See("c0auin3")
+    AttackedBy([ENEMY],DEFAULT)
+	HPPercentLT(Myself,50)
+	Global("Help","LOCALS",0)
+  THEN
+    RESPONSE #50
+      DisplayStringHead(Myself,~Help!~)
+      ActionOverride("c0auin3",AttackReevaluate(Lastattackerof("c0aura"),15))
+	  SetGlobal("Help","LOCALS",1)
+	  SetGlobalTimer("HelpTimer","LOCALS",12)
+END
+
+IF
+	Global("Help","LOCALS",1)
+	GlobalTimerExpired("HelpTimer","LOCALS")
+THEN
+    RESPONSE #50
+	 SetGlobal("Help","LOCALS",0)
+END
+
+// SUNSHOOTER
+
+IF
+	LevelGT(Myself,5)
+	OR(2)
+	HasItemEquiped("c0aubo1a",Myself)
+	HasItemEquiped("c0aubo1b",Myself)
+THEN
+RESPONSE #100
+	DisplayStringHead(Myself,~(Aura has upgraded her bow to Sunshooter II.)~ [GAM_11])
+	TransformItem("c0aubo1a","c0aubo2a")
+	TransformItem("c0aubo1b","c0aubo2b")
+	EquipRanged()
+END
+
+IF
+	LevelGT(Myself,8)
+	OR(3)
+	HasItemEquiped("c0aubo2a",Myself)
+	HasItemEquiped("c0aubo2b",Myself)
+	HasItemEquiped("c0aubo2c",Myself)
+THEN
+RESPONSE #100
+	DisplayStringHead(Myself,~(Aura has upgraded her bow to Sunshooter III.)~ [GAM_11])
+	TransformItem("c0aubo2a","c0aubo3a")
+	TransformItem("c0aubo2b","c0aubo3b")
+	TransformItem("c0aubo2c","c0aubo3c")
+	EquipRanged()
+END
+
+IF
+	LevelGT(Myself,11)
+	OR(3)
+	HasItemEquiped("c0aubo3a",Myself)
+	HasItemEquiped("c0aubo3b",Myself)
+	HasItemEquiped("c0aubo3c",Myself)
+THEN
+RESPONSE #100
+	DisplayStringHead(Myself,~(Aura has upgraded her bow to Sunshooter IV.)~ [GAM_11])
+	TransformItem("c0aubo3a","c0aubo4a")
+	TransformItem("c0aubo3b","c0aubo4b")
+	TransformItem("c0aubo3c","c0aubo4c")
+	EquipRanged()
+END
+
+IF
+	LevelGT(Myself,16)
+	OR(3)
+	HasItemEquiped("c0aubo4a",Myself)
+	HasItemEquiped("c0aubo4b",Myself)
+	HasItemEquiped("c0aubo4c",Myself)
+THEN
+RESPONSE #100
+	DisplayStringHead(Myself,~(Aura has upgraded her bow to Sunshooter V.)~ [GAM_11])
+	TransformItem("c0aubo4a","c0aubo5a")
+	TransformItem("c0aubo4b","c0aubo5b")
+	TransformItem("c0aubo4c","c0aubo5c")
+	EquipRanged()
+END
+
+IF
+	Global("C0AUIN6","LOCALS",1)
+	OR(3)
+	HasItemEquiped("c0aubo5a",Myself)
+	HasItemEquiped("c0aubo5b",Myself)
+	HasItemEquiped("c0aubo5c",Myself)
+THEN
+RESPONSE #100
+	DisplayStringHead(Myself,~(Grand Artifice: Aura has upgraded her bow to the Perfect Sunshooter.)~ [GAM_11])
+	TransformItem("c0aubo5a","c0aubo6")
+	TransformItem("c0aubo5b","c0aubo6")
+	TransformItem("c0aubo5c","c0aubo6")
+	EquipRanged()
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraPerfectSunshooter","GLOBAL",0)
+	PartyHasItem("c0aubo6")
+    !See([ENEMY])
+	CombatCounter(0)
+	See(Player1)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	Wait(3)
+	SetGlobal("C0AuraPerfectSunshooter","GLOBAL",1)
+	SetInterrupt(TRUE)
+	StartDialogueNoSet(Player1)
+END
+
+///////////////////////////////
+/////////INTERJECTIONS/////////
+///////////////////////////////
+
+// Tanner's basement
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraAutocannon","GLOBAL",0)
+	CombatCounter(0)
+	AreaCheck("C0AU01")
+	See(Player1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraAutocannon","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Tanner's basement
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTanner","GLOBAL",0)
+	CombatCounter(0)
+	AreaCheck("AR0502")
+	See(Player1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraTanner","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraKylie","GLOBAL",0)
+	CombatCounter(0)
+	See("Kylie")
+THEN
+  RESPONSE #100
+	ActionOverride("Kylie",FaceObject("C0Aura")
+	ActionOverride("Kylie",Wait(1))
+	ActionOverride("Kylie",StartDialogueNoSet("C0Aura"))
+END
+
+// WILSON!
+
+IF
+	InParty(Myself)
+	InParty("Wilson")
+	!Dead("Wilson")
+	OR(2)
+	Global("C0AuraWilsonConflict","GLOBAL",0)
+	RealGlobalTimerExpired("C0AuraWilsonConflictTimer","GLOBAL")
+	Switch("C0AuraWilsonConflict","GLOBAL")
+THEN
+  RESPONSE #0
+	RealSetGlobalTimer("C0AuraWilsonConflictTimer","GLOBAL",FIVE_MINUTES)
+	SetGlobal("C0AuraWilsonConflict","GLOBAL",1)
+  RESPONSE #1
+	SetGlobal("C0AuraWilsonConflict","GLOBAL",2)
+	StartDialogueNoSet(Player1)
+END
+
+// Trolls
+
+IF
+	Delay(2)
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("ar1302")
+	Global("C0AuraDeArniseKeep","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	Delay(2)
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("ar1900")
+	Global("C0AuraDruidGrove","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	StartDialogueNoSet(Player1)
+END
+
+// Flying Machine
+
+IF
+	InParty(Myself)
+	InParty("JAN")
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck("JAN",CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	See("Flying Machine 1")
+	Global("C0AuraJanAirship","GLOBAL",0)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	ActionOverride("JAN",Interact("C0AURA"))
+END
+
+// Docks
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR0300")
+	Global("C0AuraDocksDistrict","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	Wait(2)
+	SetGlobal("C0AuraDocksDistrict","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Bridge
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR0500")
+	NearLocation(Myself,2750,2090,15)
+	Global("C0AuraBridgeDistrict","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	Wait(2)
+	SetGlobal("C0AuraBridgeDistrict","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Brynnlaw
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR1600")
+	Global("C0AuraBG2BrynnlawTalk","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	Wait(2)
+	SetGlobal("C0AuraBG2BrynnlawTalk","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Spellhold
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR1515")
+	See(Player1)
+	Global("C0AuraBG2SpellholdTalk","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	Wait(2)
+	SetGlobal("C0AuraBG2SpellholdTalk","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Sahuagin
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR2300")
+	See(Player1)
+	Global("C0AuraSahuaginFears","GLOBAL",3)
+	!See("SAHKNG01")
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+THEN
+  RESPONSE #100
+	Wait(2)
+	SetGlobal("C0AuraSahuaginFears","GLOBAL",4)
+	StartDialogueNoSet(Player1)
+END
+
+// Yoshimo
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR1516")
+	See(Player1)
+	GlobalGT("C0AuraYoshimoBetrayal","GLOBAL",0)
+	Global("C0AuraYoshimoBetrayalTalk","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	Wait(1)
+	SetGlobal("C0AuraYoshimoBetrayalTalk","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Neb
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraNebEncounter","GLOBAL",1)
+	!See([ENEMY])
+THEN
+  RESPONSE #100
+	StartDialogueNoSet(Player1)
+END
+
+// Elephant Skin
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	PartyHasItem("misc5g")
+	Global("MerchantHide","GLOBAL",0)
+	Global("C0AuraElephantSkin","GLOBAL",0)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraElephantSkin","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Tanner's basement
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraTanner","GLOBAL",0)
+	Global("EnteredTanner","AR0502",0)
+	CombatCounter(0)
+	AreaCheck("AR0502")
+	See(Player1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraTanner","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Dead Mimic
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Dead("jugmim01")
+	AreaCheck("AR1106")
+	Global("C0AuraMimic","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraMimic","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	Dead("jugmim01")
+	!AreaCheck("AR1106")
+	Global("C0AuraMimic","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraMimic","GLOBAL",-1)
+END
+
+// Orcish Cookbook
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Dead("firtrl01")
+	PartyHasItem("book93")
+	Global("C0AuraOrcishCookbook","GLOBAL",0)
+	CombatCounter(0)
+	Delay(4)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraOrcishCookbook","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Umar Hills
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Dead("firtrl01")
+	AreaCheck("AR1100")
+	Global("C0AuraUmarHills","GLOBAL",0)
+	Global("VillageSaved","GLOBAL",1)
+	OR(2)
+	Global("OgronAttack","GLOBAL",0)
+	Global("RangerProtector","GLOBAL",3)
+	NearLocation(Myself,3849,1679,15)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraUmarHills","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Crush Trap
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	AreaCheck("AR1512")
+	Global("C0AuraSeesCrushTrap","GLOBAL",0)
+	CombatCounter(0)
+	OR(2)
+	  See("crtrap1")
+	  See("crtrap2")
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraSeesCrushTrap","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Quest 2
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	OR(5)
+	PartyHasItem("c0aucry1")
+	PartyHasItem("c0aucry2")
+	PartyHasItem("c0aucry3")
+	PartyHasItem("c0aucry4")
+	PartyHasItem("c0aucry5")
+	Global("C0AuraBG2Quest2","GLOBAL",0)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBG2Quest2","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	PartyHasItem("c0amisc1")
+	PartyHasItem("c0amisc2")
+	PartyHasItem("c0amisc3")
+	PartyHasItem("c0amisc4")
+	Global("C0AuraBG2Quest2","GLOBAL",2)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBG2Quest2","GLOBAL",3)
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraBG2Quest2Fire","C0AU01",1)
+	Global("C0AuraBG2Quest2FireFirstTalk","GLOBAL",0)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBG2Quest2FireFirstTalk","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraBG2Quest2Ice","C0AU01",1)
+	Global("C0AuraBG2Quest2IceFirstTalk","GLOBAL",0)
+	CombatCounter(0)
+	Delay(2)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBG2Quest2IceFirstTalk","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+END
+
+// Illithium
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraIllithium","GLOBAL",0)
+	PartyHasItem("misc6s")
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	Wait(2)
+	SetGlobal("C0AuraIllithium","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+	SetInterrupt(TRUE)
+END
+
+// Lavok
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("ToldDemonsHeart","GLOBAL",1)
+	See("LAVOK02")
+	PartyHasItem("c0abook1")
+	Global("C0AuraLavok","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	Wait(2)
+	SetGlobal("C0AuraLavok","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+	SetInterrupt(TRUE)
+END
+
+// Imprisonment
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!See([ENEMY])
+	OR(6)
+	See("Face1")
+	See("Face2")
+	See("Face3")
+	See("Face4")
+	See("Face5")
+	See("Face6")
+	AreaCheck("AR2100")
+	Global("C0AuraImprisonmentDevice","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	Wait(2)
+	SetGlobal("C0AuraImprisonmentDevice","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+	SetInterrupt(TRUE)
+END
+
+// Underdark Blood
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	GlobalGT("chapter","global",%bg2_chapter_5%)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!See([ENEMY])
+	OR(3)
+	PartyHasItem("misca7")
+	PartyHasItem("misca8")
+	PartyHasItem("miscbv")
+	Global("C0AuraUnderdarkBloodStuff","GLOBAL",0)
+	CombatCounter(0)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	Wait(2)
+	SetGlobal("C0AuraUnderdarkBloodStuff","GLOBAL",1)
+	StartDialogueNoSet(Player1)
+	SetInterrupt(TRUE)
+END
+
+// QUEST
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraBG2Quest1","GLOBAL",0)
+	Global("C0AuraBG2Quest1Timer","GLOBAL",0)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("C0AuraBG2Quest1Timer","GLOBAL",THREE_DAYS)
+	  Continue()
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!TimeOfDay([NIGHT])
+	!TimeOfDay([DUSK])
+	Global("C0AuraBG2Quest1","GLOBAL",0)
+	GlobalTimerExpired("C0AuraBG2Quest1Timer","GLOBAL")
+	OR(4)
+	AreaCheck("AR0020")
+	AreaCheck("AR0300")
+	AreaCheck("AR0400")
+	AreaCheck("AR0500")
+  THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest1","GLOBAL",1)
+	CreateCreatureObjectOffset("c0apico",Myself,[100.100])
+	ActionOverride("c0apico",Dialogue("C0Aura")
+	Continue()
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraBG2Quest1","GLOBAL",8)
+	OR(2)
+	TimeOfDay(MORNING)
+	TimeOfDay(DAY)
+	AreaCheck("AR0400")
+  THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest1","GLOBAL",9)
+	CreateCreatureObjectOffset("c0aqman",Player1,[100.100])
+	CreateCreatureObjectOffset("c0aqdad",Player1,[100.100])
+	ActionOverride("c0aqman",StartDialogNoSet(Player1)
+	Continue()
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	AreaCheck("AR1600")
+	Global("C0AuraBG2WasInChapter4","GLOBAL",0)
+  THEN
+	RESPONSE #100
+	  SetGlobal("C0AuraBG2WasInChapter4","GLOBAL",1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	GlobalGT("Chapter","GLOBAL",%bg2_chapter_5%)
+	Global("C0AuraBG2WasInChapter4","GLOBAL",1)
+	AreaCheck("AR2500")
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraBG2Quest3","GLOBAL",0)
+  THEN
+	RESPONSE #100
+	  SetGlobal("C0AuraBG2Quest3","GLOBAL",1)
+	  StartDialogNoSet(Player1)
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	See("C0CARNIF")
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraBG2Quest3","GLOBAL",3)
+  THEN
+	RESPONSE #100
+	  ActionOverride("C0CARNIF",StartDialogNoSet(Player1))
+END
+
+IF
+	InParty(Myself)
+	InMyArea(Player1)
+	!InMyArea([ENEMY])
+	CombatCounter(0)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraVampire","GLOBAL",1)
+  THEN
+	RESPONSE #100
+	  SetInterrupt(FALSE)
+	  SetGlobal("C0AuraVampire","GLOBAL",2)
+	  ApplySpellRES("C0AMAGF2",Myself)
+	  Wait(1)
+	  StartDialogNoSet(Player1)
+	  SetInterrupt(TRUE)
+END

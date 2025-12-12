@@ -1,0 +1,32 @@
+IF
+	TriggerOverride("tran0403",Range(Player1,15))
+	Global("C0AuraBegin","GLOBAL",0)
+  	!StateCheck("C0Aura",STATE_REALLY_DEAD)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	SetGlobal("C0AuraBegin","GLOBAL",1)
+	Wait(1)
+	ClearAllActions()
+	StartCutSceneMode()
+	StartCutScene("c0acut0")
+	SetInterrupt(TRUE)
+END
+
+IF
+	Global("C0AuraBG2Quest3","GLOBAL",4)
+THEN
+  RESPONSE #100
+		SetGlobal("C0AuraBG2Quest3","GLOBAL",5)
+        CreateCreature("C0ALUNA",[275.389],W)
+        CreateCreature("C0AJUNO",[227.334],W)
+        CreateCreature("C0DEDAL",[314.322],S)
+		StartCutSceneMode()
+		ActionOverride("C0AURA",MoveToPoint([491.294]))
+		Wait(1)
+		ActionOverride("C0ALUNA",FaceObject("C0Aura"))
+		ActionOverride("C0AJUNO",FaceObject("C0Aura"))
+		ActionOverride("C0DEDAL",FaceObject("C0Aura"))
+		Wait(2)
+		ActionOverride("MAJAN",StartDialogNoSet(Myself))
+END

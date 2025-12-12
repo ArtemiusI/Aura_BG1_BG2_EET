@@ -1,0 +1,9 @@
+IF
+    InMyArea(Player1)
+    Global("C0KorshQuest","GLOBAL",9)
+    Global("C0KorshQuestSpawnTrip","AR1100",0)
+THEN
+    RESPONSE #100
+        SetGlobal("C0KorshQuestSpawnTrip","AR1100",1)
+        CreateCreature("C0KORSHB",[3500.3050],E)
+END

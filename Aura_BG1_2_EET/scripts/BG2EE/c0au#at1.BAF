@@ -1,0 +1,335 @@
+IF
+	Global("C0ACIRC1","LOCALS",0)
+	HasItemEquiped("C0ACIRC1",LastSummonerOf)
+THEN
+	RESPONSE #100
+		SetGlobal("C0ACIRC1","LOCALS",1)
+		ChangeStat(Myself,ARMORCLASS,-4,ADD)
+		ChangeStat(Myself,RESISTMAGIC,50,ADD)
+		ChangeStat(Myself,RESISTFIRE,50,ADD)
+		ChangeStat(Myself,RESISTCOLD,50,ADD)
+		ChangeStat(Myself,RESISTELECTRICITY,50,ADD)
+		ChangeStat(Myself,RESISTACID,50,ADD)
+		ChangeStat(Myself,MAGICDAMAGERESISTANCE,50,ADD)
+END
+
+IF
+	Global("C0ACIRC1","LOCALS",1)
+	!HasItemEquiped("C0ACIRC1",LastSummonerOf)
+THEN
+	RESPONSE #100
+		SetGlobal("C0ACIRC1","LOCALS",0)
+		ChangeStat(Myself,ARMORCLASS,4,ADD)
+		ChangeStat(Myself,RESISTMAGIC,-50,ADD)
+		ChangeStat(Myself,RESISTFIRE,-50,ADD)
+		ChangeStat(Myself,RESISTCOLD,-50,ADD)
+		ChangeStat(Myself,RESISTELECTRICITY,-50,ADD)
+		ChangeStat(Myself,RESISTACID,-50,ADD)
+		ChangeStat(Myself,MAGICDAMAGERESISTANCE,-50,ADD)
+END
+
+IF
+	ClassLevelGT(LastSummonerOf,ROGUE,9)
+	!ClassLevelGT(LastSummonerOf,ROGUE,14)
+	Global("Upgrade","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("Upgrade","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-2,ADD)
+	ChangeStat(Myself,RESISTSLASHING,10,ADD)
+	ChangeStat(Myself,RESISTCRUSHING,10,ADD)
+	ChangeStat(Myself,RESISTPIERCING,10,ADD)
+	ChangeStat(Myself,RESISTMISSILE,10,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,15,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	ClassLevelGT(LastSummonerOf,ROGUE,14)
+	!ClassLevelGT(LastSummonerOf,ROGUE,19)
+	Global("Upgrade","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("Upgrade","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-4,ADD)
+	ChangeStat(Myself,RESISTSLASHING,10,ADD)
+	ChangeStat(Myself,RESISTCRUSHING,10,ADD)
+	ChangeStat(Myself,RESISTPIERCING,10,ADD)
+	ChangeStat(Myself,RESISTMISSILE,10,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,30,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	ClassLevelGT(LastSummonerOf,ROGUE,19)
+	!ClassLevelGT(LastSummonerOf,ROGUE,24)
+	Global("Upgrade","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("Upgrade","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-6,ADD)
+	ChangeStat(Myself,RESISTSLASHING,10,ADD)
+	ChangeStat(Myself,RESISTCRUSHING,10,ADD)
+	ChangeStat(Myself,RESISTPIERCING,10,ADD)
+	ChangeStat(Myself,RESISTMISSILE,10,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,45,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	ClassLevelGT(LastSummonerOf,ROGUE,24)
+	Global("Upgrade","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("Upgrade","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-8,ADD)
+	ChangeStat(Myself,RESISTSLASHING,10,ADD)
+	ChangeStat(Myself,RESISTCRUSHING,10,ADD)
+	ChangeStat(Myself,RESISTPIERCING,10,ADD)
+	ChangeStat(Myself,RESISTMISSILE,10,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,60,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,114,SETTRAPS)
+	CheckStatLT(LastSummonerOf,130,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-1,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,5,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,129,SETTRAPS)
+	CheckStatLT(LastSummonerOf,145,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-2,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,10,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,144,SETTRAPS)
+	CheckStatLT(LastSummonerOf,160,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-3,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,15,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,159,SETTRAPS)
+	CheckStatLT(LastSummonerOf,175,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-4,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,20,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,174,SETTRAPS)
+	CheckStatLT(LastSummonerOf,190,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-5,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,25,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,189,SETTRAPS)
+	CheckStatLT(LastSummonerOf,205,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-6,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,30,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,204,SETTRAPS)
+	CheckStatLT(LastSummonerOf,220,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-7,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,35,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,235,SETTRAPS)
+	CheckStatLT(LastSummonerOf,250,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-8,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,40,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	CheckStatGT(LastSummonerOf,249,SETTRAPS)
+	Global("SetTraps","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("SetTraps","LOCALS",1)
+	ChangeStat(Myself,ARMORCLASS,-9,ADD)
+	ChangeStat(Myself,MAXHITPOINTS,45,ADD)
+	ApplySpell(Myself,RESTORE_FULL_HEALTH)
+	Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatLT(LastSummonerOf,150,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac4",LastSummonerOf)
+	HasItemEquiped("c0abrac5",LastSummonerOf)
+	HasItemEquiped("c0abrac6",LastSummonerOf)
+	HasItemEquiped("c0abrac7",LastSummonerOf)
+	HasItemEquiped("c0abrac8",LastSummonerOf)
+	HasItemEquiped("c0abrac9",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT2",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatGT(LastSummonerOf,149,SETTRAPS)
+	CheckStatLT(LastSummonerOf,200,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac4",LastSummonerOf)
+	HasItemEquiped("c0abrac5",LastSummonerOf)
+	HasItemEquiped("c0abrac6",LastSummonerOf)
+	HasItemEquiped("c0abrac7",LastSummonerOf)
+	HasItemEquiped("c0abrac8",LastSummonerOf)
+	HasItemEquiped("c0abrac9",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT3",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatGT(LastSummonerOf,199,SETTRAPS)
+	CheckStatLT(LastSummonerOf,250,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac4",LastSummonerOf)
+	HasItemEquiped("c0abrac5",LastSummonerOf)
+	HasItemEquiped("c0abrac6",LastSummonerOf)
+	HasItemEquiped("c0abrac7",LastSummonerOf)
+	HasItemEquiped("c0abrac8",LastSummonerOf)
+	HasItemEquiped("c0abrac9",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT4",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatLT(LastSummonerOf,150,SETTRAPS)
+	OR(3)
+	HasItemEquiped("c0abrac4",LastSummonerOf)
+	HasItemEquiped("c0abrac5",LastSummonerOf)
+	HasItemEquiped("c0abrac6",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT5",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatGT(LastSummonerOf,149,SETTRAPS)
+	CheckStatLT(LastSummonerOf,200,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac4",LastSummonerOf)
+	HasItemEquiped("c0abrac5",LastSummonerOf)
+	HasItemEquiped("c0abrac6",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT6",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatGT(LastSummonerOf,199,SETTRAPS)
+	CheckStatLT(LastSummonerOf,250,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac4",LastSummonerOf)
+	HasItemEquiped("c0abrac5",LastSummonerOf)
+	HasItemEquiped("c0abrac6",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT7",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatLT(LastSummonerOf,150,SETTRAPS)
+	OR(3)
+	HasItemEquiped("c0abrac7",LastSummonerOf)
+	HasItemEquiped("c0abrac8",LastSummonerOf)
+	HasItemEquiped("c0abrac9",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT8",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatGT(LastSummonerOf,149,SETTRAPS)
+	CheckStatLT(LastSummonerOf,200,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac7",LastSummonerOf)
+	HasItemEquiped("c0abrac8",LastSummonerOf)
+	HasItemEquiped("c0abrac9",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT9",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatGT(LastSummonerOf,199,SETTRAPS)
+	CheckStatLT(LastSummonerOf,250,SETTRAPS)
+	!OR(6)
+	HasItemEquiped("c0abrac7",LastSummonerOf)
+	HasItemEquiped("c0abrac8",LastSummonerOf)
+	HasItemEquiped("c0abrac9",LastSummonerOf)
+THEN
+	RESPONSE #100
+		ForceSpellRES("C0AU#AT0",LastSeenBy(Myself))
+END

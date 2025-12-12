@@ -1,0 +1,24 @@
+IF
+	Global("C0AuraImportMagatama","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraImportMagatama","GLOBAL",2)
+		SetGlobal("C0AuraKnowsBG1","GLOBAL",1)
+		ActionOverride("Picture 1",CreateItem("c0amaga2",0,0,0))
+END
+
+IF
+	Global("C0AuraImportItem5","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraImportItem5","GLOBAL",2)
+		ActionOverride("Chest 5",CreateItem("C0AUIM05",0,0,0))
+END
+
+IF
+	Global("C0AuraImportItem7","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraImportItem7","GLOBAL",2)
+		ActionOverride("Shelf 2",CreateItem("C0AUIM07",0,0,0))
+END

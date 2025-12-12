@@ -1,0 +1,49 @@
+IF
+    InMyArea(Player1)
+    Global("C0AuraBG2Quest1","GLOBAL",24)
+    Global("C0AuraBG2Quest1SpawnGnomes","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("C0AuraBG2Quest1SpawnGnomes","GLOBAL",1)
+        CreateCreature("C0AQINT2",[541.3602],SE)
+        CreateCreature("C0AQINT1",[443.3594],SE)
+        CreateCreature("C0AQINT3",[545.3524],SE)
+        CreateCreature("C0ATHF2",[647.3655],NW)
+        CreateCreature("C0ATHF1",[615.3741],NW)
+        CreateCreature("C0ATHF3",[687.3707],NW)
+        CreateCreature("C0ATHF4",[744.3651],NW)
+END
+
+IF
+    OR(6)
+    NearLocation(Player1,607,3607,20)
+    NearLocation(Player2,607,3607,20)
+    NearLocation(Player3,607,3607,20)
+    NearLocation(Player4,607,3607,20)
+    NearLocation(Player5,607,3607,20)
+    NearLocation(Player6,607,3607,20)
+    Global("C0AuraBG2Quest1","GLOBAL",24)
+    Global("C0AuraBG2Quest1SpawnGnomes","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("C0AuraBG2Quest1SpawnGnomes","GLOBAL",2)
+        ClearAllActions()
+        StartCutSceneMode()
+        FadeToColor([30.0],0)
+        Wait(2)
+        ActionOverride(Player1,JumpToPoint([839.3487]))
+        ActionOverride(Player1,Face(SW))
+        ActionOverride(Player2,JumpToPoint([920.3511]))
+        ActionOverride(Player2,Face(SW))
+        ActionOverride(Player3,JumpToPoint([840.3437]))
+        ActionOverride(Player3,Face(SW))
+        ActionOverride(Player4,JumpToPoint([1002.3522]))
+        ActionOverride(Player4,Face(SW))
+        ActionOverride(Player5,JumpToPoint([842.3378]))
+        ActionOverride(Player5,Face(SW))
+        ActionOverride(Player6,JumpToPoint([923.3450]))
+        ActionOverride(Player6,Face(SW))
+        FadeFromColor([30.0],0)
+        Wait(3)
+        ActionOverride("C0AQINT2",StartDialogNoSet(Player1))
+END

@@ -1,0 +1,113 @@
+IF
+    GlobalGT("C0AuraBG2Quest1","GLOBAL",14)
+    InMyArea("C0AQDAD")
+THEN
+    RESPONSE #100
+    ActionOverride("C0AQDAD",DestroySelf())
+END
+
+IF
+    Global("C0AuraBG2Quest1","GLOBAL",15)
+    Global("MurdersSolved","GLOBAL",1)
+    !Global("ToldInspector","GLOBAL",1)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1","GLOBAL",16)
+    CreateCreature("C0AQINSP",[622.1441],W)
+END
+
+IF
+    Global("C0AuraBG2Quest1","GLOBAL",15)
+    OR(2)
+    !Global("MurdersSolved","GLOBAL",1)
+    Global("ToldInspector","GLOBAL",1)
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1","GLOBAL",16)
+    CreateCreature("C0AQINS2",[622.1441],W)
+END
+
+IF
+    InMyArea(Player1)
+    Global("C0AuraBG2Quest1","GLOBAL",23)
+    Global("C0AuraBG2Quest1RoyTalk","GLOBAL",1)
+    !InMyArea("C0AQTHF")
+THEN
+    RESPONSE #100
+    CreateCreature("C0AQTHF",[441.333],NNW)
+    Wait(1)
+    ActionOverride("C0AQTHF",StartDialogNoSet(Player1))
+END
+
+IF
+    InMyArea(Player1)
+    Global("C0AuraBG2Quest1","GLOBAL",23)
+    !Global("C0AuraBG2Quest1RoyTalk","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("C0AuraBG2Quest1","GLOBAL",24)
+        CreateCreature("C0AREES2",[413.708],N)
+        Wait(1)
+        GiveItemCreate("C0AQNOT","C0AREES",1,0,0)
+        DisplayStringPointLog([412.155],~The sharp whistling sound of wind startles you as a crossbow bolt flies by your ear, landing in the nearby wall. As you turn to look at it, you see a note fall to the ground.~)
+        AddJournalEntry(%Quest1_Entry_5%,QUEST) 
+        ActionOverride("C0AREES",ForceSpellPointRES("C0AQEF1",[412.155]))
+        PlaySound("TRA_10")
+        Wait(1)
+        PlaySound("HIT_04B1")
+        ActionOverride("C0AREES",DropItem("C0AQNOT",[412.180]))
+        ActionOverride("C0AREES",DestroySelf())
+END
+
+IF
+    Global("C0AuraBG2Quest1","GLOBAL",34)
+    InMyArea(Player1)
+    !InMyArea("C0AQMAN")
+THEN
+    RESPONSE #100
+    CreateCreature("C0AQMAN",[277.273],E)
+    Wait(1)
+    ActionOverride("C0AQMAN",StartDialogNoSet(Player1))
+END
+
+IF
+    InMyArea(Player1)
+    InPartyAllowDead("C0Aura")
+    Global("C0AuraBG2Quest1","GLOBAL",40)
+THEN
+    RESPONSE #100
+    ActionOverride("C0AQMAN",DestroySelf())
+    Wait(1)
+    Deactivate("C0AASCS")
+    ClearAllActions()
+    StartCutSceneMode()
+    StartCutScene("C0ACUT13")
+END
+
+IF
+    InMyArea(Player1)
+    !InPartyAllowDead("C0Aura")
+    Global("C0AuraBG2Quest1","GLOBAL",40)
+THEN
+    RESPONSE #100
+    ActionOverride("C0AQMAN",DestroySelf())
+    Wait(1)
+    Deactivate("C0AASCS")
+    ClearAllActions()
+  	StartCutSceneMode()
+	StartCutScene("c0acut17")
+END
+
+IF
+    InMyArea(Player1)
+    Global("C0AuraBG2Quest1","GLOBAL",45)
+THEN
+    RESPONSE #100
+        SetGlobal("C0AuraBG2Quest1","GLOBAL",46)
+        CreateCreature("C0AMAGN",[395.242],SW)  // Caridius C. Magnussen
+        CreateCreature("C0AQINT2",[279.301],NE)  // Lt. Otho Aventinus
+        CreateCreature("C0AQINT1",[232.284],NE)  // Interitus Agent
+        CreateCreature("C0AQINT3",[278.341],NE)  // Interitus Agent
+        Wait(1)
+        ActionOverride("C0AQINT2",StartDialogueNoSet(Player1))
+END

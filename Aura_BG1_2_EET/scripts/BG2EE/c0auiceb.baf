@@ -1,0 +1,98 @@
+
+
+IF
+  OnCreation()
+  Allegiance(LastSummonerOf(Myself),PC)
+  !InParty(LastSummonerOf(Myself))
+  OR(2)
+  Class(LastSummonerOf(Myself),FIGHTER_ALL)
+  Class(LastSummonerOf(Myself),RANGER_ALL)
+THEN
+  RESPONSE #100
+    ApplySpellRES("C0AUICEC",LastSummonerOf(Myself))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("OHBFIG01",CLASS))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("C0AUICEC",OVERRIDE))
+    ActionOverride(LastSummonerOf(Myself),Enemy())
+    Continue()
+  END
+
+IF
+  OnCreation()
+  Allegiance(LastSummonerOf(Myself),PC)
+  !InParty(LastSummonerOf(Myself))
+  OR(2)
+  Class(LastSummonerOf(Myself),CLERIC_ALL)
+  Class(LastSummonerOf(Myself),DRUID_ALL)
+THEN
+  RESPONSE #100
+    ApplySpellRES("C0AUICEC",LastSummonerOf(Myself))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("OHBPRI01",CLASS))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("C0AUICEC",OVERRIDE))
+    ActionOverride(LastSummonerOf(Myself),Enemy())
+    Continue()
+  END
+
+IF
+  OnCreation()
+  Allegiance(LastSummonerOf(Myself),PC)
+  !InParty(LastSummonerOf(Myself))
+  Class(LastSummonerOf(Myself),THIEF_ALL)
+THEN
+  RESPONSE #100
+    ApplySpellRES("C0AUICEC",LastSummonerOf(Myself))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("OHBTHIEF",CLASS))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("C0AUICEC",OVERRIDE))
+    ActionOverride(LastSummonerOf(Myself),Enemy())
+    Continue()
+  END
+
+IF
+  OnCreation()
+  Allegiance(LastSummonerOf(Myself),PC)
+  !InParty(LastSummonerOf(Myself))
+  Class(LastSummonerOf(Myself),PALADIN)
+THEN
+  RESPONSE #100
+    ApplySpellRES("C0AUICEC",LastSummonerOf(Myself))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("OHBPAL01",CLASS))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("C0AUICEC",OVERRIDE))
+    ActionOverride(LastSummonerOf(Myself),Enemy())
+    Continue()
+  END
+
+IF
+  OnCreation()
+  Allegiance(LastSummonerOf(Myself),PC)
+  !InParty(LastSummonerOf(Myself))
+  Class(LastSummonerOf(Myself),MONK)
+THEN
+  RESPONSE #100
+    ApplySpellRES("C0AUICEC",LastSummonerOf(Myself))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("OHBMONK",CLASS))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("C0AUICEC",OVERRIDE))
+    ActionOverride(LastSummonerOf(Myself),Enemy())
+    Continue()
+  END
+  
+IF
+  OnCreation()
+  Allegiance(LastSummonerOf(Myself),PC)
+  !InParty(LastSummonerOf(Myself))
+  OR(2)
+  Class(LastSummonerOf(Myself),MAGE_ALL)
+  Class(LastSummonerOf(Myself),BARD_ALL)
+THEN
+  RESPONSE #100
+    ApplySpellRES("C0AUICEC",LastSummonerOf(Myself))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("OHBMAG01",CLASS))
+    ActionOverride(LastSummonerOf(Myself),ChangeAIScript("C0AUICEC",OVERRIDE))
+    ActionOverride(LastSummonerOf(Myself),Enemy())
+    Continue()
+  END
+
+IF
+  ActionListEmpty()
+THEN
+  RESPONSE #100
+    DestroySelf()
+  END

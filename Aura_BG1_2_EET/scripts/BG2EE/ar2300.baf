@@ -1,0 +1,12 @@
+IF
+  InMyArea("C0AURA")
+  Global("C0AuraSahuaginFears","GLOBAL",1)
+THEN
+  RESPONSE #100
+    ActionOverride("C0AURA",JumpToPoint([413.852]))
+    ActionOverride("C0AURA",Face(W))
+    ActionOverride("C0AUIN3",JumpToPoint([479.943]))
+    ActionOverride("C0AUIN3",Face(W))
+    SetGlobal("C0AuraSahuaginFears","GLOBAL",2)
+    Continue()
+END

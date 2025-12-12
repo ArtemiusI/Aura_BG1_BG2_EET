@@ -1,0 +1,10 @@
+IF
+	Global("C0AuraImportItem1","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C0AuraImportItem1","GLOBAL",2)
+		TransformItem("sw2h03","c0auim01")
+		EquipItem("c0auim01")
+		EquipMostDamagingMelee()
+		Continue()
+END

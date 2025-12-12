@@ -1,0 +1,160 @@
+// Lovetalk 6
+
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+	Global("C0AuraBG2RomanceTalk","GLOBAL",11)
+    TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+    SetGlobal("C0AuraBG2RomanceTalk","GLOBAL",12)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+	PlaySong(%C0AUROM%)
+	Interact(Player1)
+END
+
+// Lovetalk 12
+
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraRomanceActive","GLOBAL",1)
+  RealGlobalTimerExpired("C0AuraBG2RomanceTimer","GLOBAL")
+	Global("C0AuraBG2RomanceTalk","GLOBAL",23)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
+    SetGlobal("C0AuraBG2RomanceTalk","GLOBAL",24)
+    RestParty()
+END
+
+
+// Underdark Lovetalk
+
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C0AuraRomanceActive","GLOBAL",2)
+	Global("C0AuraBG2RomanceDrowTalk","GLOBAL",0)
+    AreaCheck("AR2202")
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2RomanceDrowTalk","GLOBAL",1)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+	PlaySong(%C0AUROM%)
+	Interact(Player1)
+END
+
+// Aerie banter - at rest
+
+IF
+    InParty(Myself)
+    InParty("Aerie")  // Aerie
+    See("Aerie")  // Aerie
+    !StateCheck("Aerie",CD_STATE_NOTVALID)  // Aerie
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    Global("C0AuraAerieRestTalk1","GLOBAL",0)
+    GlobalGT("C0AuraAerieFriendship","GLOBAL",3)
+    RealGlobalTimerExpired("C0AuraAerieRestTalkTimer","GLOBAL")
+    AreaType(OUTDOOR)
+    TimeOfDay(NIGHT)
+THEN
+    RESPONSE #100
+        SetGlobal("C0AuraAerieRestTalk1","GLOBAL",1)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+        Interact("Aerie")  // Aerie
+END
+
+// Aerie friendship banter - at rest
+
+IF
+    InParty(Myself)
+    InParty("Aerie")
+    See("Aerie")
+    !StateCheck("Aerie",CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    Global("C0AuraAerieFriendship","GLOBAL",8)
+	  GlobalTimerExpired("C0AuraAerieFriendshipRestTimer","GLOBAL")
+	  AreaType(OUTDOOR)
+	  TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+        SetGlobal("C0AuraAerieFriendship","GLOBAL",9)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+        PlaySong(34)
+        RealSetGlobalTimer("C0AuraAerieFriendshipTimer","GLOBAL",3600)
+        ActionOverride("AERIE",Interact("C0Aura"))
+END
+
+// Minsc banter - at rest
+
+IF
+    InParty(Myself)
+    InParty("Minsc")
+    See("Minsc")
+    !StateCheck("Minsc",CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+	RealGlobalTimerExpired("C0AuraMinscRestTalkTimer","GLOBAL")
+  Global("C0AuraMinscRestTalk1","GLOBAL",0)
+	AreaType("OUTDOOR")
+	TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraMinscRestTalk1","GLOBAL",1)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+        ActionOverride("MINSC",Interact("C0Aura"))
+END
+
+// Wilson banter - at rest
+
+IF
+    InParty(Myself)
+    InParty("Wilson")
+    See("Wilson")
+    !StateCheck("Wilson",CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    Global("C0AuraWilson1","GLOBAL",0)
+	GlobalTimerExpired("C0AuraWilsonRestTalkTimer","GLOBAL")
+	AreaType("OUTDOOR")
+	TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraWilson1","GLOBAL",1)
+        ClearAllActions()
+        StartCutSceneMode()
+        Wait(2)
+        FadeToColor([30.0],0)
+        Wait(3)
+        ApplySpellRES("C0CCBLKS",Myself)
+    ActionOverride("WILSON",Interact("C0AURA"))
+END

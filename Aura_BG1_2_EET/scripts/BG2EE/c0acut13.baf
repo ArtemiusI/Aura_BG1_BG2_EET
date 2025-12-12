@@ -1,0 +1,47 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([30.0],0)
+		Wait(3)
+        LeaveAreaLUAPanic("C0AUR5","",[0.0],S)
+        LeaveAreaLUA("C0AUR5","",[0.0],S)
+        ActionOverride(Player2,LeaveAreaLUA("C0AUR5","",[0.0],S))
+        ActionOverride(Player3,LeaveAreaLUA("C0AUR5","",[0.0],S))
+        ActionOverride(Player4,LeaveAreaLUA("C0AUR5","",[0.0],S))
+        ActionOverride(Player5,LeaveAreaLUA("C0AUR5","",[0.0],S))
+        ActionOverride(Player6,LeaveAreaLUA("C0AUR5","",[0.0],S))
+        MultiPlayerSync()
+        MoveViewPoint([649.418],INSTANT)
+        CreateCreature("OBSERVE",[894.195],S)  // No such index
+        SmallWait(1)
+        CreateCreature("OBSERVE",[663.417],S)  // No such index
+        SmallWait(1)
+        CreateCreature("OBSERVE",[400.577],S)  // No such index
+        SmallWait(1)
+        CreateCreature("C0AASCL",[47.803],S)  // No such index
+		ActionOverride("C0AASCL",DestroyAllEquipment())
+        ApplySpellRES("OHNOPRTY",Player1)  // No such index
+        SmallWait(5)
+        Wait(2)
+        FadeFromColor([30.0],0)
+        ActionOverride("C0AASCL",MoveToPoint([154.748]))
+		ActionOverride("C0AASCL",SmallWait(10))
+        ActionOverride("C0AASCL",MoveToPoint([237.692]))
+		ActionOverride("C0AASCL",SmallWait(10))
+        ActionOverride("C0AASCL",MoveToPoint([303.644]))
+		ActionOverride("C0AASCL",SmallWait(10))
+        ActionOverride("C0AASCL",MoveToPoint([374.597]))
+		ActionOverride("C0AASCL",SmallWait(10))
+        ActionOverride("C0AASCL",MoveToPoint([446.541]))
+		ActionOverride("C0AASCL",SmallWait(10))
+        ActionOverride("C0AASCL",MoveToPoint([494.504]))
+		ActionOverride("C0AASCL",SmallWait(10))
+        ActionOverride("C0AASCL",MoveToPoint([603.409]))
+		Wait(4)
+		CreateCreatureEffect("C0AEX1","SPSPMAZE",[674.358],SW)
+		Wait(6)
+		ActionOverride("C0AEX1",StartDialogNoSet("C0AASCL"))
+END
+

@@ -1,0 +1,60 @@
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+    RandomNum(12,1)
+THEN
+    RESPONSE #100
+      ReallyForceSpellRES("C0AFIRE1",Player1)
+END
+
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+    RandomNum(12,2)
+THEN
+    RESPONSE #100
+      ReallyForceSpellRES("C0AFIRE1",Player2)
+END
+
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+    RandomNum(12,3)
+THEN
+    RESPONSE #100
+      ReallyForceSpellRES("C0AFIRE1",Player3)
+END
+
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+    RandomNum(12,4)
+THEN
+    RESPONSE #100
+      ReallyForceSpellRES("C0AFIRE1",Player4)
+END
+
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+    RandomNum(12,5)
+THEN
+    RESPONSE #100
+      ReallyForceSpellRES("C0AFIRE1",Player5)
+END
+
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+    RandomNum(12,6)
+THEN
+    RESPONSE #100
+      ReallyForceSpellRES("C0AFIRE1",Player6)
+END
+
+IF
+  Dead("C0AFIR05")
+THEN
+  RESPONSE #100
+    DestroySelf()
+END

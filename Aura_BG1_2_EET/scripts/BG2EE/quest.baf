@@ -1,0 +1,8 @@
+IF
+Global("C0AuraQuest1","GLOBAL",1)
+THEN
+RESPONSE #100
+AddJournalEntry(~The Package
+I've gained the company of Aura, a Lantanese gnome inventor and artificer. She's agreed to aid me in my mission, but has also requested that we visit the Adventurer's Mart to pick up an important package containing components for an invention she's working on. We should stop by the shop when we have a chance.~,QUEST)
+SetGlobal("C0AuraQuest1","GLOBAL",2)
+END

@@ -1,0 +1,32 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        FadeToColor([20.0],0)
+        Wait(2)
+        LeaveAreaLUAPanic("C0AU04","",[765.730],NW)
+        LeaveAreaLUA("C0AU04","",[765.730],NW)
+        ActionOverride(Player2,LeaveAreaLUA("C0AU04","",[787.552],SW))
+        ActionOverride(Player3,LeaveAreaLUA("C0AU04","",[858.568],SW))
+        ActionOverride(Player4,LeaveAreaLUA("C0AU04","",[922.606],SW))
+        ActionOverride(Player5,LeaveAreaLUA("C0AU04","",[882.529],SW))
+        ActionOverride(Player6,LeaveAreaLUA("C0AU04","",[939.523],SW))
+        MultiPlayerSync()
+        MoveViewPoint([705.643],INSTANT)
+        Explore()
+        ActionOverride("C0ALUNA",DestroySelf())
+        ApplySpellRES("OHREPRTY",Player1)  // No such index
+        CreateCreature("C0AJUNO",[657.652],SE)
+        CreateCreature("C0ALUNA",[624.700],SE)
+        CreateCreature("C0CARNIF",[718.609],SE)
+        MoveGlobal("C0AU04","C0AURA",[741.766])
+        SmallWait(1)
+        ActionOverride("C0AURA",Face(NW))
+        Wait(1)
+        FadeFromColor([20.0],0)
+        Wait(2)
+        ActionOverride("C0AJuno",StartDialogNoSet(Player1))
+END
+

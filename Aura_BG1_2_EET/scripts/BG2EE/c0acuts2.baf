@@ -1,0 +1,21 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        CreateCreature("C0DEDAL",[4270.2970],S)
+        Wait(1)
+        PlaySound("C0ASFX4") // humming
+        ActionOverride("C0AQINT1",Face(S))
+        ActionOverride("C0AQINT3",Face(S))
+        ActionOverride("C0DEDAL",MoveToPoint([4416.2342]))
+        ActionOverride("C0DEDAL",SmallWait(1))
+        ActionOverride("C0DEDAL",Face(N))
+        Wait(8)
+        MoveViewObject("C0DEDAL",BD_NORMAL)
+        ActionOverride("C0AQINT2",Face(S))
+        ActionOverride("C0AQINT2",Wait(3))
+        ActionOverride("C0AQINT2",StartDialogNoSet(Myself))
+END
+

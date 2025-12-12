@@ -1,0 +1,41 @@
+IF
+    Global("C0AuraBG2Quest1","GLOBAL",29)
+    InParty("C0Aura")
+    Dead("C0AQMON1")
+    Dead("C0AQMON2")
+    CombatCounter(0)
+THEN
+    RESPONSE #100
+    StartCutSceneMode()
+    ActionOverride("C0Aura",Wait(2))
+    ActionOverride("C0Aura",MoveToObjectOffset("C0AQMON2",[10.-10]))
+    ActionOverride("C0Aura",Wait(2))
+    ActionOverride("C0Aura",StartDialogNoSet(Player1))
+END
+
+IF
+    Global("C0AuraBG2Quest1","GLOBAL",30)
+    OR(2)
+    !InParty("C0Aura")
+    Dead("C0Aura")
+    Dead("C0AQMON1")
+    Dead("C0AQMON2")
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1","GLOBAL",32)
+	TriggerActivation("Exit",TRUE)
+END
+
+IF
+    Global("C0AuraBG2Quest1","GLOBAL",30)
+    OR(2)
+    !InParty("C0Aura")
+    Dead("C0Aura")
+    Dead("C0AQMON1")
+    Dead("C0AQMON2")
+THEN
+    RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1","GLOBAL",32)
+	TriggerActivation("Exit",TRUE)
+END
+

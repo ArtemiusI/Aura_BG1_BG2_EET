@@ -1,0 +1,32 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("C0AUKARI")
+        Wait(2)
+        MoveToPoint([368.588])
+        Wait(2)
+        SetSequence(SEQ_CAST)
+        CreateVisualEffectObject("SPPORTAL",Myself)
+        Wait(3)
+        DisplayStringHead(Myself,~...~)
+        Wait(2)
+        SetSequence(SEQ_CAST)
+        Wait(1)
+        SetSequence(SEQ_CAST)
+        Wait(2)
+        ForceSpellPointRES("SPWI304",[618.808])
+        SmallWait(5)
+        DisplayStringHead(Myself,~VITAAN! If I find out you have broken the anchoring annulus again by sitting on it, I'll—!~)
+        Wait(2)
+        CreateVisualEffectObject("SPPORTAL",Myself)
+        DisplayStringHead(Myself,~Bah... finally.~)
+        Wait(2)
+        FaceObject(Player1)
+        DisplayStringPointLog([368.588],~The genasi wizardess awkwardly waves at you with a grimace before she vanishes.~)
+        Wait(1)
+        CreateVisualEffectObject("ICFIRSDI",Myself)
+        EndCutSceneMode()
+        DestroySelf()
+END
+

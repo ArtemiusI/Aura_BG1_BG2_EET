@@ -1,0 +1,2105 @@
+// ITEMS
+
+COPY_EXISTING ~c0audye.itm~ ~override~
+SAY NAME1 ~SeLandra's Permanent Leather Dye and Remover<TM>~
+SAY NAME2 ~SeLandra's Permanent Leather Dye and Remover<TM>~
+SAY DESC ~This bottle of pink-colored leather dye is a Lantanese brand, produced by SeLandra Tanners and Dyers.
+
+STATISTICS:
+
+Special: Use in Quick Slot to permanently dye your leathers pink. Use dye remover to reverse the effect.
+
+Weight: 1~
+
+COPY_EXISTING ~c0aule01.itm~ ~override~
+SAY NAME1 ~Cherry-tinted Leather Armor~
+SAY NAME2 ~Cherry-tinted Leather Armor~
+SAY DESC ~This basic armor is made of thick wax or water-hardened leather. It is sturdy protection, not supple like boots or a cloak. Soft garment leathers like that would offer no more protection than common clothing. Magical enchantments have improved the protective abilities of this particular suit.
+
+Aura's custom-made leather armor is dyed a bright pinkish red colour that is, according to Aura, reminiscent of Kara-Turan cherry blossoms, designed to repel stains and unpleasant odors.
+
+STATISTICS:
+
+Equipped abilities:
+– Save vs. Breath Weapons: +3
+
+Armor Class: 7 (9 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+
+COPY_EXISTING ~c0aule02.itm~ ~override~
+SAY NAME1 ~Cherry-tinted Leather Armor +3~
+SAY NAME2 ~Cherry-tinted Leather Armor +3~
+SAY DESC ~This basic armor is made of thick wax or water-hardened leather. It is sturdy protection, not supple like boots or a cloak. Soft garment leathers like that would offer no more protection than common clothing. Magical enchantments have improved the protective abilities of this particular suit.
+
+Aura's custom-made leather armor is dyed a bright pinkish red colour that is, according to Aura, reminiscent of Kara-Turan cherry blossoms, designed to repel stains and unpleasant odors, as well as protect from the hazards of her experiments, such as extreme heat or cold, electrical shocks, and chemical burns.
+
+STATISTICS:
+
+Equipped abilities:
+– Save vs. Breath Weapons: +3
+– Elemental Resistance: +20%
+
+Armor Class: 5 (7 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+
+COPY_EXISTING ~c0abadge.itm~ ~override~
+SAY NAME1 ~Glimmershine Family Insignia~
+SAY NAME2 ~Glimmershine Family Insignia~
+SAY DESC ~This brass insignia is small enough to fit inside of your palm. Engraved upon it is the image of a vaguely sunflower-shaped emblem and letters of a strange language you can't understand. Along the edges are carved the words "Aurelia M. Glimmershine".~
+	
+COPY_EXISTING ~c0amaga1.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 180
+	  target = 1
+	  timing = 2
+	  parameter1 = RESOLVE_STR_REF (~Aura refuses to equip this weapon.~)
+	STR_VAR
+	  resource = c0ausw01
+END
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 180
+	  target = 1
+	  timing = 2
+	  parameter1 = RESOLVE_STR_REF (~Aura shakes her head. "Eugh... no thanks, <CHARNAME>. I don't eat meat.~)
+	STR_VAR
+	  resource = ISHF001
+END
+      LPF ALTER_EFFECT
+      INT_VAR
+        match_opcode      = 142   // Display portrait icon
+        match_parameter1  = 999    // Called Shot icon
+        parameter2        = c0aicon8
+      END
+SAY NAME1 ~Amulet~
+SAY NAME2 ~Aura's Magatama~
+SAY DESC ~This mysterious, curved stone is called a 'magatama'. Though you have never seen anything like it before, it is apparently a fairly common decorative design in its place of origin, Kara-Tur. These jewels are sometimes blessed by priestesses of the Way and carried as protective talismans against chaotic and malevolent spirits.
+
+Aura's magatama is carved from a piece of green jade and was enchanted by the Kozakuran priestess Reika Amakagami, her mentor, and as such carries great sentimental value to her, so much that she is unwilling to ever remove it.
+
+STATISTICS:
+
+Equipped abilities:
+– Saving Throws: +2
+– Tamanoya: The wearer is protected by Death Ward, Protection from Chaos and Protection from Evil
+– Yasakani: If the wearer would suffer fatal damage, she instead survives with one hit point and is healed for 10% of her maximum hit points. This blessing is only effective once per eight hours, or after being raised.
+
+Weight: 0~
+OUTER_SET strref = RESOLVE_STR_REF (~Aura bats your hand away with the hint of a frown on her face. "Hey, hands off!"~ [GAM_47])
+APPEND item_use.2da ~c0amaga1 Aura %strref% 3~
+
+COPY_EXISTING ~c0amaga.spl~ ~override~
+COPY_EXISTING ~c0amaga2.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = c0aicon7 END
+COPY_EXISTING ~c0amaga3.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR
+      match_opcode = 139 match_special = 1 parameter1 = RESOLVE_STR_REF (~Protected from Fatal Damage~) END
+  LPF ALTER_EFFECT INT_VAR
+      match_opcode = 139 match_special = 2 parameter1 = RESOLVE_STR_REF (~Healed~) END
+
+COPY_EXISTING ~c0amaga2.itm~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+        match_opcode      = 142   // Display portrait icon
+        match_parameter1  = 0    // Called Shot icon
+        parameter2        = c0aicon8
+      END
+LPF ALTER_EFFECT INT_VAR match_opcode = 319 special = RESOLVE_STR_REF (~<CHARNAME>~) END
+SAY NAME1 ~Amulet~
+SAY NAME2 ~<CHARNAME>'s Magatama~
+SAY DESC ~This mysterious, curved stone is called a 'magatama'. Though you have never seen anything like it before, it is apparently a fairly common decorative design in its place of origin, Kara-Tur. These jewels are sometimes blessed by priestesses of the Way and carried as protective talismans against chaotic and malevolent spirits.
+
+This magatama was by Aura created as a gift to <CHARNAME> using a small piece of white jade. While its material value is low, there is a sort of simple beauty to its design.
+
+STATISTICS:
+
+Equipped abilities:
+– Saving Throws: +1
+– Tamanoya: The wearer is protected by Death Ward, Protection from Chaos and Protection from Evil
+
+Weight: 0~
+
+APPEND ~ITEMSPEC.2da~ ~C0AUIDEN  1~
+
+COPY_EXISTING ~c0asaku.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+        check_globals     = 0
+        check_headers     = 1
+        match_opcode      = 142   // Display portrait icon
+        match_parameter1  = 1    // Called Shot icon
+        parameter2        = c0aicon4
+      END
+SAY NAME1 ~Amatsugami~
+SAY NAME2 ~Amatsugami~
+
+COPY_EXISTING ~c0auide2.spl~ ~override~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%c0aarea1%~
+END
+COPY_EXISTING ~c0auiden.spl~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+        check_globals     = 0
+        check_headers     = 1
+        match_opcode      = 142   // Display portrait icon
+        match_parameter2  = 82    // Called Shot icon
+        parameter2        = c0aicon2
+      END
+SAY NAME1 ~Reveal Magic~
+COPY_EXISTING ~c0auiden.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Aura's Multipurpose Protective Goggles~
+SAY NAME2 ~Aura's Multipurpose Protective Goggles~
+SAY DESC ~Eyewear of this sort are mass-produced in Lantanese workshops, with specific designs made for archaeologists, botanists, alchemists and those of various other professions. Aura's particular pair has been customized, combining the functionalities of several different brands to assist her in her multidisciplinary line of work.
+
+STATISTICS:
+
+Charge abilities (three times per day):
+– Identify
+– Reveal Magic: Reveal all dispellable enchantments within 50' and gain +2 to attack rolls vs. arcane casters (bards, mages, sorcerers) for one turn
+
+Equipped abilities:
+– Find Traps: +20%
+– Detect Illusions: +20%
+– Protection from gaze attacks
+– Immunity to blindness~
+
+COPY_EXISTING ~c0muffy.itm~ ~override~
+SAY NAME1 ~Muffy the Clockwork Squirrel~
+SAY NAME2 ~Muffy the Clockwork Squirrel~
+SAY DESC ~Muffy is a strange machine made of metal and clockwork that serves as Aura's pet. It has a strange degree of sentience, understanding human speech and exhibiting behaviour just like a real, living squirrel, to the point where its state as an animated construct is debatable. Aura claims to have crafted Muffy herself, though how she gave it life is a secret she keeps to herself.
+
+Regardless of how it is able to act as though it were alive, Muffy is doubtlessly a useful creation – the squirrel's stomach is a hollow compartment capable of storing small objects such as gems or keys. Though the act of opening up Muffy seems rather morbid, the squirrel seems rather happy to have its 'belly' filled with valuables.
+
+STATISTICS:
+
+Capacity: 40 items
+Weight: 0~
+OUTER_SET strref = RESOLVE_STR_REF (~Muffy scurries away in fear of you, its contents clattering as it runs. "Hey, get back here!" Aura sighs. "Hope he hasn't broken anything this time..."~ [C0MUFFY])
+APPEND item_use.2da ~c0muffy Aura %strref% 3~
+
+COPY_EXISTING ~c0muffy.sto~ ~override~
+SAY 0xc ~Muffy~
+
+COPY_EXISTING ~c0aubook.itm~ ~override~
+SAY NAME1 ~Aura's Rune Book~
+SAY NAME2 ~Aura's Rune Book~
+SAY DESC ~This large metal-bound book is designed to hold runes and scrolls of all kind and protect them from all sorts of natural and magical hazards.
+
+STATISTICS:
+
+Capacity: 100
+Weight: 0~
+
+COPY_EXISTING ~c0aubook.sto~ ~override~
+SAY 0xc ~Aura's Rune Book~
+
+COPY_EXISTING ~c0aubow.spl~ ~override~
+SAY NAME1 ~Create Sunshooter Arrows~
+
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar1b.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar1b
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 5
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar1c.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar1c
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 10
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar1d.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar1d
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 15
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar1e.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar1e
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 20
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar2a.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar2a
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+	STR_VAR
+      resource = c0auaro2
+END
+COPY_EXISTING ~c0auar2a.spl~ ~override/c0auar2b.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar2b
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 5
+END
+COPY_EXISTING ~c0auar2a.spl~ ~override/c0auar2c.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar2c
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 10
+END
+COPY_EXISTING ~c0auar2a.spl~ ~override/c0auar2d.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar2d
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 15
+END
+COPY_EXISTING ~c0auar2a.spl~ ~override/c0auar2e.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar2e
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 20
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar3a.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar3a
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+	STR_VAR
+      resource = c0auaro3
+END
+COPY_EXISTING ~c0auar3a.spl~ ~override/c0auar3b.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar3b
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 5
+END
+COPY_EXISTING ~c0auar3a.spl~ ~override/c0auar3c.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar3c
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 10
+END
+COPY_EXISTING ~c0auar3a.spl~ ~override/c0auar3d.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar3d
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 15
+END
+COPY_EXISTING ~c0auar3a.spl~ ~override/c0auar3e.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar3e
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 20
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar4a.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar4a
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+	STR_VAR
+      resource = c0auaro5
+END
+COPY_EXISTING ~c0auar4a.spl~ ~override/c0auar4b.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar4b
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 5
+END
+COPY_EXISTING ~c0auar4a.spl~ ~override/c0auar4c.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar4c
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 10
+END
+COPY_EXISTING ~c0auar4a.spl~ ~override/c0auar4d.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar4d
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 15
+END
+COPY_EXISTING ~c0auar4a.spl~ ~override/c0auar4e.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar4e
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 20
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar5a.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar5a
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+	STR_VAR
+      resource = c0auaro6
+END
+COPY_EXISTING ~c0auar5a.spl~ ~override/c0auar5b.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar5b
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 5
+END
+COPY_EXISTING ~c0auar5a.spl~ ~override/c0auar5c.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar5c
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 10
+END
+COPY_EXISTING ~c0auar5a.spl~ ~override/c0auar5d.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar5d
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 15
+END
+COPY_EXISTING ~c0auar5a.spl~ ~override/c0auar5e.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar5e
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 20
+END
+COPY_EXISTING ~c0auar1a.spl~ ~override/c0auar6a.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar6a
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 2
+	STR_VAR
+      resource = c0auaro7
+END
+COPY_EXISTING ~c0auar6a.spl~ ~override/c0auar6b.spl~
+  LPF ALTER_SPELL_HEADER
+	STR_VAR
+		icon = c0auar6b
+	END
+  LPF ALTER_EFFECT
+    INT_VAR
+      match_opcode = 122
+      parameter1 = 5
+END
+
+OUTER_SET bow_strref = RESOLVE_STR_REF (~Aura hugs her bow close while shaking her head slightly. "Mmm... sorry, but I don't think I'd feel right without my Sunshooter."~ [GAM_47])
+APPEND item_use.2da ~c0aubo1a Aura %bow_strref% 3
+c0aubo1b Aura %bow_strref% 3
+c0aubo2a Aura %bow_strref% 3
+c0aubo2b Aura %bow_strref% 3
+c0aubo2c Aura %bow_strref% 3
+c0aubo3a Aura %bow_strref% 3
+c0aubo3b Aura %bow_strref% 3
+c0aubo3c Aura %bow_strref% 3
+c0aubo4a Aura %bow_strref% 3
+c0aubo4b Aura %bow_strref% 3
+c0aubo4c Aura %bow_strref% 3
+c0aubo5a Aura %bow_strref% 3
+c0aubo5b Aura %bow_strref% 3
+c0aubo5c Aura %bow_strref% 3
+c0aubo6  Aura %bow_strref% 3
+c0aubo7  Aura %bow_strref% 3~
+
+OUTER_SET sunshooter = RESOLVE_STR_REF (~Configure~)
+APPEND ~ITEMDIAL.2da~ ~C0AUBO1A    %sunshooter%    C0AUBOW
+C0AUBO1B    %sunshooter%    C0AUBOW
+C0AUBO1C    %sunshooter%    C0AUBOW
+C0AUBO2A    %sunshooter%    C0AUBOW
+C0AUBO2B    %sunshooter%    C0AUBOW
+C0AUBO2C    %sunshooter%    C0AUBOW
+C0AUBO3A    %sunshooter%    C0AUBOW
+C0AUBO3B    %sunshooter%    C0AUBOW
+C0AUBO3C    %sunshooter%    C0AUBOW
+C0AUBO4A    %sunshooter%    C0AUBOW
+C0AUBO4B    %sunshooter%    C0AUBOW
+C0AUBO4C    %sunshooter%    C0AUBOW
+C0AUBO5A    %sunshooter%    C0AUBOW
+C0AUBO5B    %sunshooter%    C0AUBOW
+C0AUBO5C    %sunshooter%    C0AUBOW~
+
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/C0AUBOW.d~
+COPY_EXISTING ~c0aubo1a.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter I (Rapid)~
+SAY NAME2 ~Sunshooter I (Rapid)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Rapid
+  Attacks cannot critically hit
+  2.5 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +1
+Damage: -2 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo1b.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter I (Precise)~
+SAY NAME2 ~Sunshooter I (Precise)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Precise
+  Attacks never critically miss
+  Critical Hit Chance: +5%
+  1.5 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +3
+Speed Factor: 4
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo2a.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter II (Rapid)~
+SAY NAME2 ~Sunshooter II (Rapid)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Rapid
+  Attacks cannot critically hit
+  2.5 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +2
+Damage: -1 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo2b.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter II (Precise)~
+SAY NAME2 ~Sunshooter II (Precise)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Precise
+  Attacks never critically miss
+  Critical Hit Chance: +5%
+  1.5 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +4
+Speed Factor: 4
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo2c.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter II (Power)~
+SAY NAME2 ~Sunshooter II (Power)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Power
+  Attacks deal maximum damage
+  2 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: -2
+Damage: +1 (missile)
+Speed Factor: 2
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo3a.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter III (Rapid)~
+SAY NAME2 ~Sunshooter III (Rapid)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Rapid
+  Attacks cannot critically hit
+  3 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +1 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +3
+Damage: -1 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo3b.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter III (Precise)~
+SAY NAME2 ~Sunshooter III (Precise)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Precise
+  Attacks never critically miss
+  Critical Hit Chance: +10%
+  1.5 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +1 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +5
+Speed Factor: 4
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo3c.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter III (Power)~
+SAY NAME2 ~Sunshooter III (Power)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Power
+  Attacks deal maximum damage
+  2 attacks per round
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +1 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: -1
+Damage: +2 (missile)
+Speed Factor: 2
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo4a.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter IV (Rapid)~
+SAY NAME2 ~Sunshooter IV (Rapid)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Rapid
+  Attacks cannot critically hit
+  3 attacks per round
+  
+  May use 'Rain of Arrows' once per day
+  Special: Fires 5 volleys of +5 arrows in a cone briefly reducing movement rate by 99%, 10 attacks per round for the duration
+  Damage: 1d2+1 magic
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +2 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +4
+Damage: -1 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo4b.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter IV (Precise)~
+SAY NAME2 ~Sunshooter IV (Precise)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Precise
+  Attacks never critically miss
+  Critical Hit Chance: +10%
+  1.5 attacks per round
+  
+  May use 'Sniper Shot' once per day
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 50% for 5 rounds
+  Damage: 1d6+10 piercing
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +2 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +6
+Speed Factor: 4
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo4c.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter IV (Power)~
+SAY NAME2 ~Sunshooter IV (Power)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Power
+  Attacks deal maximum damage
+  2 attacks per round
+  
+  May use 'Blazing Shot' once per day
+  Special: Launch a +5 arrow, stunning for 5 rounds on a failed Save vs. Death
+  Damage: 1d6+5 piercing, 6d10 fire (Save vs. Death for half)
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +2 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+Damage: +2 (missile)
+Speed Factor: 2
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo5a.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter V (Rapid)~
+SAY NAME2 ~Sunshooter V (Rapid)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Rapid
+  Attacks cannot critically hit
+  3.5 attacks per round
+  
+  May use 'Rain of Arrows' once per day
+  Special: Fires 10 volleys of +5 arrows in a cone briefly reducing movement rate by 99%, 10 attacks per round for the duration
+  Damage: 1d2+1 magic
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +3 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +5
+Damage: -1 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo5b.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter V (Precise)~
+SAY NAME2 ~Sunshooter V (Precise)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Precise
+  Attacks never critically miss
+  Critical Hit Chance: +15%
+  1.5 attacks per round
+  
+  May use 'Sniper Shot' once per day
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 75% for 5 rounds
+  Damage: 1d6+15 piercing
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +3 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +7
+Speed Factor: 4
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo5c.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter V (Power)~
+SAY NAME2 ~Sunshooter V (Power)~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it.
+
+STATISTICS:
+
+– Configuration: Power
+  Attacks deal maximum damage
+  2 attacks per round
+  
+  May use 'Blazing Shot' once per day
+  Special: Launch a +5 arrow, stunning for 5 rounds on a failed Save vs. Death at -2
+  Damage: 1d6+5 piercing, 10d10 fire (Save vs. Death at -2 for half)
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +3 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+Damage: +3 (missile)
+Speed Factor: 2
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo6.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Perfect Sunshooter~
+SAY NAME2 ~Perfect Sunshooter~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it. The Perfect Sunshooter is the product of a master artificer's craft, combining all the strengths of the bow's various configurations.
+
+Additionally, Aura gains a +4 bonus to Armor Class vs. Melee Weapons whilst wielding the Sunshooter.
+
+STATISTICS:
+
+– Configuration: Perfect
+  3.5 attacks per round
+  Attacks never critically miss
+  +15% Critical Hit Chance
+  Attacks deal maximum damage
+  May use 'Rain of Arrows', 'Sniper Shot' or 'Blazing Shot' two times per day
+
+  'Rain of Arrows'
+  Special: Fires 15 volleys of +5 arrows in a cone briefly reducing movement rate by 99%, 10 attacks per round for the duration
+  Damage: 1d2+1 magic
+
+  'Sniper Shot'
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 100% for 5 rounds
+  Damage: 1d6+20 piercing
+  
+  'Blazing Shot'
+  Special: Launch a +5 arrow, stunning for 5 rounds on a failed Save vs. Death at -4
+  Damage: 1d6+5 missile, 12d10 fire (Save vs. Death at -4 for half)
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence: All arrows launched by this bow strike with at least +4 enchantment
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 3% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +7
+Damage: +3 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+
+COPY_EXISTING ~c0aubo7.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Sunshooter Opus~
+SAY NAME2 ~Sunshooter Opus~
+SAY DESC ~The Sunshooter is Aura's personal weapon, a metallic bow of unusual design that fires arrows with almost inhuman speed and accuracy. Various attachments decorate the arc of the bow, some useful (such as enchantments that alter the effects of nocked arrows) and others purely for accessory. Its complexity is so great that no one besides its creator is likely capable of understanding how to properly wield it. The Sunshooter Opus is the product of a master artificer's craft, combining all the strengths of the bow's various configurations.
+
+The magical bowstring of Gond has made the bow even more powerful, allowing it to launch arrows of pure magical energy. Additionally, Aura gains a +4 bonus to Armor Class vs. Melee Weapons whilst wielding the Sunshooter.
+
+STATISTICS:
+
+– Configuration: Perfect
+  4 attacks per round
+  Attacks never critically miss
+  +20% Critical Hit Chance
+  Attacks deal maximum damage
+  May use 'Rain of Arrows', 'Sniper Shot' or 'Blazing Shot' three times per day
+
+  'Rain of Arrows'
+  Special: Fires 15 volleys of +5 arrows in a cone briefly reducing movement rate by 99%, 10 attacks per round for the duration
+  Damage: 1d2+1 magic
+
+  'Sniper Shot'
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 100% for 5 rounds
+  Damage: 1d6+20 piercing
+  
+  'Blazing Shot'
+  Special: Launch a +5 arrow, stunning for 5 rounds on a failed Save vs. Death at -4
+  Damage: 1d6+5 missile, 12d10 fire (Save vs. Death at -4 for half)
+
+Charge abilities (1x/day):
+– Create Sunshooter Arrows
+
+Combat abilities:
+– Eminence and Divinity: All arrows launched by this bow strike with at least +5 enchantment. When no arrows are equipped, the bow fires missiles that are treated as +5 for the purposes of determining what enemies they can damage. The missiles receive +8 to hit and deal a total of 4 piercing and 1d4 magical damage
+– Magnetism: Each hit reduces target's Armor Class vs. Ranged Weapons by 1 and Missile Resistance by 5% for 5 rounds
+– Analytical Archery: This bow uses Intelligence, if higher, for bonuses to ranged THAC0 instead of Dexterity.
+
+THAC0: +8
+Damage: +4 (missile)
+Speed Factor: 0
+Proficiency Type: Shortbow
+Type: Two-handed
+Requires:
+ 6 Strength
+ 19 Intelligence
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro8%~
+
+COPY_EXISTING ~c0auboa1.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Armor Pierced~)
+  END
+SAY NAME2 ~Sniper Shot +5~
+WRITE_SHORT 0x9C ~%c0auaro8%~
+COPY_EXISTING ~c0auboa2.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Armor Pierced~)
+  END
+SAY NAME2 ~Sniper Shot +5~
+WRITE_SHORT 0x9C ~%c0auaro8%~
+COPY_EXISTING ~c0auboa3.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Armor Pierced~)
+  END
+SAY NAME2 ~Sniper Shot +5~
+WRITE_SHORT 0x9C ~%c0auaro8%~
+
+COPY_EXISTING ~c0aubob1.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Stunned~)
+  END
+SAY NAME2 ~Blazing Shot +5~
+WRITE_SHORT 0x9C ~%c0auaro4%~
+COPY_EXISTING ~c0aubob2.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Stunned~)
+  END
+SAY NAME2 ~Blazing Shot +5~
+WRITE_SHORT 0x9C ~%c0auaro4%~
+COPY_EXISTING ~c0aubob3.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Stunned~)
+  END
+SAY NAME2 ~Blazing Shot +5~
+WRITE_SHORT 0x9C ~%c0auaro4%~
+
+COPY_EXISTING ~c0auboc.itm~ ~override~
+  LPF ALTER_ITEM_HEADER
+	INT_VAR
+		projectile = c0arain
+END
+SAY NAME1 ~Arrow Rain +5~
+SAY NAME2 ~Arrow Rain +5~
+
+COPY_EXISTING ~c0auarow.spl~ ~override~
+	LPF ALTER_SPELL_HEADER INT_VAR header = 2 projectile = c0auheal END
+COPY_EXISTING ~c0auarow.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Healing Arrow~
+SAY NAME2 ~Healing Arrow~
+SAY DESC ~This unusual arrow, designed and crafted by Aura, deals no damage to its target, instead injecting a healing solution into their bloodstream causing their wounds to regenerate.
+
+STATISTICS:
+
+Combat abilities:
+– Target is healed for 4 hit points and regenerates 1 additional hit point for a number of seconds equal to the user's level (non-cumulative)
+– This arrow does not apply Magnetism
+
+Damage: None
+Launcher: Sunshooter Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro1%~
+
+COPY_EXISTING ~c0auaro2.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Lightning Arrow +3~
+SAY NAME2 ~Lightning Arrow +3~
+SAY DESC ~This unusual arrow, designed and crafted by Aura, is charged with a huge amount of electricity which is released when the arrow strikes at a target, electrocuting them as well as all enemies around them.
+
+STATISTICS:
+
+Combat abilities:
+– Deals electrical damage that chains to up to five additional targets, applying Magnetism (-2 penalty to AC vs. missiles and -20% missile damage resistance) to all creatures struck for five rounds
+
+THAC0: +4
+Damage: 1d6+4 electrical
+Launcher: Sunshooter Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro2%~
+
+COPY_EXISTING ~c0auaro2.spl~ ~override~
+  LPF ALTER_SPELL_HEADER
+	INT_VAR
+		projectile = c0auar02
+END
+
+COPY_EXISTING ~c0auaro3.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+ parameter1 = RESOLVE_STR_REF (~Paralyzed~)
+END
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Static Arrow +3~
+SAY NAME2 ~Static Arrow +3~
+SAY DESC ~This unusual arrow, designed and crafted by Aura, is charged with a huge amount of electricity which is released when the arrow strikes a target, trapping them in a web-like formation.
+
+STATISTICS:
+
+Combat abilities:
+– Target must make a save vs. death at -2 or be paralyzed and suffer from a -50% penalty to electrical resistance for five rounds
+
+THAC0: +2
+Damage: 1d6+4 electrical
+Launcher: Sunshooter Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro3%~
+
+COPY_EXISTING ~c0auaro5.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+ parameter1 = RESOLVE_STR_REF (~Spell Protections Removed~)
+END
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Disruptor Arrow +4~
+SAY NAME2 ~Disruptor Arrow +4~
+SAY DESC ~This unusual arrow, designed and crafted by Aura, is enchanted with antimagic, allowing it to disrupt a spellcaster's magical defenses.
+
+STATISTICS:
+
+Combat abilities:
+– Target loses one 8th- or lower level spell protection and -10% magic resistance for one turn
+
+THAC0: +10
+Damage: 2d6+4 magic
+Launcher: Sunshooter Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro5%~
+
+COPY_EXISTING ~c0auaro6.spl~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+ parameter1 = RESOLVE_STR_REF (~Warped into another dimension~)
+END
+COPY_EXISTING ~c0auaro6.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Warp Arrow +4~
+SAY NAME2 ~Warp Arrow +4~
+SAY DESC ~This unusual arrow, designed and crafted by Aura, is capable of warping the target to another dimension where they are trapped for a short duration.
+
+STATISTICS:
+
+Combat abilities:
+– Target is Warped into another dimension for one turn. Enemies may make a Saving Throw vs. Spells at -4 to avoid the effects.
+
+THAC0: +10
+Damage: None
+Launcher: Sunshooter Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro6%~
+
+COPY_EXISTING ~c0auaro7.itm~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+      match_parameter1 = 0
+ parameter1 = RESOLVE_STR_REF (~Stunned~)
+END
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Aura~)
+	STR_VAR
+	  resource = C0Aura
+END
+SAY NAME1 ~Detonator Arrow +5~
+SAY NAME2 ~Detonator Arrow +5~
+SAY DESC ~This unusual arrow, designed and crafted by Aura, contains a small amount of Lantanese smokepowder which explodes violently upon impact.
+
+STATISTICS:
+
+Combat abilities:
+– Target must make a Save vs. Spell at -4 or be stunned for one round
+
+Damage: 6d6+4 explosion upon impact (Save vs. Spell at -4 for half)
+Area of Effect: 15' radius
+Launcher: Sunshooter Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro7%~
+
+COPY_EXISTING ~c0autt01.itm~ ~override~
+SAY NAME1 ~Burst Orb~
+SAY NAME2 ~Burst Orb~
+SAY DESC ~This shimmering glass orb, roughly the size of a clenched fist, crackles with electricity.
+
+STATISTICS:
+
+Charge abilities (one use):
+– When a Burst Orb is launched at the targeted area, it erupts into a mass of energy, dealing electrical damage and sending all targets away from the center of impact as well as knocking them unconscious for one round.
+  Damage: 4d6+2 electrical
+  Range: 30 ft.
+  Area of Effect: 10' radius
+  
+Requires:
+  9 Intelligence
+  
+Weight: 1~
+WRITE_SHORT 0x9C ~%c0aburst%~
+
+COPY_EXISTING ~c0agem1.itm~ ~override~
+SAY NAME1 ~Ice Crystal~
+SAY NAME2 ~Ice Crystal~
+SAY DESC ~This crystal initially appears to be a normal shard of ice, though it does not melt even when held in hand. It seems to almost hum with latent magical energy.
+
+STATISTICS:
+
+Weight: 0~
+
+COPY_EXISTING ~c0autt02.spl~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Shattered~)
+  END
+COPY_EXISTING ~c0freeze.spl~ ~override~
+		LPF	ADD_SPELL_EFFECT
+			INT_VAR
+				insert_point = 0
+				opcode = 324
+				target = 2
+				parameter2 = COLD
+				duration = 1
+			STR_VAR
+				resource = EVAL ~%SOURCE_RES%~
+		END
+      LPF ALTER_EFFECT
+      INT_VAR
+        check_globals     = 0
+        check_headers     = 1
+        match_opcode      = 142   // Display portrait icon
+        match_parameter2  = 82    // Called Shot icon
+        parameter2        = c0aicon1
+      END
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+	  parameter1 = RESOLVE_STR_REF (~Frozen~)
+  END
+COPY_EXISTING ~c0autt02.itm~ ~override~
+SAY NAME1 ~Cryonics Rod~
+SAY NAME2 ~Cryonics Rod~
+SAY DESC ~This thin metallic rod contains an essence of ice, a crystal developed in the Para-Elemental Plane of Ice which somehow found its way into the Prime Material Plane. Aura used the crystal as a power source for this rod, which focuses its energy into a weaponized beam of cold capable of freezing its targets solid.
+
+Unlike most magical wands, it is activated through pressing a button at the base of the rod instead of a magical command word, allowing it to be used by anyone.
+
+STATISTICS:
+
+Charge abilities (once per day):
+– Launches a ray of extreme cold towards the target, dealing cold damage and freezing the target for one turn on a failed Save vs. Wands at -2. While frozen, the target suffers double damage from physical and fire damage but is immune to cold damage. After five rounds have passed or upon taking damage, the target will be Shattered, becoming unfrozen and suffering a -2 penalty to Armor Class and Strength for one turn.
+  Damage: 6d6 cold (Save vs. Wand at -2 for half)
+  Range: 30 ft.
+  Area of Effect: 1 creature
+  
+Requires:
+  9 Intelligence
+  
+Weight: 1~
+
+COPY_EXISTING ~c0autt03.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Neera~)
+	STR_VAR
+	  resource = neera
+END
+SAY NAME1 ~Aura's Wildsurge Amplifier~
+SAY NAME2 ~Aura's Wildsurge Amplifier~
+SAY DESC ~This experimental device is designed by Aura to amplify the abilities of a wild mage and allow them to surge at will. It appears to do so successfully, though Neera seems none too thrilled for wearing it, as its design is less than appealing.
+
+STATISTICS:
+
+Charge abilities (once per day):
+– Rapid Surge: For the next round, the wearer may cast without delay and has casting time reduced by 4. However, every spell cast during this time will incur a wild surge.
+
+Equipped abilities:
+– +10% probability that a wild surge will have positive effect
+– +2 bonus 1st level spells
+
+Weight: 0~
+
+COPY_EXISTING ~c0autt04.itm~ ~override~
+SAY NAME1 ~Aura's Invisibility Device~
+SAY NAME2 ~Aura's Invisibility Device~
+SAY DESC ~This unusual looking metal device appears to function like a wand, except that it is activated through the push of a button rather than a command word, allowing anyone to use it with ease. When activated, it releases a shimmering sphere of light which envelops the user and <PRO_HISHER> allies, turning them invisible. It has apparently seen frequent use, as Aura claimed to have used it to evade bandits during her travels.
+
+STATISTICS:
+
+Charge abilities:
+– Causes all allied creatures within the radius to turn invisible
+  Range: Self
+  Radius: 30'
+  Duration: 10 turns
+ 
+Weight: 1~
+
+COPY_EXISTING ~c0bandol.itm~ ~override~
+SAY NAME1 ~Aura's Potion Bag~
+SAY NAME2 ~Aura's Potion Bag~
+SAY DESC ~This bag was designed by Aura to safely carry fragile objects such as potion bottles, firebombs and explosives of all kinds.
+
+STATISTICS:
+
+Capacity: 100
+
+Weight: 0~
+
+COPY_EXISTING ~c0bandol.sto~ ~override~
+SAY 0xc ~Aura's Potion Bag~
+WRITE_SHORT 0xa0 ~%grenade%~
+
+COPY_EXISTING ~c0amask1.spl~ ~override~
+COPY_EXISTING ~c0amask1.itm~ ~override~
+SAY NAME1 ~Oni Mask~
+SAY NAME2 ~Oni Mask~
+SAY DESC ~This ceramic mask is a depiction of an oni, a terrifying demonic spirit from Kozakura. Its mere appearance is capable of instilling dread within those who look upon it.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +1
+– Wisdom: +1
+– Charisma: -2
+– All enemies within 5 ft of the wearer suffer a -1 penalty to THAC0, damage, armor class and all saving throws.
+
+Weight: 1~
+
+COPY_EXISTING ~c0aclub1.spl~ ~override~
+COPY_EXISTING ~c0aclub1.itm~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+        check_globals     = 0
+        check_headers     = 1
+        match_opcode      = 142   // Display portrait icon
+        match_parameter2  = 82    // Called Shot icon
+        parameter2        = c0aicon3
+      END
+SAY NAME1 ~Onibi-no-kozuchi +2~
+SAY NAME2 ~Onibi-no-kozuchi +2~
+SAY DESC ~This heavy bludgeon is known as a kanabo, a spiked club wielded by warriors of Kara-Tur. The jagged cracks and bloodstains on the hard laquered wood suggest a past history of warfare and bloodshed. Its former owner, the violent warrior priest Kagutsuchi, enhanced it with the power of fire magic and fury.
+
+STATISTICS:
+
+Combat abilities:
+– Each hit has a 20% chance to inflict the target with Burning Thorns, dealing 1d6 immediate piercing damage and an additional point of fire damage every round for three rounds.
+
+Equipped abilities:
+– When the wielder falls below 50% maximum hit points, <PRO_HESHE> gains a +2 bonus to damage but a -2 penalty to Armor Class.
+
+THAC0: +2
+Damage: 1d6+2, +1d4 fire damage
+Damage type: crushing
+Speed Factor: 4
+Proficiency Type: Club
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+
+COPY_EXISTING ~c0auswfa.itm~ ~override~
+SAY NAME1 ~Katana~
+SAY NAME2 ~Masterwork Katana~
+SAY DESC ~This katana was designed by Aura for her former friend, Tadahashi Saito, an exiled Kozakuran samurai. With the samurai slain, what Aura intends to do with the sword is unknown.
+
+Weight: 4~
+
+COPY_EXISTING ~c0ausw01.itm~ ~override~
+SAY NAME1 ~Katana~
+SAY NAME2 ~Blade of Howling Souls +2~
+SAY UNIDENTIFIED_DESC ~The katana is a single-edged, slightly curved sword that ends with a chisel point. The katana is perhaps one of the finest swords ever made, the steps to its creation a long and secret process that is more art form than anything else. This blade is an important facet of Kara-Turan culture. To touch or wield a samurai's katana is to insult the samurai and to incite his wrath. For a gaijin, or foreigner, to own such a blade is a rare occurrence. Either the gaijin is a greatly honored friend of an important minister, or the gaijin has murdered a samurai.
+
+STATISTICS:
+
+Damage: 1d10 (slashing)
+Speed Factor: 4
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+ 16 Dexterity
+ 14 Intelligence
+
+Weight: 6~
+SAY DESC ~This masterwork katana, claimed to be blessed by a Kara-Turan deity, was the finest creation of Aura, yet its history is a gruesome one stained with the blood of countless innocents. Although at first glance it appears to simply be a standard yet flawless blade, a wielder that is aware of its secret may reshape it to function as a deadly throwing weapon.
+
+STATISTICS:
+
+Combat abilities:
+– Returns to the wielder's hand when thrown
+– Disarm: 10% chance (40% chance in melee) to disarm opponent, reducing their attacks per round to 0 for 1 round (save vs. death to avoid)
+– Critical hits deal an additional 1d10+4 slashing damage
+
+Equipped abilities:
+– 1/2 extra attack per round
+
+THAC0: +2
+Damage (melee): 1d10+4
+Damage (ranged): 1d4+2
+Damage type: slashing
+Speed Factor: 2
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+ 16 Dexterity
+ 14 Intelligence
+
+Weight: 4~
+SAY 0x1D6 ~Disarmed~
+SAY 0x206 ~Disarmed~
+
+COPY_EXISTING ~c0ausw02.itm~ ~override~
+SAY NAME1 ~Wakizashi~
+SAY NAME2 ~Jin'u +1~
+SAY UNIDENTIFIED_DESC ~The wakizashi, or companion sword, is extremely important to samurai. It is worn at all times, even indoors, and is near the samurai when he sleeps at night. As finely made as the katana, the wakizashi, a shorter sword with a length between twelve and twenty-four inches, is a dangerous weapon in the hands of a skilled user.
+
+STATISTICS:
+
+Damage: 1d8 (piercing)
+Speed Factor: 3
+Proficiency Type: Scimitar/Wakizashi/Ninja-to
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+SAY DESC ~This wakizashi has a blade sharper and finer than any other weapon you have seen, as though the slightest touch from its edge could sever steel. Its lightness and fine balance is only matched by its powerful enchantments and its beauty, decorated with faint etchings on the blade that resemble a strange hybrid of birds and clouds.
+
+According to Aura, the sword's name roughly translates to 'Swift Wing'.
+
+STATISTICS:
+
+Combat abilities:
+– Critical Hit Chance: +5%
+
+Equipped abilities:
+– Dexterity: +1
+– Movement Rate: +2
+
+THAC0: +1
+Damage: 1d8+3 (piercing)
+Speed Factor: 2
+Proficiency Type: Scimitar/Wakizashi/Ninja-to
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 2~
+
+COPY_EXISTING ~c0ausw03.spl~ ~override~
+LPF ALTER_EFFECT
+	INT_VAR
+	match_opcode = 139
+	parameter1 = RESOLVE_STR_REF (~Bleeding~)
+END
+COPY_EXISTING ~c0ausw03.itm~ ~override~
+SAY NAME1 ~Ninja-to~
+SAY NAME2 ~Death's Razor +2~
+SAY UNIDENTIFIED_DESC ~The sword of the ninja, the ninjato, is of lower quality than other Kara-Turan blades such as the katana. The ninjato is short with a straight blade, making it ideal for subterfuge. The ninjato is also more suited to fighting in closed places, sometimes giving the ninja an advantage over the longer blades that the samurai use.
+
+STATISTICS:
+
+Damage: 1d8 (slashing)
+Speed Factor: 4
+Proficiency Type: Scimitar/Wakizashi/Ninjato
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 2~
+SAY DESC ~While the outward trappings of this finely made bluesteel blade appear plain, its edge is sharp enough to cleave metal despite being as thin and delicate as parchment, to the point that one could almost see it as translucent. The blade of the ninja-to is unblemished, appearing wholly new despite the rather worn appearance of its handle and sheath. Whether from its exotic design or its thinness, the blade is lightweight and almost seems to move freely of its own will, dancing in one's hand while penetrating even the sturdiest of defenses with lethal strikes that often leave deep, lacerating cuts that bleed out, making it a perfect assassin's tool. Such a useful weapon requires a careful hand, however, as clumsy wielders may find the weapon more dangerous to themselves than their intended victims.
+
+The name 'Musou' is engraved in tiny, barely noticeable letters in the Kozakuran language on the hand guard. Whether it is the name of the weapon's creator or some form of code, you do not know.
+
+STATISTICS:
+
+Combat abilities:
+– Critical Hit Chance: +10%
+– Upon inflicting a critical hit with this weapon, the target bleeds for two points of piercing damage per round for six rounds (no save).
+
+THAC0: +4
+Damage: 1d8+2 (slashing)
+Speed Factor: 1
+Proficiency Type: Scimitar/Wakizashi/Ninjato
+Type: One-handed
+Requires:
+ 4 Strength
+ 16 Dexterity
+
+Weight: 2~
+
+COPY_EXISTING ~c0auim01.itm~ ~override~
+SAY NAME1 ~Two-handed Sword~
+SAY NAME2 ~Sword of Wrath +3~
+SAY DESC ~This was once a cursed sword which performs perfectly under every test, save the heat of battle. Upon entering combat, the wielder will immediately go berserk, killing everything within reach until either calming down or falling unconscious. A very powerful sword, but one must decide whether or not it is worth the risk. Even once the battle fury has ended, this sword can only be removed via an exorcism using a Remove Curse spell.
+
+With Aura's enhancements to the weapon, the curse of the weapon has been broken, but an aura of rage still permeates through the weapon, often causing its wielder to become more reckless in combat. However, it has been controlled to the extent that those who carry it can tell friend from foe.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: -2 penalty
+
+THAC0: +3
+Damage: 1d10+3 (slashing)
+Speed Factor: 7
+Proficiency Type: Two-handed Sword
+Type: Two-handed
+Requires:
+ 14 Strength
+
+Weight: 15~
+
+COPY_EXISTING ~c0auim02.itm~ ~override~
+LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Bleeding~) END
+SAY NAME1 ~Spear~
+SAY NAME2 ~Biting Thorns +3~
+SAY DESC ~Once a cursed spear which struck the wielder as they struck the enemy, this weapon is now a powerful asset after Aura's enhancements. The barbed thorns that once threatened its wielder now are now its greatest asset, lodging themseves into their foe and causing deep bleeding. However, the weapon has not been fully tamed, as it requires great finesse to wield without self-injury.
+
+STATISTICS:
+
+Combat abilities:
+– Target bleeds for 1 piercing damage per 2 seconds for 1 round on a failed Save vs. Breath
+
+THAC0: +3
+Damage: 1d6+3 (piercing)
+Speed Factor: 3
+Proficiency Type: Spear
+Type: Two-handed
+Requires:
+ 5 Strength
+ 17 Dexterity
+
+Weight: 5~
+
+COPY_EXISTING ~c0auim03.itm~ ~override~
+SAY NAME1 ~Bracers~
+SAY NAME2 ~Bracers of Precision~
+SAY DESC ~The bracers appear to be Bracers of Specialization, but were in fact once a cruel joke designed by the drow, meant to trick unsuspecting rivals into wearing them and having their wrists bound by a curse. Now, however, their curse has been transformed into a boon thanks to Lantanese artifice. These bracers now enhance the wearer's precision while wielding melee weapons, allowing them to make more accurate and deadly strikes.
+
+STATISTICS:
+
+Equipped abilities:
+– THAC0: +2 (melee only)
+– Critical Hit Chance: +5% (melee only)
+
+Weight: 1~
+
+COPY_EXISTING ~c0auim04.itm~ ~override~
+SAY NAME1 ~Idol~
+SAY NAME2 ~Idol of Kozah~
+SAY DESC ~This idol depicts Kozah the Stormstar, a long-extinct god who was venerated and feared among the less-powerful strata of ancient Netherese society. Worship of this god of storms, earthquakes, strife, and rebellion was outlawed by many of the civilization's powerful archwizards. Many Kozahyn shrines and temples were therefore built in secretive, underground locations where the devout were better able to escape detection.
+
+Aura's tinkering has somehow awakened a part of the power that lingers within the idol, making it a useful magical item. While held in one's hand, the idol can call down bolts of lightning from the sky to strike down enemies around them or create a Storm Shield around the bearer. However, the bearer's mind is wearied from constant battling against the rage induced by holding the idol close.
+
+STATISTICS:
+
+Charge abilities:
+– Storm Shield once per day
+
+Equipped abilities:
+– 5% chance each nearby foe will be struck by lightning for 2d8 electrical damage
+– Wearer is immune to lightning strikes, Call Lightning and Lightning Bolt
+– Electrical Resistance: +20%
+– All electrical damage inflicted by the wearer is increased by 15%
+– Save vs. Spells: -3 penalty
+
+Weight: 1~
+
+COPY_EXISTING ~c0auim05.itm~ ~override~
+SAY NAME1 ~Gauntlets~
+SAY NAME2 ~Gauntlets of Security~
+SAY DESC ~Gauntlets of Security
+With mischief in mind, the impetuous Elander set out to craft these cursed gauntlets to best a rival. It turns out his malice got the best of him, when he mistook these gloves for another pair. Fortunately, thanks to some clever enhancements made by Aura, such errors will not be made again by another.
+
+STATISTICS:
+
+Equipped abilities:
+– Off-Hand THAC0: +2
+– Pick Pockets: +25%
+– Open Locks: +25%
+
+Weight: 2~
+
+COPY_EXISTING ~c0auim06.itm~ ~override~
+SAY NAME1 ~Ring~
+SAY NAME2 ~Ring of Discipline~
+SAY DESC ~Ring of Discipline: The Trained Mind
+Oft the bane of the careless Mage, this ring was actually used to promote humility. Hergat Norin, a grand wizard of Narfell, would give the Discipliner to his most skilled and most egotistical students. Through their blind arrogance, they would mistake the ring as a reward for their "obvious brilliance," and not the punishment of a disapproving teacher. On the other hand, a hardworking and inquisitive student earns their reward, and with the enhancements made to this ring, its magic now supports the mind of the truly brilliant.
+
+STATISTICS:
+
+Equipped abilities: 
+– Intelligence: +1
+– Casting Speed: +1
+
+Requires:
+  16 Intelligence
+  14 Wisdom
+
+Weight: 0~
+
+COPY_EXISTING ~c0auim07.itm~ ~override~
+SAY NAME1 ~Ring~
+SAY NAME2 ~Ring of Agility~
+SAY DESC ~Ring of Agility
+The most notorious owner of this ring made a substantial living exploiting its once-cursed nature. Gregoria the Foole, a Jester by trade, would use his incomparable sleight of hand to switch this ring with that of a patsy taken from his audience. The rest of his performance would involve the mocking of the newly clumsy individual, much to the delight of their comrades. The ring was removed (by a method known only to the wily Jester) only once the stooge had promised no reprisals for the treatment he had received, though Gregoria frequently still had to make a hasty retreat. His last known performance was rumored to have been an ill-humored mage in Zhentil Keep: a show from which he did not flee quite fast enough.
+
+Aura's enhancements have excised the ring of its negative qualities, and now it provides its wearer with newfound grace.
+
+STATISTICS:
+
+Equipped abilities:
+– Dexterity: +1
+– Armor Class vs. Missiles: +3
+
+Weight: 0~
+
+COPY_EXISTING ~c0auim08.itm~ ~override~
+SAY NAME1 ~Girdle~
+SAY NAME2 ~Girdle of Masculinity/Femininity~
+SAY DESC ~The cursed Girdle of Femininity and Masculinity, a rare yet oft-discussed magical item, is wrought with a most powerful magic. Anyone unfortunate enough to secure it around their waist instantly finds their gender to be transformed. It is said that not fifty years past, a nameless court jester was beheaded for presenting the girdle as a gift to Duke Lobelahn's lover.
+
+While Aura has managed to break the curse, the enchantments left behind appear to be no different. That said, those who wear it now may do so with intent, making them more confident—and attractive—to onlookers.
+
+STATISTICS:
+
+Equipped abilities:
+– Changes the wearer's gender
+– Charisma: +1
+
+Weight: 2~
+
+COPY_EXISTING ~c0auim09.itm~ ~override~
+SAY NAME1 ~Morningstar~
+SAY NAME2 ~Kiel's Morning Star +3~
+SAY DESC ~This is the morning star of Kiel the Legion Killer, firstborn son of Durlag Trollkiller and Clan-prince of his father's ill-fated tower. He was wielding it in his final hour as he rushed to warn his father of the doppelgangers' infiltration of their Clan-home. It is said that the intensity of his rage in these final moments permanently imprinted itself upon the weapon. All who wield it are overcome with this battle anger whenever an enemy is sighted.
+
+Aura claims that no magicks of artifice could suffice to quell the rage within this weapon—only the rites taught to her by her Kozakuran mentor managed to grant the vengeful spirit any measure of peace. Now, the weapon embodies its former master's undying will.
+
+STATISTICS:
+
+Combat abilities:
+– Saving Throws: +2
+
+THAC0: +3
+Damage: 2d4+3 (crushing)
+Speed Factor: 4
+Proficiency Type: Flail/Morning Star
+Type: One-handed
+Requires:
+ 10 Strength
+
+Weight: 10~
+
+COPY_EXISTING ~c0afish.itm~ ~override~
+SAY NAME1 ~Sardine~
+SAY NAME2 ~Sardine~
+SAY DESC ~Sardines, also known as pilchards, are small, oily fish that travel in large schools and feed on sea plankton. They are commonly consumed by both larger fish and mammals alike. Cats are known for being especially fond of sardines.
+
+STATISTICS:
+
+Weight: 0~
+
+COPY_EXISTING ~c0auaro4.itm~ ~override~
+      LPF ALTER_EFFECT
+      INT_VAR
+        check_globals     = 0
+        check_headers     = 1
+        match_opcode      = 142   // Display portrait icon
+        parameter2        = c0aicon3
+      END
+  LPF ALTER_EFFECT
+    INT_VAR
+      check_globals = 1
+      check_headers = 1
+      match_opcode = 139 // display string
+ parameter1 = RESOLVE_STR_REF (~Burning~)
+END
+SAY NAME1 ~Trollbane Arrow~
+SAY NAME2 ~Trollbane Arrow~
+SAY DESC ~Trollbane is a concoction made from various flammable chemicals, making it effectively poisonous for, as it might suggest, trollkin. When this arrow strikes a troll, the trollbane bursts into flame and comes into effect, altering the troll's physiology and preventing them from regenerating their wounds.
+
+STATISTICS:
+
+Combat abilities:
+– Targets struck by this arrow must make a save vs. death at -4 or suffer two points of fire damage per round for three rounds. If the target is a troll, it permanently loses its regenerative abilities.
+
+THAC0: +2
+Damage: 1d6+4 fire
+Damage type: piercing
+Launcher: Bow
+
+Weight: 0~
+WRITE_SHORT 0x9C ~%c0auaro4%~
+
+COPY_EXISTING ~c0abomba.spl~ ~override~
+READ_LONG 0x64 "abil_off"
+READ_SHORT 0x68 "abil_num"
+SET "delta" = 0
+FOR (index = 0; index < abil_num; index = index + 1) BEGIN
+WRITE_SHORT (%abil_off% + (0x28 * %index%) + 0x26) ~%c0asvoid%~
+END
+COPY_EXISTING ~c0abomba.itm~ ~override~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter1 = (IDS_OF_SYMBOL (~kit~ ~C0AURA~))
+	  parameter2 = 9
+	  power = 1
+	  special = RESOLVE_STR_REF (~Artificer~)
+END
+SAY NAME1 ~Firebomb~
+SAY NAME2 ~Screaming Void~
+SAY DESC ~This malignant explosive was crafted using dust from the voidstone which caused a negative energy field within Bridgefort. As unsettling as the dark sludge-like substance appears, it can deal an indisputably massive amount of harm to any being unfortunate enough to be caught within its radius.
+
+STATISTICS
+
+When thrown, unleashes a burst of negative energy which deals Magic Damage and reduces all creatures' Strength. Has no effect against undead.
+  1st level: 6d6+4 Magic Damage (Save vs. Spells for half), -1 Strength (5 rounds)
+  10th level: 6d8+6 Magic Damage (Save vs. Spells at -1 for half), -2 Strength (7 rounds)
+  20th level: 6d10+8 Magic Damage (Save vs. Spells at -2 for half), -3 Strength (1 turn)
+  30th level: 8d10+10 Magic Damage (Save vs. Spells at -3 for half), -4 Strength (2 turns)
+  40th level: 10d10+12 Magic Damage (Save vs. Spells at -4 for half), -5 Strength (3 turns)
+
+Weight: 0~
+	WRITE_SHORT 0x001c	~%grenade%~
+WRITE_SHORT 0x9C ~%c0aproj0%~
+WRITE_LONG 0x34 6000
+
+COPY_EXISTING ~c0apotx1.itm~ ~override~
+SAY NAME2 ~Lantanese Violet Potion~
+SAY DESC ~This is one of the oddest potions you have ever examined. Once drunk, this mixture causes one's muscles to immediately bulge to completely inhuman proportions, titan-like actually, while Dexterity and Constitution are both reduced essentially to that of a slug. This variant of the Violet Potion is a near identical replica, albeit greatly distilled to reduce the longevity of its dubious effects to a fraction of its original amount.
+
+STATISTICS:
+
+Strength: 25
+Dexterity: 3
+Constitution: 3
+Duration: 2 hours
+
+Weight: 1~
+
+COPY_EXISTING ~c0apotx2.itm~ ~override~
+SAY NAME2 ~Lantanese Red Potion~
+SAY DESC ~Close examination reveals this liquid to be very peculiar in nature. It could be a sorcerer's dream, but that would depend entirely on who you asked. After ingesting the mixture, the drinker becomes the weakest, most unwise, yet incredibly intelligent person to have ever lived, with an innate 50% Magic Damage Resistance as well. This variant of the Red Potion is a near identical replica, albeit greatly distilled to reduce the longevity of its dubious effects to a fraction of its original amount.
+
+STATISTICS:
+
+Special: +50% resistance to all magical damage
+Intelligence: 25
+Wisdom: 3
+Strength: 3
+Duration: 24 hours
+
+Weight: 1~

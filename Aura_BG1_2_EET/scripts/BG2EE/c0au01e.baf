@@ -1,0 +1,33 @@
+IF
+	Clicked([0])
+	OR(3)
+	!InMyArea("C0Aura")
+	Dead("C0Aura")
+	!Range("C0Aura",20)
+	Global("C0AU01Shelf","C0AU01",0)
+THEN
+	RESPONSE #100
+	DisplayStringHead(Myself,~Books, alchemical equipment and various trinkets are lined up neatly on the rows of this shelf.~)
+END
+
+IF
+	Clicked([0])
+	InMyArea("C0Aura")
+	!Dead("C0Aura")
+	Range("C0Aura",20)
+	Global("C0AU01Shelf","C0AU01",0)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AU01Shelf","C0AU01",1)
+	DisplayStringHead(Myself,~Books, alchemical equipment and various trinkets are lined up neatly on the rows of this shelf.~)
+	Wait(1)
+	ActionOverride("C0Aura",StartDialogOverride("c0au01tk",Player1))
+END
+
+IF
+	Clicked([0])
+	GlobalGT("C0AU01Shelf","C0AU01",0)
+THEN
+	RESPONSE #100
+	DisplayStringHead(Myself,~Books, alchemical equipment and various trinkets are lined up neatly on the rows of this shelf.~)
+END

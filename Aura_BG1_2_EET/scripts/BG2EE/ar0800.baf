@@ -1,0 +1,37 @@
+IF
+  OR(2)
+  TimeOfDay([NIGHT])
+  TimeOfDay([DUSK])
+  Global("C0AuraBG2Quest1","GLOBAL",14)
+  Global("C0AuraBG2Quest1SpawnThief","MYAREA",0)
+THEN
+  RESPONSE #100
+    SetGlobal("C0AuraBG2Quest1SpawnThief","MYAREA",1)
+	  CreateCreature("C0AQTHF",[1617.1382],SE)
+    Continue()
+END
+
+IF
+  Global("C0AuraBG2Quest1","GLOBAL",14)
+  Global("C0AuraBG2Quest1SpawnThief","MYAREA",1)
+  IsActive("C0AQTHF")
+  !TimeOfDay([NIGHT])
+  !TimeOfDay([DUSK])
+THEN
+  RESPONSE #100
+    Deactivate("C0AQTHF")
+    Continue()
+END
+
+IF
+  Global("C0AuraBG2Quest1","GLOBAL",14)
+  Global("C0AuraBG2Quest1SpawnThief","MYAREA",1)
+  !IsActive("C0AQTHF")
+  OR(2)
+  TimeOfDay([NIGHT])
+  TimeOfDay([DUSK])
+THEN
+  RESPONSE #100
+    Activate("C0AQTHF")
+    Continue()
+END

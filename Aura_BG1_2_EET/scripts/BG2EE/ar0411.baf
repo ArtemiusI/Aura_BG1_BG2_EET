@@ -1,0 +1,7 @@
+IF
+	Global("C0AuraBookSpawn","AR0411",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0AuraBookSpawn","AR0411",1)
+	ActionOverride("Golem Room Table",CreateItem("C0ABOOK1",0,0,0))
+END

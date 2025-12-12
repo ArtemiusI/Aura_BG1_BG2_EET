@@ -1,0 +1,22 @@
+IF
+  Global("SecondWind","LOCALS",0)
+  HPLT(Myself,2)
+THEN
+  RESPONSE #100
+    SetGlobal("SecondWind","LOCALS",1)
+    ReallyForceSpell(Myself,CLERIC_HEAL)
+    ReallyForceSpellRES("C0AUSP01",Myself)
+    ReallyForceSpellRES("C0AUSP02",Myself)
+END
+
+IF
+  Global("SecondWind","LOCALS",1)
+  HPLT(Myself,2)
+THEN
+  RESPONSE #100
+    SetGlobal("SecondWind","LOCALS",2)
+    SetGlobal("C0AuraBG2Quest1","GLOBAL",39)
+    ClearAllActions()
+    StartCutSceneMode()
+    StartCutScene("C0ACUT12")
+END

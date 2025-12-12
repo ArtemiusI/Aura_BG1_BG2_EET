@@ -1,0 +1,10 @@
+// SCRIPTS
+
+  EXTEND_TOP ~bdsodimp.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/bdsodimp.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~sevpat04.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/sevpat04.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~duemag01.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/duemag01.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~ilyich.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/ilyich.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~ar2100.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/ar2100.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~ar0602.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/ar0602.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~neera.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/neera.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~maevar.bcs~ ~%MOD_FOLDER%/scripts/BG2EE/import/maevar.baf~ EVALUATE_BUFFER

@@ -1,0 +1,11 @@
+IF
+    InMyArea(Player1)
+	!InMyArea("C0ALUNA")
+	Global("C0AuraBG2Quest3","GLOBAL",23)
+	Global("LunaSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+	SetGlobal("LunaSpawn","MYAREA",1)
+	CreateCreatureObject("C0ALUNA",Player1,0,0,0)
+	ActionOverride("C0ALUNA",SetGlobal("Allies","LOCALS",1))
+END

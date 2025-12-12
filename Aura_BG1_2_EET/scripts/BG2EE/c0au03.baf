@@ -1,0 +1,10 @@
+IF
+	Global("C0AuraBG2Quest3","GLOBAL",20)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest3","GLOBAL",21)
+	CreateCreature("C0ALUNA",[453.1378],NE)
+	CreateCreature("C0AGNO05",[551.1330],SW)
+	Wait(1)
+	ActionOverride("C0AGNO05",StartDialogNoSet(Player1))
+END

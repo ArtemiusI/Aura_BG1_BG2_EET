@@ -1,0 +1,312 @@
+COPY ~%MOD_FOLDER%/2da~ ~override~
+COPY ~%MOD_FOLDER%/bams~ ~override~
+COPY ~%MOD_FOLDER%/items~ ~override~
+COPY ~%MOD_FOLDER%/portraits~ ~override~
+COPY ~%MOD_FOLDER%/eff~ ~override~
+COPY ~%MOD_FOLDER%/spells~ ~override~
+
+///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// ANIMATIONS ///////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY aura_anims_0xxx BEGIN
+    ~lightning_bolt~ => ~C0_LIGHTNING_BOLT~
+  END
+  ACTION_PHP_EACH aura_anims_0xxx AS folder => symbol BEGIN
+    ACTION_BASH_FOR ~%MOD_FOLDER%/animations/%folder%~ ~.+\.bam~ ~%MOD_FOLDER%/animations/%folder%~ ~.+\.bmp~ BEGIN
+      COPY ~%BASH_FOR_FILESPEC%~ ~override~
+    END
+    LAF FIND_FREE_ANIM_SLOT INT_VAR slotMin = 0x0000 RET slot END
+    LAF TO_HEX_NUMBER INT_VAR value = slot minDigits = 4 RET hexNumber END
+    COPY ~%MOD_FOLDER%/animations/%folder%/0xxx.ini~ ~override/%hexNumber%.ini~
+    OUTER_SET EVAL ~slot_%folder%~ = slot   // save animation slot number for later
+    APPEND ~ANIMATE.IDS~ ~0x%hexNumber% %symbol%~
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY aura_anims_7xxx BEGIN
+    ~autocannon~ => ~C0_AUTOCANNON~
+  END
+  ACTION_PHP_EACH aura_anims_7xxx AS folder => symbol BEGIN
+    ACTION_BASH_FOR ~%MOD_FOLDER%/animations/%folder%~ ~.+\.bam~ ~%MOD_FOLDER%/animations/%folder%~ ~.+\.bmp~ BEGIN
+      COPY ~%BASH_FOR_FILESPEC%~ ~override~
+    END
+    LAF FIND_FREE_ANIM_SLOT INT_VAR slotMin = 0x7000 RET slot END
+    LAF TO_HEX_NUMBER INT_VAR value = slot minDigits = 4 RET hexNumber END
+    COPY ~%MOD_FOLDER%/animations/%folder%/7xxx.ini~ ~override/%hexNumber%.ini~
+    OUTER_SET EVAL ~slot_%folder%~ = slot   // save animation slot number for later
+    APPEND ~ANIMATE.IDS~ ~0x%hexNumber% %symbol%~
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY aura_anims_Exxx BEGIN
+    ~automaton~ => ~C0_AURA_AUTOMATON~
+    ~automaton/automaton_huge~ => ~C0_AURA_AUTOMATON_HUGE~
+    ~automaton/automaton_unarmed~ => ~C0_AURA_AUTOMATON_UNARMED~
+    ~automaton/automaton_unarmed_huge~ => ~C0_AURA_AUTOMATON_UNARMED_HUGE~
+    ~automaton_jade~ => ~C0_AURA_AUTOMATON_JADE~
+    ~automaton_jade/automaton_huge~ => ~C0_AURA_AUTOMATON_HUGE_JADE~
+    ~automaton_jade/automaton_unarmed~ => ~C0_AURA_AUTOMATON_UNARMED_JADE~
+    ~automaton_jade/automaton_unarmed_huge~ => ~C0_AURA_AUTOMATON_UNARMED_HUGE_JADE~
+    ~automaton_black~ => ~C0_AURA_AUTOMATON_BLACK~
+    ~automaton_black/automaton_huge~ => ~C0_AURA_AUTOMATON_HUGE_BLACK~
+    ~automaton_black/automaton_unarmed~ => ~C0_AURA_AUTOMATON_UNARMED_BLACK~
+    ~automaton_black/automaton_unarmed_huge~ => ~C0_AURA_AUTOMATON_UNARMED_HUGE_BLACK~
+  END
+  ACTION_PHP_EACH aura_anims_Exxx AS folder => symbol BEGIN
+    ACTION_BASH_FOR ~%MOD_FOLDER%/animations/%folder%~ ~.+\.bam~ ~%MOD_FOLDER%/animations/%folder%~ ~.+\.bmp~ BEGIN
+      COPY ~%BASH_FOR_FILESPEC%~ ~override~
+    END
+    LAF FIND_FREE_ANIM_SLOT INT_VAR slotMin = 0xE000 RET slot END
+    LAF TO_HEX_NUMBER INT_VAR value = slot minDigits = 4 RET hexNumber END
+    COPY ~%MOD_FOLDER%/animations/%folder%/Exxx.ini~ ~override/%hexNumber%.ini~
+    OUTER_SET EVAL ~slot_%folder%~ = slot   // save animation slot number for later
+    APPEND ~ANIMATE.IDS~ ~0x%hexNumber% %symbol%~
+END
+
+///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// RESISTANCES ///////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION	ADD_SPLPROT	INT_VAR	stat = 0	value = 0	relation = 0	RET	new_row		BEGIN
+	ACTION_IF	(stat > 278)	BEGIN	WARN	~SPLPROT.2DA - Stat out of Bounds.~	END
+	ACTION_IF	((stat != 259) AND (stat != 260) AND (relation > 11))	BEGIN	WARN	~SPLPROT.2DA - Relation out of Bounds.~	END
+	COPY_EXISTING ~SPLPROT.2DA~	~override~
+		COUNT_2DA_COLS	cols
+		COUNT_2DA_ROWS cols rows
+		TEXT_SPRINT check_row ~~
+		TEXT_SPRINT check_stat ~~
+		SET new_row = 0
+		FOR(current_row = 0; current_row < rows; ++current_row)	BEGIN	READ_2DA_ENTRY current_row 1 cols check_stat
+			PATCH_IF (~%check_stat%~ STRING_EQUAL ~%stat%~)	BEGIN	READ_2DA_ENTRY current_row 2 cols check_value
+				PATCH_IF (~%check_value%~ STRING_EQUAL ~%value%~)	BEGIN	READ_2DA_ENTRY current_row 3 cols check_relation
+					PATCH_IF (~%check_relation%~ STRING_EQUAL ~%relation%~)	BEGIN	new_row = current_row	current_row = rows	END
+				END
+			END
+		END
+		PATCH_IF (new_row = 0)	BEGIN
+			FOR(current_row = 0; current_row < rows; ++current_row)	BEGIN	READ_2DA_ENTRY current_row 1 cols check_stat
+				PATCH_IF (~%check_stat%~ STRING_EQUAL ~*~)	BEGIN	new_row = current_row	current_row = rows	END
+			END
+			PATCH_IF (new_row = 0)	BEGIN	new_row = rows	INSERT_2DA_ROW rows cols ~%new_row%		   %stat%		   %value%		   %relation%~
+			END	ELSE	BEGIN	SET_2DA_ENTRY new_row 1 cols ~%stat%~	SET_2DA_ENTRY new_row 2 cols ~%value%~	SET_2DA_ENTRY new_row 3 cols ~%relation%~	END
+		END
+	BUT_ONLY
+END
+//	Array of Restistance / Stat#
+ACTION_DEFINE_ASSOCIATIVE_ARRAY	DMG_ARRAY	BEGIN
+	~CRUSH~		=>	22
+	~ACID~		=>	17
+	~COLD~		=>	15
+	~ELEC~		=>	16
+	~FIRE~		=>	14
+	~PIERC~		=>	23
+	~POISN~		=>	74
+	~MAGIC~		=>	73
+	~MSSL~		=>	24
+	~SLASH~		=>	21
+	~MFIRE~		=>	19
+	~MCOLD~		=>	20
+END
+ACTION_PHP_EACH	DMG_ARRAY AS one => two	BEGIN
+	LAF	ADD_SPLPROT	INT_VAR	stat = two	value = 100	relation = 	2	RET	min = new_row	END
+	LAF	ADD_SPLPROT	INT_VAR	stat = two	value = 128	relation = 	4	RET	max = new_row	END
+	LAF	ADD_SPLPROT	INT_VAR	stat = 260	value = min	relation = 	max	RET	EVAL ~%one%~ = new_row	END
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY	DMG_ARRAY2	BEGIN
+	~FIRE2~		=>	14
+END
+ACTION_PHP_EACH	DMG_ARRAY2 AS one => two	BEGIN
+	LAF	ADD_SPLPROT	INT_VAR	stat = two	value = 0	relation = 	2	RET	min = new_row	END
+	LAF	ADD_SPLPROT	INT_VAR	stat = two	value = 128	relation = 	4	RET	max = new_row	END
+	LAF	ADD_SPLPROT	INT_VAR	stat = 260	value = min	relation = 	max	RET	EVAL ~%one%~ = new_row	END
+END
+
+///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////// ICONS //////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION cd_new_portrait_icon
+  INT_VAR string = 0
+  STR_VAR bam_file = "****"
+  RET     icon
+  BEGIN
+
+  COPY_EXISTING ~statdesc.2da~ ~override~
+    COUNT_2DA_ROWS 3 count
+    READ_2DA_ENTRY (count - 1) 0 3 icon
+    SET icon += 1
+
+  APPEND ~statdesc.2da~ ~%icon% %string% %bam_file%~
+
+END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Frozen~) STR_VAR bam_file = c0aicon1 RET c0aicon1 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Detecting Magic~) STR_VAR bam_file = c0aicon2 RET c0aicon2 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Aflame~) STR_VAR bam_file = c0aicon3 RET c0aicon3 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Magatama~) STR_VAR bam_file = c0aicon4 RET c0aicon4 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Grand Artifice~) STR_VAR bam_file = c0aicon5 RET c0aicon5 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Shocked~) STR_VAR bam_file = c0aicon6 RET c0aicon6 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Guardian Angel~) STR_VAR bam_file = c0aicon7 RET c0aicon7 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Protection from Chaos~) STR_VAR bam_file = c0aicon8 RET c0aicon8 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Igneus Blaze (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr01 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Igneus Blaze (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr02 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Igneus Blaze (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr03 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Igneus Blaze (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr04 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Igneus Blaze (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr05 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Cryoshock (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr06 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Cryoshock (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr07 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Cryoshock (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr08 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Cryoshock (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr09 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Cryoshock (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr10 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Energy Barrage (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr11 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Energy Barrage (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr12 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Energy Barrage (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr13 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Energy Barrage (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr14 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Energy Barrage (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr15 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Lunar Butterfly (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr16 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Lunar Butterfly (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr17 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Lunar Butterfly (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr18 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Lunar Butterfly (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr19 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Lunar Butterfly (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr20 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Aerial Judgment (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr21 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Aerial Judgment (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr22 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Aerial Judgment (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr23 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Aerial Judgment (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr24 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Aerial Judgment (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr25 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Gaia Shield (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr26 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Gaia Shield (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr27 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Gaia Shield (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr28 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Gaia Shield (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr29 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Gaia Shield (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr30 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Chronos Warp (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr31 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Chronos Warp (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr32 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Chronos Warp (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr33 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Chronos Warp (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr34 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Chronos Warp (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr35 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Panacea Circle (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr36 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Panacea Circle (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr37 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Panacea Circle (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr38 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Panacea Circle (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr39 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Panacea Circle (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr40 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Red Meteor (See Enemy)~) STR_VAR bam_file = c0aicr01 RET c0aicr41 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Red Meteor (Hit)~) STR_VAR bam_file = c0aicr01 RET c0aicr42 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Red Meteor (50%)~) STR_VAR bam_file = c0aicr01 RET c0aicr43 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Red Meteor (25%)~) STR_VAR bam_file = c0aicr01 RET c0aicr44 = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Imbued: Red Meteor (Helpless)~) STR_VAR bam_file = c0aicr01 RET c0aicr45 = icon END
+
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Blades~) STR_VAR bam_file = c0ain7ai RET c0ain7ai = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Bludgeon~) STR_VAR bam_file = c0ain7bi RET c0ain7bi = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Piercer~) STR_VAR bam_file = c0ain7ci RET c0ain7ci = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Missiles~) STR_VAR bam_file = c0ain7di RET c0ain7di = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Flames~) STR_VAR bam_file = c0ain7ei RET c0ain7ei = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Frost~) STR_VAR bam_file = c0ain7fi RET c0ain7fi = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Acid~) STR_VAR bam_file = c0ain7gi RET c0ain7gi = icon END
+LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(~Infusion: Lightning~) STR_VAR bam_file = c0ain7hi RET c0ain7hi = icon END
+
+///////////////////////////////////////////////////////////////////////////////
+////////////////////////////// PROJECTILES ////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aproj0.PRO~ ~C0 Grenade~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aproj1.PRO~ ~C0 Grenade 1~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0agren1.PRO~ ~C0 Alchemist's Fire~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0agren2.PRO~ ~C0 Acid Flask~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0agren3.PRO~ ~C0 Choking Powder~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0agren4.PRO~ ~C0 Sleeping Gas~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0agren5.PRO~ ~C0 Tanglefoot Bag~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0agren6.PRO~ ~C0 Thunderstone~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb1.PRO~ ~C0 Green Flaming Oil~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb2.PRO~ ~C0 Flashbomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb3.PRO~ ~C0 Spiked Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb4.PRO~ ~C0 Sulfur Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb5.PRO~ ~C0 Red Smoke~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb6.PRO~ ~C0 Adhesive Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb7.PRO~ ~C0 Acid Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb8.PRO~ ~C0 Purple Firebomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abomb9.PRO~ ~C0 Big Boom Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro1.PRO~ ~C0 Healing Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro2.PRO~ ~C0 Lightning Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auar02.PRO~ ~C0 Lightning Arrow Chain 1~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0lchain.PRO~ ~C0 Lightning Arrow Chain 2~
+COPY_EXISTING ~c0lchain.pro~ ~override~
+WRITE_SHORT 0x134 (IDS_OF_SYMBOL (~ANIMATE~ ~C0_LIGHTNING_BOLT~))
+COPY_EXISTING ~c0auar02.pro~ ~override~
+WRITE_SHORT 0x21A (IDS_OF_SYMBOL (~projectl~ ~c0lchain~)) + 1
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro3.PRO~ ~C0 Static Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro4.PRO~ ~C0 Trollbane Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro5.PRO~ ~C0 Disruptor Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro6.PRO~ ~C0 Warp Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro7.PRO~ ~C0 Detonator Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro8.PRO~ ~C0 Energy Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auaro9.PRO~ ~C0 Ice Arrow~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0arain.PRO~ ~C0 Arrow Volley~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0achain.PRO~ ~C0 Chain Lightning~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0athund.PRO~ ~C0 Thunderbolt~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0athun2.PRO~ ~C0 Thunderbolt~
+COPY_EXISTING ~c0athun2.pro~ ~override~
+WRITE_SHORT 0x21A (IDS_OF_SYMBOL (~projectl~ ~c0athund~)) + 1
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aburst.PRO~ ~C0 Burst Orb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0asvoid.PRO~ ~C0 Screaming Void~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aarea1.PRO~ ~C0 Reveal Magic~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abombb.PRO~ ~C0 EMP Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0abombc.PRO~ ~C0 Phaser Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aglue.PRO~ ~C0 Glue Bomb~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auimb.PRO~ ~C0 Arcane Disjunctor~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0akeg1.PRO~ ~C0 Exploding Keg~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0ausp02.PRO~ ~C0 Poison Haze~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0ausp03.PRO~ ~C0 Poison Blast~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0acone1.PRO~ ~C0 Igneus Blaze 1~
+COPY_EXISTING ~c0acone1.pro~ ~override/c0acone2.pro~
+WRITE_BYTE 0x224 60
+COPY_EXISTING ~c0acone1.pro~ ~override/c0acone3.pro~
+WRITE_BYTE 0x224 90
+ADD_PROJECTILE ~override/c0acone2.PRO~ ~C0 Igneus Blaze 2~
+ADD_PROJECTILE ~override/c0acone3.PRO~ ~C0 Igneus Blaze 3~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0acryo1.PRO~ ~C0 Cryoshock~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0amiss1.PRO~ ~C0 Energy Barrage 1~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0amiss2.PRO~ ~C0 Energy Barrage 2~
+COPY_EXISTING ~c0amiss2.pro~ ~override/c0amiss3.pro~
+COPY_EXISTING ~c0amiss2.pro~ ~override/c0amiss4.pro~
+COPY_EXISTING ~c0amiss2.pro~ ~override/c0amiss5.pro~
+COPY_EXISTING ~c0amiss2.pro~ ~override/c0amiss6.pro~
+COPY_EXISTING ~c0amiss2.pro~ ~override/c0amiss7.pro~
+COPY_EXISTING ~c0amiss2.pro~ ~override/c0amiss8.pro~
+ADD_PROJECTILE ~override/c0amiss3.PRO~ ~C0 Energy Barrage 3~
+ADD_PROJECTILE ~override/c0amiss4.PRO~ ~C0 Energy Barrage 4~
+ADD_PROJECTILE ~override/c0amiss5.PRO~ ~C0 Energy Barrage 5~
+ADD_PROJECTILE ~override/c0amiss6.PRO~ ~C0 Energy Barrage 6~
+ADD_PROJECTILE ~override/c0amiss7.PRO~ ~C0 Energy Barrage 7~
+ADD_PROJECTILE ~override/c0amiss8.PRO~ ~C0 Energy Barrage 8~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0albolt.PRO~ ~C0 Aerial Judgment~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0albol2.PRO~ ~C0 Aerial Judgment 2~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aluna3.PRO~ ~C0 Lunar Butterfly~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0aluna4.PRO~ ~C0 Lunar Butterfly 2~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0pring.PRO~ ~C0 Panacea Circle~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0acomet.PRO~ ~C0 Red Meteor~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0auheal.PRO~ ~C0 Aura Healing~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0au#at1.PRO~ ~C0 Autocannon Missile Fire~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0au#at2.PRO~ ~C0 Autocannon Missile Ice~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/c0au#at3.PRO~ ~C0 Autocannon Missile Lightning~
+
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/C0INAREP.PRO~ ~C0 Instant Area Allies~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/C0INAREE.PRO~ ~C0 Instant Area Enemies~
+ADD_PROJECTILE ~%MOD_FOLDER%/artificer/projectiles/C0INAREL.PRO~ ~C0 Instant Area Enemies Large~

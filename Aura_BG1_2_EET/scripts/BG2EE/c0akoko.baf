@@ -1,0 +1,21 @@
+IF
+	See(Player1)
+	PartyHasItem("c0afish")
+THEN
+	RESPONSE #100
+	Dialogue(Player1)
+END
+
+IF
+	See(Player1)
+	OR(2)
+	Global("C0KokoGiveFish","GLOBAL",0)
+	GlobalTimerExpired("C0KokoGiveFishTimer","GLOBAL")
+	Switch("C0KokoGiveFish","GLOBAL")
+THEN
+	RESPONSE #0
+	SetGlobal("C0KokoGiveFish","GLOBAL",1)
+	SetGlobalTimer("C0KokoGiveFishTimer","GLOBAL",THREE_DAYS)
+	RESPONSE #1
+	Dialogue(Player1)
+END

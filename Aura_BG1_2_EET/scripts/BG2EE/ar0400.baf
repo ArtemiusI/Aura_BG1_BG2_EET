@@ -1,0 +1,36 @@
+IF
+  Global("C0AuraBegin","GLOBAL",3)
+THEN
+  RESPONSE #100
+    ForceRandomEncounterEntry("C0AUF1","En")
+    Continue()
+END
+
+IF
+	GlobalGT("C0AuraBG2Quest3","GLOBAL",8)
+THEN
+	RESPONSE #100
+	ActionOverride("c0carnif",DestroySelf())
+	Continue()
+END
+
+IF
+  InMyArea(Player1)
+	Global("C0AuraBG2Quest3","GLOBAL",13)
+	Global("C0AuraBG2Quest3LunaSpawn","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest3LunaSpawn","GLOBAL",1)
+	CreateCreatureObjectOffset("c0aluna",Player1,[100.100])
+	ActionOverride("c0aluna",Dialogue(Player1))
+	Continue()
+END
+
+IF
+  InMyArea("C0ALUNA")
+	Global("C0AuraBG2Quest3","GLOBAL",15)
+THEN
+	RESPONSE #100
+	ActionOverride("c0aluna",StartDialogNoSet(Player1))
+	Continue()
+END

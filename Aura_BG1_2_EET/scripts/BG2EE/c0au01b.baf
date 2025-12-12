@@ -1,0 +1,33 @@
+IF
+	Clicked([0])
+	OR(3)
+	!InMyArea("C0Aura")
+	Dead("C0Aura")
+	!Range("C0Aura",20)
+	Global("C0AU01Telescope","C0AU01",0)
+THEN
+	RESPONSE #100
+	DisplayStringHead(Myself,~This massive, carefully-polished telescope points towards a skylight in the workshop's ceiling.~)
+END
+
+IF
+	Clicked([0])
+	InMyArea("C0Aura")
+	!Dead("C0Aura")
+	Range("C0Aura",20)
+	Global("C0AU01Telescope","C0AU01",0)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AU01Telescope","C0AU01",1)
+	DisplayStringHead(Myself,~This massive, carefully-polished telescope points towards a skylight in the workshop's ceiling.~)
+	Wait(1)
+	ActionOverride("C0Aura",StartDialogOverride("c0au01tk",Player1))
+END
+
+IF
+	Clicked([0])
+	GlobalGT("C0AU01Telescope","C0AU01",0)
+THEN
+	RESPONSE #100
+	DisplayStringHead(Myself,~This massive, carefully-polished telescope points towards a skylight in the workshop's ceiling.~)
+END

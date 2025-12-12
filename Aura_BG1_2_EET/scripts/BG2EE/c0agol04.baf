@@ -1,0 +1,25 @@
+
+IF
+  Allegiance("C0AFRITZ",ENEMY)
+  !Allegiance(Myself,ENEMY)
+  Global("C0AuraBG2Quest3","GLOBAL",26)
+THEN
+  RESPONSE #100
+    Enemy()
+END
+
+IF
+  Allegiance("C0AFRITZ",ENEMY)
+  !Allegiance(Myself,ENEMY)
+  Global("C0AuraBG2Quest3","GLOBAL",26)
+THEN
+  RESPONSE #100
+    Enemy()
+END
+
+IF
+  GlobalGT("C0AuraBG2Quest3","GLOBAL",26)
+THEN
+  RESPONSE #100
+    Kill(Myself)
+END

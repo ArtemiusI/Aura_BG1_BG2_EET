@@ -1,0 +1,92 @@
+IF
+    !Dead("C0AFIR05")
+    Delay(6)
+THEN
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([351.225])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([418.225])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([287.286])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([289.351])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([289.416])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([289.480])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([289.540])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([289.600])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([289.660])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([359.660])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([410.660])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([802.224])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([865.224])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([930.224])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([992.224])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([992.292])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([992.355])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([992.416])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([992.484])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+    RESPONSE #5
+    CreateVisualEffectObject("ICFIRSDI",Myself)
+    JumpToPoint([929.546])
+    ReallyForceSpellRES("C0AQEF17","C0AFIR05")
+END
+
+IF
+  Dead("C0AFIR05")
+THEN
+  RESPONSE #100
+    Kill(Myself)
+END

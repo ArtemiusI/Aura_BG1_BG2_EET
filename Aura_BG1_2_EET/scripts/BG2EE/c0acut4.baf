@@ -1,0 +1,13 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+	Wait(2)
+	ActionOverride("c0athf1",EscapeAreaObject("En2"))
+	ActionOverride("c0athf2",EscapeAreaObject("En2"))
+	ActionOverride("c0athf3",EscapeAreaObject("En2"))
+	ActionOverride("c0athf4",EscapeAreaObject("En2"))
+	Wait(4)
+	ActionOverride("c0aura",StartDialogueNoSet(Player1))
+END
