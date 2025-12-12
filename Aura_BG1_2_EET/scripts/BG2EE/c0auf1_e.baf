@@ -41,6 +41,7 @@ THEN
 		ActionOverride("C0Aura",TransformItem("C0BANDOL","C0BANDO2"))
 		ActionOverride("C0aura",MakeGlobalOverride())
 		ApplySpellRES("C0AurEET","C0Aura")
+		ChangeStat("C0Aura",WIS,2,ADD)
 		FadeToColor([30.0],0)
 		Wait(1)
 		FadeFromColor([30.0],0)
