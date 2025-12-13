@@ -2600,7 +2600,7 @@ Weight: 1~
 COPY_EXISTING ~AR0500.ARE~ ~OVERRIDE~
       LPF ADD_AREA_ITEM
       INT_VAR
-        container_to_add_to = 1
+        container_to_add_to = 2
       STR_VAR
         item_to_add = ~c0afish1~
       END
@@ -2622,7 +2622,7 @@ Weight: 1~
 COPY_EXISTING ~AR1403.ARE~ ~OVERRIDE~
       LPF ADD_AREA_ITEM
       INT_VAR
-        container_to_add_to = 1
+        container_to_add_to = 2
       STR_VAR
         item_to_add = ~c0afish3~
       END
@@ -2647,7 +2647,7 @@ Weight: 1~
 COPY_EXISTING ~AR2300.ARE~ ~OVERRIDE~
       LPF ADD_AREA_ITEM
       INT_VAR
-        container_to_add_to = 7
+        container_to_add_to = 8
       STR_VAR
         item_to_add = ~c0afish5~
       END
