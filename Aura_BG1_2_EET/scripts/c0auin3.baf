@@ -1302,6 +1302,7 @@ THEN
 END
 
 IF
+  !Allegiance(Myself,NEUTRAL)
   InParty("C0Aura")
   !Global("Recharge","LOCALS",1)
   !Global("Standby","LOCALS",1)
@@ -1324,6 +1325,7 @@ THEN
 END
 
 IF
+  !Allegiance(Myself,NEUTRAL)
   !InParty("C0Aura")
   !Global("Recharge","LOCALS",1)
   !Global("Standby","LOCALS",1)

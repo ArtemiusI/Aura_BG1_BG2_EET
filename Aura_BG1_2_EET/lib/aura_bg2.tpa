@@ -1916,7 +1916,7 @@ WRITE_ASCII SCRIPT_OVERRIDE ~c0aqthf~ #8 // override
 WRITE_ASCII DEATHVAR ~c0aqthf~ #32 // death variable
 SAY NAME1 ~Roy~
 SAY NAME2 ~Roy~
-  ADD_CRE_ITEM ~c0atitn~ #1 #1 #1 ~IDENTIFIED~ ~inv1~
+  ADD_CRE_ITEM ~c0atitn~ #1 #1 #1 ~IDENTIFIED~ ~inv~
 
 COPY_EXISTING ~INSPECT.cre~ ~override/c0aqinsp.cre~
 WRITE_ASCII DIALOG ~c0aqinsp~ #8 // dialogue
@@ -2597,6 +2597,14 @@ SAY DESC ~The bluefin tuna is a fish prized for its meat throughout the Realms, 
 
 Weight: 1~
 
+COPY_EXISTING ~AR0500.ARE~ ~OVERRIDE~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 1
+      STR_VAR
+        item_to_add = ~c0afish1~
+      END
+
 COPY_EXISTING ~c0afish2.itm~ ~override~
 SAY NAME1 ~Fish~
 SAY NAME2 ~Darkscale Bass~
@@ -2611,6 +2619,14 @@ SAY DESC ~A less common type of fish with a black-and-white striped pattern, the
 
 Weight: 1~
 
+COPY_EXISTING ~AR1403.ARE~ ~OVERRIDE~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 1
+      STR_VAR
+        item_to_add = ~c0afish3~
+      END
+
 COPY_EXISTING ~c0afish4.itm~ ~override~
 SAY NAME1 ~Fish~
 SAY NAME2 ~Amethyst Eel~
@@ -2618,12 +2634,23 @@ SAY DESC ~An exceptionally rare type of aquatic creature, the amethyst eel is lo
 
 Weight: 1~
 
+COPY_EXISTING ~UDPRINCE.cre~ ~override~
+  ADD_CRE_ITEM ~c0afish4~ #1 #1 #1 ~IDENTIFIED~ ~INV~
+
 COPY_EXISTING ~c0afish5.itm~ ~override~
 SAY NAME1 ~Fish~
 SAY NAME2 ~Queen's Knife~
 SAY DESC ~These strange fish have wing-like fins that are sharp as blades. They are most commonly found in the Sea of Moving Ice, and are considered holy by some cultures as a symbol of the goddess Umberlee.
 
 Weight: 1~
+
+COPY_EXISTING ~AR2300.ARE~ ~OVERRIDE~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 7
+      STR_VAR
+        item_to_add = ~c0afish5~
+      END
 
 COPY_EXISTING ~c0aamu1.itm~ ~override~
 SAY NAME1 ~Amulet~
@@ -3297,7 +3324,7 @@ STATISTICS:
 Weight: 0~
 
 COPY_EXISTING ~MAEVAR.cre~ ~override~
-  ADD_CRE_ITEM ~C0AMISC7~ #1 #1 #1 ~IDENTIFIED~ ~inv1~
+  ADD_CRE_ITEM ~C0AMISC7~ #1 #1 #1 ~IDENTIFIED~ ~inv~
 
 COPY_EXISTING ~AR0310.are~ ~override~
       LPF ADD_AREA_ITEM
@@ -4475,6 +4502,21 @@ Requires:
 
 Weight: 11~
 
+COPY_EXISTING ~c0aring1.itm~ ~override~
+SAY NAME1 ~Ring~
+SAY NAME2 ~The Third Eye~
+SAY DESC ~The third eye, also referred to as the mind's eye, is a spiritual concept in which those who have achieved enlightenment may 'see' the world beyond the normal capabilities of perception. This ring, perhaps once held by one such enlightened ascetic, allows those with sufficient willpower to achieve the same ability without undergoing the decades of meditation and focus required so long as it is worn. However, those with weaker wills inevitably find the expansion of they perceive the world to be overwhelming and are quickly compelled to take the ring off.
+
+STATISTICS:
+
+Equipped abilities:
+– Third Eye: The wearer is immune to critical hits and may target invisible enemies with spells and attacks
+
+Requires:
+ 16 Wisdom
+
+Weight: 0~
+
 COPY_EXISTING ~c0aring3.itm~ ~override~
 SAY NAME1 ~Ring~
 SAY NAME2 ~The Hallowed Savant~
@@ -4486,6 +4528,18 @@ STATISTICS:
 Equipped abilities:
 – Lore: +50
 – Can memorize one extra divine spell of each level from 1st to 7th
+
+Weight: 0~
+
+COPY_EXISTING ~c0aston1.itm~ ~override~
+SAY NAME1 ~Gem~
+SAY NAME2 ~Wishing Stone~
+SAY DESC ~Legends say this stone was once gifted to a young orphaned princess of a faraway land by a kindly demigod, though the ending of the tale is ambiguous. Some claim that the princess, wise beyond her years, succeeded in bringing her parents back to life, while others believe she impulsively brought ruin upon her own nation through her thoughtlessly conceived wishes. Regardless of the truth, the wishing stone grants one the ability to potentially manifest their heart's desire... so long as they choose their words wisely. After the proverbial three wishes have been spent, the stone disappears, to be discovered by another somewhere else within the realms.
+
+STATISTICS:
+
+Charge abilities (3 charges):
+– Wish
 
 Weight: 0~
 

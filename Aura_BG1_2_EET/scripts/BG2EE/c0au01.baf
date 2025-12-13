@@ -17,6 +17,7 @@ THEN
 END
 
 IF
+  !Global("C0KokoGiveFish","GLOBAL",3)
     !TimeOfDay(MORNING)
 	!TimeOfDay(NIGHT)
 	IsActive("c0akoko2")
@@ -26,6 +27,21 @@ THEN
     Deactivate("c0akoko2")
 	SmallWait(5)
 	Activate("c0akoko")
+	Continue()
+END
+
+IF
+  !Global("C0KokoGiveFish","GLOBAL",3)
+  OR(2)
+    TimeOfDay(MORNING)
+	TimeOfDay(NIGHT)
+	IsActive("c0akoko")
+THEN
+    RESPONSE #100
+	AmbientActivate("c0auzzz",TRUE)
+    Deactivate("c0akoko")
+	SmallWait(5)
+	Activate("c0akoko2")
 	Continue()
 END
 
@@ -41,17 +57,16 @@ THEN
 END
 
 IF
-    !TimeOfDay(MORNING)
-	!TimeOfDay(NIGHT)
-	IsActive("c0akoko2")
+  Global("C0KokoGiveFish","GLOBAL",3)
+  GlobalTimerExpired("C0KokoGivesGift","GLOBAL")
+	!InMyArea("c0akoko")
 THEN
     RESPONSE #100
-	AmbientActivate("c0auzzz",FALSE)
-    Deactivate("c0akoko2")
-	SmallWait(5)
-	Activate("c0akoko")
+  CreateCreature("c0akoko",[358.169],S)
+  ActionOverride("c0akoko",Dialogue(Player1))
 	Continue()
 END
+
 
 IF
   Global("C0AuraCraftItem","C0AU01",1)
