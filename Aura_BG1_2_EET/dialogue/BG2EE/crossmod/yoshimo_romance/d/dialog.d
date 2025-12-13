@@ -343,10 +343,6 @@ CHAIN BC0AURA2 YROM-8-2
 ~Yes, this cruelty... it must be punished. Nothing could be so unforgivable.~
 EXTERN BC0AURA2 YROM-8-1
 
-CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2YRRomancePostTalkAmulet","GLOBAL",1)~ THEN BC0AURA2 YROM-7
-~It's a beautiful amulet.~ [C0BLANK]
-END
-
 CHAIN IF WEIGHT #-1 ~Global("C0AuraToBYRDreamTalk","GLOBAL",1)~ THEN BC0AUR25 YROM-TOB-1
 ~You look wistful, <CHARNAME>... like you're longing for something. Did you... dream of Yoshimo again?~ [C0BLANK]
 DO ~SetGlobal("C0AuraToBYRDreamTalk","GLOBAL",2)~
