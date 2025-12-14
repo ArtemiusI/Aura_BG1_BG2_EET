@@ -63,6 +63,7 @@ BEGIN ~Aura NPC for Baldur's Gate: Enhanced Edition~ DESIGNATED 0
 
 BEGIN ~Aura NPC for Baldur's Gate 2: Enhanced Edition~ DESIGNATED 1
   REQUIRE_PREDICATE (GAME_IS ~BG2EE~) ~This component must be installed on BG2:EE.~
+
   OUTER_SET game_type = 2
 
 BEGIN ~Aura NPC for Baldur's Gate: Enhanced Edition Trilogy~ DESIGNATED 2
@@ -74,6 +75,7 @@ FORCED_SUBCOMPONENT ~Choose a class for Aura:~
   REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~) ~The main component must be installed.~
 OUTER_SET include_saves = 1
 OUTER_SET auraclass = 1
+COPY ~%MOD_FOLDER%/portraits~ ~override~
 INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
@@ -109,6 +111,7 @@ FORCED_SUBCOMPONENT ~Choose a class for Aura:~
   REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~) ~The main component must be installed.~
 OUTER_SET include_saves = 1
 OUTER_SET auraclass = 2
+COPY ~%MOD_FOLDER%/portraits~ ~override~
 INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
@@ -144,6 +147,7 @@ FORCED_SUBCOMPONENT ~Choose a class for Aura:~
   REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~) ~The main component must be installed.~
 OUTER_SET include_saves = 1
 OUTER_SET auraclass = 3
+COPY ~%MOD_FOLDER%/portraits~ ~override~
 INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
@@ -180,6 +184,7 @@ FORCED_SUBCOMPONENT ~Choose a class for Aura:~
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ ~This component requires EEEx.~ //EEX required!
 OUTER_SET include_saves = 1
 OUTER_SET auraclass = 4
+COPY ~%MOD_FOLDER%/portraits~ ~override~
 INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
