@@ -782,6 +782,7 @@ END
 CHAIN IF WEIGHT #-1 ~AreaCheck("ar1302")
 Global("C0AuraDeArniseKeep","GLOBAL",0)~ THEN C0AURA2J DEARNISE-HOLD
 ~*sniff* Yep, it's trolls alright. Nothing else could ever stink so bad.~
+DO ~SetGlobal("C0AuraDeArniseKeep","GLOBAL",1)~
 END
 + ~Global("C0AuraDruidGrove","GLOBAL",1)~ + ~Got any more of those trollbane arrows on hand?~ + DEARNISE-HOLD-1
 + ~!Global("C0AuraDruidGrove","GLOBAL",1)~ + ~Got anything that might help us take care of them?~ + DEARNISE-HOLD-2
@@ -793,8 +794,7 @@ DO ~SetGlobal("C0AuraDeArniseKeep","GLOBAL",1) GiveItemCreate("c0auaro4",Myself,
 CHAIN C0AURA2J DEARNISE-HOLD-2
 ~Luckily for us, I always keep a bit of trollbane fluid on hand just in case. Where is it... ah, there we go! Just add them to the arrowheads and... okay!~
 = ~When we run into those ugly things, we can stick them with one of these and they won't get back up. Too bad it doesn't take care of the smell.~
-DO ~SetGlobal("C0AuraDeArniseKeep","GLOBAL",1)
-GiveItemCreate("c0auaro4",Myself,20,0,0)~ EXIT
+DO ~GiveItemCreate("c0auaro4",Myself,20,0,0)~ EXIT
 
 I_C_T2 KPGLAI01 0 C0AuraKPGLAI01
 == C0AURA2J IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID)~ THEN ~<CHARNAME>! I'm picking up a strong hint of enchantment magic! This person must be under some sort of charm!~
@@ -1050,6 +1050,7 @@ END
 CHAIN IF WEIGHT #-1 ~AreaCheck("ar1900")
 Global("C0AuraDruidGrove","GLOBAL",0)~ THEN C0AURA2J DRUID-GROVE
 ~Oh dear. Do you smell that, <CHARNAME>? The stink in the air that's like rotten meat?~
+DO ~SetGlobal("C0AuraDruidGrove","GLOBAL",1)~
 END
 + ~OR(3)
 CheckStatGT(Player1,15,INT)
@@ -1074,8 +1075,7 @@ IF ~!Global("C0AuraDeArniseKeep","GLOBAL",1)~ EXTERN C0AURA2J DRUID-GROVE-3
 CHAIN C0AURA2J DRUID-GROVE-3
 ~Luckily for us, I always keep a bit of trollbane fluid on hand just in case. Where is it... ah, there we go! Just add them to the arrowheads and... okay!~
 = ~When we run into those ugly things, we can stick them with one of these and they won't get back up. Too bad it doesn't take care of the smell.~
-DO ~SetGlobal("C0AuraDruidGrove","GLOBAL",1)
-GiveItemCreate("c0auaro4",Myself,20,0,0)~ EXIT
+DO ~GiveItemCreate("c0auaro4",Myself,20,0,0)~ EXIT
 
 INTERJECT TRRAK01 0 C0AuraTRRAK010
 == C0AURA2J IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID)~ THEN ~Wait, waitwaitwait, <CHARNAME>! I'm sensing illusions around every corner of this cottage! And... it's strongest on this old lady here! Oh... I know! It's rakshasan magic! Be careful!~

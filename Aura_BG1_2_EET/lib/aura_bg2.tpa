@@ -1096,8 +1096,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aura2.cre~ ~override/C0Aura2.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura2~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura2~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Eveline Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1150,8 +1150,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aura25.cre~ ~override/C0Aura25.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura25~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura25~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Eveline Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1207,8 +1207,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aura2M.cre~ ~override/C0Aura2.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura2~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura2~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Evie Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1261,8 +1261,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aur25M.cre~ ~override/C0Aura25.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura25~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura25~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Evie Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1377,8 +1377,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aura2P.cre~ ~override/C0Aura2.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura2~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura2~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Evie Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1431,8 +1431,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aur25P.cre~ ~override/C0Aura25.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura25~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura25~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Evie Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, foreign to the strange culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1488,8 +1488,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aura2E.cre~ ~override/C0Aura2.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura2~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura2~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Eveline Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -1542,8 +1542,8 @@ COPY ~%MOD_FOLDER%/creatures/BG2/C0Aur25E.cre~ ~override/C0Aura25.cre~
   WRITE_ASCII SCRIPT_OVERRIDE ~C0Aura25~ // override
   WRITE_ASCII DEATHVAR ~C0Aura~ #32 // death variable
   WRITE_ASCII DIALOG ~C0Aura25~ #8 // dialogue
-  WRITE_ASCII 0X34 ~Aura2M~ #8   //small portrait
-  WRITE_ASCII 0x3c ~Aura2L~ #8   //medium portrait
+  WRITE_ASCII 0X34 ~C0Aura2M~ #8   //small portrait
+  WRITE_ASCII 0x3c ~C0Aura2L~ #8   //medium portrait
   SAY BIO ~When asked about her past, AURA informs you that she was born Aurelia Minerva Eveline Glimmershine of Anchoril, Lantan—the third daughter within a large gnomish family of two elder sisters, a younger brother, and twin baby siblings. From a young age, Aura displayed a natural talent in invention and craft and was inducted by her parents to the Sambaran College of Artificers. Quickly recognized as a prodigy by her tutors, she was recommended to the most prestigous and specialized academies of Lantan to be taught the nation's most respected disciplines. Aura's interest in magic, sparked by her brother's innate arcane talents, also drove her to learn the art of runecasting. After completing her studies and reaching adulthood, Aura left home with the blessing of her family to explore various lands and pursue knowledge in the outer world. During one such travel to the Far East, she was shipwrecked and struck with amnesia, awakening under the shelter of a priestess in Mikedono, one of the major islands of Kozakura. She remained in Kozakura, adapting to the foreign culture as her memories gradually returned over the years before her guardian's death led her to leave Kozakura and return to Faerûn. During her time in Athkatla she gained the goodwill of the Jansen family and became a guest in their household, where she has continued to practice her craft. Despite this, she is eager to be back on the road, where her talents can be put to more practical uses.~
   SAY MORALE ~Run away! Run away!~ [C0AU001]
   SAY HAPPY ~I'm glad I decided to travel with you.~ [C0AU002]
@@ -2401,12 +2401,10 @@ APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/bc0aura2.d~
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/bc0aur25.d~
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/c0aura2j.d~
-  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/c0aura2p.d~
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/c0aura25.d~
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/c0aur25j.d~
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/c0au01tk.d~
   COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/c0akoko.d~
-  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/BG2EE/pid.d~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //SCRIPTS
