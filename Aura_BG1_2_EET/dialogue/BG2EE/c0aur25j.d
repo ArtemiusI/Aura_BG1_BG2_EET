@@ -7,7 +7,7 @@ END
 
 // Bondari
 
-I_C_T BAZPAT01 9 C0AuraBAZPAT01
+I_C_T BAZPAT01 13 C0AuraBAZPAT01
 == C0AUR25J IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID)~ THEN ~Is anyone else feeling a weird sense of déjà vu? Just me? Strange...~
 == BAZPAT01 ~Uhh... *sweats profusely*~
 END

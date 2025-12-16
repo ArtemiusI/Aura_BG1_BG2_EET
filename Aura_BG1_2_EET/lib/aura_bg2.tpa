@@ -4503,7 +4503,7 @@ Weight: 11~
 COPY_EXISTING ~c0aring1.itm~ ~override~
 SAY NAME1 ~Ring~
 SAY NAME2 ~The Third Eye~
-SAY DESC ~The third eye, also referred to as the mind's eye, is a spiritual concept in which those who have achieved enlightenment may 'see' the world beyond the normal capabilities of perception. This ring, perhaps once held by one such enlightened ascetic, allows those with sufficient willpower to achieve the same ability without undergoing the decades of meditation and focus required so long as it is worn. However, those with weaker wills inevitably find the expansion of they perceive the world to be overwhelming and are quickly compelled to take the ring off.
+SAY DESC ~The third eye, also referred to as the mind's eye, is a spiritual concept in which those who have achieved enlightenment may 'see' the world beyond the normal capabilities of perception. This ring, perhaps once held by one such enlightened ascetic, allows those with sufficient willpower to achieve the same ability without undergoing the decades of meditation and focus required so long as it is worn. However, those with weaker wills inevitably find the expansion of how they perceive the world to be overwhelming and are quickly compelled to take the ring off.
 
 STATISTICS:
 
