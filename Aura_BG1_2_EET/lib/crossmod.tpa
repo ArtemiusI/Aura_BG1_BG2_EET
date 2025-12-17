@@ -154,7 +154,7 @@ THEN BEGIN
 END
 
 // Aura-Whin Hill
-ACTION_IF MOD_IS_INSTALLED ~WHINHILL.TP2~ ~0~ OR MOD_IS_INSTALLED ~WHINHILL.TP2~ ~1~
+ACTION_IF FILE_EXISTS_IN_GAME ~L#AFUB.dlg~
 THEN BEGIN
   PRINT ~Adding crossmod for Aura and Whin Hill~
 	COMPILE ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/whin_hill/d/dialog.d~
