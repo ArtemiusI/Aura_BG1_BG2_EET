@@ -350,7 +350,7 @@ INCLUDE ~%MOD_FOLDER%/Worldmap/add_worldmap_tbl.tpa~
 LAF ADD_WORLDMAP_TBL
   INT_VAR
   verbose = 0
-  inclSv = include_saves
+  inclSv = 0
   add_x = wmp_xCoord_SoA
   add_y = wmp_yCoord_SoA
   patch_bp_files = 1

@@ -167,15 +167,15 @@ COPY_TRANS FINSOL01 27
 // romanced, PC chooses to leave
 
 EXTEND_BOTTOM FINSOL01 29
-IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) Global("C0AuraRomanceActive","GLOBAL",2) Global("CC0AuraSolarLeave","GLOBAL",0)~ DO ~SetGlobal("C0AuraSolarLeave","GLOBAL",1)~ EXTERN C0AUR25J C0AuraSolarLeave
+IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) Global("C0AuraRomanceActive","GLOBAL",2) Global("C0AuraSolarLeave","GLOBAL",0)~ DO ~SetGlobal("C0AuraSolarLeave","GLOBAL",1)~ EXTERN C0AUR25J C0AuraSolarLeave
 END
 
 EXTEND_BOTTOM FINSOL01 30
-IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) Global("C0AuraRomanceActive","GLOBAL",2) Global("CC0AuraSolarLeave","GLOBAL",0)~ DO ~SetGlobal("C0SireneSolarLeave","GLOBAL",1)~ EXTERN C0AUR25J C0AuraSolarLeave
+IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) Global("C0AuraRomanceActive","GLOBAL",2) Global("C0AuraSolarLeave","GLOBAL",0)~ DO ~SetGlobal("C0AuraSolarLeave","GLOBAL",1)~ EXTERN C0AUR25J C0AuraSolarLeave
 END
 
 EXTEND_BOTTOM FINSOL01 31
-IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) Global("C0AuraRomanceActive","GLOBAL",2) Global("CC0AuraSolarLeave","GLOBAL",0)~ DO ~SetGlobal("CC0AuraSolarLeave","GLOBAL",1)~ EXTERN C0AUR25J C0AuraSolarLeave
+IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) Global("C0AuraRomanceActive","GLOBAL",2) Global("C0AuraSolarLeave","GLOBAL",0)~ DO ~SetGlobal("C0AuraSolarLeave","GLOBAL",1)~ EXTERN C0AUR25J C0AuraSolarLeave
 END
 
 CHAIN C0AUR25J C0AuraSolarLeave
