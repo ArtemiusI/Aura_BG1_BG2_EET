@@ -9,5 +9,5 @@ RESPONSE #100
 	CreateCreature("cutspy",[3117.2523],N)
 	ClearAllActions() 
     StartCutSceneMode()
-    StartCutScene("c0acuts0")
+    StartCutScene("c0acut_0")
 END
