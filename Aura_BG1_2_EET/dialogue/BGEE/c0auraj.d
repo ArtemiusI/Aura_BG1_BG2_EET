@@ -2644,7 +2644,7 @@ END
 IF ~~ craftdone4
 SAY ~I think I tried everything to get some reaction out of the idol. Rune magic, electric charges, diamond dust, random ominous gibberish, poking it with various metal probes...~
 = ~Um, anyways, I think I know how to get its power to awaken now. There's a strange line of symbols on the base that I managed to transcribe, so here goes... *clears throat* "A malum ta'kah cal'ak se Kozah"... whoa!~
-IF ~~ DO ~SetGlobal("C0AuraKozah","GLOBAL",1) ApplySpell(Myself,RESTORE_FULL_HEALTH) ClearAllActions() StartCutsceneMode() StartCutscene("c0acuts3")~ EXIT
+IF ~~ DO ~SetGlobal("C0AuraKozah","GLOBAL",1) ApplySpell(Myself,RESTORE_FULL_HEALTH) ClearAllActions() StartCutsceneMode() StartCutscene("c0acut_3")~ EXIT
 END
 
 IF ~~ craftdone5

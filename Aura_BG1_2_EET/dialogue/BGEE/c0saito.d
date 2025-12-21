@@ -45,7 +45,7 @@ CHAIN C0SAITO saito.2
 == C0SAITO ~You presume to threaten me, Konoe? Perhaps you believe those at your side are a match for my retainers, but will they stand with you against this?~
 DO ~ClearAllActions() 
       StartCutSceneMode() 
-      StartCutScene("c0acuts2")~ EXIT
+      StartCutScene("c0acut_2")~ EXIT
 	  
 CHAIN IF ~Global("C0AuraQuest","GLOBAL",8)~ THEN C0SAITO saito2
 ~Do you still wish for conflict? I am well prepared, as you can see. Though it will give me no shame to spill more gaijin blood in this foreign land, I know you would rather see lives spared.~
@@ -61,7 +61,7 @@ CHAIN C0AURAP saito2.1
 == C0AURAP ~...Genesis, Flamma, Purgo. Igneus Blaze!~
 DO ~ClearAllActions() 
       StartCutSceneMode() 
-      StartCutScene("c0acuts4")~ EXIT
+      StartCutScene("c0acut_4")~ EXIT
 
 CHAIN IF ~Global("C0AuraQuest","GLOBAL",9)~ THEN C0SAITO saito3
 ~I see... you set up this magnificent trap for me. Very impressive, Konoe... I did not anticipate this at all. This must be the weapon your kind are renowned for... what is its name in your tongue? "Smokepowder"?~

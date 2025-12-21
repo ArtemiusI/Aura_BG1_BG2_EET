@@ -20,7 +20,7 @@ IF ~~ quest.2
 SAY ~You don't understand... take a few steps back... I'll explain in a moment-~
 IF ~~ DO ~ClearAllActions()
 StartCutsceneMode()
-StartCutscene("c0acuts1")~ EXIT
+StartCutscene("c0acut_1")~ EXIT
 END
 
 IF ~OR(2)
