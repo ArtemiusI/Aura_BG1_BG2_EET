@@ -59,16 +59,11 @@ LANGUAGE
 BEGIN ~Aura NPC for Baldur's Gate: Enhanced Edition~ DESIGNATED 0
   REQUIRE_PREDICATE (GAME_IS ~BGEE~) ~This component must be installed on BG:EE.~
 
-  OUTER_SET game_type = 1
-
 BEGIN ~Aura NPC for Baldur's Gate 2: Enhanced Edition~ DESIGNATED 1
   REQUIRE_PREDICATE (GAME_IS ~BG2EE~) ~This component must be installed on BG2:EE.~
 
-  OUTER_SET game_type = 2
-
 BEGIN ~Aura NPC for Baldur's Gate: Enhanced Edition Trilogy~ DESIGNATED 2
   REQUIRE_PREDICATE (GAME_IS ~EET~) ~This component must be installed on BG:EET.~
-  OUTER_SET game_type = 3
 
 BEGIN ~Artificer (Thief)~
 FORCED_SUBCOMPONENT ~Choose a class for Aura:~
@@ -80,19 +75,19 @@ INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
 
-ACTION_IF (game_type = 1) THEN BEGIN
+ACTION_IF (GAME_IS ~BGEE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
 
 END
 
-ACTION_IF (game_type = 2) THEN BEGIN
+ACTION_IF (GAME_IS ~BG2EE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
 
 END
 
-ACTION_IF (game_type = 3) THEN BEGIN
+ACTION_IF (GAME_IS ~EET~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
@@ -116,19 +111,19 @@ INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
 	  
-ACTION_IF (game_type = 1) THEN BEGIN
+ACTION_IF (GAME_IS ~BGEE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
 
 END
 
-ACTION_IF (game_type = 2) THEN BEGIN
+ACTION_IF (GAME_IS ~BG2EE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
 
 END
 
-ACTION_IF (game_type = 3) THEN BEGIN
+ACTION_IF (GAME_IS ~EET~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
@@ -152,19 +147,19 @@ INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
 
-ACTION_IF (game_type = 1) THEN BEGIN
+ACTION_IF (GAME_IS ~BGEE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
 
 END
 
-ACTION_IF (game_type = 2) THEN BEGIN
+ACTION_IF (GAME_IS ~BG2EE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
 
 END
 
-ACTION_IF (game_type = 3) THEN BEGIN
+ACTION_IF (GAME_IS ~EET~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
@@ -189,19 +184,19 @@ INCLUDE ~%MOD_FOLDER%/lib/aura_resources.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_kit.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/aura_items.tpa~
 
-ACTION_IF (game_type = 1) THEN BEGIN
+ACTION_IF (GAME_IS ~BGEE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
 
 END
 
-ACTION_IF (game_type = 2) THEN BEGIN
+ACTION_IF (GAME_IS ~BG2EE~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
 
 END
 
-ACTION_IF (game_type = 3) THEN BEGIN
+ACTION_IF (GAME_IS ~EET~) THEN BEGIN
 
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg1.tpa~
   INCLUDE ~%MOD_FOLDER%/lib/aura_bg2.tpa~
