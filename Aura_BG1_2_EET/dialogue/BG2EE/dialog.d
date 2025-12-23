@@ -85,16 +85,6 @@ SetSequence(8)
 SetInterrupt(TRUE)~ EXIT
 ++ ~Exit~ EXIT
 
-CHAIN IF WEIGHT #-1 ~Global("C0AuraBegin","GLOBAL",1)~ THEN C0APICO begin.0
-~Ooooh! Get back here, you little rascal!~ [C0BLANK]
-DO ~SetGlobal("C0AuraBegin","GLOBAL",2)~
-== MAJAN IF ~InMyArea("MAJAN")
-!Dead("MAJAN")~ THEN ~Goodness me! Is that cat out and about again?~
-== C0AKOKO ~*meow!*~ [CAT01]
-END
-++ ~Whoa! Good kitty...~ EXTERN C0APICO begin.1
-++ ~Get away from me, you pest!~ EXTERN C0APICO begin.1
-
 CHAIN IF WEIGHT #-1 ~GlobalLT("C0KokoGiveFish","GLOBAL",2)~ THEN C0AKOKO a1
 ~*meow*~ [CAT01]
 = IF ~Global("C0KokoGiveFish","GLOBAL",1)
@@ -135,45 +125,29 @@ IF ~OR(2)
 !Global("C0KokoGiveFish","GLOBAL",1)
 GlobalTimerNotExpired("C0KokoGiveFishTimer","GLOBAL")~ EXIT
 
-CHAIN IF WEIGHT #-1 ~Global("C0KokoGiveFish","GLOBAL",2)~ THEN C0AKOKO a1.2
-~*meows expectantly*~ [CAT02]
-DO ~SetGlobal("C0KokoGiveFish","GLOBAL",2)~
+CHAIN IF WEIGHT #-1 ~Global("C0AuraBegin","GLOBAL",1)~ THEN C0APICO begin.0
+~Aha! There you are, you little rascal!~ [C0BLANK]
+DO ~SetGlobal("C0AuraBegin","GLOBAL",2)~
+== MAJAN IF ~InMyArea("MAJAN")
+!Dead("MAJAN")~ THEN ~Goodness me! Is that cat out and about again? I thought I saw something bolting out of the door a moment ago.~
+== C0AKOKO ~*meow!*~ [CAT01]
 END
-+ ~PartyHasItem("C0AFISH1")~ + ~Here, have this bluefin tuna.~ DO ~TakePartyItem("C0AFISH1") DestroyItem("C0AFISH1") SetGlobal("C0KokoFishType","GLOBAL",1) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
-+ ~PartyHasItem("C0AFISH2")~ + ~Here, have this darkscale bass.~ DO ~TakePartyItem("C0AFISH2") DestroyItem("C0AFISH2") SetGlobal("C0KokoFishType","GLOBAL",2) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
-+ ~PartyHasItem("C0AFISH3")~ + ~Here, have this striped sheepshead.~ DO ~TakePartyItem("C0AFISH3") DestroyItem("C0AFISH3") SetGlobal("C0KokoFishType","GLOBAL",3) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
-+ ~PartyHasItem("C0AFISH4")~ + ~Here, have this amethyst eel.~ DO ~TakePartyItem("C0AFISH4") DestroyItem("C0AFISH4") SetGlobal("C0KokoFishType","GLOBAL",4) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
-+ ~PartyHasItem("C0AFISH5")~ + ~Here, have this queen's knife.~ DO ~TakePartyItem("C0AFISH5") DestroyItem("C0AFISH5") SetGlobal("C0KokoFishType","GLOBAL",5) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
-++ ~I'd love to feed you, but I haven't got anything for you. Where might I be able to buy fish in this city...?~ EXIT
-++ ~Go away! Shoo!~ EXIT
-
-CHAIN C0AKOKO a1.3
-~Meow! *gobble gobble*~
-= ~*purrs*...~
-DO ~SetGlobal("C0KokoGiveFish","GLOBAL",3) EscapeAreaObject("Door0600")~ EXIT
-
-CHAIN IF WEIGHT #-1 ~Global("C0KokoGiveFish","GLOBAL",3)~ THEN C0AKOKO a1.4
-~Mrrow!
-
-(The cat rubs against your legs affectionately and drops something shiny at your feet.)~ [CAT02]
-DO ~SetGlobal("C0KokoGiveFish","GLOBAL",2)~
-END
-IF ~Global("C0KokoFishType","GLOBAL",1)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("misc41",Player1,1,0,0)~ EXIT
-IF ~Global("C0KokoFishType","GLOBAL",2)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("misc45",Player1,1,0,0)~ EXIT
-IF ~Global("C0KokoFishType","GLOBAL",3)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("ring07",Player1,1,0,0)~ EXIT
-IF ~Global("C0KokoFishType","GLOBAL",4)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("c0aston1",Player1,3,0,0)~ EXIT
-IF ~Global("C0KokoFishType","GLOBAL",5)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("c0aring1",Player1,1,0,0)~ EXIT
+++ ~I presume this cat belongs to you?~ EXTERN C0APICO begin.1
+++ ~Keep this stupid pest under control next time!~ EXTERN C0APICO begin.1
 
 CHAIN C0APICO begin.1
 ~I am so, so sorry, <PRO_SIRMAAM>! He's always trying to escape...~
 == C0AKOKO ~*mee-ow!*~ [CAT01]
+== C0APICO ~Five times a day. Five. Times. A day! If you're not trying to jump out the window, you're managing to pick the latch open and climb down the ladder. How do you even manage that without opposable thumbs?~
+== C0AKOKO ~*yawn*~ [CAT01]
+== C0APICO ~Ooh, just you wait until your owner comes back. *ahem* Beg pardon, <PRO_SIRMAAM>, I'll take him back now.~
 END
-++ ~No problem. I suppose you want him back.~ + begin.2
+++ ~Don't worry about it..~ + begin.2
 ++ ~I've seen this cat somewhere before...~ DO ~SetGlobal("C0AuraKnowsBG1","GLOBAL",1)~ + begin.2
 ++ ~Just get the creature away from me.~ + begin.2
 
 CHAIN C0APICO begin.2
-~I'll just take him off your hands... bad cat! Now open your mouth... there we go. No more running around with copper wires.~
+~I'll just take him off your hands... bad cat! Now open your mouth... there we go. No more running around with copper wires either, okay?~
 == C0APICO IF ~InMyArea("MAJAN")
 !Dead("MAJAN")~ THEN ~I'm so sorry for the noise, auntie.~
 == MAJAN IF ~InMyArea("MAJAN")
@@ -297,6 +271,35 @@ Kit(Myself,TRUECLASS)~ THEN C0ABOOK3 PYROMANCY
 DO ~AddKit(C0PYROM)
 CreateVisualEffectObject("ICFIRSDI",Myself)
 DestroyItem("C0ABOOK3")~ EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0KokoGiveFish","GLOBAL",2)~ THEN C0AKOKO a1.2
+~*meows expectantly*~ [CAT02]
+DO ~SetGlobal("C0KokoGiveFish","GLOBAL",2)~
+END
++ ~PartyHasItem("C0AFISH1")~ + ~Here, have this bluefin tuna.~ DO ~TakePartyItem("C0AFISH1") DestroyItem("C0AFISH1") SetGlobal("C0KokoFishType","GLOBAL",1) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
++ ~PartyHasItem("C0AFISH2")~ + ~Here, have this darkscale bass.~ DO ~TakePartyItem("C0AFISH2") DestroyItem("C0AFISH2") SetGlobal("C0KokoFishType","GLOBAL",2) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
++ ~PartyHasItem("C0AFISH3")~ + ~Here, have this striped sheepshead.~ DO ~TakePartyItem("C0AFISH3") DestroyItem("C0AFISH3") SetGlobal("C0KokoFishType","GLOBAL",3) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
++ ~PartyHasItem("C0AFISH4")~ + ~Here, have this amethyst eel.~ DO ~TakePartyItem("C0AFISH4") DestroyItem("C0AFISH4") SetGlobal("C0KokoFishType","GLOBAL",4) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
++ ~PartyHasItem("C0AFISH5")~ + ~Here, have this queen's knife.~ DO ~TakePartyItem("C0AFISH5") DestroyItem("C0AFISH5") SetGlobal("C0KokoFishType","GLOBAL",5) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
+++ ~I'd love to feed you, but I haven't got anything for you. Where might I be able to buy fish in this city...?~ EXIT
+++ ~Go away! Shoo!~ EXIT
+
+CHAIN C0AKOKO a1.3
+~Meow! *gobble gobble*~
+= ~*purrs*...~
+DO ~SetGlobal("C0KokoGiveFish","GLOBAL",3) EscapeAreaObject("Door0600")~ EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0KokoGiveFish","GLOBAL",3)~ THEN C0AKOKO a1.4
+~Mrrow!
+
+(The cat rubs against your legs affectionately and drops something shiny at your feet.)~ [CAT02]
+DO ~SetGlobal("C0KokoGiveFish","GLOBAL",2)~
+END
+IF ~Global("C0KokoFishType","GLOBAL",1)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("misc41",Player1,1,0,0)~ EXIT
+IF ~Global("C0KokoFishType","GLOBAL",2)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("misc45",Player1,1,0,0)~ EXIT
+IF ~Global("C0KokoFishType","GLOBAL",3)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("ring07",Player1,1,0,0)~ EXIT
+IF ~Global("C0KokoFishType","GLOBAL",4)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("c0aston1",Player1,3,0,0)~ EXIT
+IF ~Global("C0KokoFishType","GLOBAL",5)~ DO ~SetGlobal("C0KokoFishType","GLOBAL",0) GiveItemCreate("c0aring1",Player1,1,0,0)~ EXIT
 
 // QUEST 1
 

@@ -1,4 +1,30 @@
 IF
+	NearLocation(Player1,3517,1379,10)
+	OpenState("Door0402",TRUE)
+	Global("C0AuraBegin","GLOBAL",0)
+  	!StateCheck("C0Aura",STATE_REALLY_DEAD)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	SetGlobal("C0AuraBegin","GLOBAL",1)
+	ClearAllActions()
+	StartCutSceneMode()
+    CreateCreature("c0akoko",[3521.1376],SW)
+	Wait(1)
+	ActionOverride("c0akoko",MoveToObject(Player1))
+	Wait(1)
+	ActionOverride("c0akoko",FaceObject(Player1))
+	ActionOverride(Player1,FaceObject("c0akoko"))
+	SmallWait(5)
+	DisplayStringHead("c0akoko",~*meow!*~ [CAT01])
+	Wait(1)
+	GiveItemCreate("C0AUCAT2",Player1,0,0,0)
+	ActionOverride("c0akoko",DestroySelf())
+	EndCutSceneMode()
+	SetInterrupt(TRUE)
+END
+
+IF
   Global("C0AuraBegin","GLOBAL",3)
 THEN
   RESPONSE #100

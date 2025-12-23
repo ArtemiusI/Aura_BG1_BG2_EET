@@ -5090,6 +5090,17 @@ Equipped abilities:
 
 Weight: 0~
 
+COPY_EXISTING ~c0aucat2.itm~ ~override~
+SAY NAME1 ~Cat~
+SAY NAME2 ~Koko~
+SAY DESC ~This small, grey cat has found an opening to crawl into your pack and impertently refuses to leave.
+
+STATISTICS:
+
+Weight: 0~
+OUTER_SET strref = RESOLVE_STR_REF (~The cat slaps your hand away then yawns lazily when you try to move him.~ [FAMCAT01])
+APPEND item_use.2da ~c0aucat2 -1 %strref% 3~
+
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// SPELLS /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
