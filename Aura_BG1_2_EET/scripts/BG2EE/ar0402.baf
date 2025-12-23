@@ -1,10 +1,9 @@
 IF
-	TriggerOverride("tran0403",Range(Player1,15))
-	Global("C0AuraBegin","GLOBAL",0)
+	Global("C0AuraBegin","GLOBAL",1)
+	PartyHasItem("C0AUCAT2")
 THEN
   RESPONSE #100
 	SetInterrupt(FALSE)
-	SetGlobal("C0AuraBegin","GLOBAL",1)
 	Wait(1)
 	ClearAllActions()
 	StartCutSceneMode()
