@@ -1,7 +1,6 @@
 IF
 	TriggerOverride("tran0403",Range(Player1,15))
 	Global("C0AuraBegin","GLOBAL",0)
-  	!StateCheck("C0Aura",STATE_REALLY_DEAD)
 THEN
   RESPONSE #100
 	SetInterrupt(FALSE)
