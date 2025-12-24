@@ -382,7 +382,7 @@ CHAIN C0AURA2J QUEST1.1
 == C0AREES ~Ah, it'd be easier to list what he *doesn't* specialize in. You wouldn't find a field he doesn't have some knowledge of, whether it's engineering, alchemy, botany... well, anything related to the sciences or mathematical theory. He's an unparalleled expert.~
 == C0AURA2J ~Such a distinguished member of the homeland, here... do you think it'd be alright if I met him?~
 == C0AREES ~The professor doesn't see many guests, but he's quite personable, really. I'm sure if he sees another Lantanna, he'll be happy to spare as much time for you as he wants. We live in the back alley of the Slums district... hang on, if you have a map...~
-DO ~RevealAreaOnMap("C0AU01")~
+DO ~RevealAreaOnMap("C0AUR1")~
 == C0AREES ~It's mostly a place for lower class folk to live, so strangers don't pass through it very often. You probably wouldn't know to without knowing the way. I'm expected back there, so I should go now, but I'll be looking forward to seeing you at our home, sonina. Farewell!~
 DO ~EscapeArea()~ EXIT
 
