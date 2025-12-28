@@ -3,17 +3,17 @@ IF
   TimeOfDay([NIGHT])
   TimeOfDay([DUSK])
   Global("C0AuraBG2Quest1","GLOBAL",14)
-  Global("C0AuraBG2Quest1SpawnThief","MYAREA",0)
+  Global("C0AuraBG2Quest1SpawnThief","AR0800",0)
 THEN
   RESPONSE #100
-    SetGlobal("C0AuraBG2Quest1SpawnThief","MYAREA",1)
+    SetGlobal("C0AuraBG2Quest1SpawnThief","AR0800",1)
 	  CreateCreature("C0AQTHF",[1617.1382],SE)
     Continue()
 END
 
 IF
   Global("C0AuraBG2Quest1","GLOBAL",14)
-  Global("C0AuraBG2Quest1SpawnThief","MYAREA",1)
+  Global("C0AuraBG2Quest1SpawnThief","AR0800",1)
   IsActive("C0AQTHF")
   !TimeOfDay([NIGHT])
   !TimeOfDay([DUSK])
@@ -25,7 +25,7 @@ END
 
 IF
   Global("C0AuraBG2Quest1","GLOBAL",14)
-  Global("C0AuraBG2Quest1SpawnThief","MYAREA",1)
+  Global("C0AuraBG2Quest1SpawnThief","AR0800",1)
   !IsActive("C0AQTHF")
   OR(2)
   TimeOfDay([NIGHT])

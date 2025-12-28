@@ -1,5 +1,6 @@
 IF
-    GlobalGT("C0AuraBG2Quest1","GLOBAL",14)
+    GlobalGT("C0AuraBG2Quest1","GLOBAL",12)
+    TimeOfDay(NIGHT)   
     InMyArea("C0AQDAD")
 THEN
     RESPONSE #100
