@@ -1307,7 +1307,7 @@ InParty("EDWIN")~ + ~What do you think of Edwin?~ + ASKEDWIN-FEMALE
 + ~InParty("C0PAINA")~ + ~What do you think of Pai'Na?~ + ASKPAINA
 + ~InParty("L#2PHAL")~ + ~What do you think of Phalh?~ + ASKPHALH
 + ~InParty("RASAAD")~ + ~What do you think of Rasaad?~ + ASKRASAAD
-+ ~InParty("C0SIREN")~ + ~What do you think of Sirene?~ + ASKSIRENE
++ ~InParty("C0SIRENE")~ + ~What do you think of Sirene?~ + ASKSIRENE
 + ~!InParty("L#2PHAL")
 InParty("L#2VERR")~ + ~What do you think of Verr'Sza?~ + ASKVERRSZA-NOPHALH
 + ~InParty("L#2PHAL")

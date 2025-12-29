@@ -1398,7 +1398,7 @@ Wait(2)
 EndCutSceneMode()
 Interact(Player1)~ EXIT
 
-CHAIN IF ~Global("C0AuraBG2RomanceTalk","GLOBAL",14)
+CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2RomanceTalk","GLOBAL",14)
 Global("C0AuraRomanceTalk6AllNighter","GLOBAL",1)~ THEN BC0AURA2 ROM-7-A
 ~...*yawn*~ [C0BLANK]
 DO ~RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
@@ -1433,7 +1433,7 @@ CHAIN BC0AURA2 ROM-7-A-5
 = ~I'll make sure not to stumble into you by accident again... I don't think you have the energy to stand straight this time...~
 EXIT
 
-CHAIN IF ~Global("C0AuraBG2RomanceTalk","GLOBAL",14)
+CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2RomanceTalk","GLOBAL",14)
 !Global("C0AuraRomanceTalk6AllNighter","GLOBAL",1)~ THEN BC0AURA2 ROM-7-B
 ~Good <DAYNIGHTALL>, <CHARNAME>. Did you have a good rest?~ [C0BLANK]
 DO ~RealSetGlobalTimer("C0AuraBG2RomanceTimer","GLOBAL",3600)
