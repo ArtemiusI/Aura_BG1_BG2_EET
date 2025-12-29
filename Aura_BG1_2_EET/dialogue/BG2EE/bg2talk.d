@@ -2351,7 +2351,7 @@ CHAIN C0AURA2J friend-letter-3
 == C0AUSPE1 ~Thank you very much, ma'am. Have a good day.~
 DO ~EscapeArea()~ EXIT
 
-CHAIN IF ~Global("C0AuraBG2FriendshipLetter","GLOBAL",3)~ THEN C0AURA2J friend-letter2
+CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2FriendshipLetter","GLOBAL",3)~ THEN C0AURA2J friend-letter2
 ~Well, I wouldn't normally expect this kind of messenger for a simple letter, but Ceri has always been a little eccentric. I'd love to know how she convinced the priests to allow this... knowing her, she probably tricked them somehow.~ [C0BLANK]
 DO ~SetGlobal("C0AuraBG2FriendshipLetter","GLOBAL",4)~
 == C0AURA2J ~Okay, I should probably see what she's written, right? I just need to get this message tube open...~
