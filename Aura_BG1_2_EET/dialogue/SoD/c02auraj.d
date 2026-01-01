@@ -891,7 +891,7 @@ CHAIN C02AURAJ bddosia11
 ~Hmm... we can try blackthorn bark. The forests nearby look like they'd be of the right climate. It's not an immediate cure, but it'll at least keep the disease from getting any worse.~
 DO ~SetGlobal("bd_sdd302_uncommon_cold","global",2)
 SetGlobal("bd_sdd302_blackthorn","global",1)
-AddJournalEntry(61438,QUEST)~ EXTERN BDDOSIA 14
+AddJournalEntry(%aura_sod_blackthorn_quest%,QUEST)~ EXTERN BDDOSIA 16
 
 // Elandro
 
@@ -2066,11 +2066,10 @@ GlobalLT("bd_plot","global",199)~ + pid3.2
 IF ~GlobalGT("bd_plot","global",198)
 GlobalLT("bd_plot","global",390)~ + pid3.3
 IF ~GlobalGT("bd_plot","global",389)
-GlobalLT("bd_plot","global",405)~ + pid3.4
-IF ~GlobalGT("bd_plot","global",404)
-GlobalLT("bd_plot","global",480)~ + pid3.5
-IF ~GlobalGT("bd_plot","global",479)
-GlobalLT("bd_plot","global",592)~ + pid3.6
+GlobalLT("bd_plot","global",500)~ + pid3.4
+IF ~GlobalGT("bd_plot","global",499)
+GlobalLT("bd_plot","global",590)~ + pid3.5
+IF ~GlobalGT("bd_plot","global",589)~ + pid3.6
 END
 
 IF ~~ pid3.1
@@ -2376,9 +2375,9 @@ IF ~~ flirt
 + ~RandomNum(3,1)~ + ~(Wink at her)~ + f5.1
 + ~RandomNum(3,2)~ + ~(Wink at her)~ + f5.2
 + ~RandomNum(3,3)~ + ~(Wink at her)~ + f5.3
-+ ~Class(Player1,MAGE_ALL) Class(Player1,BARD_ALL) RandomNum(3,1)~ + ~(Impress her with a display of magic)~ + f6.1
-+ ~Class(Player1,MAGE_ALL) Class(Player1,BARD_ALL) RandomNum(3,2)~ + ~(Impress her with a display of magic)~ + f6.2
-+ ~Class(Player1,MAGE_ALL) Class(Player1,BARD_ALL) RandomNum(3,3)~ + ~(Impress her with a display of magic)~ + f6.3
++ ~OR(3) Class(Player1,MAGE_ALL) Class(Player1,SORCERER) Class(Player1,BARD_ALL) RandomNum(3,1)~ + ~(Impress her with a display of magic)~ + f6.1
++ ~OR(3) Class(Player1,MAGE_ALL) Class(Player1,SORCERER) Class(Player1,BARD_ALL) RandomNum(3,2)~ + ~(Impress her with a display of magic)~ + f6.2
++ ~OR(3) Class(Player1,MAGE_ALL) Class(Player1,SORCERER) Class(Player1,BARD_ALL) RandomNum(3,3)~ + ~(Impress her with a display of magic)~ + f6.3
 + ~RandomNum(3,1)~ + ~(Tell her a joke)~ + f7.1
 + ~RandomNum(3,2)~ + ~(Tell her a joke)~ + f7.2
 + ~RandomNum(3,3)~ + ~(Tell her a joke)~ + f7.3

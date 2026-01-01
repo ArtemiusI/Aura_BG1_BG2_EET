@@ -6,4 +6,6 @@ THEN
 		CutSceneId(Player1)
 		ActionOverride("C0Aura",SetDialog("C02AURAJ"))
 		ActionOverride("C0Aura",ChangeAIScript("C02AURA",OVERRIDE))
+		ActionOverride("C0Aura",Polymorph(THIEF_FEMALE_GNOME))
+	
 END

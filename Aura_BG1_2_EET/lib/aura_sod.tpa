@@ -45,10 +45,16 @@ END
   EXTEND_BOTTOM ~bdfoods.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdfoods.baf~
   EXTEND_BOTTOM ~bdwaters.bcs~ ~%MOD_FOLDER%/scripts/SoD/bdwaters.baf~
   
-  COMPILE ~%MOD_FOLDER%/dialogue/SoD/c02aura.d~
+ACTION_IF GAME_IS ~EET~ THEN BEGIN
+  OUTER_SET %aura_sod_blackthorn_quest% = 261438
+END ELSE BEGIN
+  OUTER_SET %aura_sod_blackthorn_quest% = 61438
+END
+
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogue/SoD/c02aura.d~
 		  ~%MOD_FOLDER%/dialogue/SoD/c02auraj.d~
   
-  COMPILE ~%MOD_FOLDER%/scripts/SoD/c02aura.baf~
+  COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/scripts/SoD/c02aura.baf~
 		  ~%MOD_FOLDER%/scripts/SoD/c02akoko.baf~
 		  ~%MOD_FOLDER%/scripts/SoD/c02acut1.baf~
 		  ~%MOD_FOLDER%/scripts/SoD/c02acut2.baf~
