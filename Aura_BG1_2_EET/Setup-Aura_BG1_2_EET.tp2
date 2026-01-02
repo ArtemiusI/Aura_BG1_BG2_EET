@@ -94,6 +94,8 @@ ACTION_IF (GAME_IS ~EET~) THEN BEGIN
 
 COPY_EXISTING ~C0MUFFY.ITM~ ~OVERRIDE/C0MUFFY2.ITM~
 COPY_EXISTING ~C0MUFFY.STO~ ~OVERRIDE/C0MUFFY2.STO~
+OUTER_SET strref = RESOLVE_STR_REF (~Muffy scurries away in fear of you, its contents clattering as it runs. "Hey, get back here!" Aura sighs. "Hope he hasn't broken anything this time..."~ [C0MUFFY])
+APPEND item_use.2da ~c0muffy2 Aura %strref% 3~
 COPY_EXISTING ~C0AUBOOK.ITM~ ~OVERRIDE/C0AUBOO2.ITM~
 COPY_EXISTING ~C0AUBOOK.STO~ ~OVERRIDE/C0AUBOO2.STO~
 COPY_EXISTING ~C0BANDOL.ITM~ ~OVERRIDE/C0BANDO2.ITM~

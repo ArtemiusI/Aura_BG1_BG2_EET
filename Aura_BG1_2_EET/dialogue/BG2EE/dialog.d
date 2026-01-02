@@ -154,6 +154,8 @@ CHAIN C0APICO begin.2
 !Dead("MAJAN")~ THEN ~No trouble, dearie. You go on back inside.~
 == C0APICO ~Right, now you're going to get a big scolding once miss Aura gets back home! Come on, back to the workshop, Koko, skedaddle!~
 DO ~SetGlobal("C0AuraBegin","GLOBAL",2)
+	TakePartyItem("C0AUCAT2")
+	DestroyItem("C0AUCAT2")
 	Wait(1)
 	ClearAllActions()
 	StartCutSceneMode()
