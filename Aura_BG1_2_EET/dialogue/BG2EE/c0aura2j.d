@@ -543,6 +543,7 @@ CHAIN C0AURA2J AURA-VAMPIRE-1
 DO ~ClearAllActions()
 StartCutSceneMode()
 CreateVisualEffectObject("C0AMAGF1",Myself)
+ApplySpellRES("C0AMAGF2",Myself)
 TransformItem("c0amaga1","c0amaga3")
 Wait(2)
 StartDialogNoSet(Player1)~ EXIT
