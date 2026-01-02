@@ -924,11 +924,11 @@ ActionOverride("CraftForge",TakePartyGold(10000))
 ActionOverride("CraftForge",TakePartyItem("c0anote8"))~ + CRAFT-CUTSCENE
 + ~PartyHasItem("c0anote9")
 PartyHasItem("scrl9m")
-NumItemsPartyGT("scrl7m",2)
+NumItemsPartyGT("scrl7L",2)
 NumItemsPartyGT("misc44",1)
 PartyGoldGT(11999)~ + ~I've got the components for the Spellbreaker. Let's work on that.~ DO ~SetGlobal("C0AuraCraftItem","C0AU01",7)
 ActionOverride("CraftForge",TakePartyItemNum("scrl9m",1))
-ActionOverride("CraftForge",TakePartyItemNum("scrl7m",3))
+ActionOverride("CraftForge",TakePartyItemNum("scrl7L",3))
 ActionOverride("CraftForge",TakePartyItemNum("misc44",2))
 ActionOverride("CraftForge",TakePartyGold(12000))
 ActionOverride("CraftForge",TakePartyItem("c0anote9"))~ + CRAFT-CUTSCENE
