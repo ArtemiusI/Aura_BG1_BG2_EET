@@ -4918,6 +4918,14 @@ STATISTICS:
 
 Weight: 1~
 
+COPY_EXISTING ~AR0412.ARE~ ~OVERRIDE~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 1
+      STR_VAR
+        item_to_add = ~c0aucry2~
+      END
+
 COPY_EXISTING ~c0aucry2.itm~ ~override~
 SAY NAME1 ~Crystal~
 SAY NAME2 ~Frost Crystal~
@@ -4926,6 +4934,14 @@ SAY DESC ~This pale crystal, taken from the Elemental Plane of Ice, radiates an 
 STATISTICS:
 
 Weight: 1~
+
+COPY_EXISTING ~AR0412.ARE~ ~OVERRIDE~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 2
+      STR_VAR
+        item_to_add = ~c0aucry1~
+      END
 
 COPY_EXISTING ~c0aucry3.itm~ ~override~
 SAY NAME1 ~Crystal~
