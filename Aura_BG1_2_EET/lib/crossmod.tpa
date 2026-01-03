@@ -15,7 +15,7 @@ END
 */
 
 // Aura-Brynnlaw
-ACTION_IF MOD_IS_INSTALLED ~SELLSWORDS.TP2~ ~0~
+ACTION_IF MOD_IS_INSTALLED ~BACKBRYNNLAW.TP2~ ~0~
 THEN BEGIN
   PRINT ~Adding crossmod for Aura and Back to Brynnlaw~
 	COMPILE ~%MOD_FOLDER%/dialogue/BG2EE/crossmod/brynnlaw/d/dialog.d~
