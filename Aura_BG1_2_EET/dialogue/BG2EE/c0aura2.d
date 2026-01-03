@@ -1735,7 +1735,7 @@ CHAIN C0AURA2J FLIRT-1-5B
 EXIT
 
 CHAIN C0AURA2J FLIRT-1-5C
-~(Surprisingly, Aura puts up a meager resistance as you playfully attack her ticklish spots. When you detect a glint of mischief in her eyes, you realize―a little too late―that you've made a careless mistake.~
+~(Surprisingly, Aura puts up a meager resistance as you playfully attack her ticklish spots. When you detect a glint of mischief in her eyes, you realize—a little too late—that you've made a careless mistake.)~
 = ~Haha! You've fallen for my trap! Get her, Muffy!~
 = ~(The small squirrel construct leaps onto you and runs crazily over your body in circles from head to toe, its tiny metal paws tickling you endlessly as you struggle to capture it.)~
 END
