@@ -2149,12 +2149,18 @@ The artificer spends two rounds to assimilate a powerful automaton which can be 
 Only one automaton can be controlled at any given time.~
 
 COPY_EXISTING ~c0auin3a.cre~ ~override~
+COPY_EXISTING ~c0auin3a.cre~ ~override/c0auin3b.cre~
+COPY_EXISTING ~c0auin3a.cre~ ~override/c0auin3c.cre~
+
+COPY_EXISTING ~c0auin3a.cre~ ~override~
   WRITE_ASCII 0X34 ~ABronzL~ #8   //small portrait
 SAY NAME1 ~Bronze Automaton~
 SAY NAME2 ~Bronze Automaton~
+WRITE_BYTE 0x234 8
 WRITE_ASCII 0x2cc ~c0auin3~  #8  // dialogue
   WRITE_ASCII 0x280 ~c0auin3~ #32  //DV
     WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~C0_AURA_AUTOMATON~))
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 187 parameter1 = 1 timing = 9 STR_VAR effvar = C0AUIN3A END
   WRITE_ASCII 0X34 ~ABronzL~ #8   //small portrait
   SAY BATTLE_CRY1 ~~ [C0AUTOA]
   SAY BATTLE_CRY2 ~~ [C0AUTOB]
@@ -2176,15 +2182,17 @@ WRITE_ASCII 0x2cc ~c0auin3~  #8  // dialogue
   SAY DYING ~~ [C0AUTO9]
   SAY HURT ~~ [C0AUTOH]
 
-COPY_EXISTING ~c0auin3a.cre~ ~override/c0auin3b.cre~
-  WRITE_ASCII 0X34 ~ABronzL~ #8   //small portrait
+COPY_EXISTING ~c0auin3b.cre~ ~override~
+  WRITE_ASCII 0X34 ~AJadeL~ #8   //small portrait
 SAY NAME1 ~Jade Automaton~
 SAY NAME2 ~Jade Automaton~
-WRITE_BYTE 0x2e 32
 WRITE_BYTE 0x234 14
+WRITE_BYTE 0x238 21
+WRITE_BYTE 0x2e 32
 WRITE_ASCII 0x2cc ~c0auin3~  #8  // dialogue
   WRITE_ASCII 0x280 ~c0auin3~ #32  //DV
     WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~C0_AURA_AUTOMATON_JADE~))
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 187 parameter1 = 2 timing = 9 STR_VAR effvar = C0AUIN3A END
   WRITE_ASCII 0X34 ~AJadeL~ #8   //small portrait
   SAY BATTLE_CRY1 ~~ [C0AUTOA]
   SAY BATTLE_CRY2 ~~ [C0AUTOB]
@@ -2206,15 +2214,17 @@ WRITE_ASCII 0x2cc ~c0auin3~  #8  // dialogue
   SAY DYING ~~ [C0AUTO9]
   SAY HURT ~~ [C0AUTOH]
 
-COPY_EXISTING ~c0auin3a.cre~ ~override/c0auin3c.cre~
-  WRITE_ASCII 0X34 ~AJadeL~ #8   //small portrait
+COPY_EXISTING ~c0auin3c.cre~ ~override~
+  WRITE_ASCII 0X34 ~ABlackL~ #8   //small portrait
 SAY NAME1 ~Black Automaton~
 SAY NAME2 ~Black Automaton~
-WRITE_BYTE 0x2e 75
 WRITE_BYTE 0x234 22
+WRITE_BYTE 0x238 21
+WRITE_BYTE 0x2e 75
 WRITE_ASCII 0x2cc ~c0auin3~  #8  // dialogue
   WRITE_ASCII 0x280 ~c0auin3~ #32  //DV
     WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~C0_AURA_AUTOMATON_BLACK~))
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 187 parameter1 = 3 timing = 9 STR_VAR effvar = C0AUIN3A END
   WRITE_ASCII 0X34 ~ABlackL~ #8   //small portrait
   SAY BATTLE_CRY1 ~~ [C0AUTOA]
   SAY BATTLE_CRY2 ~~ [C0AUTOB]

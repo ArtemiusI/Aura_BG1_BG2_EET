@@ -4,6 +4,8 @@ IF
     !HasItemEquiped("C0AUTO3",Myself)
 THEN
     RESPONSE #100
+		ReallyForceSpellRES("c0auin39",Myself)
+		ReallyForceSpellRES("c0autor",Myself)
 		EquipMostDamagingMelee()
 		Continue()
 END
@@ -14,12 +16,12 @@ IF
     !Global("Standby","LOCALS",1)
     ClassLevelGT("C0Aura",ROGUE,13)  // Aura
     ClassLevelLT("C0Aura",ROGUE,22)  // Aura
-    LevelLT(Myself,14)
+    GlobalLT("C0AUIN3A","LOCALS",2)
 THEN
     RESPONSE #100
 		SetGlobal("C0AutoCreated", "GLOBAL", 0)
   		SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
-  		ActionOverride("C0Aura",ReallyForceSpellRES("C0AUIN3","C0AUIN3"))
+  		ChangeAnimationNoEffect("C0AUIN3B")
         Continue()
 END
 
@@ -28,12 +30,12 @@ IF
     CombatCounter(0)
     !Global("Standby","LOCALS",1)
     ClassLevelGT("C0Aura",ROGUE,21)  // Aura
-    LevelLT(Myself,22)
+    GlobalLT("C0AUIN3A","LOCALS",3)
 THEN
     RESPONSE #100
 		SetGlobal("C0AutoCreated", "GLOBAL", 0)
   		SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
-  		ActionOverride("C0Aura",ReallyForceSpellRES("C0AUIN3","C0AUIN3"))
+  		ChangeAnimationNoEffect("C0AUIN3C")
         Continue()
 END
 
