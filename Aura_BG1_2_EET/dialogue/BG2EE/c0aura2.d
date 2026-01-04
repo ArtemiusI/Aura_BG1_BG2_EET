@@ -227,8 +227,7 @@ CHAIN C0AURA2 a03.20
 DO ~SetGlobal("C0AuraBegin","GLOBAL",10)
 EscapeAreaMove("C0AU01",427,207,NNE)~ EXIT
 
-CHAIN IF WEIGHT #-1 ~Global("C0AuraKnowsBG1","GLOBAL",1)
-Global("C0AuraBegin","GLOBAL",10)~ THEN C0AURA2 b1
+CHAIN IF WEIGHT #-1 ~Global("C0AuraBegin","GLOBAL",10)~ THEN C0AURA2 b1
 ~Well, here we are. Welcome to my workshop! Well, technically not mine, but it's where I've been working.~ [C0BLANK]
 DO ~SetGlobal("C0AuraBegin","GLOBAL",11)~
 == C0APICO ~Welcome back, miss Aura! There's tea on the kettle if you want some.~
@@ -237,7 +236,8 @@ DO ~SetGlobal("C0AuraBegin","GLOBAL",11)~
 == C0AURA2 ~I haven't had a place of my own to work on for a long while, so I'm really grateful for the Jansens to offer me this room. It's worked wonders for me.~
 END
 ++ ~It's quite nice.~ + b1.1
-++ ~I see there's a few things from our past travels laying around.~ + b1.1
+++ ~Interesting stuff you have here.~ + b1.1
++ ~Global("C0AuraKnowsBG1","GLOBAL",1)~ + ~I see there's a few things from our past travels laying around.~ + b1.1
 
 CHAIN C0AURA2 b1.1
 ~Make yourself at home, <CHARNAME>! I've got this wonderful lemon leaf tea that goes perfectly with the local pastries. It's going to be great.~
