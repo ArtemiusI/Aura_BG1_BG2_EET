@@ -19,8 +19,6 @@ IF
     GlobalLT("C0AUIN3A","LOCALS",2)
 THEN
     RESPONSE #100
-		SetGlobal("C0AutoCreated", "GLOBAL", 0)
-  		SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
   		ChangeAnimationNoEffect("C0AUIN3B")
         Continue()
 END
@@ -33,8 +31,6 @@ IF
     GlobalLT("C0AUIN3A","LOCALS",3)
 THEN
     RESPONSE #100
-		SetGlobal("C0AutoCreated", "GLOBAL", 0)
-  		SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
   		ChangeAnimationNoEffect("C0AUIN3C")
         Continue()
 END
