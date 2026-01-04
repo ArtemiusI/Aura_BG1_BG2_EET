@@ -1,36 +1,36 @@
 IF
   Global("C0AutoCreated", "GLOBAL", 0)
-  ClassLevelLT(LastSummonerOf(Myself),ROGUE,14)  // Aura
+  ClassLevelLT("C0AURA",ROGUE,14)  // Aura
 THEN RESPONSE #100
   SetInterrupt(FALSE)
   SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
   SetGlobal("C0AutoCreated", "GLOBAL", 1)
-  ActionOverride(LastSummonerOf(Myself),ReallyForceSpellRES("c0auin3a",Myself))
+  ActionOverride("C0AURA",ReallyForceSpellRES("c0auin3a",Myself))
   SetInterrupt(TRUE)
   DestroySelf()
 END
 
 IF
   Global("C0AutoCreated", "GLOBAL", 0)
-    ClassLevelGT(LastSummonerOf(Myself),ROGUE,13)  // Aura
-    ClassLevelLT(LastSummonerOf(Myself),ROGUE,22)  // Aura
+    ClassLevelGT("C0AURA",ROGUE,13)  // Aura
+    ClassLevelLT("C0AURA",ROGUE,22)  // Aura
 THEN RESPONSE #100
   SetInterrupt(FALSE)
   SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
   SetGlobal("C0AutoCreated", "GLOBAL", 1)
-  ActionOverride(LastSummonerOf(Myself),ReallyForceSpellRES("c0auin3B",Myself))
+  ActionOverride("C0AURA",ReallyForceSpellRES("c0auin3B",Myself))
   SetInterrupt(TRUE)
   DestroySelf()
 END
 
 IF
   Global("C0AutoCreated", "GLOBAL", 0)
-  ClassLevelGT(LastSummonerOf(Myself),ROGUE,21)  // Aura
+  ClassLevelGT("C0AURA",ROGUE,21)  // Aura
 THEN RESPONSE #100
   SetInterrupt(FALSE)
   SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
   SetGlobal("C0AutoCreated", "GLOBAL", 1)
-  ActionOverride(LastSummonerOf(Myself),ReallyForceSpellRES("c0auin3C",Myself))
+  ActionOverride("C0AURA",ReallyForceSpellRES("c0auin3C",Myself))
   SetInterrupt(TRUE)
   DestroySelf()
 END
@@ -50,7 +50,7 @@ IF
   !Dead("C0AUIN3")
   InMyArea("C0AUIN3")
 THEN RESPONSE #100
-	DisplayString(LastSummonerOf(Myself),~An automaton is already currently active.~)
+	DisplayString("C0AURA",~An automaton is already currently active.~)
 	DestroySelf()
 END
 
@@ -59,7 +59,7 @@ IF
   !Dead("C0AUIN3")
   !InMyArea("C0AUIN3")
 THEN RESPONSE #100
-	MoveGlobalObject("C0AUIN3",LastSummonerOf(Myself))
-	DisplayString(LastSummonerOf(Myself),~An automaton is already currently active.~)
+	MoveGlobalObject("C0AUIN3","C0AURA")
+	DisplayString("C0AURA",~An automaton is already currently active.~)
 	DestroySelf()
 END
