@@ -1,10 +1,36 @@
 IF
   Global("C0AutoCreated", "GLOBAL", 0)
+  ClassLevelLT(LastSummonerOf(Myself),ROGUE,14)  // Aura
 THEN RESPONSE #100
   SetInterrupt(FALSE)
   SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
   SetGlobal("C0AutoCreated", "GLOBAL", 1)
   ActionOverride(LastSummonerOf(Myself),ReallyForceSpellRES("c0auin3a",Myself))
+  SetInterrupt(TRUE)
+  DestroySelf()
+END
+
+IF
+  Global("C0AutoCreated", "GLOBAL", 0)
+    ClassLevelGT(LastSummonerOf(Myself),ROGUE,13)  // Aura
+    ClassLevelLT(LastSummonerOf(Myself),ROGUE,22)  // Aura
+THEN RESPONSE #100
+  SetInterrupt(FALSE)
+  SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
+  SetGlobal("C0AutoCreated", "GLOBAL", 1)
+  ActionOverride(LastSummonerOf(Myself),ReallyForceSpellRES("c0auin3B",Myself))
+  SetInterrupt(TRUE)
+  DestroySelf()
+END
+
+IF
+  Global("C0AutoCreated", "GLOBAL", 0)
+  ClassLevelGT(LastSummonerOf(Myself),ROGUE,21)  // Aura
+THEN RESPONSE #100
+  SetInterrupt(FALSE)
+  SetGlobal("SPRITE_IS_DEADC0AUIN3","GLOBAL",0)
+  SetGlobal("C0AutoCreated", "GLOBAL", 1)
+  ActionOverride(LastSummonerOf(Myself),ReallyForceSpellRES("c0auin3C",Myself))
   SetInterrupt(TRUE)
   DestroySelf()
 END
