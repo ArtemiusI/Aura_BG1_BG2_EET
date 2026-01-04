@@ -2216,8 +2216,8 @@ WRITE_ASCII 0x2cc ~c0auin3~  #8  // dialogue
 
 COPY_EXISTING ~c0auin3c.cre~ ~override~
   WRITE_ASCII 0X34 ~ABlackL~ #8   //small portrait
-SAY NAME1 ~Black Automaton~
-SAY NAME2 ~Black Automaton~
+SAY NAME1 ~Adamantine Automaton~
+SAY NAME2 ~Adamantine Automaton~
 WRITE_BYTE 0x234 22
 WRITE_BYTE 0x238 21
 WRITE_BYTE 0x2e 75
