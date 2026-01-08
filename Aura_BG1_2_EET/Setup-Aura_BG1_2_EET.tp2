@@ -178,7 +178,7 @@ END
 BEGIN ~Artificer (Bard, EEex required)~
 FORCED_SUBCOMPONENT ~Choose a class for Aura:~
   REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~) OR (MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~) ~The main component must be installed.~
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ ~This component requires EEEx.~ //EEX required!
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) ~This component requires EEEx.~ //EEX required!
 OUTER_SET include_saves = 1
 OUTER_SET auraclass = 4
 COPY ~%MOD_FOLDER%/portraits~ ~override~
