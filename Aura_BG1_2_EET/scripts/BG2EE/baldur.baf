@@ -59,6 +59,31 @@ END
 
 IF
 	Global("C0AuraBG2Quest1","GLOBAL",51)
+	!AreaCheck("C0AUF2")
+	Global("C0AuraBG2Quest1FinalEncounter","GLOBAL",0)
+	InParty("C0Aura")
+	!Dead("C0Aura")
+	OR(10)
+	AreaCheck("C0AUR1")
+	AreaCheck("AR0020")
+	AreaCheck("AR0300")
+	AreaCheck("AR0400")
+	AreaCheck("AR0500")
+	AreaCheck("AR0500")
+	AreaCheck("AR0700")
+	AreaCheck("AR0800")
+	AreaCheck("AR0900")
+	AreaCheck("AR1000")
+THEN
+  RESPONSE #100
+	DisplayStringHead(Player1,~You feel the effects of anti-magic dissipating.~)
+	SetGlobal("C0AuraBG2Quest1FinalEncounter","GLOBAL",1)
+	ActionOverride(Player1,ApplySpellRES("C0AQEF8",Myself))
+    ForceRandomEncounterEntry("C0AUF2","Entrance1")
+END
+
+IF
+	Global("C0AuraBG2Quest1","GLOBAL",51)
 	Dead("C0AEINT3")
 	Dead("C0AGOL01")
 	NumDeadGT("C0AEINT2",2)

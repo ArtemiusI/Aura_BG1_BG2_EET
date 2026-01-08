@@ -360,7 +360,7 @@ DO ~SetGlobal("C0AuraBegin","GLOBAL",12)~
 == C0AURA2 IF ~InParty("JAN")~ THEN ~Oh, by the way, is this Pico's cousin? I haven't met him at all until just now. It's nice to meet you at last.~
 == JANJ IF ~InParty("JAN")~ THEN ~Yes, very nice to meet you too. It's been a long time since I've ran into anyone from Lantan. How's the place doing now anyway? The people haven't blown themselves up yet, I hope. That would be a great loss. Not to mention it'd be a big mess to clean up.~
 == C0AURA2 IF ~InParty("JAN")~ THEN ~Umm, I haven't been home in a long time, but if the letters I've gotten mean anything, then they haven't...~
-== JANJ IF ~InParty("JAN")~ THEN ~Oh, good. In that case, I hope I'll hear from some of my old friends soon. Now then, don't mind me. I'll just partake of this excellent tea while you speak with <CHARNAME>. <PRO_HESHE> doesn't my wit and panache, of course, but <PRO_HESHE> is the leader, nonetheless. *sip* Ahh... it doesn't compare to our home-grown turnip leaf tea, but it comes a very close second.~
+== JANJ IF ~InParty("JAN")~ THEN ~Oh, good. In that case, I hope I'll hear from some of my old friends soon. Now then, don't mind me. I'll just partake of this excellent tea while you speak with <CHARNAME>. <PRO_HESHE> doesn't have my wit and panache, of course, but <PRO_HESHE> is the leader, nonetheless. *sip* Ahh... it doesn't compare to our home-grown turnip leaf tea, but it comes a very close second.~
 == C0AURA2 ~Anyways, it's nice to meet you, <CHARNAME>. I never thought I'd run into the famous hero of Baldur's Gate here of all places!~
 END
 ++ ~How much do you know about me, exactly?~ + INTRO-DIALOG-2-1

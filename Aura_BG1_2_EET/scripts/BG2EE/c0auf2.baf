@@ -57,3 +57,14 @@ THEN
 	Wait(1)
 	ActionOverride("C0Aura",StartDialogNoSet(Player1))
 END
+
+IF
+	!Dead("C0AGOL01")
+	Global("C0AuraBG2Quest1FinalEncounter","GLOBAL",1)
+THEN
+	RESPONSE #100
+	SetGlobal("C0AuraBG2Quest1FinalEncounter","GLOBAL",0)
+	ActionOverride("C0AGOL01",ForceSpellRES("C0AQEF7",Myself))
+	DisplayStringHead(Player1,~You feel something oddly disconcerting as you realize that magic has suddenly ceased to function in the area.~)
+END
+

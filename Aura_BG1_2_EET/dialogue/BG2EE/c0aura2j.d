@@ -671,7 +671,7 @@ END
   ++ ~It's not your fault.~ + AURA-SAHUAGIN-2
   ++ ~Are you going to be alright?~ + AURA-SAHUAGIN-3
   ++ ~Yes, well, at least you're coherent now.~ + AURA-SAHUAGIN-4
-  ++ ~Good think you recovered. Otherwise, you might be fish food already.~ + AURA-SAHUAGIN-4
+  ++ ~Good thing you recovered. Otherwise, you might be fish food already.~ + AURA-SAHUAGIN-4
   ++ ~Whatever. Let's just work on getting out of here.~ + AURA-SAHUAGIN-0
 
 CHAIN C0AURA2J AURA-SAHUAGIN-0
