@@ -620,7 +620,7 @@ DO ~SetGlobal("C0AuraBG2Quest1","GLOBAL",12)~
 DO ~StartCutSceneMode()
 Wait(1)
 ActionOverride("C0AASCL",EscapeArea())
-Wait(3)
+Wait(6)
 StartDialogNoSet(Myself)~ EXIT
 
 CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2Quest1","GLOBAL",12)~ THEN C0AASCS QUEST-ASCLEPIOS-3
