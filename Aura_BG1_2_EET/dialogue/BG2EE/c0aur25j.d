@@ -259,22 +259,22 @@ EXTERN SARVOLO 9
 // Watcher's Keep
 
 EXTEND_BOTTOM GORLUM2 0
-IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ EXTERN C0AUR25J aura-lum
+IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%) Global("C0AuraLumTheMad","GLOBAL",0)~ EXTERN C0AUR25J aura-lum
 END
 
 EXTEND_BOTTOM GORLUM2 0
-IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) !GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ EXTERN C0AURA2J aura-lum
+IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) !GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%) Global("C0AuraLumTheMad","GLOBAL",0)~ EXTERN C0AURA2J aura-lum
 END
 
 CHAIN C0AUR25J aura-lum
 ~Well, this sure is a strange bundle of fun, isn't it? 'Mad' is definitely the way I'd describe it, with its complete lack of regard for design consistency, intuitiveness, or even basic safety.~
 END
-  ++ ~Can you make heads or tails of this thing, Aura?~ + aura-lum-1
+  ++ ~Can you make heads or tails of this thing, Aura?~ DO ~SetGlobal("C0AuraLumTheMad","GLOBAL",1)~ + aura-lum-1
 
 CHAIN C0AURA2J aura-lum
 ~Well, this sure is a strange bundle of fun, isn't it? 'Mad' is definitely the way I'd describe it, with its complete lack of regard for design consistency, intuitiveness, or even basic safety.~
 END
-  ++ ~Can you make heads or tails of this thing, Aura?~ + aura-lum-1
+  ++ ~Can you make heads or tails of this thing, Aura?~ DO ~SetGlobal("C0AuraLumTheMad","GLOBAL",1)~ + aura-lum-1
 
 CHAIN C0AUR25J aura-lum-1
 ~Umm...~
