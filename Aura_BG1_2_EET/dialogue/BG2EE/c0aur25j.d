@@ -474,7 +474,7 @@ EXTERN GORMAD1 11
 
 INTERJECT JAN25J 13 C0AuraJAN25J13
 == C0AUR25J IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN ~Uh, Jan! Really not the time, y'know?!~
-EXTERN JAN25J 13
+EXTERN JAN25J 14
 
 INTERJECT JANJ 187 C0AuraJAN25J13
 == C0AURA2J IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID) GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN ~Uh, Jan! Really not the time, y'know?!~
