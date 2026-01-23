@@ -493,7 +493,7 @@ END
      !GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
      !Global("C0AuraKnowsBG1","GLOBAL",1)~ + ~I don't think it'd suit me. Imoen might jump at the opportunity, though.~ + FRIEND-5-IMOEN-4
   ++ ~Let me think about it. I'll tell you when I've made up my mind.~ + FRIEND-5-6
-  ++ ~Why not. I wouldn't mind the opportunity to something new.~ + FRIEND-5-7
+  ++ ~Why not. I wouldn't mind the opportunity to try something new.~ + FRIEND-5-7
   ++ ~I don't think I want to hear another lecture in my life. I got enough of that in Candlekeep.~ + FRIEND-5-8
   ++ ~I'm not interested. Let's just move on from this topic.~ + FRIEND-5-8
 
