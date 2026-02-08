@@ -1005,11 +1005,11 @@ I_C_T MUTAMI 0 C0AuraMUTAMI0
 == MUTAMI ~Ehehehe... and what are you going to do about it, I wonder?~
 END
 
-I_C_T NEB 2 C0AuraNEB2
+I_C_T %eet_neb% 2 C0AuraNEB2
 == C0AURAJ IF ~InParty("C0Aura") InMyArea("C0Aura") !StateCheck("C0Aura",CD_STATE_NOTVALID)~ THEN ~That... that's sick. You're disgusting.~
-== NEB ~Come now, don't be like that. You're a gnome, same as me, hee-hee. Pretty, pretty, you are, too...~
+== %eet_neb% ~Come now, don't be like that. You're a gnome, same as me, hee-hee. Pretty, pretty, you are, too...~
 == C0AURAJ ~K... kusoyaro... GET AWAY FROM ME! Don't think I can't put an arrow through your head to make you uglier, you... you kusottare! Kutabare! Fall over and die!~
-== NEB ~Break my heart, you do, even if I can't understand half the words you say, pretty, hee-hee... such a shame...~
+== %eet_neb% ~Break my heart, you do, even if I can't understand half the words you say, pretty, hee-hee... such a shame...~
 END
 
 I_C_T2 NEXLIT 0 C0AuraNEXLIT0
