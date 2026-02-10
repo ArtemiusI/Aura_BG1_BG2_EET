@@ -3906,7 +3906,7 @@ DO ~SetGlobal("C0AuraBG2Quest3","GLOBAL",25)~
 == C0ALUNA ~"Protection of our people"? I believed so, too, even despite the involvement with Interitus and their despicable plans, and your part in hiding that from me.~
 == C0AFRITZ ~Interitus is no longer a threat. The efforts of Oculus and our own enforcers has ensured that, and Lantan will be better without their shadow spreading across the realms. Now, the workers of the Eleventh Workshop may devote ourselves fully to our true calling.~
 == C0ALUNA ~So you say, but... I want to speak with my uncle. If he truly believes what he's doing is for the good of Lantan... I will hear it from his mouth. And I also want to see my sister.~
-== C0AFRITZ ~You have my sworn promise that Dame Aurelia is alive and well. Master Dedalus would never wish harm upon her own blood, no matter the differences.~
+== C0AFRITZ ~You have my sworn promise that Dame Aurelia is alive and well. Master Dedalus would never wish harm upon his own blood, no matter the differences.~
 == C0ALUNA ~Then why are you here? If he feels no shame, then he shouldn't hesitate to come forth and meet us, instead of having you standing in our way.~
 == C0AFRITZ ~...I am here by my own deduction. Though Master Dedalus has not asked it of me, for the sake of our long-wrought plans I cannot allow any uncertain factors to threaten us. I will not.~
 == C0ALUNA ~Get out of our way, Fritz. If my uncle hasn't given you the order, then you have no right to intervene here. I only want to hear the truth from my uncle regarding the future of our people, our plans, along with everything else that he's hidden from me so far.~
@@ -4007,7 +4007,7 @@ DO ~SetGlobal("C0AuraBG2Quest3","GLOBAL",33)~
 == C0DEDAL ~It is as I have always said to you. Everything I have done is for the sake of Lantan.~
 == C0AURA2P ~I know. That has never changed, and it's something you would never lie about. That being said, however... I still don't agree with your reasoning, uncle.~
 == C0DEDAL ~Continue.~
-== C0AURA2P ~I didn't fully believe you at first when you said you were certain of Lantan's future, that we would be safe against future threat from the outerland... and I'll admit, seeing that I have today makes me think it's possible. But I still don't believe this is the right way.~
+== C0AURA2P ~I didn't fully believe you at first when you said you were certain of Lantan's future, that we would be safe against future threat from the outerland... and I'll admit, seeing what I have today makes me think it's possible. But I still don't believe this is the right way.~
 == C0DEDAL ~No. I expect that not only you, but every member of the homeland would hold the same viewpoint.~
 == C0DEDAL ~That is natural—we Lantanna are adepts of many trades, but war has never been among them. We have a natural aversion to war and conflict, yet our lack of understanding of it has made us complacent.~
 == C0AURA2P ~I don't disagree with that, uncle. Ever since I left on my journey, I've learned a lot about the world, and I know that others' intentions aren't always pure, but—~
