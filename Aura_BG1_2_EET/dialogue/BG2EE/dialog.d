@@ -2145,7 +2145,7 @@ IF ~InParty("C0Aura")~ EXTERN C0AURA2J QUEST1-53-9
 CHAIN C0AURA2J QUEST1-53-9
 ~You were after me?~
 == C0AREES ~As I said, I owe you an apology. The professor could be proven to be innocent of involvement with Interitus, but you are another skilled artificer with connections to Lantan, and I had to be certain of whether or not you were also free from suspicion.~
-EXTERN C0AREES QUEST1-53-10
+EXTERN C0AREES QUEST1-53-11
 
 CHAIN C0AREES QUEST1-53-10
 ~Professor Caridius could be proven to be innocent of involvement with Interitus, but dame Aurelia is another skilled artificer with connections to Lantan, and I had to be certain of whether or not she was also free from suspicion.~
