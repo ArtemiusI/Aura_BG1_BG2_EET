@@ -13,13 +13,13 @@ ALWAYS
 ACTION_IF GAME_IS ~BGEE~ THEN BEGIN
 INCLUDE ~%MOD_FOLDER%/lib/liam_bgee_vars.tpa~
 OUTER_SPRINT "bg1_eet_symbol" AR
-OUTER_SPRINT "eet_neb" NEB_
+OUTER_SPRINT "eet_neb" NEB
 END
 
 ACTION_IF GAME_IS ~EET~ THEN BEGIN
 INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~
 OUTER_SPRINT "bg1_eet_symbol" BG
-OUTER_SPRINT "eet_neb" NEB
+OUTER_SPRINT "eet_neb" NEB_
 END
 
 END
