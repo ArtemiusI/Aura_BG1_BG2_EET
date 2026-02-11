@@ -68,3 +68,11 @@ THEN
 	DisplayStringHead(Player1,~You feel something oddly disconcerting as you realize that magic has suddenly ceased to function in the area.~)
 END
 
+IF
+	!Dead("C0AGOL01")
+    Delay(3)
+THEN
+    RESPONSE #100
+    ApplySpellRES("C0AQEF7",Player1)
+    Continue()
+END

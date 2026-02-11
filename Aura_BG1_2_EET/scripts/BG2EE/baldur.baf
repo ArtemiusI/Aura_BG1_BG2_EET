@@ -83,15 +83,12 @@ THEN
 END
 
 IF
-	Global("C0AuraBG2Quest1","GLOBAL",51)
-	Dead("C0AEINT3")
 	Dead("C0AGOL01")
-	NumDeadGT("C0AEINT2",2)
-	NumDeadGT("C0AEINT1",3)
+    Global("C0GolemEyeBroken","GLOBAL",0)
 THEN
 	RESPONSE #100
 		DisplayStringHead(Player1,~You feel the effects of anti-magic dissipating.~)
-		SetGlobal("C0AuraBG2Quest1","GLOBAL",52)
+		SetGlobal("C0GolemEyeBroken","GLOBAL",1)
 		ActionOverride(Player1,ApplySpellRES("C0AQEF8",Myself))
 END
 

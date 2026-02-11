@@ -1,0 +1,11 @@
+IF
+    !HasItem("C0AGOL1V",Myself)
+    Global("C0GolemEyeBroken","GLOBAL",0)
+THEN
+    RESPONSE #100
+		DisplayStringHead(Player1,~You feel the effects of anti-magic dissipating.~)
+		DisplayStringHead(Myself,~ERROR—STRUCTURAL INTEGRITY COMPROMISED!~)
+		SetGlobal("C0GolemEyeBroken","GLOBAL",1)
+		ApplySpellRES("C0AQEF8",Player1)
+		ForceSpellRES("C0AQEF29",Myself)
+END

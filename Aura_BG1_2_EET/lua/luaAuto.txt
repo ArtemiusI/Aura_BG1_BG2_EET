@@ -1,0 +1,5 @@
+local C0ABADGE = CScreenStore.SelectStoreItem
+CScreenStore.SelectStoreItem = function(self, nIndex, bSelected)
+    if store.storeItems[nIndex + 1].item.res == "C0ABADGE" then return end
+    C0ABADGE(self, nIndex, bSelected)
+end

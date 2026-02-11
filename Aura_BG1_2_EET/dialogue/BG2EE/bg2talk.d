@@ -415,7 +415,7 @@ CHAIN BC0AURA2 FRIEND-4-1
 EXTERN BC0AURA2 FRIEND-4-5
 
 CHAIN BC0AURA2 FRIEND-4-2
-~The Jansens were happy to take it in when most people in Amn weren't so friendly towards me to begin with. And they've been kind to me, even though I'd still like to try some non-turnip centric recipes once in a while.~
+~The Jansens were happy to take me in when most people in Amn weren't so friendly towards me to begin with. And they've been kind to me, even though I'd still like to try some non-turnip centric recipes once in a while.~
 EXTERN BC0AURA2 FRIEND-4-5
 
 CHAIN BC0AURA2 FRIEND-4-3
