@@ -618,9 +618,8 @@ DO ~SetGlobal("C0AuraBG2Quest1","GLOBAL",12)~
 == C0AASCL ~Gilbert, you should know the composition of the required medicines. I can leave the rest to you.~
 == C0AASCS ~Yes, master.~
 DO ~StartCutSceneMode()
-Wait(1)
 ActionOverride("C0AASCL",EscapeArea())
-Wait(6)
+Wait(3)
 StartDialogNoSet(Myself)~ EXIT
 
 CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2Quest1","GLOBAL",12)~ THEN C0AASCS QUEST-ASCLEPIOS-3
