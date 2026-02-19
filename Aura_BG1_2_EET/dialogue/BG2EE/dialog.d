@@ -617,7 +617,8 @@ DO ~SetGlobal("C0AuraBG2Quest1","GLOBAL",12)~
 == C0AQMAN ~Understood, sir. Thank you, sir!~
 == C0AASCL ~Gilbert, you should know the composition of the required medicines. I can leave the rest to you.~
 == C0AASCS ~Yes, master.~
-DO ~StartCutSceneMode()
+DO ~ClearAllActions()
+StartCutSceneMode()
 ActionOverride("C0AASCL",EscapeArea())
 Wait(3)
 StartDialogNoSet(Myself)~ EXIT
