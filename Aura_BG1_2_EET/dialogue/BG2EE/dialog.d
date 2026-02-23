@@ -4288,9 +4288,8 @@ CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2Quest3","GLOBAL",40)~ THEN C0ALUNA quest3-
 DO ~SetGlobal("C0AuraBG2Quest3","GLOBAL",41)~
 END
 IF ~Dead("C0Aura")~ EXTERN C0ALUNA quest3-40-dead
-IF ~!Dead("C0Aura")
-InParty("C0Aura")~ EXTERN C0AURA2J quest3-40-1J
-IF ~!Dead("C0Aura") !InParty("C0Aura")~ EXTERN C0AURA2P quest3-40-1P
+IF ~InParty("C0Aura")~ EXTERN C0AURA2J quest3-40-1J
+IF ~!InParty("C0Aura")~ EXTERN C0AURA2P quest3-40-1P
 
 CHAIN C0ALUNA quest3-40-dead
 ~Ah—NO! Aura... damn it! This is all my fault!~
@@ -4311,9 +4310,8 @@ DO ~SetGlobal("C0AuraBG2Quest3Resurrection","GLOBAL",2)~
 == C0AURA2P IF ~!InParty("C0Aura")~ THEN ~Ngh... what happened? I... was I just raised? Is the fighting done?~
 == C0AJUNO ~Ha... yes, baby sister, it's done. Thank the Wonderbringer you're not, yet.~
 END
-IF ~!Dead("C0Aura")
-InParty("C0Aura")~ EXTERN C0AURA2J quest3-40-1J
-IF ~!Dead("C0Aura") !InParty("C0Aura")~ EXTERN C0AURA2P quest3-40-1P
+IF ~InParty("C0Aura")~ EXTERN C0AURA2J quest3-40-1J
+IF ~!InParty("C0Aura")~ EXTERN C0AURA2P quest3-40-1P
 
 CHAIN C0AURA2J quest3-40-1J
 ~What... what about uncle Dedalus? He took a hit to protect me... please tell me he's not...~

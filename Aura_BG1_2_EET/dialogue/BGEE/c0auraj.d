@@ -2568,7 +2568,7 @@ END
 
 IF ~~ idol
 SAY ~I'm still wondering if it was really a good idea to bring this thing with us. But at the same time, I'm so curious... but it could be really dangerous... ugh! Okay, okay, let me take a closer look at it.~
-= ~There's some inscriptures I might be able to translate some meaning out of... it'll definitely take time. And hopefully I won't get struck by lightning for trying. Or anyone else. Fingers crossed!~
+= ~There's some inscriptions I might be able to translate some meaning out of... it'll definitely take time. And hopefully I won't get struck by lightning for trying. Or anyone else. Fingers crossed!~
 IF ~~ DO ~SetGlobal("C0AuraImprove4","GLOBAL",1) IncrementGlobal("C0AuraCursedUpgrade","GLOBAL",-1) SetGlobal("C0AuraAtWork","GLOBAL",4) SetGlobalTimer("C0AuraCraftTimer","GLOBAL",ONE_WEEK) TakePartyItem("misc48") DestroyItem("misc48")~ + craft4
 END
 

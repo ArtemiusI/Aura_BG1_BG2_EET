@@ -615,7 +615,7 @@ END
   ++ ~No. I don't trust any of you. We're leaving now, or else you all die!~ EXTERN SAHKNG01 22
 
 CHAIN SAHKNG01 C0AuraSahuagin.3
-~Finally! I was just about to decide that I'd prefer a meal over entertainment. Now then, off to the ring with you!~
+~Finally! I was just about to decide that I'd prefer a meal over entertainment. Now then, to the ring with you, off you pop!~
 COPY_TRANS SAHKNG01 17
 
 INTERJECT SAHKNG01 24 C0AuraSAHKNG0124
