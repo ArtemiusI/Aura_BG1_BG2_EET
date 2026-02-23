@@ -869,8 +869,13 @@ ActionOverride("c0arees1",MoveToPoint([433.1314]))~ EXIT
 
 CHAIN C0AQINS2 INSPECTOR-NEW-4
 ~If you are complicit in defying the demands of the law, I will arrest the lot of you! Now hurry up and—~
-DO ~CreateCreature("c0arees1",[464.1011],S)
-ActionOverride("c0arees1",MoveToPoint([433.1314]))~ EXIT
+DO ~ClearAllActions()
+StartCutSceneMode()
+CreateCreature("c0arees1",[464.1011],S)
+Wait(1)
+ActionOverride("c0arees1",MoveToPoint([433.1314]))
+Wait(2)
+ActionOverride("C0arees1",StartDialogNoSet(Player1))~ EXIT
 
 CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2Quest1","GLOBAL",17)~ THEN C0AREES REESE-AEGISFIELD
 ~You're finally back! I thought the inspector might give you trouble, so I was planning to help, but it looks like you've got some friendly connections of your own. Looks like I got worried for nothing.~

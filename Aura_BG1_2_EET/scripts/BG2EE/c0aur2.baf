@@ -1,5 +1,5 @@
 IF
-    Global("C0AuraBG2Quest1","GLOBAL",17)
+    Global("C0AuraBG2Quest1","GLOBAL",20)
 THEN
     RESPONSE #100
     SetGlobal("C0AuraBG2Quest1","GLOBAL",21)
