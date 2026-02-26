@@ -49,12 +49,16 @@ THEN
 END
 
 IF
-	Global("C0AuraBG2Quest1","GLOBAL",52)
+	Dead("C0AGOL01")
+	Dead("C0AEINT3")
+	CombatCounter(0)
+	Global("C0AuraBG2Quest1","GLOBAL",51)
 	InParty("C0Aura")
 	!Dead("C0Aura")
 THEN
 	RESPONSE #100
 	Wait(1)
+	SetGlobal("C0AuraBG2Quest1","GLOBAL",52)
 	ActionOverride("C0Aura",StartDialogNoSet(Player1))
 END
 
