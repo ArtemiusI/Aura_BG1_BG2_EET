@@ -924,7 +924,7 @@ STATISTICS:
   1.5 attacks per round
   
   May use 'Sniper Shot' once per day
-  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 50% for 5 rounds
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistance to three-quarters of its original value for 5 rounds
   Damage: 1d6+10 piercing
 
 Charge abilities (1x/day):
@@ -1058,7 +1058,7 @@ STATISTICS:
   1.5 attacks per round
   
   May use 'Sniper Shot' once per day
-  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 75% for 5 rounds
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistance to three-quarters of its original value
   Damage: 1d6+15 piercing
 
 Charge abilities (1x/day):
@@ -1155,7 +1155,7 @@ STATISTICS:
   Damage: 1d2+1 magic
 
   'Sniper Shot'
-  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 100% for 5 rounds
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistance to half of its original value for 5 rounds
   Damage: 1d6+20 piercing
   
   'Blazing Shot'
@@ -1213,7 +1213,7 @@ STATISTICS:
   Damage: 1d2+1 magic
 
   'Sniper Shot'
-  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistances by 100% for 5 rounds
+  Special: Launch a +5 arrow from increased visual range, dealing critical damage and reducing physical resistance to half of its original value for 5 rounds
   Damage: 1d6+20 piercing
   
   'Blazing Shot'
