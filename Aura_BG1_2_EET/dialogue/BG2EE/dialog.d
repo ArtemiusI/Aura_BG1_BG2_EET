@@ -4028,7 +4028,7 @@ DO ~SetGlobal("C0AuraBG2Quest3","GLOBAL",33)~
 == C0AURA2P ~I never knew...~
 == C0DEDAL ~And I agreed with him. Do you remember what I told you, the day the Eleventh Workshop finished the creation of your bow?~
 == C0AURA2P ~"A weapon forged in Lantan must always be prepared to be held to protect the ideals of the Lantanna".~
-== C0DEDAL ~Corrrect. But I never told you against whom we must be protected from. I believed, in seeing the world, that you would eventually find the answer. And have you?~
+== C0DEDAL ~Correct. But I never told you against whom we must be protected from. I believed, in seeing the world, that you would eventually find the answer. And have you?~
 == C0AURA2P ~I... I'm not sure.~
 == C0DEDAL ~I expected as much. It is a difficult question to answer. But there is one here who may teach you better than myself.~
 == C0ALUNA ~...~
@@ -4100,7 +4100,7 @@ DO ~SetGlobal("C0AuraBG2Quest3","GLOBAL",34)~
 == C0AJUNO ~*sigh* Uncle...~
 == C0AJUNO ~Ignoring how your position looks worse by the second, I have to ask... what could you hope to accomplish for our people this way?~
 == C0AJUNO ~By giving us a weapon to use against conflict, you are all but inviting it to our doorstep. If there are those as ravenous for power and resources as you believe, once they know what we are truly capable of... whether out of greed, envy or paranoia, war will become an inevitably for all Lantanna, whether they like it or not.~
-== C0AJUNO ~All you have done is ensure we hold an effective weapon against our future enemies for now... but even that can't last. Will be all be forced to turn our attention and research towards conflict, and continue to feed the beast you create?~
+== C0AJUNO ~All you have done is ensure we hold an effective weapon against our future enemies for now... but even that can't last. Will we all be forced to turn our attention and research towards conflict, and continue to feed the beast you create?~
 == C0DEDAL ~...~
 == C0AJUNO ~You may not know, uncle, but when I first recommended Luna as spokesman to the church, I had truly hoped that her position would allow our people to find trustworthy allies willing to mutually enrich our nations.~
 == C0AJUNO ~In hindsight, perhaps I was too naive, and did not consider the effect it would have on my sister... and the blame is on me that she felt the need to support your cause.~
