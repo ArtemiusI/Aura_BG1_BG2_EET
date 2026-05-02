@@ -1784,7 +1784,7 @@ CHAIN C0AURA2J C0AuraBookMerchant
 == C0AURA2J ~..."Aurelia White"...~
 == IMNBOOK1 ~Ah, yes. Aurelia White, that's the name. Not much of a history to her, s'far I can tell. Only thing anyone knows is that she's a Lantanese author.~
 == C0AURA2J ~Mmm, that's, um, right. Even the Lantanese don't really talk much about, er, about her. What do you think of "Lucky Lilla", sir?~
-== IMNBOOK1 ~Well, you'd think these picture books would be too juvenile for serious reading, but truthfully I find them quite delightful. The tales, the imagery! All of it was born of a truly imaginative mind.~
+== IMNBOOK1 ~Well, some of my colleagues would consider these a touch too juvenile for reading, but truthfully I find them quite a delight in their simplicity and charm. The tales, the imagery! The artist truly did put her soul into her work.~
 == C0AURA2J ~Er, haha. Than—I mean, that's really interesting.~
 == IMNBOOK1 ~You know, little lady, you don't look so different from the heroine on the cover. If nothing else, the hair is almost an identical shade of pink. I don't suppose you grew up on these books?~
 == C0AURA2J ~That's, well, something like that, I guess? Ahaha... I know the stories well, in any case. I don't have any of them right now, though.~

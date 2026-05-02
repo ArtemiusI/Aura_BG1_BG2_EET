@@ -555,42 +555,7 @@ END
 + ~Global("C0AuraKnowsBG1","GLOBAL",1) !Global("C0AuraRomanceActive","GLOBAL",1)~ + ~I'm in need of allies right now, Aura. Would you be interested in joining me again?~ + INTRO-JOINME-BG1
 + ~!Global("C0AuraKnowsBG1","GLOBAL",1)~ + ~I'm in need of allies right now, Aura. Would you be interested in joining me?~ + INTRO-JOINME
 ++ ~Nothing for the moment. I'm sorry to bother you.~ + INTRO-GOODBYE
-/*
-CHAIN C0AURA2 INTRO-DIALOG-3-10
-~On my way south, I met a pair of travellers carrying the symbol of Gond. They recognized that I was from Lantan and told me they were Wonderseekers— priests of Gond who travel Toril looking for technology that has been lost or fallen into wrong hands and claim them in the name of the church.~
-= ~They were very friendly to me once I told them who I was, but I could tell they were hiding something from me for some reason. Eventually I managed to persuade them, and then... they found a copy of Grand Artificer Elias Magnussen's academic journals, and were bringing it back to the High Hall of Wonders back at Baldur's Gate to be archived.~
-END
-++ ~Who?~ + INTRO-DIALOG-3-11
 
-CHAIN C0AURA2 INTRO-DIALOG-3-11
-~Oh, Magnussen was one of the greatest scholars Lantan has ever known. He held the most esteemed title of Grand Artificer, until he was denounced and exiled about sixty years ago for controversial studies.~
-= ~Come to think of it, that was not long before I was born... but he was a truly brilliant scientist. His theories were still being taught at the academies when I was a student, although his name was never mentioned.~
-END
-++ ~If he was denounced, how come you know the theories were his?~ + INTRO-DIALOG-3-12
-++ ~What were these 'controversial studies', exactly?~ + INTRO-DIALOG-3-13
-++ ~What has this to do with why you're here in Amn?~ + INTRO-DIALOG-3-15
-
-CHAIN C0AURA2 INTRO-DIALOG-3-12
-~My father, Kairos, told me the history of Master Magnussen a long time ago. He had just become a member of the Ayrorch council when Master Magnussen was exiled, so he knew a lot of the details.~
-EXTERN C0AURA2 INTRO-DIALOG-3-14
-
-CHAIN C0AURA2 INTRO-DIALOG-3-13
-~I'm not sure. The one who told me about Master Magnussen was my father. He had just become a member of the Ayrorch council when Master Magnussen was exiled, so he knew a lot of the details.~
-EXTERN C0AURA2 INTRO-DIALOG-3-14
-
-CHAIN C0AURA2 INTRO-DIALOG-3-14
-~Apparently the Ayrorch was in an impasse during the trial. Half of the council was in favor of exile, the other against it. I don't know what tipped the scales, but I think whatever Master Magnussen was being judged for had something to do with it.~
-= ~I know my father was against it. He respected Master Magnussen and believed he still had much to offer for Lantan's future. That's why he felt it was okay to tell me as much as he did, but whatever Master Magnussen's practices were... even he wouldn't tell me that.~
-EXTERN C0AURA2 INTRO-DIALOG-3-15
-
-CHAIN C0AURA2 INTRO-DIALOG-3-15
-~All of Master Magnussen's written works ended up banned in Lantan, and whatever was allowed to be republished had his name completely removed from them. The fact that one of his journals was discovered, and here in Amn of all places, was a huge surprise to me, so I came to see if I could find anything else of his in the city.~
-= ~I've found absolutely nothing since I arrived, though. Not so much as a scrap of paper with his name on it. Maybe it was a fluke that one of his books turned up at all, but either way, I was lucky that the Jansens were kind enough to take me in. Athkatla isn't an friendly place for gnomes.~
-END
-+ ~Global("C0AuraRomanceActive","GLOBAL",1)~ + ~If you're still interested in looking, then why don't you join me, Aura? I'll be exploring Athkatla, and I'd like the company.~ + INTRO-JOINME-ROMANCE
-+ ~Global("C0AuraKnowsBG1","GLOBAL",1) !Global("C0AuraRomanceActive","GLOBAL",1)~ + ~If you're still interested in looking, then why don't you join me, Aura? I'll be exploring Athkatla, and I'd like the company.~ + INTRO-JOINME-BG1
-++ ~I see. I wish I could help, but I really need to go now.~ + INTRO-GOODBYE
-*/
 CHAIN C0AURA2 INTRO-JOINME-ROMANCE
 ~Yes, absolutely yes! I was just about to offer anyway. I've missed travelling with you so much, <CHARNAME>.~
 EXTERN C0AURA2 INTRO-JOINME-1
@@ -1159,9 +1124,62 @@ EXIT
 CHAIN C0AURA2J QUESTIONS
 ~Oh... sure. What about?~
 END
++ ~Global("C0AuraBG2Quest1","GLOBAL",40)
+   GlobalGT("C0AuraBG2Quest1Retrospective","GLOBAL",0)~ + ~You seemed pretty shaken by what you saw with Asclepios. Do you want to talk about it?~ DO ~SetGlobal("C0AuraBG2Quest1Retrospective","GLOBAL",1)~ + QUEST1RETROSPECTIVE
++ ~Global("C0AuraBookMerchant","GLOBAL",1)~ + ~So, tell me about 'Aurelia White'...~ DO ~SetGlobal("C0AuraBookMerchant","GLOBAL",2)~ + STORYBOOK
 ++ ~I'd like to know a little more about Lantan.~ + LANTAN
 + ~NumInPartyGT(2)~ + ~What do you think of our companions?~ + COMPANIONS
 ++ ~Never mind.~ EXIT
+
+CHAIN C0AURA2J STORYBOOK
+      ~Wha—*ahem* No.~
+      END
+      ++ ~Come on, pretty please?~ + STORYBOOK-1A
+      ++ ~Why not? She's definitely not here in front of us at the moment.~ + STORYBOOK-1A
+      ++ ~Fine. Keep your little secret.~ + STORYBOOK-1B
+
+CHAIN C0AURA2J QUEST1RETROSPECTIVE
+      ~Oh... if you're worried about how I feel about that whole situation, <CHARNAME>, thanks, but... don't worry. I've had some time to think about it.~
+            = ~I couldn't refute him at the time. And I still can't. But that's just how researchers are, isn't it? We spend our whole lives searching for answers we might never find.~
+            = ~And in the end, it's too easy to give up. I don't think I have yet... but master Asclepios was right. I'm not moving forward as I am now.~
+            = ~It's just like he said. I have no right to pity him. He might have walked down a road of nothing but darkness, but I'm the one who's lost and confused.~
+      END
+            ++ ~I disagree. You are moving forward. You're just being wisely cautious about it.~ + QUEST1RETROSPECTIVE-1A
+            ++ ~Still, unlike him, you can still choose a brighter path. You have nothing to be ashamed of.~ + QUEST1RETROSPECTIVE-1B
+            ++ ~Well, he's most likely dead now, and you're not. I'd say that puts you above him.~ + QUEST1RETROSPECTIVE-1C
+            ++ ~This is all a bit too complicated for me. I'm not a student of knowledge like you.~ + QUEST1RETROSPECTIVE-2
+
+CHAIN C0AURA2J QUEST1RETROSPECTIVE-1A
+      ~Well, I have the luxury of time, and some like you to protect me from my mistakes. Where would I be if I didn't have...~
+      EXTERN C0AURA2J QUEST1RETROSPECTIVE-2
+
+CHAIN C0AURA2J QUEST1RETROSPECTIVE-1B
+      ~I'm lucky. No, I'd go as far as to say I'm overly privileged. I haven't had to face a truly difficult decision yet. I don't know if I could...~
+      EXTERN C0AURA2J QUEST1RETROSPECTIVE-2
+
+CHAIN C0AURA2J QUEST1RETROSPECTIVE-1C
+      ~*sigh* I don't know, <CHARNAME>. This shouldn't have anything to do with winning or losing. Those who pursue knowledge should work together. I just wish...~
+      EXTERN C0AURA2J QUEST1RETROSPECTIVE-2
+
+CHAIN C0AURA2J QUEST1RETROSPECTIVE-2
+      ~Sorry, <CHARNAME>. I guess I haven't figured it out as much as I thought I did. I'll stop now before I lead you on in circles for longer... still, thanks for hearing me out. It's easier to put it all into perspective when I've talked about it a bit.~
+      = ~I'm glad you're here. Really glad.~
+      EXIT
+
+CHAIN C0AURA2J STORYBOOK-1A
+      ~That's not—oh, alright. I'll tell you a little bit.~
+      = ~Once upon a time, in Lantan, there was a girl who spent her whole life as a little sister. Then, one day, she found herself becoming a big sister... when a pair of the sweetest twins in the realms suddenly entered her life.~
+      = ~By that point, her own big sisters were long gone to live their own lives... the responsibility of these twins was now all hers. So she helped to raise them, taught them how to walk, played with them, told them stories...~
+      = ~Oh, and they really did love stories. So much that the girl couldn't make them up quick enough on the spot anymore. So she started writing, and drawing.~
+      = ~And she really did put her soul into every picture she drew. Because she wanted to keep seeing the sparkles in the twins' eyes whenever Lucky Lilla would find the golden treasure, or the stream that sang elvish songs, or...~
+      = ~*ahem* Anyway, that was what all I... she really expected for herself. But the girl's papa was a publisher... and even though he's seen books written by sages and famed scholars all, he still loved those silly little books that brought joy into childrens' hearts.~
+      = ~So, he told the girl, "Why not give your gift to all children in the world?" And the girl agreed... but she was too embarrassed to let anyone know those childish stories really came from. So she thought of a pseudonym and... well, you can figure it out from there.~
+      = ~That's as far as the story goes. Maybe one day, Aurelia White might come up with her next great story... and it might even have to do with you, who knows? But I think it's still too early for that.~
+      EXIT
+
+CHAIN C0AURA2J STORYBOOK-1B
+      ~Sorry. Maybe one day, you'll be able to talk to Aurelia White as she's composing her next piece... but that'll be a story for another time.~
+      EXIT
 
 CHAIN C0AURA2J LANTAN
 ~I'd be happy to talk about my homeland! What were you curious about in particlar?~
