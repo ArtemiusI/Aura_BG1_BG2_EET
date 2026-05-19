@@ -283,6 +283,7 @@ END
 + ~PartyHasItem("C0AFISH3")~ + ~Here, have this striped sheepshead.~ DO ~TakePartyItem("C0AFISH3") DestroyItem("C0AFISH3") SetGlobal("C0KokoFishType","GLOBAL",3) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
 + ~PartyHasItem("C0AFISH4")~ + ~Here, have this amethyst eel.~ DO ~TakePartyItem("C0AFISH4") DestroyItem("C0AFISH4") SetGlobal("C0KokoFishType","GLOBAL",4) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
 + ~PartyHasItem("C0AFISH5")~ + ~Here, have this queen's knife.~ DO ~TakePartyItem("C0AFISH5") DestroyItem("C0AFISH5") SetGlobal("C0KokoFishType","GLOBAL",5) SetGlobalTimer("C0KokoGivesGift","GLOBAL",ONE_DAY)~ + a1.3
++ ~PartyHasItem("L#NIFIS")~ + ~Here, have this old fish.~ DO ~ActionOverride(LastTalkedToBy,ApplyDamage(Myself,1,PIERCING))~ + a1.oldfish
 ++ ~I'd love to feed you, but I haven't got anything for you. Where might I be able to buy fish in this city...?~ EXIT
 ++ ~Go away! Shoo!~ EXIT
 
@@ -290,6 +291,12 @@ CHAIN C0AKOKO a1.3
 ~Meow! *gobble gobble*~
 = ~*purrs*...~
 DO ~SetGlobal("C0KokoGiveFish","GLOBAL",3) EscapeAreaObject("Door0600")~ EXIT
+
+CHAIN C0AKOKO a1.oldfish
+~(The cat gives it a quick sniff before scratching you with his claws and shooting you a look of contempt.)
+
+*Hisssss!*~
+DO ~RunAwayFromNoLeaveArea(LastTalkedToBy,25)~ EXIT
 
 CHAIN IF WEIGHT #-1 ~Global("C0KokoGiveFish","GLOBAL",3)~ THEN C0AKOKO a1.4
 ~Mrrow!
@@ -2339,13 +2346,9 @@ GlobalLT("C0KorshQuest","GLOBAL",7)~ THEN C0KORSH KORSH-QUEST-1
 END
 + ~Global("C0KorshQuest","GLOBAL",3)~ + ~The High Merchant is willing to meet with you for negotiations.~ + KORSH-QUEST-3
 + ~!PartyHasItem("C0AMISC6")
-    OR(2)
-    NumItemsPartyGT("C0AMISC7",4)
-    PartyHasItem("C0AMISC5")~ + ~I've found five of the acorns.~ + KORSH-QUEST-1-1
+    NumItemsPartyGT("C0AMISC7",4)~ + ~I've found five of the acorns.~ + KORSH-QUEST-1-1
 + ~PartyHasItem("C0AMISC6")
-    OR(2)
-    NumItemsPartyGT("C0AMISC7",4)
-    PartyHasItem("C0AMISC5")~ + ~I've found five of the acorns, and the scales of Waukeen.~ + KORSH-QUEST-1-2
+    NumItemsPartyGT("C0AMISC7",4)~ + ~I've found five of the acorns, and the scales of Waukeen.~ + KORSH-QUEST-1-2
 ++ ~Not yet. Can I see your wares?~ DO ~StartStore("c0ashop2",LastTalkedToBy)~ EXIT
 ++ ~I'm still looking for more.~ EXIT
 
@@ -2370,7 +2373,7 @@ EscapeArea()~ EXIT
 
 EXTEND_TOP CELOGAN 80
 + ~Global("C0KorshQuest","GLOBAL",2)
-   PartyHasItem("C0AMISC5")~ + ~Lord Logan, I've come in place of a merchant in the outskirts of town.~ EXTERN CELOGAN KORSH-QUEST-2
+   NumItemsPartyGT("C0AMISC7",4)~ + ~Lord Logan, I've come in place of a merchant in the outskirts of town.~ EXTERN CELOGAN KORSH-QUEST-2
 END
 
 CHAIN CELOGAN KORSH-QUEST-2
@@ -2390,16 +2393,10 @@ CHAIN CELOGAN KORSH-QUEST-2-2
 = ~But such decisions are not mine alone to make, and some of the others with power in the town's politics will be... less enthused by the idea. Some will distrust him for his race, while others may not like the competition.~
 = ~Perhaps I will raise his case during our next official meeting, but that is the most I can do. Tell him I apologize for my limited power to give him what he asks.~
 END
-+ ~
-    OR(2)
-    NumItemsPartyGT("C0AMISC7",4)
-    PartyHasItem("C0AMISC5")
-   !PartyHasItem("C0AMISC6")~ + ~Korsh understands the difficulty of what he asks. As his peace offering, I've been entrusted with five Golden Acorns of Providence, personally appraised by him.~ DO ~TakePartyItem("C0AMISC5") DestroyItem("C0AMISC5") TakePartyItemNum("C0AMISC7",5) DestroyItem("C0AMISC7")~ + KORSH-QUEST-2-3
-+ ~
-    OR(2)
-    NumItemsPartyGT("C0AMISC7",4)
-    PartyHasItem("C0AMISC5")
-   PartyHasItem("C0AMISC6")~ + ~Korsh understands the difficulty of what he asks. As his peace offering, I've been entrusted with five Golden Acorns of Providence, personally appraised by him, as well as Waukeen's own blessed scales.~ DO ~SetGlobal("C0KorshQuestGaveScales","GLOBAL",1) TakePartyItem("C0AMISC5") DestroyItem("C0AMISC5") TakePartyItem("C0AMISC6") DestroyItem("C0AMISC6") TakePartyItemNum("C0AMISC7",5) DestroyItem("C0AMISC7")~ + KORSH-QUEST-2-4
++ ~NumItemsPartyGT("C0AMISC7",4)
+   !PartyHasItem("C0AMISC6")~ + ~Korsh understands the difficulty of what he asks. As his peace offering, I've been entrusted with five Golden Acorns of Providence, personally appraised by him.~ DO ~TakePartyItemNum("C0AMISC7",5) DestroyItem("C0AMISC7")~ + KORSH-QUEST-2-3
++ ~NumItemsPartyGT("C0AMISC7",4)
+   PartyHasItem("C0AMISC6")~ + ~Korsh understands the difficulty of what he asks. As his peace offering, I've been entrusted with five Golden Acorns of Providence, personally appraised by him, as well as Waukeen's own blessed scales.~ DO ~SetGlobal("C0KorshQuestGaveScales","GLOBAL",1) TakePartyItem("C0AMISC6") DestroyItem("C0AMISC6") TakePartyItemNum("C0AMISC7",5) DestroyItem("C0AMISC7")~ + KORSH-QUEST-2-4
 
 CHAIN CELOGAN KORSH-QUEST-2-3
 ~Five Golden Acorns of Providence, you say? Indeed, that is impressive, both for the gathering and the skills needed for appraising them for their integrity and value. That would, perhaps, be enough to persuade the other merchants...~
