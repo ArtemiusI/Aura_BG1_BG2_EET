@@ -871,17 +871,22 @@ END
 
 CHAIN C0AQINS2 INSPECTOR-NEW-3
 ~If any suspicious items are found during your search, you will follow me back to headquarters for questioning! Comply and this will be—~
-DO ~CreateCreature("c0arees1",[464.1011],S)
-ActionOverride("c0arees",MoveToPoint([433.1314]))~ EXIT
+DO ~ClearAllActions()
+StartCutSceneMode()
+Wait(1)
+CreateCreature("c0arees1",[464.1011],S)
+ActionOverride("c0arees",MoveToPoint([433.1314]))
+ActionOverride("c0arees",Wait(2))
+ActionOverride("C0arees",StartDialogNoSet(Player1))~ EXIT
 
 CHAIN C0AQINS2 INSPECTOR-NEW-4
 ~If you are complicit in defying the demands of the law, I will arrest the lot of you! Now hurry up and—~
 DO ~ClearAllActions()
 StartCutSceneMode()
-CreateCreature("c0arees",[464.1011],S)
 Wait(1)
+CreateCreature("c0arees1",[464.1011],S)
 ActionOverride("c0arees",MoveToPoint([433.1314]))
-Wait(2)
+ActionOverride("c0arees",Wait(2))
 ActionOverride("C0arees",StartDialogNoSet(Player1))~ EXIT
 
 CHAIN IF WEIGHT #-1 ~Global("C0AuraBG2Quest1","GLOBAL",17)~ THEN C0AREES REESE-AEGISFIELD
