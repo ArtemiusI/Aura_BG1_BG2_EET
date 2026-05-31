@@ -3328,6 +3328,28 @@ Weight: 0~
 COPY_EXISTING ~MAEVAR.cre~ ~override~
   ADD_CRE_ITEM ~C0AMISC7~ #1 #1 #1 ~IDENTIFIED~ ~inv~
 
+COPY_EXISTING ~CESKEL01.cre~ ~override~
+  ADD_CRE_ITEM ~C0AMISC7~ #1 #1 #1 ~IDENTIFIED~ ~inv~
+
+COPY_EXISTING ~HAEGAN.cre~ ~override~
+  ADD_CRE_ITEM ~C0AMISC7~ #1 #1 #1 ~IDENTIFIED~ ~inv~
+
+COPY_EXISTING ~AR0307.are~ ~override~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 19
+      STR_VAR
+        item_to_add = ~C0AMISC7~
+      END
+
+COPY_EXISTING ~AR0307.are~ ~override~
+      LPF ADD_AREA_ITEM
+      INT_VAR
+        container_to_add_to = 19
+      STR_VAR
+        item_to_add = ~C0AMISC7~
+      END
+
 COPY_EXISTING ~AR0310.are~ ~override~
       LPF ADD_AREA_ITEM
       INT_VAR
